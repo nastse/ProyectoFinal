@@ -1,6 +1,10 @@
 package com.demo.dao.implementation;
 
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 
@@ -9,6 +13,7 @@ import org.hibernate.Session;
 import com.demo.dao.implementation.HibernateConnection;
 
 import com.demo.pojo.Products;
+
 
 public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 
@@ -24,6 +29,21 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		
 		//DEVUELVE UN POJO
 		return allProducts;
+	}
+	
+	//DEVUELVO UN MAP CON LOS PRODUCTOS Y EL NOMBRE DE USUARIO DE CADA UNO
+	public List<String> getAllProductsNames(){
+		
+		//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
+		Session session = HibernateConnection.doHibernateConnection().openSession();
+		
+		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre  from User u, Products p where u.id_usuario=p.id_user" ).list();
+
+		session.close();
+		
+		//DEVUELVE UN POJO
+	
+		return allProductsNames;
 	}
 
 //BORRAR UN PRODUCTO

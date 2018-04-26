@@ -1,6 +1,7 @@
 package com.demo.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class Index_Controller {
 		//mav.addObject("allProducts", pm.getAllProductsSQL());
 	//USANDO DAO
 		
-		List<Products> allProducts = RegisteryDAO.getProductsDAO().getAllProducts();
+		/*List<Products> allProducts = RegisteryDAO.getProductsDAO().getAllProducts();
 		//TODO aqui le paso el ID_user de cada producto para hacer una busqueda del nombre del usuario
 		
 		List<String> allUsers = new ArrayList<String>();
@@ -51,13 +52,17 @@ public class Index_Controller {
 				producto.getId_user();
 				usuario = RegisteryDAO.userDAO.getUserName(producto.getId_user());
 				allUsers.add(usuario);		
-		}
+		}*/
+		
+		List<String> datos = RegisteryDAO.productsDAO.getAllProductsNames();
+		
+		System.out.println(Arrays.toString(datos.toArray()));
 		
 		User user = new User();
-		mav.addObject("allProducts", allProducts);
-		mav.addObject("allUsers", allUsers);
+		mav.addObject("allProducts", datos);
+		//mav.addObject("allUsers", allUsers);
 		//mav.addObject("allProducts", RegisteryDAO.getProductsDAO().getAllProducts());
-		mav.addObject("user", user);
+		//mav.addObject("user", user);
 		
 		
 		return mav;
