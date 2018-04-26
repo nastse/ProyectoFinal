@@ -18,7 +18,7 @@
 
 	<h1>Ingresar Usuario</h1>
 	
-	AUTHENTICATION PROCES FOR LOGIN SECCION 6
+<!-- 	AUTHENTICATION PROCES FOR LOGIN SECCION 6 -->
 	<label style="color: red;">${error_msg}</label>
 	
 <%-- 	<form:form action="${pageContext.request.contextPath}/index" modelAttribute="user" method="post"> --%>
