@@ -7,49 +7,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mi Perfil</title>
+<title>Mi perfil</title>
 </head>
 <body>
 
-	<h2>Howdy,${email}</h2>
+	<c:if test="${empty sessionScope.email}">
+        <h1>INICIA SESION</h1>
+	</c:if>
 	
-	<hr>
+	<c:if test="${not empty sessionScope.email}">
+		<table border="1" id="productTable">
+				<tr>
+					<th>Nombre</th>
+					<th>Peso</th>
+					<th>Altura</th>
+					<th>Edad</th>
+					<th>Genero</th>
+					<th>Imagen</th>
+					<th>Actualizar</th>
+				</tr>
+				
 	
-	<h4>Lista,${listaReviews}</h4>
-	<table border="1" id="productTable">
-			<tr>
-				<th>Tipo</th>
-				<th>Marca</th>
-				<th>Talla</th>
-				<th>Peso</th>
-				<th>Altura</th>
-				<th>Imagen</th>
-				<th>Eliminar</th>
-				<th>Actualizar</th>
-			</tr>
-			
-
-		<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
-		<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-		<c:forEach items="${listaReviews}" var="product">
-		<%-- PARA SABER QUE PRODUCTO/FILA ELIMINO  --%>
-			<tr  id="tr_${product.id_rev}" align="center">
-				<td>${product.categoria}</td>
-				<td>${product.marca}</td>
-				<td>${product.talla}</td>
-				<td>${product.peso}</td>
-				<td>${product.altura}</td>
-				<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product.imagen}"></td>	
-				<td><input type="button" value="Delete" id="btn_${product.id_rev}"></td>
-				<td><a href="<c:url value='/upproducto/${product.id_rev}'/>">Editar</a></td>
-
-			</tr>
-		</c:forEach>
-	</table>
-	
-	
-	<a href="${pageContext.request.contextPath}/products">Lista productos</a>
-	
-	
+			<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
+			<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
+			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
+			<%-- PARA SABER QUE PRODUCTO/FILA ELIMINO  --%>
+				<tr  id="tr_${usuario.id_usuario}" align="center">
+					<%-- LLAMO AL OBJETO EL VALOR QUE QUIERO MOSTRAR  --%>
+					<td>${usuario.nombre}</td>
+					<td>${usuario.peso}</td>
+					<td>${usuario.altura}</td>
+					<td>${usuario.edad}</td>
+					<td>${usuario.genero}</td>
+					<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}"></td>	
+	<%-- 				<td><input type="button" value="Delete" id="btn_${product.id_rev}" onclick="deleteProduct(this.id_rev)"></td> --%>
+	<%-- 				<td><a href="<c:url value='/verproducto/${product.id_usuario}'/>">Actualizar</a></td>	 --%>
+				</tr>
+				
+	<!-- 			<tr> -->
+	<%-- 				<td colspan="7">${allUsers[status.index]}</td> --%>
+	<!-- 			</tr> -->
+			</c:forEach>
+		</table>
+	</c:if>
 </body>
 </html>

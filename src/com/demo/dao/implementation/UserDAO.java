@@ -75,5 +75,40 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			}
 			
 		}
+		
+		public String getUserName(int id_user) {
+			
+			String usuario = "";
+			
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			
+			//Consulta HLO
+			List<User> user = session.createQuery("From User where id_usuario='"+id_user+"'").list();
+			
+			if(user.size()==1) {			
+				usuario = user.get(0).getNombre();	
+			}
+			
+			//Cerramos la sesion
+			session.close();
+
+			return usuario;
+		}
+		
+		public List<String> getUserDatos(String email) {
+			
+			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			
+			List<String> datos = session.createQuery("From User where email='"+email+"'").list();
+			
+			session.close();
+			
+			return datos;
+		}
+		
 
 }

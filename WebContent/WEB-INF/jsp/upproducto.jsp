@@ -46,7 +46,7 @@
 				<td><input type="text" name="temp_max" value="${product.temp_max}"></td>
 				<td><input type="text" name="temp_min" value="${product.temp_min}"></td>
 				<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product.imagen}"></td>	
-				<td><a href="<c:url value='/myprofile'/>">Cancelar</a></td> 
+				<td><a href="<c:url value='/myproducts'/>">Cancelar</a></td> 
 				<td><input type="submit" value="Actualizar"></td>
 			</tr>
 	</table>

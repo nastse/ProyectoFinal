@@ -91,13 +91,12 @@ public class Login_Controller {
 					//AÑADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
 
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
-
 					session.setAttribute("email", username);
 					
 					//AÑADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					session.setAttribute("id", reviews);
 					
-					return "redirect:/myprofile";
+					return "redirect:/myproducts";
 					
 				}else {
 					

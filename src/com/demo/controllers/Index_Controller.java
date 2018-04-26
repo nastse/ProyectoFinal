@@ -1,5 +1,8 @@
 package com.demo.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.registery.RegisteryDAO;
+import com.demo.pojo.Products;
 import com.demo.pojo.User;
 
 @Controller
@@ -36,9 +40,25 @@ public class Index_Controller {
 		//mav.addObject("allProducts", pm.getAllProductsSQL());
 	//USANDO DAO
 		
+		List<Products> allProducts = RegisteryDAO.getProductsDAO().getAllProducts();
+		//TODO aqui le paso el ID_user de cada producto para hacer una busqueda del nombre del usuario
+		
+		List<String> allUsers = new ArrayList<String>();
+		String usuario ="";
+		
+		//SACO EL ID DE LOS USUARIOS DE CADA PRODUCTO
+		for(Products producto : allProducts ) {
+				producto.getId_user();
+				usuario = RegisteryDAO.userDAO.getUserName(producto.getId_user());
+				allUsers.add(usuario);		
+		}
+		
 		User user = new User();
-		mav.addObject("allProducts", RegisteryDAO.getProductsDAO().getAllProducts());
+		mav.addObject("allProducts", allProducts);
+		mav.addObject("allUsers", allUsers);
+		//mav.addObject("allProducts", RegisteryDAO.getProductsDAO().getAllProducts());
 		mav.addObject("user", user);
+		
 		
 		return mav;
 		

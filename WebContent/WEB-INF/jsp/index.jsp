@@ -59,7 +59,8 @@
 	<a class="demo" href="${pageContext.request.contextPath}/signup">Sign Up</a>
 	<a onclick="hello()">Sign Up</a>
 	
-	
+	<h1>${allProducts}</h1>	
+	<h1>${allUsers}</h1>
 	<table border="1" id="productTable">
 			<tr>
 				<th>Tipo</th>
@@ -74,7 +75,7 @@
 
 		<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
 		<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-		<c:forEach items="${allProducts}" var="product">
+		<c:forEach items="${allProducts}" var="product" varStatus="status">
 		<%-- PARA SABER QUE PRODUCTO/FILA ELIMINO  --%>
 			<tr  id="tr_${product.id_rev}" align="center">
 				<%-- LLAMO AL OBJETO EL VALOR QUE QUIERO MOSTRAR  --%>
@@ -85,7 +86,11 @@
 				<td>${product.altura}</td>
 				<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product.imagen}"></td>	
 <%-- 				<td><input type="button" value="Delete" id="btn_${product.id_rev}" onclick="deleteProduct(this.id_rev)"></td> --%>
-				<td><a href="<c:url value='/verproducto/${product.id_rev}'/>">Ver producto</a></td>
+				<td><a href="<c:url value='/verproducto/${product.id_rev}'/>">Ver producto</a></td>	
+			</tr>
+			
+			<tr>
+				<td colspan="7">${allUsers[status.index]}</td>
 			</tr>
 		</c:forEach>
 	</table>

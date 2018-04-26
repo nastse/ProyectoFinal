@@ -32,3 +32,4 @@ public class Ajax_Controller {
 	}
 	
 }
+

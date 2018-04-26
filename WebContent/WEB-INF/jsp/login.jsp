@@ -41,6 +41,10 @@
 			</tr>
 			<tr>
 				<td>&nbsp</td>
+				<td align="center"><a href="${pageContext.request.contextPath}/signup">Date de alta</a></td>
+			</tr>
+			<tr>
+				<td>&nbsp</td>
 				<td align="center"><input type="submit" name="Login"></td>
 			</tr>
 			
