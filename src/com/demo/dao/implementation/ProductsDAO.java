@@ -37,7 +37,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
 		Session session = HibernateConnection.doHibernateConnection().openSession();
 		
-		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre  from User u, Products p where u.id_usuario=p.id_user" ).list();
+		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email from User u, Products p where u.id_usuario=p.id_user" ).list();
 
 		session.close();
 		
