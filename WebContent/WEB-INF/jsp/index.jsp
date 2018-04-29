@@ -8,9 +8,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Welcome to Home</title>
 		<link href='<c:url value="/css/style.css"></c:url>' rel="stylesheet">
-	
 		<script type="text/javascript" src='<c:url value="/js/demo.js"></c:url>'></script>
-
+		
+		<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
+		<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
+	
 </head>
 <body>
 
