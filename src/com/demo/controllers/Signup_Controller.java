@@ -109,10 +109,8 @@ public class Signup_Controller
 		ModelAndView mav = new ModelAndView("signup");
 		
 		String message = "";
-		
-	
-			try
-			{
+
+			try{
 			//List<FileItem> data = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 			
 			String email = request.getParameter("email");
@@ -124,52 +122,52 @@ public class Signup_Controller
 				System.out.println("Se ha validado");
 				
 			//Si no hay ningun error me compruebo mi User y password para loguearme 	
-			}else {
-				
-				//Creo un objeto de usuerio
-				//User user = new User();
-				user.setEmail(email);
-				user.setPassword(password);
-				user.setRepassword(repassword);
-				
-				 if(password.equals(repassword))
-				{
-					//Signup_Model sm = new Signup_Model();
+				}else {
 					
-					//MODELO TIPO DAO
-					message = RegisteryDAO.getUserDAO().doHibernateSignUp(user);
+						//Creo un objeto de usuerio
+						User user2 = new User();
+						user2.setEmail(email);
+						user2.setPassword(password);
+						
+						 if(password.equals(repassword)){
+							//Signup_Model sm = new Signup_Model();
+							
+							//MODELO TIPO DAO
+							message = RegisteryDAO.getUserDAO().doHibernateSignUp(user2);
+							System.out.println(message);
+							
+						//SI LA ALTA ES BUENA VOY A MI PAGINA DE PERFIL Y CARGO MIS DATOS CON EL FORMULARIO PARA COMPLETAR
+							/*//RECOJO LA SESION Y LE ASIGNO UN NOMBRE
+							session.setAttribute("email", username);
+							return "redirect:/myprofile";*/
+		
+						}
+						else{
+							message = "Las contraseñas no coinciden";
+							md.addAttribute("error_msg", message);
+						}
 					
-				//SI LA ALTA ES BUENA VOY A MI PAGINA DE PERFIL Y CARGO MIS DATOS CON EL FORMULARIO PARA COMPLETAR
-					/*//RECOJO LA SESION Y LE ASIGNO UN NOMBRE
-					session.setAttribute("email", username);
-					return "redirect:/myprofile";*/
-
 				}
-				else
-				{
-					message = "Password does not match..please try again";
-					md.addAttribute("error_msg", message);
-				}
-				
-			}
-			
-			
 			}
 			catch(Exception e)
 			{
 				System.out.println(e);
-				message = "Please try again....";
+				//return message;
 			}
+			
+		//mav.addObject("message", message);
+		md.addAttribute("error_msg", message);
 		
-			
-		mav.addObject("message", message);
-			
-		return mav;
+		//Si me doy de alta correctamente me redirige a mi PERFIL PARA COMPLETAR MIS DATOS
+		if(message.equals("Alta correcta...")) {
+			return mav = new ModelAndView("myprofile");
+		}else {
+			return mav;
+		}
+		
 	}
 	
-	
-	
-	
+
 	
 	@RequestMapping(value="/dynamic/{message}" , method=RequestMethod.GET)
 	public ModelAndView dynamicDemo(@PathVariable("message") String message)

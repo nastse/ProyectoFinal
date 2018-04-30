@@ -34,10 +34,6 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
-	@Size(min=5)
-	@Column(name="repassword")
-	private String repassword;
-	
 	@Column(name="nombre")
 	private String nombre;
 	
@@ -85,12 +81,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getRepassword() {
-		return repassword;
-	}
-	public void setRepassword(String repassword) {
-		this.repassword = repassword;
-	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -145,10 +136,5 @@ public class User {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	
-	
-	
-	
-	
-	
+		
 }

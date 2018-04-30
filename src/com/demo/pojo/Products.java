@@ -36,6 +36,9 @@ public class Products {
 	@Column(name="marca")
 	private String marca;
 	
+	@Column(name="modelo")
+	private String modelo;
+	
 	@Column(name="categoria")
 	private String categoria;
 	
@@ -95,6 +98,15 @@ public class Products {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+	
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
 
 	public String getCategoria() {
 		return categoria;

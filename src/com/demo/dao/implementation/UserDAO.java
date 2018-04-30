@@ -1,5 +1,6 @@
 package com.demo.dao.implementation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -41,39 +42,55 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 		//INSERTAR EN LA BASE DE DATOS CON HIBERNATE
 		public String doHibernateSignUp(User user) {
 			
-			try {
-				
-				Session session = HibernateConnection.doHibernateConnection().openSession();
-				session.beginTransaction();
-			//SI DA ERROR ES POR QUE EL USUARIO YA EXISTE
-				session.save(user);
-				
-			//PARA HACER UN UPDATE
-				//session.update(user);
-				
-			//PARA UNA LISTA CON VARIAS FILAS A INSERTAR
-				//List<User> user1 = null;
-				//session.save(user1);
-				
-			//PARA ACTUALIZAR UNA FILA SI ESTA EXISTE O INSERTARLA SI NO EXISTE
-			//COMPRUEBA SOLO LA PRIMARY KEY Y SI EXISTE LA ACTUALIZA EN VEZ DE AÑADIR UNA NUEVA	
-				//session.saveOrUpdate(user);
-				
-			//PARA HACER UN DELETE
-				//session.delete(user);
-				
-			//IMPORTANTE AÑADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
-				session.getTransaction().commit();
-				session.close();
-				
-				return "Sign Up Successfully...";
-				
-			}catch(Exception e) {
-				
-				e.printStackTrace();
-				return "El usuario ya existe";
-			}
+			List<String> userComprobar = getUserDatos(user.getEmail());
 			
+			if(userComprobar.size()==1) {
+
+				return "El usuario ya existe";
+				
+			}else {
+				
+					try {
+						
+						Session session = HibernateConnection.doHibernateConnection().openSession();
+						session.beginTransaction();
+						//LE ASIGNO VALORES POR DEFECTO AL CREAR EL USUARIO
+						user.setImagen("imagen.png");
+						user.setTipo_usuario(1);
+						user.setEstado(1);
+						java.util.Date dt = new java.util.Date();
+						user.setCreado(dt);	
+						
+
+					//SI DA ERROR ES POR QUE EL USUARIO YA EXISTE
+						session.save(user);
+						
+					//PARA HACER UN UPDATE
+						//session.update(user);
+						
+					//PARA UNA LISTA CON VARIAS FILAS A INSERTAR
+						//List<User> user1 = null;
+						//session.save(user1);
+						
+					//PARA ACTUALIZAR UNA FILA SI ESTA EXISTE O INSERTARLA SI NO EXISTE
+					//COMPRUEBA SOLO LA PRIMARY KEY Y SI EXISTE LA ACTUALIZA EN VEZ DE AÑADIR UNA NUEVA	
+						//session.saveOrUpdate(user);
+						
+					//PARA HACER UN DELETE
+						//session.delete(user);
+						
+					//IMPORTANTE AÑADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
+						session.getTransaction().commit();
+						session.close();
+						
+						return "Alta correcta...";
+						
+					}catch(Exception e) {
+						
+						e.printStackTrace();
+						return "El usuario ya existe...";
+					}
+			}
 		}
 		
 		public String getUserName(int id_user) {
