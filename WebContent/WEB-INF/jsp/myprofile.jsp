@@ -15,6 +15,65 @@
         <h1>INICIA SESION</h1>
 	</c:if>
 	
+	<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
+		<form action="${pageContext.request.contextPath}/myprofile" method="post" enctype="multipart/form-data">
+			<table>
+				<tr>
+					<td><label>Nombre de Usuario:</label></td>
+					<td><input id="username" type="text" name="username" value="${usuario.nombre}"></td>
+				</tr>
+				<tr>
+					<td><label>Género:</label></td>
+					<td>
+						Hombre<input type="radio" name="sexo" value="Hombre">
+						Mujer<input type="radio" name="sexo" value="Mujer">
+					</td>
+				</tr>
+				<tr>
+					<td><label>Peso:</label></td>
+					<td>
+						<select name="peso">
+							<option value = "${usuario.peso}"/>${usuario.peso}kg</option>
+							<c:forEach var = "i" begin = "40" end = "200">
+		         				<option value = "${i}"/>${i}kg</option>
+		     				</c:forEach>			
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label>Altura:</label></td>
+					<td>
+						<select name="altura">
+							<option value = "${usuario.altura}"/>${usuario.altura}cm</option>
+							<c:forEach var = "i" begin = "150" end = "250">
+		         				<option value = "${i}"/>${i}cm</option>
+		     				</c:forEach>			
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label>Edad:</label></td>
+					<td>
+						<select name="edad">
+							<option value = "${usuario.edad}"/>${usuario.edad} años</option>
+							<c:forEach var = "i" begin = "1" end = "101">
+		         				<option value = "${i}"/>${i} años</option>
+		     				</c:forEach>			
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label>Selecciona una imagen:</label></td>
+					<td><input type="file" name="image"></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Guardar"></td>
+				</tr>
+			</table>
+		
+		</form>
+	</c:forEach>	
+	
 	<c:if test="${not empty sessionScope.email}">
 		<table border="1" id="productTable">
 				<tr>

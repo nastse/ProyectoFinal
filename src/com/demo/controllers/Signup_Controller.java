@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.commons.fileupload.FileItem;
@@ -104,17 +105,17 @@ public class Signup_Controller
 	
 	
 	@RequestMapping(value="/signup" , method=RequestMethod.POST)
-	public ModelAndView doSignUpProcess(HttpServletRequest request, Model md, @Valid User user, BindingResult br)
+	public ModelAndView doSignUpProcess(HttpServletRequest request, HttpSession session, Model md, @Valid User user, BindingResult br)
 	{
 		ModelAndView mav = new ModelAndView("signup");
-		
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		String message = "";
-
+	
 			try{
 			//List<FileItem> data = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 			
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
+			
 			String repassword = request.getParameter("repassword");
 			
 			if(br.getAllErrors().size() > 0) {
@@ -160,7 +161,20 @@ public class Signup_Controller
 		
 		//Si me doy de alta correctamente me redirige a mi PERFIL PARA COMPLETAR MIS DATOS
 		if(message.equals("Alta correcta...")) {
-			return mav = new ModelAndView("myprofile");
+			
+			//TODO LOGUEAR AL USUARIO DESPUES DE HABER HECHO UNA ALTA CORRECTA PARA PODER REDIRIGIRLO A SU PERFIL
+			int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(email, password);
+			String mensaje = "";
+			
+				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
+				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(email);
+				
+				//ASIGNO LA SESION Y TODOS LOS DATOS DEL USUARIO
+				session.setAttribute("email", email);
+				session.setAttribute("datosUsuario", datosUsuario);
+			
+				return mav = new ModelAndView("myprofile");
+			
 		}else {
 			return mav;
 		}
