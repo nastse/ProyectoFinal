@@ -93,6 +93,48 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			}
 		}
 		
+		
+		//ACTUALIZAR EN LA BASE DE DATOS CON HIBERNATE
+				public String doHibernateUpdateUser(String nombre, int peso, int altura, int edad, String imagen, int id) {
+					
+							try {
+								
+								Session session = HibernateConnection.doHibernateConnection().openSession();
+								session.beginTransaction();
+								
+								//PARA HACER UN UPDATE DE COLUMNAS EN CONCRETO
+								String hqlUpdate ="update User u set u.nombre=:newName, "
+										+ "u.peso = :newPeso, "
+										+ "u.altura = :newAltura, "
+										+ "u.edad = :newEdad, "
+										//+ "u.genero = :newGenero, "
+										+ "u.imagen = :newImagen "
+										+ "where u.id_usuario = '"+id+"'";
+							
+								int updatedEntities = session.createQuery(hqlUpdate)
+										.setString("newName", nombre)
+										.setInteger("newPeso", peso)
+										.setInteger("newAltura", altura)
+										.setInteger("newEdad", edad)
+										//.setString("newGenero", genero)
+										.setString("newImagen", imagen)
+										.executeUpdate();
+								
+								
+							//IMPORTANTE AÑADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
+								session.getTransaction().commit();
+								session.close();
+								
+								return "Actualizacion correcta...";
+								
+							}catch(Exception e) {
+								
+								e.printStackTrace();
+								return "El usuario ya existe...";
+							}
+					}
+				
+		
 		public String getUserName(int id_user) {
 			
 			String usuario = "";

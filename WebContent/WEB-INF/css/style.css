@@ -1,5 +1,37 @@
-.demo{
-	
-	background-color:red;
-	
-}
+		body{
+				background-color:black;
+			}
+			
+			#contenedor{
+/* 				background-color:#F7F7F7; */
+ 				background-color:#F5F5F5; 
+			}
+			
+			#lateral{
+				width:120px;
+				height: 550px;
+				background-color: black;
+			}
+			#producto{
+				max-width: 220px;
+/* 				background-color:#1F2833; */
+				background-color:white;
+				box
+			}
+			#producto-info{
+				width: 200px;
+				background-color:white;
+				margin-left:5px;
+			}
+			hr{
+				border: 1px solid #F27490;
+			}
+			#banner{
+/* 				background-color:#0B0C10; */
+				background-color:#F27490;
+			}
+			
+			#nombre{
+				margin-top:30px;
+			}
+		

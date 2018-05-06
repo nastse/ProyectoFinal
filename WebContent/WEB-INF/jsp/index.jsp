@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,49 +8,14 @@
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Welcome to Home</title>
-		<link href='<c:url value="/css/style.css"></c:url>' rel="stylesheet">
-		<script type="text/javascript" src='<c:url value="/js/demo.js"></c:url>'></script>
+	
+		<style type="text/css">
+    		<%@include file="/WEB-INF/css/style.css" %>
+		</style>
 		
 		<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 		<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
-		<style>
-			body{
-				background-color:#191919;
-			}
-			#contenedor{
-/* 				background-color:#F7F7F7; */
- 				background-color:#F5F5F5; 
-
-			}
-			#lateral{
-				width:120px;
-				height: 550px;
-				background-color: black;
-			}
-			#producto{
-				max-width: 220px;
-/* 				background-color:#1F2833; */
-				background-color:white;
-				box
-			}
-			#producto-info{
-				width: 200px;
-				background-color:white;
-				margin-left:5px;
-			}
-			hr{
-				border: 1px solid #F27490;
-			}
-			#banner{
-/* 				background-color:#0B0C10; */
-				background-color:#F27490;
-			}
-			
-			#nombre{
-				margin-top:30px;
-			}
 		
-		</style>
 	
 </head>
 

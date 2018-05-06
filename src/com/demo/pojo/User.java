@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.Size;
@@ -16,6 +18,7 @@ import org.hibernate.validator.constraints.NotBlank;
 //Mapeo hacia la Tabla Usuario de mi BDDA
 @Entity
 @Table(name="usuario")
+
 public class User {
 
 	

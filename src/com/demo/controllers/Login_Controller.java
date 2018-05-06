@@ -96,7 +96,7 @@ public class Login_Controller {
 					//AÑADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					session.setAttribute("id", reviews);
 					
-					return "redirect:/myproducts";
+					return "redirect:/myprofile";
 					
 				}else {
 					

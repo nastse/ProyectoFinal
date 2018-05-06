@@ -6,49 +6,116 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Mi perfil</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<style type="text/css">
+    		<%@include file="/WEB-INF/css/style.css" %>
+	</style>
+	
+	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
+	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
+	
+	<title>Mi perfil</title>
 </head>
+
+<div class="container-fluid">	
+	<div id="banner" class="row p-1 d-flex justify-content-end">
+				<c:if test="${empty sessionScope.email}">
+	        		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button>
+					</div>
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA</button>
+					</div>
+				</c:if>
+				<c:if test="${not empty sessionScope.email}">
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">LOGOUT</button>
+					</div>
+				</c:if>
+	</div>
+</div>
+
+
 <body>
 
 	<c:if test="${empty sessionScope.email}">
         <h1>INICIA SESION</h1>
 	</c:if>
 	
-	<c:if test="${not empty sessionScope.email}">
-		<table border="1" id="productTable">
-				<tr>
-					<th>Nombre</th>
-					<th>Peso</th>
-					<th>Altura</th>
-					<th>Edad</th>
-					<th>Genero</th>
-					<th>Imagen</th>
-					<th>Actualizar</th>
-				</tr>
-				
+<c:if test="${not empty sessionScope.email}">
+	<div class="container p-5">		
+		<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
+			<form action="${pageContext.request.contextPath}/myprofile" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+						<img class="rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+						<div class="form-group">
+							<label>Selecciona una imagen:</label>
+							<input type="file" name="image" value="">
+						</div>	
+					</div>
+				</div>
+		
+				<div class="row justify-content-md-center justify-content-sm-center">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">		
+							<label>Nombre de Usuario:</label>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+							<input class="form-control" id="username" type="text" name="username" value="${usuario.nombre}">
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+							<label>Género:</label>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">
+							Hombre<input type="radio" name="sexo" value="Hombre">
+							Mujer<input type="radio" name="sexo" value="Mujer">
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">		
+							<label>Peso:</label>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+						<select name="peso">
+							<option value = "${usuario.peso}"/>${usuario.peso}kg</option>
+								<c:forEach var = "i" begin = "40" end = "200">
+			         				<option value = "${i}"/>${i}kg</option>
+			     				</c:forEach>			
+						</select>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+						<label>Altura:</label>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+						<select name="altura">
+								<option value = "${usuario.altura}"/>${usuario.altura}cm</option>
+								<c:forEach var = "i" begin = "150" end = "250">
+			         				<option value = "${i}"/>${i}cm</option>
+			     				</c:forEach>			
+						</select>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+						<label>Edad:</label>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
+						<select name="edad">
+								<option value = "${usuario.edad}"/>${usuario.edad} años</option>
+								<c:forEach var = "i" begin = "1" end = "101">
+			         				<option value = "${i}"/>${i} años</option>
+			     				</c:forEach>			
+						</select>
+						<input type="hidden" name="usuario" value="${usuario.id_usuario}">
+						<input type="hidden" name="imagen" value="${usuario.imagen}">
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-1 ">
+						<input class="btn btn-primary" type="submit" value="Guardar">
+					</div>
+				</div>	
+			</form>
+		</c:forEach>
+	</div>			
+</c:if>	
 	
-			<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
-			<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
-			<%-- PARA SABER QUE PRODUCTO/FILA ELIMINO  --%>
-				<tr  id="tr_${usuario.id_usuario}" align="center">
-					<%-- LLAMO AL OBJETO EL VALOR QUE QUIERO MOSTRAR  --%>
-					<td>${usuario.nombre}</td>
-					<td>${usuario.peso}</td>
-					<td>${usuario.altura}</td>
-					<td>${usuario.edad}</td>
-					<td>${usuario.genero}</td>
-					<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}"></td>	
-	<%-- 				<td><input type="button" value="Delete" id="btn_${product.id_rev}" onclick="deleteProduct(this.id_rev)"></td> --%>
-	<%-- 				<td><a href="<c:url value='/verproducto/${product.id_usuario}'/>">Actualizar</a></td>	 --%>
-				</tr>
-				
-	<!-- 			<tr> -->
-	<%-- 				<td colspan="7">${allUsers[status.index]}</td> --%>
-	<!-- 			</tr> -->
-			</c:forEach>
-		</table>
-	</c:if>
+
 </body>
 </html>
