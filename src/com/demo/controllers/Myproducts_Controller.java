@@ -28,14 +28,16 @@ public class Myproducts_Controller {
 				
 				//PARA RECIBIR EL NOMBRE DE LA SESION LE PASO EL NOMBRE DE LA CLAVE QUE LE ASIGNADO
 				String email = session.getAttribute("email").toString();
+				String id = session.getAttribute("id_usuario").toString();
 				List<String> datos = (List<String>) session.getAttribute("datos");
 
-				List<Products> reviews = (List<Products>)session.getAttribute("id");
+				List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(Integer.parseInt(id));
+				//List<Products> reviews = (List<Products>)session.getAttribute("id");
 				
-				if(session.getAttribute("id")  == null) {
-					
-					System.out.println("VALOR NULL SESION ID");
-				}
+//				if(session.getAttribute("id")  == null) {
+//					
+//					System.out.println("VALOR NULL SESION ID");
+//				}
 				
 				//mv.addObject("user", username);
 				map.addAttribute("email", email);

@@ -83,7 +83,8 @@ public class Login_Controller {
 				String mensaje = "";
 				
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
-				List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(usuario);
+				//TODO EN VEZ DE RECOGER AQUI LOS PRODUCTOS Y PASARLOS LOS RECOJO EN EL GET DE MYPRODUCTS
+				//List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(usuario);
 				//RECOJO DATOS DEL USUARIO
 				
  				
@@ -96,9 +97,10 @@ public class Login_Controller {
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
 					session.setAttribute("email", username);
 					session.setAttribute("datos", datos);
+					session.setAttribute("id_usuario", usuario);
 
 					//AÑADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
-					session.setAttribute("id", reviews);
+					//session.setAttribute("id", reviews);
 			
 					
 					return "redirect:/myprofile";

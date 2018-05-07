@@ -51,7 +51,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		try{
 			Session session = HibernateConnection.doHibernateConnection().openSession();
 			
-			List<Products> product = session.createQuery("From Products where id='"+id+"'").list();
+			List<Products> product = session.createQuery("From Products where id_rev='"+id+"'").list();
 			
 			if(product != null && product.get(0) != null){
 				session.beginTransaction();
@@ -103,6 +103,8 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 				return null;
 			}
 		}
+		
+		
 		
 	//ACTUALIZAR UN PRODUCTO
 		public String updateProduct(Products product) {
