@@ -54,6 +54,7 @@
 						<div class="form-group">
 							<label>Selecciona una imagen:</label>
 							<input type="file" name="image" value="">
+							<input type="hidden" name="imagen" value="${usuario.imagen}">
 						</div>	
 					</div>
 				</div>
@@ -69,8 +70,14 @@
 							<label>Género:</label>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">
-							Hombre<input type="radio" name="sexo" value="Hombre">
+						<c:if test="${usuario.genero.equals('Hombre')}">
+							Hombre<input type="radio" name="sexo" value="Hombre" checked>
 							Mujer<input type="radio" name="sexo" value="Mujer">
+						</c:if>	
+						<c:if test="${usuario.genero.equals('Mujer')}">
+							Hombre<input type="radio" name="sexo" value="Hombre">
+							Mujer<input type="radio" name="sexo" value="Mujer" checked>
+						</c:if>	
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">		
 							<label>Peso:</label>
@@ -105,7 +112,7 @@
 			     				</c:forEach>			
 						</select>
 						<input type="hidden" name="usuario" value="${usuario.id_usuario}">
-						<input type="hidden" name="imagen" value="${usuario.imagen}">
+						
 					</div>
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-1 ">
 						<input class="btn btn-primary" type="submit" value="Guardar">

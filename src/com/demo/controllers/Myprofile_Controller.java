@@ -74,27 +74,28 @@ public class Myprofile_Controller {
 				//TODO ACTUALIZAR EL USUARIO 
 				//TODO VALIDAR CAMPOS
 				//TODO EL NOMBRE DE USUARIO ES LA PRIMERA PARTE DEL EMAIL
-				String username = data.get(0).getString();
-				String peso = data.get(1).getString();
-				String altura = data.get(2).getString();;
-				String edad = data.get(3).getString();
-				String id_usuario = data.get(4).getString();
-				//TODO SI AÑADO GENERO (CHECKED) TENER EN CUENTA EL CONTEO 
-
+				
+				String username = data.get(2).getString();
+				String genero = data.get(3).getString();
+				String peso = data.get(4).getString();
+				String altura = data.get(5).getString();;
+				String edad = data.get(6).getString();
+				String id_usuario = data.get(7).getString();
+				
 				//COMPRUEBO SI EL USUARIO HA SELECCIONADO UNA IMAGEN PARA GUARDAR LA NUEVA O MANTENER LA ANTIGUA
 				String image="";
-				if(data.get(5).getName().equals("")) {
+				if(data.get(0).getName().equals("")) {
 					
-					image = data.get(6).getString();
+					image = data.get(1).getString();
 					
 				}else {
 
-					image = new File(data.get(5).getName()).getName();
+					image = new File(data.get(0).getName()).getName();
 					String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-					data.get(5).write(new File(path + File.separator + image));
+					data.get(0).write(new File(path + File.separator + image));
 				}
 				
-				String mesagge = RegisteryDAO.userDAO.doHibernateUpdateUser(username, Integer.parseInt(peso), Integer.parseInt(altura), Integer.parseInt(edad), image, Integer.parseInt(id_usuario));
+				String mesagge = RegisteryDAO.userDAO.doHibernateUpdateUser(username, Integer.parseInt(peso), Integer.parseInt(altura), Integer.parseInt(edad), genero, image, Integer.parseInt(id_usuario));
 
 			}
 			catch(Exception e)

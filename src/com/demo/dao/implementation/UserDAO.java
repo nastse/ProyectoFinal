@@ -95,7 +95,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 		
 		
 		//ACTUALIZAR EN LA BASE DE DATOS CON HIBERNATE
-				public String doHibernateUpdateUser(String nombre, int peso, int altura, int edad, String imagen, int id) {
+				public String doHibernateUpdateUser(String nombre, int peso, int altura, int edad, String genero, String imagen, int id) {
 					
 							try {
 								
@@ -107,7 +107,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 										+ "u.peso = :newPeso, "
 										+ "u.altura = :newAltura, "
 										+ "u.edad = :newEdad, "
-										//+ "u.genero = :newGenero, "
+										+ "u.genero = :newGenero, "
 										+ "u.imagen = :newImagen "
 										+ "where u.id_usuario = '"+id+"'";
 							
@@ -116,7 +116,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 										.setInteger("newPeso", peso)
 										.setInteger("newAltura", altura)
 										.setInteger("newEdad", edad)
-										//.setString("newGenero", genero)
+										.setString("newGenero", genero)
 										.setString("newImagen", imagen)
 										.executeUpdate();
 								
