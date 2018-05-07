@@ -28,7 +28,8 @@ public class Myproducts_Controller {
 				
 				//PARA RECIBIR EL NOMBRE DE LA SESION LE PASO EL NOMBRE DE LA CLAVE QUE LE ASIGNADO
 				String email = session.getAttribute("email").toString();
-				
+				List<String> datos = (List<String>) session.getAttribute("datos");
+
 				List<Products> reviews = (List<Products>)session.getAttribute("id");
 				
 				if(session.getAttribute("id")  == null) {
@@ -38,7 +39,8 @@ public class Myproducts_Controller {
 				
 				//mv.addObject("user", username);
 				map.addAttribute("email", email);
-				
+				map.addAttribute("datos", datos);
+
 				map.addAttribute("listaReviews", reviews);
 				//System.out.println(md);
 			}

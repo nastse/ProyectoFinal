@@ -84,17 +84,22 @@ public class Login_Controller {
 				
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
 				List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(usuario);
+				//RECOJO DATOS DEL USUARIO
 				
-				
+ 				
 				if(usuario != 0) {
 
+					List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(username);
+					
 					//AÑADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
 
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
 					session.setAttribute("email", username);
-					
+					session.setAttribute("datos", datos);
+
 					//AÑADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					session.setAttribute("id", reviews);
+			
 					
 					return "redirect:/myprofile";
 					
