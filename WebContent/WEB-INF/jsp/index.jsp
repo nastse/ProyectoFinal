@@ -55,7 +55,7 @@
 </div>
 	
 	<div class="container">	
-		<div id="contenedor" class="row m-lg-5 m-md-5  justify-content-center">
+		<div id="contenedor-inicio" class="row m-lg-5 m-md-5  justify-content-center">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-1">	
 			
 			</div>

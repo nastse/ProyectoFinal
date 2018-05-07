@@ -81,51 +81,35 @@
 	
 	<c:if test="${not empty sessionScope.email}">	
 		<div class="container">		
-<!-- 			<table border="1" id="productTable"> -->
-<!-- 					<tr> -->
-<!-- 						<th>Tipo</th> -->
-<!-- 						<th>Marca</th> -->
-<!-- 						<th>Talla</th> -->
-<!-- 						<th>Peso</th> -->
-<!-- 						<th>Altura</th> -->
-<!-- 						<th>Imagen</th> -->
-<!-- 						<th>Eliminar</th> -->
-<!-- 						<th>Actualizar</th> -->
-<!-- 					</tr> -->
-					
+		
+			<div id="subir-producto" class="row justify-content-md-center justify-content-sm-center  p-2 rounded text-center">
+				<div class="col-lg-12">
+				
+					<h4>Subir producto</h4>
+				
+				</div>
+			
+			</div>
 		
 				<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
 				<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 				<c:forEach items="${listaReviews}" var="product">
-				
-					<div id="div_${product.id_rev}" class="row d-flex justify-content-center">
+
+					<div id="div_${product.id_rev}" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
 							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1">	
-								<img class="rounded justify-content-center shadow mb-2" width="150px" height="150px" src="${pageContext.request.contextPath}/img/${product.imagen}">
+								<img class="rounded justify-content-center shadow mb-1" width="100px" height="100px" src="${pageContext.request.contextPath}/img/${product.imagen}">
 							</div>
-							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1">	
+							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1 align-self-center text-center">	
 								<spam>${product.categoria}</spam>
 								<spam>${product.marca}</spam>
 							</div>
-							<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 p-1">	
-								<input type="button" value="Delete" id="${product.id_rev}" onclick="borrarProducto(this.id)">
+							<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 p-1 align-self-center text-center">	
+								<input type="button" value="Eliminar" id="${product.id_rev}" onclick="borrarProducto(this.id)">
 								<a href="<c:url value='/upproducto/${product.id_rev}'/>">Editar</a>
 							</div>
 					</div>
-				
-				
-				<%-- PARA SABER QUE PRODUCTO/FILA ELIMINO  --%>
-<%-- 					<tr  id="tr_${product.id_rev}" align="center"> --%>
-<%-- 						<td>${product.categoria}</td> --%>
-<%-- 						<td>${product.marca}</td> --%>
-<%-- 						<td>${product.talla}</td> --%>
-<%-- 						<td>${product.peso}</td> --%>
-<%-- 						<td>${product.altura}</td> --%>
-<%-- 						<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product.imagen}"></td>	 --%>
-						
-		
-<!-- 					</tr> -->
+
 				</c:forEach>
-<!-- 			</table> -->
 			
 			<a href="${pageContext.request.contextPath}/products">Lista productos</a>
 		</div>	
