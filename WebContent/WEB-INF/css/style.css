@@ -1,8 +1,8 @@
 		body{
-				background-color:black;
+				background-color:#ECEFF1;
 			}
 			
-			#contenedor{
+			#contenedor-inicio{
 /* 				background-color:#F7F7F7; */
  				background-color:#F5F5F5; 
 			}
@@ -34,4 +34,22 @@
 			#nombre{
 				margin-top:30px;
 			}
+			
+			#subir-producto{
+				background-color:#ECEFF1;
+				border-style: dashed;
+				border-color:#F27490;
+				margin-top:50px;
+				margin-bottom:50px;
+			}
+			#contenedor-imagen{
+			 width:636px;
+			 
+			}
+			
+			#contenedor{
+			 width:650px;
+			
+			}
+			
 		

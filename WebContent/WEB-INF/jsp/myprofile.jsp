@@ -13,6 +13,11 @@
 	
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
+<!-- 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>  -->
+	<script>
+	
+	
+	</script>
 	
 	<title>Mi perfil</title>
 </head>
@@ -43,20 +48,17 @@
 		<div class="container p-5">		
 			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
 				<form action="${pageContext.request.contextPath}/myprofile" method="post" enctype="multipart/form-data">
-					<div class="row">
+					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
 							<img class="rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-							<div class="form-group">
-								<label>Selecciona una imagen:</label>
-								<input type="file" name="image" value="">
-								<input type="hidden" name="imagen" value="${usuario.imagen}">
-							</div>	
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 align-self-end">	
+  								<input type="file" name="image" class="btn btn-primary">
+  								<input type="hidden" name="imagen" value="${usuario.imagen}">
 						</div>
 					</div>
 			
-					<div class="row justify-content-md-center justify-content-sm-center">
+					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">		
 								<label>Nombre de Usuario:</label>
 						</div>
@@ -68,19 +70,39 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">
 							<c:if test="${usuario.genero.equals('Hombre')}">
-								Hombre<input type="radio" name="sexo" value="Hombre" checked>
-								Mujer<input type="radio" name="sexo" value="Mujer">
+								<div class="form-check">
+								  <input class="form-check-input"  type="radio" name="sexo" value="Hombre" checked>
+								  <label class="form-check-label" for="sexo">
+								    Hombre
+								  </label>
+								</div>
+								<div class="form-check">
+								  <input class="form-check-input"  type="radio" name="sexo" value="Mujer">
+								  <label class="form-check-label" for="sexo">
+								    Mujer
+								  </label>
+								</div>
 							</c:if>	
 							<c:if test="${usuario.genero.equals('Mujer')}">
-								Hombre<input type="radio" name="sexo" value="Hombre">
-								Mujer<input type="radio" name="sexo" value="Mujer" checked>
+								<div class="form-check">
+								  <input class="form-check-input"  type="radio" name="sexo" value="Hombre">
+								  <label class="form-check-label" for="sexo">
+								    Hombre
+								  </label>
+								</div>
+								<div class="form-check">
+								  <input class="form-check-input"  type="radio" name="sexo" value="Mujer" checked>
+								  <label class="form-check-label" for="sexo">
+								    Mujer
+								  </label>
+								</div>
 							</c:if>	
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">		
 								<label>Peso:</label>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-							<select name="peso">
+							<select class="form-control" name="peso">
 								<option value = "${usuario.peso}"/>${usuario.peso}kg</option>
 									<c:forEach var = "i" begin = "40" end = "200">
 				         				<option value = "${i}"/>${i}kg</option>
@@ -91,7 +113,7 @@
 							<label>Altura:</label>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-							<select name="altura">
+							<select class="form-control" name="altura">
 									<option value = "${usuario.altura}"/>${usuario.altura}cm</option>
 									<c:forEach var = "i" begin = "150" end = "250">
 				         				<option value = "${i}"/>${i}cm</option>
@@ -102,7 +124,7 @@
 							<label>Edad:</label>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-							<select name="edad">
+							<select class="form-control" name="edad">
 									<option value = "${usuario.edad}"/>${usuario.edad} años</option>
 									<c:forEach var = "i" begin = "1" end = "101">
 				         				<option value = "${i}"/>${i} años</option>
