@@ -1,7 +1,5 @@
 		body{
 				background-color:#ECEFF1;
-				position:relative;
-				top:70px;
 			}
 			
 			#contenedor-inicio{
@@ -31,7 +29,6 @@
 			#banner{
 /* 				background-color:#0B0C10; */
 				background-color:#F27490;
-/* 				height:66px; */
 			}
 			
 			#nombre{
@@ -52,14 +49,7 @@
 			
 			#contenedor{
 			 width:650px;
-			}
-			#barra-inicio{
-				z-index: 1; 
-   				top: 0;
-				position:fixed;
-				margin-bottom:50px;
-				
-			}
 			
+			}
 			
 		

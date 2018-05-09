@@ -20,8 +20,23 @@
 </head>
 
 
-<!-- 	AQUÍ INSERTO EL HEADER -->
-	<jsp:include page="header.jsp" />
+<div class="container-fluid">	
+	<div id="banner" class="row p-1 d-flex justify-content-end">
+				<c:if test="${empty sessionScope.email}">
+	        		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button>
+					</div>
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA</button>
+					</div>
+				</c:if>
+				<c:if test="${not empty sessionScope.email}">
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">LOGOUT</button>
+					</div>
+				</c:if>
+	</div>
+</div>
 
 
 <body>
