@@ -11,6 +11,13 @@
 	
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
+    		
+    		span{
+				background-color: #F27490;
+				display: inline-block;
+				height: 5px;
+				width: 30px;
+    		}
 	</style>
 		
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
@@ -19,21 +26,30 @@
 </head>
 
 <div class="container-fluid">	
-	<div id="banner" class="row p-1 d-flex justify-content-end">
-				<c:if test="${empty sessionScope.email}">
-	        		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
-						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button>
-					</div>
-					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
-						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA</button>
-					</div>
-				</c:if>
-				<c:if test="${not empty sessionScope.email}">
-					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
-						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">LOGOUT</button>
-					</div>
-				</c:if>
-	</div>
+	<c:if test="${empty sessionScope.email}">
+		<div id="banner" class="row p-1 d-flex justify-content-end">
+		        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+					<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button>
+				</div>
+				<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+					<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA</button>
+				</div>
+		</div>
+	</c:if>
+	<c:if test="${not empty sessionScope.email}">
+		<div id="banner" class="row p-1 d-flex justify-content-between align-items-center">			
+				<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+					<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded  d-flex justify-content-center shadow d-flex" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
+					
+				</div>
+				<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">
+					<h5>Bienvenido ${datos[0].nombre}</h5>
+				</div>
+				<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+					<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">LOGOUT</button>
+				</div>		
+		</div>
+	</c:if>	
 </div>
 
 
@@ -176,8 +192,44 @@
 					     				</c:forEach>	
 					     	</select>	
 						</div>
+				</div>	
+				
+				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">		
+							<div class="col-lg-3">	
+								<label>Ajuste/Compresion</label><br>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<div class="col-lg-3">	
+								<label>Comodidad</label><br>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<div class="col-lg-3">	
+								<label>Temperatura Max</label><br>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							<div class="col-lg-3">	
+								<label>Recomendable</label><br>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+							
 						<div class="col-lg-6">
-							<label>Comentario</label><br>	
+							<label>Comentario (opcional)</label><br>	
 							<textarea style="resize:none" class="form-control" rows="3" name="texto"></textarea>
 						</div>
 				</div>		

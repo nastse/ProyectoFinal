@@ -85,7 +85,7 @@
 			<div id="subir-producto" class="row justify-content-md-center justify-content-sm-center  p-2 rounded text-center">
 				<div class="col-lg-12">
 				
-					<h4>Subir producto</h4>
+					<h4>Nueva Review</h4>
 				
 				</div>
 			
