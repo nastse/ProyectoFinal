@@ -1,18 +1,41 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<div class="container-fluid">	
-		<button type="reset" class="btn btn-sm btn-success btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button>
-		<button type="reset" class="btn btn-sm btn-success btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA</button>
-	</div>
-</body>
-</html>
+    
+    
+    
+	<div id="barra-inicio" class="container-fluid">	
+		<c:if test="${empty sessionScope.email}">
+			<div id="banner" class="row p-1 d-flex justify-content-end align-items-center">
+			        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1 mr-auto text-center">
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button>
+					</div>
+			        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGUEAR</button>
+					</div>
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA</button>
+					</div>
+			</div>
+		</c:if>
+		<c:if test="${not empty sessionScope.email}">
+			<div id="banner" class="row p-1 d-flex justify-content-end align-items-center">			
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1 text-center mr-auto">
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button>
+					</div>
+					
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1 text-center">
+						<h5>Bienvenido ${datos[0].nombre}</h5>
+					</div>
+					
+					<div class="col-lg-1 center-block">	
+						<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>	
+					</div>
+					
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1 justify-content-center">	
+						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">SALIR</button>
+					</div>	
+					
+					
+			</div>		
+		</c:if>	
+	</div>	
