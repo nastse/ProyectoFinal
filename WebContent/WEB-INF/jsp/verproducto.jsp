@@ -47,7 +47,7 @@
 		
 		</div>
 		
-		<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center"">
+		<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 			
 					<div id="contenedor-imagen">
 						<img class="rounded shadow mb-1"  width="100%" height="100%"src="${pageContext.request.contextPath}/img/${product.imagen}">
