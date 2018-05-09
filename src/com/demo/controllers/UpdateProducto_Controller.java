@@ -100,7 +100,7 @@ public class UpdateProducto_Controller {
 		//ModelAndView mav = new ModelAndView("upproducto/"+id);
 		ModelAndView mav = new ModelAndView("myprofile");
 		
-		return "redirect:/myprofile";
+		return "redirect:/myproducts";
 
 		//TODO Usar la ID recibida para hacer busqueda de producto y cargar vista.jsp con el
 		
