@@ -11,11 +11,23 @@
 	
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
+    		
+    		 .invalid-feedback {
+    			display: block;
+  				}
 	</style>
 		
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+	
+	<script>
+ 		 	var loadFile = function(event) {
+    		var output = document.getElementById('imagen');
+   		 	output.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
+	
 </head>
 
 <!-- 	AQUÍ INSERTO EL HEADER -->
@@ -32,8 +44,11 @@
 			
 						<div class="col-lg-12">
 							<form action="${pageContext.request.contextPath}/altaproducto" method="post" enctype="multipart/form-data">	
- 								
-								<td><img class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}"></td>	
+								<img id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">	
+						</div>
+						<div class="col-lg-12">
+<!-- 						onchange="loadFile(event) -->
+							<input type="file" name="image" accept="image/jpeg" class="btn" >
 						</div>
 			</div>		
 			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">	
@@ -42,7 +57,8 @@
 						</div>
 						<div class="col-lg-3">	
 <%-- 							<input type="text" name="categoria" value="${product.categoria}">  --%>
-								<select class="form-control" name="categoria">
+								<select class="form-control" name="categoria" required>
+									<option value = ""/></option>
 									<option value = "Maillot corto"/>Maillot corto</option>
 									<option value = "Maillot largo"/>Maillot largo</option>
 									<option value = "Cullote corto"/>Cullote corto</option>
@@ -54,7 +70,8 @@
 						</div>
 						<div class="col-lg-3">
 	<%-- 						<input type="text" name="marca" value="${product.marca}"> --%>
-								<select class="form-control" name="marca">
+								<select class="form-control" name="marca" required>
+									<option value = ""/></option>
 									<option value = "Castelli"/>Castelli</option>
 									<option value = "Sportful"/>Sportful</option>
 									<option value = "Rapha"/>Rapha</option>
@@ -70,7 +87,8 @@
 						</div>	
 						<div class="col-lg-3">
 	<%-- 						<input type="text" name="talla" value="${product.talla}"> --%>
-								<select class="form-control" name="talla">
+								<select class="form-control" name="talla" required>
+									<option value = ""/></option>
 									<option value = "XXS"/>XXS</option>
 									<option value = "XS"/>XS</option>
 									<option value = "S"/>S</option>
@@ -87,7 +105,8 @@
 						</div>
 						<div class="col-lg-3">	
 	<%-- 						<input type="text" name="peso" value="${product.peso}"> --%>
-							<select class="form-control" name="peso">
+							<select class="form-control" name="peso" required>
+										<option value = ""/></option>
 										<c:forEach var = "i" begin = "40" end = "200">
 					         				<option value = "${i}"/>${i}kg</option>
 					     				</c:forEach>			
@@ -98,7 +117,8 @@
 						</div>	
 						<div class="col-lg-3">
 	<%-- 						<input type="text" name="altura" value="${product.altura}"> --%>
-							<select class="form-control" name="altura">
+							<select class="form-control" name="altura" required>
+										<option value = ""/></option>
 										<c:forEach var = "i" begin = "150" end = "250">
 					         				<option value = "${i}"/>${i}cm</option>
 					     				</c:forEach>			
@@ -109,7 +129,8 @@
 						</div>	
 						<div class="col-lg-3">
 	<%-- 						<input type="text" name="temp_min" value="${product.temp_max}"> --%>
-							<select class="form-control" name="temp_min">
+							<select class="form-control" name="temp_min" required>
+										<option value = ""/></option>
 										<c:forEach var = "i" begin = "1" end = "10">
 					         				<option value = "${i-11}"/>${i-11}º</option>
 					     				</c:forEach>
@@ -123,21 +144,24 @@
 						</div>
 						<div class="col-lg-3">
 	<%-- 						<input type="text" name="temp_max" value="${product.temp_min}"> --%>
-							<select class="form-control" name="temp_max">
+							<select class="form-control custom-select" required name="temp_max">
+										<option value = ""/></option>
 										<c:forEach var = "i" begin = "1" end = "10">
 					         				<option value = "${i-11}"/>${i-11}º</option>
 					     				</c:forEach>
 					     				<c:forEach var = "i" begin = "0" end = "50">
 					         				<option value = "${i}"/>${i}º</option>
 					     				</c:forEach>	
-					     	</select>	
+					     	</select>
+					     	
 						</div>
 						<div class="col-lg-3">	
 							<label>Temperatura Max</label><br>
 						</div>
 						<div class="col-lg-3">
 	<%-- 						<input type="text" name="temp_max" value="${product.temp_min}"> --%>
-							<select class="form-control" name="temp_max">
+							<select class="custom-select" required name="temp_max">
+										<option value = ""/></option>
 										<c:forEach var = "i" begin = "1" end = "10">
 					         				<option value = "${i-11}"/>${i-11}º</option>
 					     				</c:forEach>
@@ -145,6 +169,7 @@
 					         				<option value = "${i}"/>${i}º</option>
 					     				</c:forEach>	
 					     	</select>	
+					     	
 						</div>
 				</div>	
 				

@@ -119,6 +119,20 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			
 		}
 		
+		
+		//INSERTAR UN PRODUCTO
+		public String insertProduct(Products product) {
+			
+			Session session = HibernateConnection.doHibernateConnection().openSession();
+			session.beginTransaction();
+			session.save(product);
+			session.getTransaction().commit();
+			session.close();
+			
+			return "Producto insertado correctamente";
+			
+		}
+		
 		/*//DEVUELVO LISTA DE PRODUCTOS POR SU NOMBRE DE USUARIO
 	//NO FUNCIONA	
 				public List<Products> getProductByUserName(String user) {

@@ -14,6 +14,7 @@ public interface ProductsDAO {
 	public Products getProductByProductId(String id);
 	public List<Products> getProductByUserId(int id);
 	public String updateProduct(Products product);
+	public String insertProduct(Products product);
 	
 	//public List<Products> getProductByUserName(String user);
 	

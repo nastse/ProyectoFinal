@@ -48,7 +48,7 @@ public class UpdateProducto_Controller {
 	
 
 	@RequestMapping(name="/upproducto", method=RequestMethod.POST)
-	public ModelAndView vista_productoUpdate(HttpServletRequest request, Model md,  @Valid Products product, BindingResult br) {
+	public String vista_productoUpdate(HttpServletRequest request, Model md,  @Valid Products product, BindingResult br) {
 	
 		//TODO RECOJO LOS VALORES Y LOS ACTUALIZO EN LA BDDA REVIEW
 		
@@ -77,7 +77,6 @@ public class UpdateProducto_Controller {
 //			e.printStackTrace();
 //		}
 		
-		ModelAndView mav = new ModelAndView("upproducto/"+Integer.parseInt(id));
 		
 		String estado = request.getParameter("estado");
 		
@@ -100,14 +99,14 @@ public class UpdateProducto_Controller {
 			
 			System.out.println("Se ha validado la actualizacion"+ br.toString());
 			
-			return mav;
+			return "redirect:/upproducto/"+Integer.parseInt(id);
 			
 		}else {
 			
 			String mensaje=RegisteryDAO.productsDAO.updateProduct(producto);	
 			System.out.println(mensaje);
 			
-			return mav = new ModelAndView("myprofile");
+			return "myprofile";
 			
 		}
 		
