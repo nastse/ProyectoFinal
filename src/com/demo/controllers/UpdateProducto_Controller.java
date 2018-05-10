@@ -48,12 +48,13 @@ public class UpdateProducto_Controller {
 	
 
 	@RequestMapping(name="/upproducto", method=RequestMethod.POST)
-	public String vista_productoUpdate(HttpServletRequest request, Model md,  @Valid User user, BindingResult br) {
+	public ModelAndView vista_productoUpdate(HttpServletRequest request, Model md,  @Valid Products product, BindingResult br) {
 	
 		//TODO RECOJO LOS VALORES Y LOS ACTUALIZO EN LA BDDA REVIEW
 		
+		
 		String id = request.getParameter("id");
-		String id_user = request.getParameter("id_user");
+		//String id_user = request.getParameter("id_user");
 		String categoria = request.getParameter("categoria");
 		String marca = request.getParameter("marca");
 		String talla = request.getParameter("talla");
@@ -63,22 +64,26 @@ public class UpdateProducto_Controller {
 		String temp_min = request.getParameter("temp_min");
 		String imagen = request.getParameter("imagen");
 		String ajuste = request.getParameter("ajuste");
-		String creado = request.getParameter("creado");
+		//String creado = request.getParameter("creado");
+		
 		//PARSEO CREADO A FORMATO FECHA 
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = null;
-		try {
-			date = format.parse(creado);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+//		Date date = null;
+//		try {
+//			date = format.parse(creado);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		ModelAndView mav = new ModelAndView("upproducto/"+Integer.parseInt(id));
 		
 		String estado = request.getParameter("estado");
 		
 		Products producto = new Products();
 		producto.setId_rev(Integer.parseInt(id));
-		producto.setId_user(Integer.parseInt(id_user));
+		//producto.setId_user(Integer.parseInt(id_user));
 		producto.setCategoria(categoria);
 		producto.setMarca(marca);
 		producto.setTalla(talla);
@@ -88,31 +93,30 @@ public class UpdateProducto_Controller {
 		producto.setTemp_min(Integer.parseInt(temp_min));
 		producto.setImagen(imagen);
 		producto.setAjuste(Integer.parseInt(ajuste));
-		producto.setCreado(date);
+		//producto.setCreado(date);
 		producto.setEstado(Integer.parseInt(estado));
 		
-		String mensaje=RegisteryDAO.productsDAO.updateProduct(producto);	
-		System.out.println(mensaje);
-
+		if(br.getAllErrors().size() > 0) {
+			
+			System.out.println("Se ha validado la actualizacion"+ br.toString());
+			
+			return mav;
+			
+		}else {
+			
+			String mensaje=RegisteryDAO.productsDAO.updateProduct(producto);	
+			System.out.println(mensaje);
+			
+			return mav = new ModelAndView("myprofile");
+			
+		}
 		
 		//TODO AQUI REDIRIJO A LA VISTA DEL PRODUCTO?
 		//TODO AQUE REDIRIJO A LA VISTA DEL PERFIL CON TODOS LOS PRODUCTOS?
 		//ModelAndView mav = new ModelAndView("upproducto/"+id);
-		ModelAndView mav = new ModelAndView("myprofile");
-		
-		return "redirect:/myproducts";
-
 		//TODO Usar la ID recibida para hacer busqueda de producto y cargar vista.jsp con el
 		
 	}
 }	
-	/*
-	@RequestMapping(name= "/vista", method=RequestMethod.GET)
-	public ModelAndView vista_normal() {
 	
-		ModelAndView mav = new ModelAndView("vista");
-		
-		
-		return mav;
-	}*/
 	

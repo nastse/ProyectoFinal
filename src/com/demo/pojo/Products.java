@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -28,8 +29,6 @@ public class Products {
 	@Column(name="imagen")
 	private String imagen;
 	
-	//@ManyToOne
-	//@JoinColumn(name="id_usser")
 	@Column(name="id_user")
 	private int id_user;
 	
@@ -44,6 +43,7 @@ public class Products {
 	
 	@Column(name="talla")
 	private String talla;
+	
 	
 	@Column(name="peso")
 	private int peso;
