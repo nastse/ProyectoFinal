@@ -46,17 +46,18 @@ public class AltaProducto_Controller {
 				List<FileItem> data = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 				
 				//String imagen = data.get(0).toString();
-				String categoria = data.get(1).toString();
-				String marca = data.get(2).toString();
-				String talla = data.get(3).toString();
-				String peso = data.get(4).toString();
-				String altura = data.get(5).toString();
-				String temp_min = data.get(6).toString();
-				String temp_max = data.get(7).toString();
+				//String imagen = new File(data.get(0).getName()).getName();
+				String categoria = data.get(1).getString();
+				String marca = data.get(2).getString();
+				String talla = data.get(3).getString();
+				String peso = data.get(4).getString();
+				String altura = data.get(5).getString();
+				String temp_min = data.get(6).getString();
+				String temp_max = data.get(7).getString();
 				//TODO AÑADIR COMENTARIO A LA BASE DE DATOS
 				//String comentario = data.get(8).toString();
 				
-				System.out.println(data.get(0).toString()+data.get(1).toString()+data.get(2).toString()+data.get(3).toString()+data.get(4).toString());
+				//System.out.println("imagen:"+imagen+"categoria:"+categoria+ "marca:"+marca+"talla:"+talla+"peso:"+peso+"altura:"+altura);
 				
 				java.util.Date dt = new java.util.Date();
 				
@@ -77,7 +78,7 @@ public class AltaProducto_Controller {
 				
 				product.setImagen(imagen);
 				
-				//String mensaje = RegisteryDAO.productsDAO.insertProduct(product);
+				String mensaje = RegisteryDAO.productsDAO.insertProduct(product);
 				
 				
 			}catch(Exception e){

@@ -45,11 +45,19 @@
 
 <body>
 	<c:if test="${empty sessionScope.email}">
-        <h1>INICIA SESION</h1>
+	   <div class="container">	
+			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+				<h1>INICIA SESION</h1>
+			</div>  
+	   </div>     
 	</c:if>
 	
 	<c:if test="${not empty sessionScope.email}">
 		<div class="container p-5">		
+			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+				<h1>Actualiza tus datos</h1>
+			</div>
+		
 			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
 				<form action="${pageContext.request.contextPath}/myprofile" method="post" enctype="multipart/form-data">
 					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">

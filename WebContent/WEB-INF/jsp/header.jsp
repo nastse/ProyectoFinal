@@ -23,12 +23,12 @@
 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button>
 					</div>
 					
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1 text-center">
-						<h5>Bienvenido ${datos[0].nombre}</h5>
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1 text-center">
+						<a href="<c:url value='/myproducts'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
 					</div>
 					
-					<div class="col-lg-1 center-block">	
-						<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>	
+					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1 justify-content-center">	
+						<button id="boton" type="reset" class="btn btn-success btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/myproducts';">MIS REVIEWS</button>	
 					</div>
 					
 					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1 justify-content-center">	

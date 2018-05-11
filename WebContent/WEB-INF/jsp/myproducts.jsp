@@ -52,16 +52,21 @@
 <body>
 
 	<c:if test="${empty sessionScope.email}">
-	        <h1>INICIA SESION</h1>
+	   <div class="container">	
+				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+				 <h1>INICIA SESION</h1>
+			</div>  
+	   </div>     
 	</c:if>
 	
 	<c:if test="${not empty sessionScope.email}">	
 		<div class="container">		
 		
 			<div id="subir-producto" class="row justify-content-md-center justify-content-sm-center  p-2 rounded text-center">
+				
 				<div class="col-lg-12">
 				
-					<h4>Nueva Review</h4>
+					<a href="<c:url value='/altaproducto'/>"><h4>Añadir nueva Review</h4></a>
 				
 				</div>
 			
