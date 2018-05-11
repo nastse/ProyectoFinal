@@ -9,6 +9,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
+
 	</style>
 	
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
@@ -78,7 +79,7 @@
 								<input class="form-control" id="username" type="text" name="username" value="${usuario.nombre}">
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-								<label>Género:</label>
+								<label>Género:</label>	
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">
 							<c:if test="${usuario.genero.equals('Hombre')}">
@@ -89,7 +90,7 @@
 								  </label>
 								</div>
 								<div class="form-check">
-								  <input class="form-check-input"  type="radio" name="sexo" value="Mujer">
+								  <input class="form-check-input"  type="radio" name="sexo" value="Mujer" >
 								  <label class="form-check-label" for="sexo">
 								    Mujer
 								  </label>
@@ -97,7 +98,7 @@
 							</c:if>	
 							<c:if test="${usuario.genero.equals('Mujer')}">
 								<div class="form-check">
-								  <input class="form-check-input"  type="radio" name="sexo" value="Hombre">
+								  <input class="form-check-input"  type="radio" name="sexo" value="Hombre" >
 								  <label class="form-check-label" for="sexo">
 								    Hombre
 								  </label>
