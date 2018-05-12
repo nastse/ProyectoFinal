@@ -58,7 +58,7 @@ body{background:teal;color:#0B0C10;padding-bottom:10%;}
     		
     		#radios{
 				  position:relative;
-				  width:50%;
+				  width:80%;
 				  margin:0 auto;
 				}
 				input[type="radio"]{
@@ -262,12 +262,12 @@ body{background:teal;color:#0B0C10;padding-bottom:10%;}
 											<option value = "DBH">DBH</option>
 											<option value = "ALE">ALE</option>
 											<option value = "Santini">Santini</option>
-											<option value = "Exteondo">Exteondo</option>
+											<option value = "Exteondo">Etxeondo</option>
 										</select>
 								</div>
 								<div class="col-lg-10">
 									<label id="titulo">Modelo</label><br>
-									<input id="form" class="form-control" type="text" name="modelo" value="" required>
+									<input id="form" class="form-control" type="text" name="modelo" value="" maxlength="25" required>
 								</div>
 								<div class="col-lg-10">
 									<label id="titulo">Talla</label><br>
@@ -376,7 +376,7 @@ body{background:teal;color:#0B0C10;padding-bottom:10%;}
 								</div>
 								<div class="col-lg-10">
 									<label id="titulo">Comentario (opcional)</label><br>	
-									<textarea id="form" style="resize:none" class="form-control" rows="6" name="texto"></textarea>
+									<textarea id="form" style="resize:none" class="form-control" rows="5" name="texto"></textarea>
 								</div>
 							</div>
 						</div>	

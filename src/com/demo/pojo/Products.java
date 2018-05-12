@@ -32,24 +32,41 @@ public class Products {
 	@Column(name="id_user")
 	private int id_user;
 	
+	@Column(name="categoria")
+	private String categoria;
+	
 	@Column(name="marca")
 	private String marca;
 	
 	@Column(name="modelo")
 	private String modelo;
 	
-	@Column(name="categoria")
-	private String categoria;
-	
 	@Column(name="talla")
 	private String talla;
 	
+	@Column(name="anio")
+	private int anio;
+	
+	@Column(name="precio")
+	private int precio;
+	
+	@Column(name="tallauser")
+	private String tallauser;
 	
 	@Column(name="peso")
 	private int peso;
 	
 	@Column(name="altura")
 	private int altura;
+	
+	@Column(name="pecho")
+	private int pecho;
+	
+	@Column(name="cintura")
+	private int cintura;
+	
+	@Column(name="cadera")
+	private int cadera;
 	
 	@Column(name="temp_max")
 	private int temp_max;
@@ -59,6 +76,12 @@ public class Products {
 	
 	@Column(name="ajuste")
 	private int ajuste;
+	
+	@Column(name="recomendable")
+	private int recomendable;
+	
+	@Column(name="comentario")
+	private String comentario;
 	
 	@Column(name="creado")
 	private Date creado;
@@ -178,6 +201,86 @@ public class Products {
 
 	public void setEstado(int estado) {
 		this.estado = estado;
+	}
+
+
+	public int getAnio() {
+		return anio;
+	}
+
+
+	public void setAnio(int anio) {
+		this.anio = anio;
+	}
+
+
+	public int getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+
+
+	public String getTallauser() {
+		return tallauser;
+	}
+
+
+	public void setTallauser(String tallauser) {
+		this.tallauser = tallauser;
+	}
+
+
+	public int getPecho() {
+		return pecho;
+	}
+
+
+	public void setPecho(int pecho) {
+		this.pecho = pecho;
+	}
+
+
+	public int getCintura() {
+		return cintura;
+	}
+
+
+	public void setCintura(int cintura) {
+		this.cintura = cintura;
+	}
+
+
+	public int getCadera() {
+		return cadera;
+	}
+
+
+	public void setCadera(int cadera) {
+		this.cadera = cadera;
+	}
+
+
+	public String getComentario() {
+		return comentario;
+	}
+
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+
+	public int getRecomendable() {
+		return recomendable;
+	}
+
+
+	public void setRecomendable(int recomendable) {
+		this.recomendable = recomendable;
 	}
 	
 	

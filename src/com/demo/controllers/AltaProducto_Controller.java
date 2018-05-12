@@ -48,41 +48,68 @@ public class AltaProducto_Controller {
 				
 				//String imagen = data.get(0).toString();
 				//String imagen = new File(data.get(0).getName()).getName();
-				String categoria = data.get(1).getString();
-				String marca = data.get(2).getString();
-				String talla = data.get(3).getString();
-				String peso = data.get(4).getString();
-				String altura = data.get(5).getString();
-				String temp_min = data.get(6).getString();
-				String temp_max = data.get(7).getString();
-				//TODO A�ADIR COMENTARIO A LA BASE DE DATOS
-				//String comentario = data.get(8).toString();
+				
+				//DATOS USUARIO
+				String tallauser = data.get(1).getString();
+				String peso = data.get(2).getString();
+				String altura = data.get(3).getString();
+				String pecho = data.get(4).getString();
+				String cintura = data.get(5).getString();
+				String cadera = data.get(6).getString();
+				
+				//DATOS PRENDA
+				String categoria = data.get(7).getString();
+				String marca = data.get(8).getString();
+				String modelo = data.get(9).getString();
+				String talla = data.get(10).getString();
+				String anio = data.get(11).getString();
+				String precio = data.get(12).getString();
+				
+				//VALORACION PRENDA
+				String temp_min = data.get(13).getString();
+				String temp_max = data.get(14).getString();
+				String ajuste = data.get(15).getString();
+				String recomendable = data.get(16).getString();
+				String comentario = data.get(17).getString();
+	
 				
 				//System.out.println("imagen:"+imagen+"categoria:"+categoria+ "marca:"+marca+"talla:"+talla+"peso:"+peso+"altura:"+altura);
 				
 			//RECOJO TODOS LOS DATOS PARA MANTENERLOS EN EL CASO DE QUE HAYA QUE VALIDAR EL FORMULARIO
 				md.addAttribute("categoria", categoria);
-				
-				
-				java.util.Date dt = new java.util.Date();
-				
-				product.setCategoria(categoria);
-				product.setMarca(marca);
-				product.setTalla(talla);
-				product.setPeso(Integer.parseInt(peso));
-				product.setAltura(Integer.parseInt(altura));
-				product.setTemp_min(Integer.parseInt(temp_min));
-				product.setTemp_max(Integer.parseInt(temp_max));
-				product.setCreado(dt);
-				product.setId_user(Integer.parseInt(id_usuario));
-				
-				
+
+				//RECOJO EL NOMBRE DE LA IMAGEN PARA GUARDARLO EN LA BASE DE DATOS
+				//TODO CREAR UN NOMBRE(ID) PARA QUE SEA UNICO Y NO SE SOBREESCRIBAN LAS IMAGENES
 				String imagen = new File(data.get(0).getName()).getName();
 				String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
 				data.get(0).write(new File(path + File.separator + imagen));
 				
-				product.setImagen(imagen);
+				java.util.Date dt = new java.util.Date();
 				
+				product.setImagen(imagen);
+				product.setCategoria(categoria);
+				product.setMarca(marca);
+				product.setModelo(modelo);
+				product.setTalla(talla);
+				product.setAnio(Integer.parseInt(anio));
+				product.setPrecio(Integer.parseInt(precio));
+				product.setTallauser(tallauser);
+				product.setPeso(Integer.parseInt(peso));
+				product.setAltura(Integer.parseInt(altura));
+				product.setPecho(Integer.parseInt(pecho));
+				product.setCintura(Integer.parseInt(cintura));
+				product.setCadera(Integer.parseInt(cadera));
+				product.setTemp_min(Integer.parseInt(temp_min));
+				product.setTemp_max(Integer.parseInt(temp_max));
+				product.setAjuste(Integer.parseInt(ajuste));
+				product.setRecomendable(Integer.parseInt(recomendable));
+				product.setComentario(comentario);
+				product.setCreado(dt);
+				product.setId_user(Integer.parseInt(id_usuario));
+				
+				
+				
+				//INSERTO EL PRODUCTO EN LA BASE DE DATOS
 				mensaje = RegisteryDAO.productsDAO.insertProduct(product);
 				
 				
@@ -93,11 +120,13 @@ public class AltaProducto_Controller {
 			
 		}
 		
+		//SI SE HA INSERTADO CORRECTAMENTE VOY A LA PAGINA DE TODOS LOS PRODUCTOS CARGANDOLA DE NUEVO
 		if(mensaje.equals("Producto insertado")) {
 			
 			return "redirect:/myproducts";
 			
 		}
+		//SI NO VUELVO MANTENIENDO LOS CAMPOS CON LA INFORMACION Y DEVOLVIENDO LOS ERRORES
 		else {
 			
 			return "altaproducto";
