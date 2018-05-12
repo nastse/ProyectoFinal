@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +16,7 @@
 	
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
-<!-- 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>  -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
 	<script>
 	
 	
@@ -41,7 +43,7 @@
 <!-- 	</div> -->
 <!-- </div> -->
 
-<!-- 	AQUÍ INSERTO EL HEADER -->
+<!-- 	AQUï¿½ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 <body>
@@ -76,10 +78,10 @@
 								<label>Nombre de Usuario:</label>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-								<input class="form-control" id="username" type="text" name="username" value="${usuario.nombre}">
+								<input class="form-control" id="username" type="text" name="username" value="${usuario.nombre}" required>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-								<label>Género:</label>	
+								<label>GÃ©nero:</label>	
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">
 							<c:if test="${usuario.genero.equals('Hombre')}">
@@ -138,9 +140,9 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
 							<select class="form-control" name="edad">
-									<option value = "${usuario.edad}"/>${usuario.edad} años</option>
+									<option value = "${usuario.edad}"/>${usuario.edad} aÃ±os</option>
 									<c:forEach var = "i" begin = "1" end = "101">
-				         				<option value = "${i}"/>${i} años</option>
+				         				<option value = "${i}"/>${i} aÃ±os</option>
 				     				</c:forEach>			
 							</select>
 							<input type="hidden" name="usuario" value="${usuario.id_usuario}">

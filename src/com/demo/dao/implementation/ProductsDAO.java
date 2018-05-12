@@ -129,7 +129,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			session.getTransaction().commit();
 			session.close();
 			
-			return "Producto insertado correctamente";
+			return "Producto insertado";
 			
 		}
 		
