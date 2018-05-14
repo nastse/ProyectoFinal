@@ -40,7 +40,7 @@
 </div>
 	
 	<div class="container">	
-		<div id="contenedor-inicio" class="row m-lg-5 m-md-5  justify-content-center">
+		<div id="contenedor-inicio" class="row m-lg-5 m-md-5 justify-content-center">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-1">	
 			
 			</div>
@@ -68,6 +68,15 @@
 				</div>	
 			</div>			
 		</div>	
+		<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+			<div class="col-lg-12">
+				<h1>Llamo a prueba</h1>
+				
+					<jsp:include page="prueba.jsp" />
+					
+				
+			</div> 
+		</div>
 	</div>	
 </body>
 </html>
