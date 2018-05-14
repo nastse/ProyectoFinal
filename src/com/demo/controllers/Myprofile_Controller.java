@@ -78,7 +78,7 @@ public class Myprofile_Controller {
 				String username = data.get(2).getString();
 				String genero = data.get(3).getString();
 				String peso = data.get(4).getString();
-				String altura = data.get(5).getString();;
+				String altura = data.get(5).getString();
 				String edad = data.get(6).getString();
 				String id_usuario = data.get(7).getString();
 				

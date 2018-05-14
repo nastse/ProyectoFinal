@@ -92,14 +92,14 @@ public class Login_Controller {
 
 					List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(username);
 					
-					//AÑADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
+					//Aï¿½ADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
 
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
 					session.setAttribute("email", username);
 					session.setAttribute("datos", datos);
 					session.setAttribute("id_usuario", usuario);
 
-					//AÑADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
+					//Aï¿½ADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					//session.setAttribute("id", reviews);
 			
 					

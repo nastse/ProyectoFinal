@@ -33,7 +33,7 @@ public class Signup_Controller
 	public ModelAndView load_signup()
 	{
 		ModelAndView mav = new ModelAndView("signup");
-		//AÑADIDO PRUEBA 2 LINEAS
+		//Aï¿½ADIDO PRUEBA 2 LINEAS
 		User user = new User();
 		mav.addObject("user", user);
 		return mav;
@@ -144,7 +144,7 @@ public class Signup_Controller
 		
 						}
 						else{
-							message = "Las contraseñas no coinciden";
+							message = "Las contraseï¿½as no coinciden";
 							md.addAttribute("error_msg", message);
 						}
 					
@@ -172,6 +172,7 @@ public class Signup_Controller
 				//ASIGNO LA SESION Y TODOS LOS DATOS DEL USUARIO
 				session.setAttribute("email", email);
 				session.setAttribute("datosUsuario", datosUsuario);
+				session.setAttribute("id_usuario", usuario);
 			
 				return mav = new ModelAndView("myprofile");
 			

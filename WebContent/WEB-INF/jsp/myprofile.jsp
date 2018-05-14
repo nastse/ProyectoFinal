@@ -17,31 +17,17 @@
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+	
 	<script>
-	
-	
+ 		 	var loadFile = function(event) {
+    		var output = document.getElementById('imagen');
+   		 	output.src = URL.createObjectURL(event.target.files[0]);
+  			};
 	</script>
 	
 	<title>Mi perfil</title>
 </head>
 
-<!-- <div id="barra-inicio" class="container-fluid">	 -->
-<!-- 	<div id="banner" class="row p-1 d-flex justify-content-end"> -->
-<%-- 				<c:if test="${empty sessionScope.email}"> --%>
-<!-- 	        		<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	 -->
-<%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button> --%>
-<!-- 					</div> -->
-<!-- 					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1">	 -->
-<%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA</button> --%>
-<!-- 					</div> -->
-<%-- 				</c:if> --%>
-<%-- 				<c:if test="${not empty sessionScope.email}"> --%>
-<!-- 					<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 p-1 ">	 -->
-<%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">LOGOUT</button> --%>
-<!-- 					</div> -->
-<%-- 				</c:if> --%>
-<!-- 	</div> -->
-<!-- </div> -->
 
 <!-- 	AQU� INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
@@ -65,10 +51,10 @@
 				<form action="${pageContext.request.contextPath}/myprofile" method="post" enctype="multipart/form-data">
 					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
-							<img class="rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
+							<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 align-self-end">	
-  								<input type="file" name="image" class="btn btn-primary">
+  								<input type="file" class="form-control" name="image" class="btn btn-primary" onchange="loadFile(event)">
   								<input type="hidden" name="imagen" value="${usuario.imagen}">
 						</div>
 					</div>
