@@ -119,6 +119,63 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			
 		}
 		
+	//ACTUALIZAR CAMPOS DE UN PRODUCTO
+			public String updateProductColumns(Products product) {
+				
+				Session session = HibernateConnection.doHibernateConnection().openSession();
+				session.beginTransaction();
+				
+				
+				//PARA HACER UN UPDATE DE COLUMNAS EN CONCRETO
+				String hqlUpdate ="update Products p set  "
+						+ "p.imagen=:newImagen, "
+						+ "p.categoria =:newCategoria, "
+						+ "p.marca = :newMarca, "
+						+ "p.modelo = :newModelo, "
+						+ "p.talla = :newTalla, "
+						+ "p.anio = :newAnio, "
+						+ "p.precio = :newPrecio, "
+						+ "p.tallauser = :newTallauser, "
+						+ "p.peso = :newPeso, "
+						+ "p.altura = :newAltura, "
+						+ "p.pecho = :newPecho, "
+						+ "p.cintura = :newCintura, "
+						+ "p.cadera = :newCadera, "
+						+ "p.temp_max = :newTemp_max, "
+						+ "p.temp_min = :newTemp_min, "
+						+ "p.ajuste = :newAjuste, "
+						+ "p.recomendable = :newRecomendable, "
+						+ "p.comentario = :newComentario "
+						+ "where p.id_rev = '"+product.getId_rev()+"'";
+			
+				int updatedEntities = session.createQuery(hqlUpdate)
+						.setString("newImagen", product.getImagen())
+						.setString("newCategoria", product.getCategoria())
+						.setString("newMarca", product.getMarca())
+						.setString("newModelo", product.getModelo())
+						.setString("newTalla", product.getTalla())
+						.setInteger("newAnio", product.getAnio())
+						.setInteger("newPrecio", product.getPrecio())
+						.setString("newTallauser", product.getTallauser())
+						.setInteger("newPeso", product.getPeso())
+						.setInteger("newAltura", product.getAltura())
+						.setInteger("newPecho", product.getPecho())
+						.setInteger("newCintura", product.getCintura())
+						.setInteger("newCadera", product.getCadera())
+						.setInteger("newTemp_max", product.getTemp_max())
+						.setInteger("newTemp_min", product.getTemp_min())
+						.setInteger("newAjuste", product.getAjuste())
+						.setInteger("newRecomendable", product.getRecomendable())
+						.setString("newComentario", product.getComentario())
+						.executeUpdate();
+
+				session.getTransaction().commit();
+				session.close();
+				
+				return "Producto actualizado correctamente";
+				
+			}	
+		
 		
 		//INSERTAR UN PRODUCTO
 		public String insertProduct(Products product) {

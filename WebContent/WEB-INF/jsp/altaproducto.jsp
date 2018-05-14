@@ -13,7 +13,7 @@
     		<%@include file="/WEB-INF/css/style.css" %>
     		
     		*{margin:0;padding:0;box-sizing:border-box;}
-body{background:teal;color:#0B0C10;padding-bottom:10%;}
+			body{background:teal;color:#0B0C10;padding-bottom:10%;}
     		
     		 .invalid-feedback {
     			display: block;
@@ -122,8 +122,8 @@ body{background:teal;color:#0B0C10;padding-bottom:10%;}
  		 	var loadFile = function(event) {
     		var output = document.getElementById('imagen');
    		 	output.src = URL.createObjectURL(event.target.files[0]);
-  };
-</script>
+  			};
+	</script>
 	
 </head>
 
@@ -152,9 +152,9 @@ body{background:teal;color:#0B0C10;padding-bottom:10%;}
 				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 							
 							<div class="col-lg-12">
-									<img id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">	
-							</div>
-									<input type="file" name="image" accept="image/jpeg" class="btn" onchange="loadFile(event)">
+									<img  id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/subir.png">	
+							</div> 
+									<input id="subir-imagen" type="file" name="image" accept="image/*" class="btn" onchange="loadFile(event)">
 							
 				</div>		
 				<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		
@@ -376,7 +376,7 @@ body{background:teal;color:#0B0C10;padding-bottom:10%;}
 								</div>
 								<div class="col-lg-10">
 									<label id="titulo">Comentario (opcional)</label><br>	
-									<textarea id="form" style="resize:none" class="form-control" rows="5" name="texto"></textarea>
+									<textarea id="form" style="resize:none" class="form-control" rows="5" name="comentario"></textarea>
 								</div>
 							</div>
 						</div>	

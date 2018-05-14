@@ -1,8 +1,8 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,214 +11,379 @@
 	
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
-    		span{
-				background-color: #F27490;
-				display: inline-block;
-				height: 5px;
-				width: 30px;
+    		*{margin:0;padding:0;box-sizing:border-box;}
+			body{background:teal;color:#0B0C10;padding-bottom:10%;}
+    		
+    		 .invalid-feedback {
+    			display: block;
+  				}
+  			
+  			.form-control{border-width: 2px; border-color: #0B0C10;}  
+  				
+  			.form-control:focus {
+
+        		border-color: #0B0C10;
+        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
+
     		}
+    		#titulo{
+    			margin-top:20px;
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-weight: bold;
+    			font-size:14px;
+    			text-transform: uppercase;
+    		}
+    		
+    		#form:focus{
+    			border-color: #F27490;
+        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
+    		}
+    		
+    		#columna{
+    		
+    			margin-top:30px;
+    		}
+    		#contenedor-columna{
+    		
+    			padding-bottom:30px;
+    		}
+    		
+    		hr{
+    			
+    			background-color: #F27490; 
+    			height: 1px; 
+    			border: 0; 
+    		}
+    		
+    		#radios{
+				  position:relative;
+				  width:80%;
+				  margin:0 auto;
+				}
+				input[type="radio"]{
+				  position:absolute;
+				  right:1000%;
+				}
+				#r{
+				  float:left;
+				  width:15%; padding-bottom:15%;
+				  margin:0 2.5%;
+				  background:#F27490;
+				  border-radius:50%;
+				  cursor:pointer;
+				}
+
+				
+				#slider{
+				  position:absolute;
+				  left:0%; top:0;
+				  width:10%; padding-bottom:10%;
+				  margin:2.5% 0 0 5%;
+				  background:#fff;
+				  transition:transform 1s;
+				  border-radius:50%;
+				  animation-timing-function: ease-in-out;
+				  animation-duration:.3s;
+				  animation-fill-mode: forwards;
+				  transition: 0.2s left .05s ease-in-out;
+				}
+				
+				#input1:checked  ~ #slider{ animation-name: input1; left:0; }
+				#input2:checked  ~ #slider{ animation-name: input2; left:20%; }
+				#input3:checked  ~ #slider{ animation-name: input3; left:40%; }
+				#input4:checked  ~ #slider{ animation-name: input4; left:60%; }
+				#input5:checked  ~ #slider{ animation-name: input5; left:80%; }
+				
+				@keyframes input1{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input2{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input3{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input4{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input5{ 30%, 70% { transform:scale(0.5); } }
+				
+				#input10:checked  ~ #slider{ animation-name: input10; left:0; }
+				#input20:checked  ~ #slider{ animation-name: input20; left:20%; }
+				#input30:checked  ~ #slider{ animation-name: input30; left:40%; }
+				#input40:checked  ~ #slider{ animation-name: input40; left:60%; }
+				#input50:checked  ~ #slider{ animation-name: input50; left:80%; }
+				
+				@keyframes input10{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input20{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input30{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input40{ 30%, 70% { transform:scale(0.5); } }
+				@keyframes input50{ 30%, 70% { transform:scale(0.5); } }
 	</style>
+		
+	<script>
+ 		 	var loadFile = function(event) {
+    		var output = document.getElementById('imagen');
+   		 	output.src = URL.createObjectURL(event.target.files[0]);
+  			};
+	</script>	
 		
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 </head>
 
-	<!-- 	AQUÍ INSERTO EL HEADER -->
+	<!-- 	AQUÃ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 <body>
 	
-	<div class="container">	
-	
+	<c:if test="${empty sessionScope.email}">
+	   <div class="container">	
 			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
-				<h1>Cabecera con datos del usuario que lo modifica</h1>
+				 <h1>INICIA SESION</h1>
 			</div>
+	   </div>     
+	</c:if>
+
+
+	<c:if test="${not empty sessionScope.email}">	
+		<div class="container">	
 		
-			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
-			
-						<div class="col-lg-12">
-							<form action="${pageContext.request.contextPath}/upproducto"  method="post">	
-								<input type="hidden" name="id" value="${product.id_rev}">
-								<input type="hidden" name="imagen" value="${product.imagen}">
-								<input type="hidden" name="id_user" value="${product.id_user}">
-								<input type="hidden" name="ajuste" value="${product.ajuste}">
-								<input type="hidden" name="creado" value="${product.creado}">
-								<input type="hidden" name="estado" value="${product.estado}">
-								<td><img class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}"></td>	
-						</div>
-			</div>		
-			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">	
-						<div class="col-lg-3">
-							<label>Categoria</label><br>
-						</div>
-						<div class="col-lg-3">	
-	<%-- 						<input type="text" name="categoria" value="${product.categoria}"> --%>
-								<select class="form-control" name="categoria">
-									<option value = "${product.categoria}"/>${product.categoria}</option>
-									<option value = "Maillot corto"/>Maillot corto</option>
-									<option value = "Maillot largo"/>Maillot largo</option>
-									<option value = "Cullote corto"/>Cullote corto</option>
-									<option value = "Cullote largo"/>Cullote largo</option>
-								</select>
-						</div>		
-						<div class="col-lg-3">	
-							<label>Marca</label><br>
-						</div>
-						<div class="col-lg-3">
-	<%-- 						<input type="text" name="marca" value="${product.marca}"> --%>
-								<select class="form-control" name="marca">
-									<option value = "${product.marca}"/>${product.marca}</option>
-									<option value = "Castelli"/>Castelli</option>
-									<option value = "Sportful"/>Sportful</option>
-									<option value = "Rapha"/>Rapha</option>
-									<option value = "Endura"/>Endura</option>
-									<option value = "DBH"/>DBH</option>
-									<option value = "ALE"/>ALE</option>
-									<option value = "Santini"/>Santini</option>
-									<option value = "Exteondo"/>Exteondo</option>
-								</select>
-						</div>
-						<div class="col-lg-3">	
-							<label>Talla</label><br>
-						</div>	
-						<div class="col-lg-3">
-	<%-- 						<input type="text" name="talla" value="${product.talla}"> --%>
-								<select class="form-control" name="talla">
-									<option value = "${product.talla}"/>${product.talla}</option>
-									<option value = "XXS"/>XXS</option>
-									<option value = "XS"/>XS</option>
-									<option value = "S"/>S</option>
-									<option value = "M"/>M</option>
-									<option value = "L"/>L</option>
-									<option value = "XL"/>XL</option>
-									<option value = "XXL"/>XXL</option>
-									<option value = "XXXL"/>XXXL</option>
-								</select>
-	
-						</div>
-						<div class="col-lg-3">
-							<label>Peso</label><br>
-						</div>
-						<div class="col-lg-3">	
-	<%-- 						<input type="text" name="peso" value="${product.peso}"> --%>
-							<select class="form-control" name="peso">
-									<option value = "${product.peso}"/>${product.peso}kg</option>
-										<c:forEach var = "i" begin = "40" end = "200">
-					         				<option value = "${i}"/>${i}kg</option>
-					     				</c:forEach>			
-							</select>
-						</div>
-						<div class="col-lg-3">	
-							<label>Altura</label><br>
-						</div>	
-						<div class="col-lg-3">
-	<%-- 						<input type="text" name="altura" value="${product.altura}"> --%>
-							<select class="form-control" name="altura">
-										<option value = "${product.altura}"/>${product.altura}cm</option>
-										<c:forEach var = "i" begin = "150" end = "250">
-					         				<option value = "${i}"/>${i}cm</option>
-					     				</c:forEach>			
-							</select>
-						</div>	
-						<div class="col-lg-3">	
-							<label>Temperatura Min</label><br>
-						</div>	
-						<div class="col-lg-3">
-	<%-- 						<input type="text" name="temp_min" value="${product.temp_max}"> --%>
-							<select class="form-control" name="temp_min">
-								<option value = "${product.temp_min}"/>${product.temp_min}º</option>
-										<c:forEach var = "i" begin = "1" end = "10">
-					         				<option value = "${i-11}"/>${i-11}º</option>
-					     				</c:forEach>
-					     				<c:forEach var = "i" begin = "0" end = "50">
-					         				<option value = "${i}"/>${i}º</option>
-					     				</c:forEach>	
-					     	</select>		
-						</div>
-						<div class="col-lg-3">	
-							<label>Temperatura Max</label><br>	
-						</div>
-						<div class="col-lg-3">
-	<%-- 						<input type="text" name="temp_max" value="${product.temp_min}"> --%>
-							<select class="form-control" name="temp_max">
-								<option value = "${product.temp_max}"/>${product.temp_max}º</option>
-										<c:forEach var = "i" begin = "1" end = "10">
-					         				<option value = "${i-11}"/>${i-11}º</option>
-					     				</c:forEach>
-					     				<c:forEach var = "i" begin = "0" end = "50">
-					         				<option value = "${i}"/>${i}º</option>
-					     				</c:forEach>	
-					     	</select>	
-						</div>
-						<div class="col-lg-3">	
-							<label>Temperatura Max</label><br>
-						</div>
-						<div class="col-lg-3">
-	<%-- 						<input type="text" name="temp_max" value="${product.temp_min}"> --%>
-							<select class="form-control" name="temp_max">
-								<option value = "${product.temp_max}"/>${product.temp_max}º</option>
-										<c:forEach var = "i" begin = "1" end = "10">
-					         				<option value = "${i-11}"/>${i-11}º</option>
-					     				</c:forEach>
-					     				<c:forEach var = "i" begin = "0" end = "50">
-					         				<option value = "${i}"/>${i}º</option>
-					     				</c:forEach>	
-					     	</select>	
-						</div>
-				</div>	
-				
-				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">		
-							<div class="col-lg-3">	
-								<label>Ajuste/Compresion</label><br>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-							</div>
-							<div class="col-lg-3">	
-								<label>Comodidad</label><br>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-							</div>
-							<div class="col-lg-3">	
-								<label>Temperatura Max</label><br>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-							</div>
-							<div class="col-lg-3">	
-								<label>Recomendable</label><br>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-								<span></span>
-							</div>
-							
-						<div class="col-lg-6">
-							<label>Comentario (opcional)</label><br>	
-							<textarea style="resize:none" class="form-control" rows="3" name="texto"></textarea>
-						</div>
-				</div>		
-				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">		
-						<div class="col-lg-12">	
-							<form:errors path="*" style="color:red; background-color:#ffb3b3;" element="div"/>
-								<a href="<c:url value='/myproducts'/>">Cancelar</a> 
-								<input type="submit" value="Actualizar">
-							</form>							
-						</div>
+				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+					<h1>Cabecera con datos del usuario que lo modifica</h1>
 				</div>
-		
-	</div>				
-		<a href="${pageContext.request.contextPath}/products">Lista productos</a>
-
-
+				
+				<form action="${pageContext.request.contextPath}/upproducto" method="post" enctype="multipart/form-data">
+				
+					<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+								
+								<div class="col-lg-12">
+										<img id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">	
+								</div>
+										<input type="file" name="image" accept="image/jpeg" class="btn" onchange="loadFile(event)">
+								
+					</div>		
+					<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		
+	<!-- 						COLUMNA CENTRAL -->
+							<div id="column-center" class="col-lg-4">							
+								<div id="" class="row justify-content-md-center justify-content-sm-center">	
+									<div class="col-lg-10 text-center">
+										<h5 id="columna">DATOS USUARIO</h5>
+										<hr>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Talla</label><br>
+				<%-- 						<input type="text" name="talla" value="${product.talla}"> --%>
+											<select id="form" class="form-control" name="tallauser" required>
+												<option value = "${product.tallauser}">${product.tallauser}</option>
+												<option value = "XXS">XXS</option>
+												<option value = "XS">XS</option>
+												<option value = "S">S</option>
+												<option value = "M">M</option>
+												<option value = "L">L</option>
+												<option value = "XL">XL</option>
+												<option value = "XXL">XXL</option>
+												<option value = "XXXL">XXXL</option>
+											</select>
+									</div>
+									<div class="col-lg-10">	
+										<label id="titulo">Peso</label><br>
+				<%-- 						<input type="text" name="peso" value="${product.peso}"> --%>
+										<select id="form" class="form-control" name="peso" required>
+													<option value = "${product.peso}">${product.peso}</option>
+													<c:forEach var = "i" begin = "40" end = "200">
+								         				<option value = "${i}"/>${i}kg</option>
+								     				</c:forEach>			
+										</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Altura</label><br>
+				<%-- 						<input type="text" name="altura" value="${product.altura}"> --%>
+										<select id="form" class="form-control" name="altura" required>
+													<option value = "${product.altura}">${product.altura}</option>
+													<c:forEach var = "i" begin = "150" end = "250">
+								         				<option value = "${i}"/>${i}cm</option>
+								     				</c:forEach>			
+										</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Medida Pecho</label><br>
+										<select id="form" class="form-control" name="pecho">
+													<option value = "${product.pecho}">${product.pecho}</option>
+													<c:forEach var = "i" begin = "60" end = "120">
+								         				<option value = "${i}"/>${i}cm</option>
+								     				</c:forEach>			
+										</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Medida Cintura</label><br>
+										<select id="form" class="form-control" name="cintura">
+													<option value = "${product.cintura}">${product.cintura}</option>
+													<c:forEach var = "i" begin = "40" end = "100">
+								         				<option value = "${i}"/>${i}cm</option>
+								     				</c:forEach>			
+										</select>
+									</div>	
+									<div class="col-lg-10">
+										<label id="titulo">Medida Cadera</label><br>
+										<select id="form" class="form-control" name="cadera">
+													<option value = "${product.cadera}">${product.cadera}</option>
+													<c:forEach var = "i" begin = "50" end = "100">
+								         				<option value = "${i}"/>${i}cm</option>
+								     				</c:forEach>			
+										</select>
+									</div>			
+	
+								
+								</div>		
+							</div>
+	
+	<!-- 						COLUMNA IZQUIERDA -->
+							<div id="column-left" class="col-lg-4">
+								<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center">
+									<div class="col-lg-10 text-center">
+										<h5 id="columna">DATOS PRENDA</h5>
+										<hr>
+									</div>
+									<div class="col-lg-10">	
+										<label id="titulo">CategorÃ­a</label><br>
+											<select id="form" class="form-control" name="categoria" required>
+												<option value = "${product.categoria}">${product.categoria}</option>
+												<option value = "Maillot corto">Maillot corto</option>
+												<option value = "Maillot largo">Maillot largo</option>
+												<option value = "Cullote corto">Cullote corto</option>
+												<option value = "Cullote largo">Cullote largo</option>
+											</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Marca</label><br>
+											<select id="form" class="form-control" name="marca" required>
+												<option value = "${product.marca}">${product.marca}</option>
+												<option value = "Castelli">Castelli</option>
+												<option value = "Sportful">Sportful</option>
+												<option value = "Rapha">Rapha</option>
+												<option value = "Endura">Endura</option>
+												<option value = "DBH">DBH</option>
+												<option value = "ALE">ALE</option>
+												<option value = "Santini">Santini</option>
+												<option value = "Exteondo">Etxeondo</option>
+											</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Modelo</label><br>
+										<input id="form" class="form-control" type="text" name="modelo" value="${product.modelo}" maxlength="25" required>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Talla</label><br>
+											<select id="form" class="form-control" name="talla" required>
+												<option value = "${product.talla}">${product.talla}</option>
+												<option value = "XXS">XXS</option>
+												<option value = "XS">XS</option>
+												<option value = "S">S</option>
+												<option value = "M">M</option>
+												<option value = "L">L</option>
+												<option value = "XL">XL</option>
+												<option value = "XXL">XXL</option>
+												<option value = "XXXL">XXXL</option>
+											</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">AÃ±o</label><br>
+											<select id="form" class="form-control" name="anio" required>
+												<option value = "${product.anio}">${product.anio}</option>
+												<c:forEach var = "i" begin = "2015" end = "2018">
+								         			<option value = "${i}">${i}</option>
+								     			</c:forEach>
+											</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Precio</label><br>
+											<select id="form" class="form-control" name="precio" required>
+												<option value = "${product.precio}">${product.precio}</option>
+												<c:forEach var = "i" begin = "1" end = "500">
+								         			<option value = "${i}">${i}â‚¬</option>
+								     			</c:forEach>
+											</select>
+									</div>
+									
+									
+								</div>
+							</div>
+	
+	<!-- 						COLUMNA DERECHA -->
+							<div id="column-right" class="col-lg-4">
+								<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center">
+										<div class="col-lg-10 text-center">
+											<h5 id="columna">VALORACIÃ“N</h5>
+											<hr>
+										</div>
+										<div class="col-lg-10">
+										<label id="titulo">Temperatura Min</label><br>
+										<select id="form" class="form-control" name="temp_min" required>
+													<option value = "${product.temp_min}">${product.temp_min}</option>
+													<c:forEach var = "i" begin = "1" end = "10">
+								         				<option value = "${i-11}">${i-11}Âº</option>
+								     				</c:forEach>
+								     				<c:forEach var = "i" begin = "0" end = "50">
+								         				<option value = "${i}">${i}Âº</option>
+								     				</c:forEach>	
+								     	</select>		
+									</div>
+	
+									<div class="col-lg-10">
+										<label id="titulo">Temperatura Max</label><br>
+										<select id="form" class="form-control custom-select" name="temp_max" required >
+													<option value = "${product.temp_max}">${product.temp_max}</option>
+													<c:forEach var = "i" begin = "1" end = "10">
+								         				<option value = "${i-11}">${i-11}Âº</option>
+								     				</c:forEach>
+								     				<c:forEach var = "i" begin = "0" end = "50">
+								         				<option value = "${i}">${i}Âº</option>
+								     				</c:forEach>	
+								     	</select>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Ajuste/Comodidad</label><br>
+										<div id="radios">
+										  <label id="r" for="input1"></label>
+										  <input  id="input1" name="ajuste" type="radio" value="1"/>
+										  <label id="r" for="input2"></label>
+										  <input  id="input2" name="ajuste" type="radio" value="2"/>
+										  <label id="r" for="input3"></label>
+										  <input  id="input3" name="ajuste" type="radio" value="3" checked/>
+										  <label id="r" for="input4"></label>
+										  <input  id="input4" name="ajuste" type="radio" value="4" />
+										  <label id="r" for="input5"></label>
+										  <input  id="input5" name="ajuste" type="radio" value="5"/>
+										  <span id="slider"></span>
+										</div>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Recomendable</label><br>
+										<div id="radios">
+										  <label id="r" for="input10"></label>
+										  <input  id="input10" name="comodidad" type="radio" value="1"/>
+										  <label id="r" for="input20"></label>
+										  <input  id="input20" name="comodidad" type="radio" value="2"/>
+										  <label id="r" for="input30"></label>
+										  <input  id="input30" name="comodidad" type="radio" value="3" checked/>
+										  <label id="r" for="input40"></label>
+										  <input  id="input40" name="comodidad" type="radio" value="4"/>
+										  <label id="r" for="input50"></label>
+										  <input  id="input50" name="comodidad" type="radio" value="5"/>
+										  <span id="slider"></span>
+										</div>
+									</div>
+									<div class="col-lg-10">
+										<label id="titulo">Comentario (opcional)</label><br>	
+										<textarea id="form" style="resize:none" class="form-control" rows="5" name="comentario">${product.comentario}</textarea>
+									</div>
+								</div>
+							</div>	
+					</div>		
+					<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">		
+							<div class="col-lg-12">
+							</div>
+							<div class="col-lg-12">	
+									<a href="<c:url value='/myproducts'/>">Cancelar</a> 
+									<input type="submit" value="Actualizar" >													
+							</div>		
+					</div>	
+				</form>	
+		</div>				
+	</c:if>
 </body>
 </html>

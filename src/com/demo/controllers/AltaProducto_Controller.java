@@ -1,6 +1,9 @@
 package com.demo.controllers;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -84,7 +87,11 @@ public class AltaProducto_Controller {
 				String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
 				data.get(0).write(new File(path + File.separator + imagen));
 				
-				java.util.Date dt = new java.util.Date();
+//				java.util.Date dt = new java.util.Date();
+				
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				Date date = new Date();
+				
 				
 				product.setImagen(imagen);
 				product.setCategoria(categoria);
@@ -104,7 +111,7 @@ public class AltaProducto_Controller {
 				product.setAjuste(Integer.parseInt(ajuste));
 				product.setRecomendable(Integer.parseInt(recomendable));
 				product.setComentario(comentario);
-				product.setCreado(dt);
+				product.setCreado(date);
 				product.setId_user(Integer.parseInt(id_usuario));
 				
 				

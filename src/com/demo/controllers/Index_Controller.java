@@ -56,9 +56,7 @@ public class Index_Controller {
 		
 		List<String> datos = RegisteryDAO.productsDAO.getAllProductsNames();
 		
-		System.out.println(Arrays.toString(datos.toArray()));
 		
-		User user = new User();
 		mav.addObject("allProducts", datos);
 		//mav.addObject("allUsers", allUsers);
 		//mav.addObject("allProducts", RegisteryDAO.getProductsDAO().getAllProducts());
