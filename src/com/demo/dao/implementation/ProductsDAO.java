@@ -6,7 +6,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 //CAMBIO
 //import com.demo.models.HibernateConnection;
@@ -45,6 +47,29 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	
 		return allProductsNames;
 	}
+	
+	
+	//DEVUELVO UN MAP CON LOS PRODUCTOS Y EL NOMBRE DE USUARIO DE CADA UNO PARA PAGINAR
+	public List<String> getAllProductsNamesPage(int pagina){
+		
+			int limiteporpagina = 4;
+		
+			//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
+			Session session = HibernateConnection.doHibernateConnection().openSession();
+			
+			
+			Query q  = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where u.id_usuario=p.id_user" );
+		
+				q.setFirstResult(pagina*limiteporpagina);
+				q.setMaxResults(limiteporpagina);
+			
+				List <String> resultado = q.list();
+				
+			session.close();
+			
+			//DEVUELVE UN POJO
+			return resultado;
+		}
 
 //BORRAR UN PRODUCTO
 	public boolean deleteProductById(String id){

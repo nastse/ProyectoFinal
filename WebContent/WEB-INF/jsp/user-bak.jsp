@@ -1,45 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; UTF-8"
+    pageEncoding="UTF-8"%>
     
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Welcome to Home</title>
-	
-		<style type="text/css">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
-		</style>
-		
-		<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
-		<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
-		
-	
-</head>
 
-<!-- 	AQUÍ INSERTO EL HEADER -->
-	<jsp:include page="header.jsp" />
+	</style>
+	
+	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
+	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+	<script>
+	
+	
+	</script>
+	
+	<title>Mi perfil</title>
+</head>
 
 <body>
 
-	
-	
-<!-- 	AUTHENTICATION PROCES FOR LOGIN SECCION 6 -->
-	<label style="color: red;">${error_msg}</label>
-	
-	<script>
-	    function popup() {
-	        window.open("${pageContext.request.contextPath}/login", 'window', 'width=720,height=720');
-	    }
-	</script>
-
-	
-	<div class="container">	
-	</div>
-	
-	<div class="container">	
+<div class="container">	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-5 justify-content-center">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-1">	
 			
@@ -70,9 +58,40 @@
 		</div>	
 		<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 			<div class="col-lg-12">
-
+					<div id="pagination">
+					    <c:url value="/user/list" var="prev">
+					        <c:param name="page" value="${page-1}"/>
+					    </c:url>
+					    <c:if test="${page > 1}">
+					        <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
+					    </c:if>
+					
+					    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+					        <c:choose>
+					            <c:when test="${page == i.index}">
+					                <span>${i.index}</span>
+					            </c:when>
+					            <c:otherwise>
+					                <c:url value="/user/list" var="url">
+					                    <c:param name="page" value="${i.index}"/>
+					                </c:url>
+					                <a href='<c:out value="${url}" />'>${i.index}</a>
+					            </c:otherwise>
+					        </c:choose>
+					    </c:forEach>
+					    <c:url value="/user/list" var="next">
+					        <c:param name="page" value="${page + 1}"/>
+					    </c:url>
+					    <c:if test="${page + 1 <= maxPages}">
+					        <a href='<c:out value="${next}" />' class="pn next">Next</a>
+					    </c:if>
+					</div>
 			</div> 
 		</div>
 	</div>	
+
+
+
+
+
 </body>
-</html>

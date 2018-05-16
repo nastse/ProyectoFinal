@@ -10,6 +10,7 @@ public interface ProductsDAO {
 	
 	public List<Products> getAllProducts();
 	public List<String> getAllProductsNames();
+	public List<String> getAllProductsNamesPage(int pagina);
 	public boolean deleteProductById(String id);
 	public Products getProductByProductId(String id);
 	public List<Products> getProductByUserId(int id);
