@@ -23,9 +23,33 @@
 	</script>
 	
 	<title>Mi perfil</title>
+	
+	<script type="text/javascript">
+		
+	function paginar(){
+
+			$.ajax({
+				
+				url: "${pageContext.request.contextPath}/user/pagina",
+				data: "page=" ,
+				
+				success : function(response){
+					${allProducts}
+				},
+				
+				error : function(error){
+					alert(error);
+					
+				}
+			})
+		}
+	
+	</script>
 </head>
 
 <body>
+
+<h1>${allProducts}</h1>
 
 <div class="container">	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-5 justify-content-center">
@@ -33,7 +57,7 @@
 			
 			</div>
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-				<div class="row">
+				<div id="" class="row">
 					<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 					<c:forEach items="${allProducts}" var="product" varStatus="status">
 						<div id="producto" class="col-lg-4 col-md-3 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
@@ -56,8 +80,14 @@
 				</div>	
 			</div>			
 		</div>	
-		<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+		<div id="mostrar" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 			<div class="col-lg-12">
+			<c:if test="${empty $allProducts}">
+				
+				<h1>VACIO</h1>
+			
+			</c:if>	
+			<c:if test="${not empty $allProducts}">
 					<div id="pagination">
 					    <c:url value="/user/list" var="prev">
 					        <c:param name="page" value="${page-1}"/>
@@ -69,11 +99,11 @@
 					    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
 					        <c:choose>
 					            <c:when test="${page == i.index}">
-					                <span>${i.index}</span>
+					                <span id="${i.index}">${i.index}</span>
 					            </c:when>
 					            <c:otherwise>
 					                <c:url value="/user/list" var="url">
-					                    <c:param name="page" value="${i.index}"/>
+					                    <c:param name="page" value="${i.index}" />
 					                </c:url>
 					                <a href='<c:out value="${url}" />'>${i.index}</a>
 					            </c:otherwise>
@@ -86,6 +116,7 @@
 					        <a href='<c:out value="${next}" />' class="pn next">Next</a>
 					    </c:if>
 					</div>
+				</c:if>	
 			</div> 
 		</div>
 	</div>	
@@ -93,5 +124,7 @@
 
 
 
-
+	<script>
+       
+    </script>
 </body>

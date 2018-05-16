@@ -2,6 +2,8 @@ package com.demo.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,6 +76,8 @@ import com.demo.pojo.User;
 	        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(1);
 	  
 	        modelAndView.addObject("allProducts", products);
+	        modelAndView.addObject("maxPages", 1);
+	        
 	        
 	        PagedListHolder<String> pagedListHolder = new PagedListHolder<>(products);
 	        pagedListHolder.setPageSize(5);
@@ -83,15 +87,17 @@ import com.demo.pojo.User;
 		
 		
 		@ResponseBody
-		@RequestMapping(value="/list")
-	    public ModelAndView paginaProducts(@RequestParam(required = false) Integer page) {
+		@RequestMapping(value="/pagina")
+	    public ModelAndView paginaProducts(HttpServletRequest request) {
 	        ModelAndView modelAndView = new ModelAndView("user");
 
 	        //List<String> products = RegisteryDAO.productsDAO.getAllProductsNames();
 	        
+	        String page = request.getParameter("page");
+	        
 	        //LA PRIMERA VEZ EN CARGAR PAGE ESTA A NULL POR ESO LE ASIGNO UN VALOR PARA QUE NO DE ERROR
 	        if(page == null) {
-	        	page = 1;
+	        	page = "1";
 	        }
 	        
 	       
@@ -104,7 +110,7 @@ import com.demo.pojo.User;
 	        //VOY HACIENDO CONSULTAS DEPENDIENDO DEL NUMERO DE PAGINA QUE HAYA SELECCIONADO
 	        //LE RESTO 1 A PAGE PARA QUE AL SELECCIONAR LA PAGINA 1 EL RESULTADO NO SE SALTE LOS 4 PRIMEROS RESULTADOS 
 	        //4*1=4 E IRIA A LA SGUIENTE PAGINA SALTANDOSE LOS PRIMEROS RESULTADOS
-	        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(page-1);
+	        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(Integer.parseInt(page)-1);
 //	        
 //	        modelAndView.addObject("allProducts", products);
 //	        
@@ -113,16 +119,16 @@ import com.demo.pojo.User;
 	        pagedListHolder.setPageSize(5);
 	        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
 
-	        if(page==null || page < 1 || page > pagedListHolder.getPageCount())page=1;
-	        	modelAndView.addObject("page", page);
+	        if(page==null || Integer.parseInt(page) < 1 || Integer.parseInt(page) > pagedListHolder.getPageCount())page="1";
+	        	modelAndView.addObject("page", Integer.parseInt(page));
 	        
 	        
-	        if(page == null || page < 1 || page > pagedListHolder.getPageCount()){
+	        if(page == null || Integer.parseInt(page) < 1 || Integer.parseInt(page) > pagedListHolder.getPageCount()){
 	            pagedListHolder.setPage(0);
 	            modelAndView.addObject("users", pagedListHolder.getPageList());
 	        }
-	        else if(page <= pagedListHolder.getPageCount()) {
-	            pagedListHolder.setPage(page-1);
+	        else if(Integer.parseInt(page) <= pagedListHolder.getPageCount()) {
+	            pagedListHolder.setPage(Integer.parseInt(page)-1);
 	            modelAndView.addObject("users", pagedListHolder.getPageList());
 	        }
 
