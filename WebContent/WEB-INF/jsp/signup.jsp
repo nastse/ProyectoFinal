@@ -84,21 +84,23 @@
     		}
     		#alta{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
-    			
     			color:white;
     			font-size:18px;
     			margin-top:50px;
-/*     			background-color:#F27490; */
 				background-color:#1F2833;
+    		}
+    		#alta:hover{
+    			background-color:#F27490;
     		}
     		#login{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
-    
     			color:white;
     			font-size:18px;
     			margin-top:50px;
-/*     			background-color:#F27490; */
 				background-color:#1F2833;
+    		}
+    		#login:hover{
+    			background-color:#F27490;
     		}
     		
     		hr{

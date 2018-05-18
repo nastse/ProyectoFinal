@@ -1,14 +1,27 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
+    		
+    		.boton{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			color:white;
+    			font-size:18px;
+    			margin-top:50px;
+				background-color:#1F2833;
+				width:90px;
+    		}
+    		.boton:hover{
+    			background-color:#F27490;
+    		} 
+    		
 	</style>
 		
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
@@ -46,7 +59,7 @@
 	</script>
 
 
-<!-- 	AQUÍ INSERTO EL HEADER -->
+<!-- 	AQUï¿½ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 <body>
@@ -66,7 +79,7 @@
 				
 				<div class="col-lg-12">
 				
-					<a href="<c:url value='/altaproducto'/>"><h4>Añadir nueva Review</h4></a>
+					<a href="<c:url value='/altaproducto'/>"><h4>AÃ±adir nueva Review</h4></a>
 				
 				</div>
 			
@@ -77,7 +90,7 @@
 				<c:forEach items="${listaReviews}" var="product">
 
 					<div id="div_${product.id_rev}" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
-							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1">	
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1 text-center">	
 								<img class="rounded justify-content-center shadow mb-1" width="100px" height="100px" src="${pageContext.request.contextPath}/img/${product.imagen}">
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1 align-self-center text-center">	
@@ -85,8 +98,9 @@
 								<spam>${product.marca}</spam>
 							</div>
 							<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 p-1 align-self-center text-center">	
-								<input type="button" value="Eliminar" id="${product.id_rev}" onclick="borrarProducto(this.id)">
-								<a href="<c:url value='/upproducto/${product.id_rev}'/>">Editar</a>
+								<button  id="${product.id_rev}" type="button" class="boton btn btn-sm" value="Eliminar" onclick="borrarProducto(this.id)">ELIMINAR</button>
+<%-- 								<a href="<c:url value='/upproducto/${product.id_rev}'/>">Editar</a> --%>
+								<button id="boton" type="reset" class="boton btn btn-sm" onclick="location.href='${pageContext.request.contextPath}/upproducto/${product.id_rev}'">EDITAR</button>
 							</div>
 					</div>
 

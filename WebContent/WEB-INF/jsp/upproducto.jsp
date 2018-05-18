@@ -268,7 +268,7 @@
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Talla</label><br>
-											<select id="form" class="form-control" name="talla" required>
+											<select id="form" class="form-control" name="talla">
 												<option value = "${product.talla}">${product.talla}</option>
 												<option value = "XXS">XXS</option>
 												<option value = "XS">XS</option>
@@ -282,7 +282,7 @@
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Año</label><br>
-											<select id="form" class="form-control" name="anio" required>
+											<select id="form" class="form-control" name="anio">
 												<option value = "${product.anio}">${product.anio}</option>
 												<c:forEach var = "i" begin = "2015" end = "2018">
 								         			<option value = "${i}">${i}</option>
@@ -291,7 +291,7 @@
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Precio</label><br>
-											<select id="form" class="form-control" name="precio" required>
+											<select id="form" class="form-control" name="precio">
 												<option value = "${product.precio}">${product.precio}</option>
 												<c:forEach var = "i" begin = "1" end = "500">
 								         			<option value = "${i}">${i}€</option>
