@@ -15,37 +15,48 @@
 		
 		<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 		<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
 		
 	
 </head>
 
+
+
+<script type="text/javascript">
+		
+	function paginar(id){
+
+			$.ajax({
+				async: false,
+				url: "${pageContext.request.contextPath}/index/pagina",
+				data: "page="+id,
+				
+				
+				success : function(response){
+					$("#vista").html(response);
+					
+				},
+				
+				error : function(error){
+					alert(error);	
+				}
+			})
+		}
+	
+</script>
+
+<body id="vista">
+
 <!-- 	AQUÍ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
-<body>
-
-	
-	
-<!-- 	AUTHENTICATION PROCES FOR LOGIN SECCION 6 -->
-	<label style="color: red;">${error_msg}</label>
-	
-	<script>
-	    function popup() {
-	        window.open("${pageContext.request.contextPath}/login", 'window', 'width=720,height=720');
-	    }
-	</script>
-
-	
-	<div class="container">	
-	</div>
-	
 	<div class="container">	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-5 justify-content-center">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-1">	
 			
 			</div>
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-				<div class="row">
+				<div id="" class="row">
 					<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 					<c:forEach items="${allProducts}" var="product" varStatus="status">
 						<div id="producto" class="col-lg-4 col-md-3 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
@@ -61,16 +72,38 @@
 									<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
 									<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img class="rounded-circle" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
 								</div>
-								
 							</div>
 						</div>	
 					</c:forEach>
 				</div>	
 			</div>			
 		</div>	
-		<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+		<div id="mostrar" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 			<div class="col-lg-12">
-
+					
+					<h1 id="texto">Prueba</h1>
+					
+					<div id="pagination">
+					    <c:if test="${page > 1}">
+					    	 <input type="button" id="${page - 1}" value="Prev"  onclick="paginar(this.id)">
+					        
+					    </c:if>
+					    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
+					        <c:choose>
+					            <c:when test="${page == i.index}">
+					                <span id="${i.index}">${i.index}</span>
+					            </c:when>
+					            <c:otherwise>
+					               <input type="button" id="${i.index}" value="${i.index}"  onclick="paginar(this.id)">
+					                
+					            </c:otherwise>
+					        </c:choose>
+					    </c:forEach>
+					    <c:if test="${page + 1 <= maxPages}">
+					   		<input type="button" id="${page + 1}" value="Next"  onclick="paginar(this.id)">
+					        
+					    </c:if>
+					</div>
 			</div> 
 		</div>
 	</div>	
