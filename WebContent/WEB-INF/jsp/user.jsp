@@ -17,41 +17,41 @@
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
-	<script>
-	
-	
-	</script>
+
 	
 	<title>Mi perfil</title>
 	
-	<script type="text/javascript">
+</head>
+
+<script type="text/javascript">
 		
-	function paginar(){
+	function paginar(id){
 
 			$.ajax({
-				
+				async: false,
 				url: "${pageContext.request.contextPath}/user/pagina",
-				data: "page=" ,
+				data: "page="+id,
+				
 				
 				success : function(response){
-					${allProducts}
+					$("#subViewDiv").html(response);
+					
 				},
 				
 				error : function(error){
-					alert(error);
-					
+					alert(error);	
 				}
 			})
 		}
 	
 	</script>
-</head>
 
 <body>
 
-<h1>${allProducts}</h1>
 
-<div class="container">	
+
+
+<div id="subViewDiv" class="container">	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-5 justify-content-center">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-1">	
 			
@@ -82,18 +82,16 @@
 		</div>	
 		<div id="mostrar" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 			<div class="col-lg-12">
-			<c:if test="${empty $allProducts}">
-				
-				<h1>VACIO</h1>
-			
-			</c:if>	
-			<c:if test="${not empty $allProducts}">
+					
+					<h1 id="texto">Prueba</h1>
+					
 					<div id="pagination">
-					    <c:url value="/user/list" var="prev">
-					        <c:param name="page" value="${page-1}"/>
-					    </c:url>
+					   
+					     
+					   
 					    <c:if test="${page > 1}">
-					        <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
+					    	 <input type="button" id="${page - 1}" value="Prev"  onclick="paginar(this.id)">
+					        
 					    </c:if>
 					
 					    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
@@ -102,29 +100,21 @@
 					                <span id="${i.index}">${i.index}</span>
 					            </c:when>
 					            <c:otherwise>
-					                <c:url value="/user/list" var="url">
-					                    <c:param name="page" value="${i.index}" />
-					                </c:url>
-					                <a href='<c:out value="${url}" />'>${i.index}</a>
+					               <input type="button" id="${i.index}" value="${i.index}"  onclick="paginar(this.id)">
+					                
 					            </c:otherwise>
 					        </c:choose>
 					    </c:forEach>
-					    <c:url value="/user/list" var="next">
-					        <c:param name="page" value="${page + 1}"/>
-					    </c:url>
+					    	
+
 					    <c:if test="${page + 1 <= maxPages}">
-					        <a href='<c:out value="${next}" />' class="pn next">Next</a>
+					   		<input type="button" id="${page + 1}" value="Next"  onclick="paginar(this.id)">
+					        
 					    </c:if>
 					</div>
-				</c:if>	
 			</div> 
 		</div>
+	
 	</div>	
 
-
-
-
-	<script>
-       
-    </script>
 </body>

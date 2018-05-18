@@ -16,7 +16,7 @@ import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
 
-//
+
 //@Controller
 //@RequestMapping("/user")
 //public class Prueba_Controller {
@@ -65,6 +65,8 @@ import com.demo.pojo.User;
 //        return modelAndView;
 //    }	
 
+
+	//ESTA PARTE SE CARGA LA PRIMERA VEZ AL ENTRAR EN LA PAGINA
 	@Controller
 	@RequestMapping("/user")
 	public class Prueba_Controller {
@@ -73,20 +75,31 @@ import com.demo.pojo.User;
 	    public ModelAndView inicioProducts() {
 	        ModelAndView modelAndView = new ModelAndView("user");
 
-	        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(1);
-	  
+	        //HAGO UNA BUSQUEDA PARA SABER EL NUMERO TOTAL DE PRODUCTOS
+	        List<String> allproducts = RegisteryDAO.productsDAO.getAllProductsNames();
+	        
+	        //HAGO OTRA BUSQUEDA CON LA PRIMERA TANDA POR PAGINA (4 POR PAGINA)
+	        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(0);
+	        
+	        //ENVIO LA TANDA A MOSTRAR
 	        modelAndView.addObject("allProducts", products);
-	        modelAndView.addObject("maxPages", 1);
+	        
+	        PagedListHolder<String> pagedListHolder = new PagedListHolder<>(allproducts);
+	        
+	        //ENVIO LA PAGINA ACTUAL QUE ES 1 PARA QUE EN EL MENU NO ME SALGA SELECCIONABLE
+	        String page = "1";
+	        modelAndView.addObject("page", Integer.parseInt(page));
 	        
 	        
-	        PagedListHolder<String> pagedListHolder = new PagedListHolder<>(products);
 	        pagedListHolder.setPageSize(5);
-	        
+	        //ENVIO EL NUMERO TOTAL DE PAGINAS QUE VA A TENER MI MENU DE PAGINACION
+	        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
+
 	        return modelAndView;
 	    }
 		
 		
-		@ResponseBody
+		//ESTA EL PAGINA QUE DEVUELVO TRAS CONSULTAR EL NUMERO DE PAGINA QUE QUIERO VER
 		@RequestMapping(value="/pagina")
 	    public ModelAndView paginaProducts(HttpServletRequest request) {
 	        ModelAndView modelAndView = new ModelAndView("user");
@@ -100,22 +113,19 @@ import com.demo.pojo.User;
 	        	page = "1";
 	        }
 	        
-	       
-	        //TODO EN VEZ DE CARGAR TODO Y SABER CUANTAS PAGINAS VOY A TENER, IR CARGANDO PAGINAS MIENTRAS VOY BAJANDO
-	        //ASI EVITO HACER 2 CONSULTAS
-	       
+
 	        //HAGO UNA CONSULTA PARA SABER EL NUMERO DE PAGINA QUE VA A TENER MI MENU DE PAGINAS
-//	        List<String> totalproducts = RegisteryDAO.productsDAO.getAllProductsNames();
+	        List<String> totalproducts = RegisteryDAO.productsDAO.getAllProductsNames();
 	        
 	        //VOY HACIENDO CONSULTAS DEPENDIENDO DEL NUMERO DE PAGINA QUE HAYA SELECCIONADO
 	        //LE RESTO 1 A PAGE PARA QUE AL SELECCIONAR LA PAGINA 1 EL RESULTADO NO SE SALTE LOS 4 PRIMEROS RESULTADOS 
 	        //4*1=4 E IRIA A LA SGUIENTE PAGINA SALTANDOSE LOS PRIMEROS RESULTADOS
 	        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(Integer.parseInt(page)-1);
-//	        
-//	        modelAndView.addObject("allProducts", products);
-//	        
-	        PagedListHolder<String> pagedListHolder = new PagedListHolder<>(products);
-//	       
+	        
+	        modelAndView.addObject("allProducts", products);
+	        
+	        PagedListHolder<String> pagedListHolder = new PagedListHolder<>(totalproducts);
+	       
 	        pagedListHolder.setPageSize(5);
 	        modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
 
