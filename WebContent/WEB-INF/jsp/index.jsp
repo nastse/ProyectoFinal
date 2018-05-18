@@ -7,10 +7,28 @@
 <html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Welcome to Home</title>
+		<title>Inicio</title>
 	
 		<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
+    		
+			#contenedor-menu{
+				
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			color:white;
+    			font-size:18px;
+				background-color:#F27490;
+    		
+			}
+			#menu{
+				margin-top:10px;
+				margin-bottom:50px;
+				padding-top:20px;
+				padding-bottom:50px;
+				background-color:#1F2833;
+				border-radius:5%;
+			}
+    		
 		</style>
 		
 		<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
@@ -52,11 +70,22 @@
 
 	<div class="container">	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-5 justify-content-center">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 p-1">	
-			
-			</div>
-			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+			<div id="contenedor-menu" class="col-lg-3">	
 				<div id="" class="row">
+					<div class="col-lg-12 text-center">
+					 	<div id="menu">
+					 		 <h2>MENU</h2>
+						     <div class="col col-1">MARCA</div>								  
+						     <div class="col col-1">MODELO</div>								  
+						     <div class="col col-1">TALLA</div>								  
+						     <div class="col col-1">AÑO</div>								  
+						     <div class="col col-1">PRECIO</div>								  
+					 	</div>
+					</div>	
+				</div>	
+			</div>
+			<div class="col-lg-9">
+				<div id="" class="row justify-content-center">
 					<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 					<c:forEach items="${allProducts}" var="product" varStatus="status">
 						<div id="producto" class="col-lg-4 col-md-3 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
