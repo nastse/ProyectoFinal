@@ -64,7 +64,7 @@
 				
 			#titulo-menu{
 
-				margin-top:20px;
+/* 				margin-top:20px; */
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-weight: bold;
     			font-size:14px;
@@ -87,13 +87,23 @@
     		.boton:hover{
     			background-color:#F27490;
     			color:white;
-    		} 		
+    		} 
+    		.form-control{
+    			visibility: hidden;
+    			position:absolute;
+    		}
+    		.fa{
+    			cursor: pointer;
+    			color: #F27490;
+    		}		
+    		
     		
 		</style>
 		
 		<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 		<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		
 	
 </head>
@@ -136,6 +146,23 @@
 			})
 		}
 	
+// 		FUNCION PARA PLEGAR Y DESPLEGAR DENTRO DEL MENU DE BUSQUEDA SEGUN EL CAMPO QUE SE SELECCIONE
+		function colapsarMenu(id){
+			
+			var visibilidad = $("#"+id).css('visibility');
+			var parametrosON = {'visibility':'visible','position':'relative','margin-bottom':'10px'}
+			var parametrosOFF = {'visibility':'hidden','position':'absolute','margin-bottom':'0px'}
+			
+			if(visibilidad == 'visible'){
+				
+				$("#"+id).css(parametrosOFF);
+			}else{
+				
+				$("#"+id).css(parametrosON);
+			}
+
+		}
+	
 </script>
 
 <body id="vista">
@@ -151,15 +178,23 @@
 					 	<div id="menu">
 					 		<h2 id="titulo">Buscar:</h2>
 				 			<div id="titulo-menu" class="col col-12 text-left">
-				 				<spam>MARCA</spam> <spam id="subtitulo">prenda</spam>
+				 				<i onclick="colapsarMenu('marca')" class="fa fa-chevron-down"></i>&nbsp<spam>MARCA</spam> <spam id="subtitulo">prenda</spam> 
 				 			</div>
 						     	<div class="dropdown dropdown-dark">
 							     	<select id="marca" class="form-control dropdown-select" name="marca">
+<!-- 										SI EL ATRIBUTO MARCA ESTA VACIO DENTRO DEL SELECT PONGO PRIMERO TODOS -->
 										<c:if test="${empty marca}">
 											<option value = "Todos">Todos</option>
 										</c:if>
+<!-- 										SI EL ATRIBUTO MARCA TIENE ALGUN VALOR -->
 										<c:if test="${not empty marca}">
 											<option value = "${marca}">${marca}</option>
+<!-- 										SI NO ES TODOS LO DESPLIEGO PARA QUE SE VEA LA SELECCION HECHA ANTES DE HACER EL SUBMIT -->
+											<c:if test="${marca != 'Todos'}">
+													<script type="text/javascript">
+														colapsarMenu('marca');
+ 													</script>
+											</c:if>
 										</c:if>	
 										<option value = "Todos">Todos</option>
 										<option value = "Castelli">Castelli</option>
@@ -173,7 +208,7 @@
 									</select>
 								</div>	
 						     <div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>TIPO</spam> <spam id="subtitulo">prenda</spam>
+						     	<i onclick="colapsarMenu('modelo')" class="fa fa-chevron-down"></i>&nbsp<spam>TIPO</spam> <spam id="subtitulo">prenda</spam>
 						     </div>	
 						     	<div class="dropdown dropdown-dark">
 							     	<select id="modelo" class="form-control dropdown-select" name="categoria">
@@ -182,6 +217,11 @@
 										</c:if>
 										<c:if test="${not empty modelo}">
 											<option value = "${modelo}">${modelo}</option>
+												<c:if test="${modelo != 'Todos'}">
+													<script type="text/javascript">
+														colapsarMenu('modelo');
+ 													</script>
+												</c:if>
 										</c:if>	
 										<option value = "Todos">Todos</option>
 										<option value = "Maillot corto">Maillot corto</option>
@@ -191,7 +231,7 @@
 									</select>	
 								</div>								  							  
 						     <div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>TALLA</spam> <spam id="subtitulo">prenda</spam>
+						     	<i onclick="colapsarMenu('talla')" class="fa fa-chevron-down"></i>&nbsp<spam>TALLA</spam> <spam id="subtitulo">prenda</spam>
 						     </div>	
 							     <div class="dropdown dropdown-dark">
 							     	<select id="talla" class="form-control dropdown-select" name="talla">
@@ -200,6 +240,11 @@
 										</c:if>
 										<c:if test="${not empty talla}">
 											<option value = "${talla}">${talla}</option>
+											<c:if test="${talla != 'Todos'}">
+													<script type="text/javascript">
+														colapsarMenu('talla');
+ 													</script>
+											</c:if>
 										</c:if>	
 										<option value = "Todos">Todos</option>
 										<option value = "XXS">XXS</option>
@@ -213,7 +258,7 @@
 									</select>	
 								</div>							  
 						     <div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>AÑO</spam> <spam id="subtitulo">prenda</spam>
+						     	<i onclick="colapsarMenu('anio')" class="fa fa-chevron-down"></i>&nbsp<spam>AÑO</spam> <spam id="subtitulo">prenda</spam>
 						     </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="anio" class="form-control dropdown-select" name="anio">
@@ -222,6 +267,11 @@
 										</c:if>
 										<c:if test="${not empty anio}">
 											<option value = "${anio}">${anio}</option>
+											<c:if test="${anio != 'Todos'}">
+													<script type="text/javascript">
+														colapsarMenu('anio');
+ 													</script>
+											</c:if>
 										</c:if>	
 											<option value = "Todos">Todos</option>
 										<c:forEach var = "i" begin = "2015" end = "2018">
@@ -231,7 +281,7 @@
 								</div>	
 								
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>TALLA</spam> <spam id="subtitulo">usuario</spam>
+						     	<i onclick="colapsarMenu('tallauser')" class="fa fa-chevron-down"></i>&nbsp<spam>TALLA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="tallauser" class="form-control dropdown-select" name="tallauser">
@@ -240,6 +290,11 @@
 										</c:if>
 										<c:if test="${not empty tallauser}">
 											<option value = "${tallauser}">${tallauser}</option>
+											<c:if test="${tallauser != 'Todos'}">
+													<script type="text/javascript">
+														colapsarMenu('tallauser');
+ 													</script>
+											</c:if>
 										</c:if>	
 										<option value = "Todos">Todos</option>
 										<option value = "XXS">XXS</option>
@@ -253,7 +308,7 @@
 									</select>	
 								</div>
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>PESO</spam> <spam id="subtitulo">usuario</spam>
+						     	<i onclick="colapsarMenu('peso')" class="fa fa-chevron-down"></i>&nbsp<spam>PESO</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="peso" class="form-control dropdown-select" name="peso">
@@ -263,6 +318,9 @@
 										<c:if test="${not empty peso}">
 												<c:if test="${peso != 'Todos'}">
 													<option value = "${peso}">${peso}kg</option>
+													<script type="text/javascript">
+														colapsarMenu('peso');
+ 													</script>
 												</c:if>
 												<c:if test="${peso == 'Todos'}">
 													<option value = "${peso}">${peso}</option>
@@ -275,7 +333,7 @@
 									</select>
 								</div>
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>ALTURA</spam> <spam id="subtitulo">usuario</spam>
+						     	<i onclick="colapsarMenu('altura')" class="fa fa-chevron-down"></i>&nbsp<spam>ALTURA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="altura" class="form-control dropdown-select" name="altura">
@@ -285,6 +343,9 @@
 										<c:if test="${not empty altura}">
 												<c:if test="${altura != 'Todos'}">
 													<option value = "${altura}">${altura}cm</option>
+													<script type="text/javascript">
+														colapsarMenu('altura');
+ 													</script>
 												</c:if>
 												<c:if test="${altura == 'Todos'}">
 													<option value = "${altura}">${altura}</option>
@@ -297,7 +358,7 @@
 									</select>
 								</div>	
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>PECHO</spam> <spam id="subtitulo">usuario</spam>
+						     	<i onclick="colapsarMenu('pecho')" class="fa fa-chevron-down"></i>&nbsp<spam>PECHO</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="pecho" class="form-control dropdown-select" name="pecho">
@@ -307,6 +368,9 @@
 										<c:if test="${not empty pecho}">
 												<c:if test="${pecho != 'Todos'}">
 													<option value = "${pecho}">${pecho}cm</option>
+													<script type="text/javascript">
+														colapsarMenu('pecho');
+ 													</script>
 												</c:if>
 												<c:if test="${pecho == 'Todos'}">
 													<option value = "${pecho}">${pecho}</option>
@@ -319,7 +383,7 @@
 									</select>
 								</div>
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>CINTURA</spam> <spam id="subtitulo">usuario</spam>
+						     	<i onclick="colapsarMenu('cintura')" class="fa fa-chevron-down"></i>&nbsp<spam>CINTURA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 								    <select id="cintura" class="form-control dropdown-select" name="cintura">
@@ -329,6 +393,9 @@
 										<c:if test="${not empty cintura}">
 												<c:if test="${cintura != 'Todos'}">
 													<option value = "${cintura}">${cintura}cm</option>
+													<script type="text/javascript">
+														colapsarMenu('cintura');
+ 													</script>
 												</c:if>
 												<c:if test="${cintura == 'Todos'}">
 													<option value = "${cintura}">${cintura}</option>
@@ -341,7 +408,7 @@
 									</select>
 								</div>
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>CADERA</spam> <spam id="subtitulo">usuario</spam>
+						     	<i onclick="colapsarMenu('cadera')" class="fa fa-chevron-down"></i>&nbsp<spam>CADERA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     <select id="cadera" class="form-control dropdown-select" name="cadera">
@@ -351,6 +418,9 @@
 										<c:if test="${not empty cadera}">
 												<c:if test="${cadera != 'Todos'}">
 													<option value = "${cadera}">${cadera}cm</option>
+													<script type="text/javascript">
+														colapsarMenu('cadera');
+ 													</script>
 												</c:if>
 												<c:if test="${cadera == 'Todos'}">
 													<option value = "${cadera}">${cadera}</option>
@@ -363,7 +433,7 @@
 									</select>
 								</div>
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>GENERO</spam> <spam id="subtitulo"></spam>
+						     	<i onclick="colapsarMenu('genero')" class="fa fa-chevron-down"></i>&nbsp<spam>GENERO</spam> <spam id="subtitulo"></spam>
 						    </div>
 						    	<div class="dropdown dropdown-dark">	
 									<select id="genero" class="form-control dropdown-select" name="genero">
@@ -371,7 +441,12 @@
 											<option value = "Todos">Todos</option>
 										</c:if>
 										<c:if test="${not empty genero}">
-											<option value = "${genero}">${genero}</option>
+											<c:if test="${genero != 'Todos'}">
+												<option value = "${genero}">${genero}</option>
+												<script type="text/javascript">
+													colapsarMenu('genero');
+												</script>
+											</c:if>
 										</c:if>	
 								  		<option value = "Todos">Todos</option>
 										<option value = "Hombre">Hombre</option>
