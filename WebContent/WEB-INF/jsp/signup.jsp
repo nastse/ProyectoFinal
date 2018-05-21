@@ -153,6 +153,16 @@
 													<label id="titulo">CONFIRMA CONTRASEÑA</label>
 													<input id="repassword" class="form-control" type="password" name="repassword">
 												</div>
+												<div class="form-group">
+													<label id="titulo">TÉRMINOS Y CONDICIONES</label>
+													<div class="checkbox col-12">	
+												      <label><input type="checkbox" value="" requiered>Option 1</label>
+												    </div>
+												    <div class="checkbox  col-12">
+												      <label><input type="checkbox" value="" requiered>Option 2</label>
+												    </div>
+												</div>
+												
 													<button id="login" type="submit" class="btn btn-lg btn-block mb-1">ALTA NUEVA</button>
 											
 										

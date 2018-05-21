@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -83,7 +84,8 @@ public class AltaProducto_Controller {
 
 				//RECOJO EL NOMBRE DE LA IMAGEN PARA GUARDARLO EN LA BASE DE DATOS
 				//TODO CREAR UN NOMBRE(ID) PARA QUE SEA UNICO Y NO SE SOBREESCRIBAN LAS IMAGENES
-				String imagen = new File(data.get(0).getName()).getName();
+				//String imagen = new File(data.get(0).getName()).getName();
+				String imagen = UUID.randomUUID().toString()+".jpg";
 				String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
 				data.get(0).write(new File(path + File.separator + imagen));
 				

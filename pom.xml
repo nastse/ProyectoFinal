@@ -173,6 +173,11 @@
 			<artifactId>spring-security-web</artifactId>
 			<version>4.0.1.RELEASE</version>
 		</dependency>
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4</version>
+		</dependency>
 			
   </dependencies>
 </project>

@@ -24,7 +24,12 @@
 					</div>
 					
 					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-2 p-1 text-center">
-						<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
+						<c:if test="${not empty sessionScope.datos[0].imagen}">
+							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
+						</c:if>
+						<c:if test="${empty sessionScope.datos[0].imagen}">
+							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/imagen.png"></a>
+						</c:if>
 					</div>
 					
 					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-2 p-1 justify-content-center">	

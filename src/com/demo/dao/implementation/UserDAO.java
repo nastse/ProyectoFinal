@@ -1,6 +1,9 @@
 package com.demo.dao.implementation;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -56,10 +59,13 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 						session.beginTransaction();
 						//LE ASIGNO VALORES POR DEFECTO AL CREAR EL USUARIO
 						user.setImagen("imagen.png");
+						user.setGenero("Hombre");
+						user.setNombre(user.getEmail().toString());
 						user.setTipo_usuario(1);
 						user.setEstado(1);
-						java.util.Date dt = new java.util.Date();
-						user.setCreado(dt);	
+							DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+							Date date = new Date();
+						user.setCreado(date);	
 						
 
 					//SI DA ERROR ES POR QUE EL USUARIO YA EXISTE

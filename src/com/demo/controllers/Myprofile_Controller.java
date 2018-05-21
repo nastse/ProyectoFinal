@@ -3,6 +3,7 @@ package com.demo.controllers;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
@@ -56,7 +57,7 @@ public class Myprofile_Controller {
 	}
 	
 	@RequestMapping(value="/myprofile" , method=RequestMethod.POST)
-	public String actualizar_myprofile(HttpServletRequest request)
+	public String actualizar_myprofile(HttpServletRequest request, HttpSession session)
 	{
 		ModelAndView mav = new ModelAndView("myprofile");
 		
@@ -84,19 +85,26 @@ public class Myprofile_Controller {
 				
 				//COMPRUEBO SI EL USUARIO HA SELECCIONADO UNA IMAGEN PARA GUARDAR LA NUEVA O MANTENER LA ANTIGUA
 				String image="";
+				//PARA COMPROBAR SI HAY IMAGEN NUEVA SELECCIONADA
 				if(data.get(0).getName().equals("")) {
 					
+					//SI NO SE SELECCIONA UNA NUEVA MANTENGO LA ANTIGUA
 					image = data.get(1).getString();
-					
+				
+				//SI SE SELECCIONA UNA NUEVA RECOJO SU VALOR PARA GUARDARLO, GENERANDO UN UUID ALEATORIO
 				}else {
-
-					image = new File(data.get(0).getName()).getName();
+					
+					//image = new File(data.get(0).getName()).getName();
+					image = UUID.randomUUID().toString()+".jpg";
 					String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
 					data.get(0).write(new File(path + File.separator + image));
 				}
 				
 				String mesagge = RegisteryDAO.userDAO.doHibernateUpdateUser(username, Integer.parseInt(peso), Integer.parseInt(altura), Integer.parseInt(edad), genero, image, Integer.parseInt(id_usuario));
-
+				
+				//REFRESCO LOS DATOS TRAS ACTUALIZAR EL USUARIO PARA CARGAR LAS IMAGENES
+				List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(username);
+				session.setAttribute("datos", datos);
 			}
 			catch(Exception e)
 			{

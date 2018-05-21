@@ -127,7 +127,7 @@
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1">	
 							<select class="form-control" name="edad">
 									<option value = "${usuario.edad}"/>${usuario.edad} años</option>
-									<c:forEach var = "i" begin = "1" end = "101">
+									<c:forEach var = "i" begin = "18" end = "101">
 				         				<option value = "${i}"/>${i} años</option>
 				     				</c:forEach>			
 							</select>

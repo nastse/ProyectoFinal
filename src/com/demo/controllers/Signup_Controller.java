@@ -1,12 +1,27 @@
 package com.demo.controllers;
 
 import java.io.File;
+
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -105,7 +120,7 @@ public class Signup_Controller
 	
 	
 	@RequestMapping(value="/signup" , method=RequestMethod.POST)
-	public ModelAndView doSignUpProcess(HttpServletRequest request, HttpSession session, Model md, @Valid User user, BindingResult br)
+	public String doSignUpProcess(HttpServletRequest request, HttpSession session, Model md, @Valid User user, BindingResult br)
 	{
 		ModelAndView mav = new ModelAndView("signup");
 		String email = request.getParameter("email");
@@ -144,7 +159,7 @@ public class Signup_Controller
 		
 						}
 						else{
-							message = "Las contraseï¿½as no coinciden";
+							message = "Las contraseñas no coinciden";
 							md.addAttribute("error_msg", message);
 						}
 					
@@ -174,10 +189,48 @@ public class Signup_Controller
 				session.setAttribute("datosUsuario", datosUsuario);
 				session.setAttribute("id_usuario", usuario);
 			
-				return mav = new ModelAndView("myprofile");
+				//PRUEBA PARA ENVIAR EMAIL
+				
+				 	final String emailUsername = "sergiu.nastse@gmail.com";//from which you want to send mail
+				    final String emailPassword = "Netw0rks";//password off your mail id 
+
+				    Properties props = new Properties();
+				    props.put("mail.smtp.auth", "true");
+				    props.put("mail.smtp.starttls.enable", "true");
+				    props.put("mail.smtp.host", "smtp.gmail.com");
+				    props.put("mail.smtp.port", "587");
+
+				    Session session2 = Session.getInstance(props,
+				      new javax.mail.Authenticator() {
+				        protected PasswordAuthentication getPasswordAuthentication() {
+				            return new PasswordAuthentication(emailUsername, emailPassword);
+				        }
+				      });
+
+				    try {
+
+				        Message message2 = new MimeMessage(session2);
+				        message2.setFrom(new InternetAddress("sergiu.nastse@gmail.com"));
+				        message2.setRecipients(Message.RecipientType.TO,
+				            InternetAddress.parse("chersuis@gmail.com"));//whom you want to send mail
+				        message2.setSubject("Testing Subject");
+				        message2.setText("Dear Mail Crawler,"
+				            + "\n\n No spam to my email, please!");
+
+				        Transport.send(message2);
+
+				        System.out.println("Done");
+
+				    } catch (MessagingException e) {
+				        throw new RuntimeException(e);
+				    }
+
+				//return mav = new ModelAndView("myprofile");
+				return "redirect:/myprofile";
 			
 		}else {
-			return mav;
+			
+			return "signup";
 		}
 		
 	}
