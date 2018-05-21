@@ -64,10 +64,16 @@
     		}
 				
 			#titulo-menu{
-    			margin-top:20px;
+
+				margin-top:20px;
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-weight: bold;
     			font-size:14px;
+    		}
+    		#subtitulo{
+    			
+    			font-size:12px;
+    			font-style: oblique;
     		}
     		
     		.boton{
@@ -98,11 +104,17 @@
 <script type="text/javascript">
 		
 	function paginar(id){
-
+		
+		var marca= $('#marca option:selected').attr('value');
+		var modelo= $('#modelo option:selected').attr('value');
+		var talla= $('#talla option:selected').attr('value');
+		var anio= $('#anio option:selected').attr('value');
+		
+		
 			$.ajax({
 				async: false,
 				url: "${pageContext.request.contextPath}/index/pagina",
-				data: "page="+id,
+				data: "page="+id+"&marca="+marca+"&modelo="+modelo+"&talla="+talla+"&anio="+anio,
 				
 				
 				success : function(response){
@@ -129,16 +141,19 @@
 				<div id="" class="row">
 					<div class="col-lg-12 text-center">
 					 	<div id="menu">
-					 		<h2 id="titulo">MENÚ</h2>
-				 			<div id="titulo-menu" class="col col-1">MARCA</div>
+					 		<h2 id="titulo">Buscar:</h2>
+				 			<div id="titulo-menu" class="col col-12 text-left">
+				 				<spam>MARCA</spam> <spam id="subtitulo">prenda</spam>
+				 			</div>
 						     	<div class="dropdown dropdown-dark">
-							     	<select  class="form-control dropdown-select" name="marca">
-										<c:if test="${empty product}">
+							     	<select id="marca" class="form-control dropdown-select" name="marca">
+										<c:if test="${empty marca}">
 											<option value = "Todos">Todos</option>
 										</c:if>
-										<c:if test="${not empty product.marca}">
-											<option value = "${product.marca}">${product.marca}</option>
+										<c:if test="${not empty marca}">
+											<option value = "${marca}">${marca}</option>
 										</c:if>	
+										<option value = "Todos">Todos</option>
 										<option value = "Castelli">Castelli</option>
 										<option value = "Sportful">Sportful</option>
 										<option value = "Rapha">Rapha</option>
@@ -149,31 +164,36 @@
 										<option value = "Exteondo">Etxeondo</option>
 									</select>
 								</div>	
-						     <div id="titulo-menu" class="col col-1">MODELO</div>	
+						     <div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>TIPO</spam> <spam id="subtitulo">prenda</spam>
+						     </div>	
 						     	<div class="dropdown dropdown-dark">
-							     	<select id="form" class="form-control dropdown-select" name="categoria">
-							     		<c:if test="${empty product}">
+							     	<select id="modelo" class="form-control dropdown-select" name="categoria">
+							     		<c:if test="${empty modelo}">
 											<option value = "Todos">Todos</option>
 										</c:if>
-										<c:if test="${not empty product.categoria}">
-											<option value = "${product.categoria}">${product.categoria}</option>
+										<c:if test="${not empty modelo}">
+											<option value = "${modelo}">${modelo}</option>
 										</c:if>	
+										<option value = "Todos">Todos</option>
 										<option value = "Maillot corto">Maillot corto</option>
 										<option value = "Maillot largo">Maillot largo</option>
 										<option value = "Cullote corto">Cullote corto</option>
 										<option value = "Cullote largo">Cullote largo</option>
 									</select>	
 								</div>								  							  
-						     <div id="titulo-menu" class="col col-1">TALLA</div>	
+						     <div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>TALLA</spam> <spam id="subtitulo">prenda</spam>
+						     </div>	
 							     <div class="dropdown dropdown-dark">
-							     	<select id="form" class="form-control dropdown-select" name="talla">
-										<c:if test="${empty product}">
+							     	<select id="talla" class="form-control dropdown-select" name="talla">
+										<c:if test="${empty talla}">
 											<option value = "Todos">Todos</option>
 										</c:if>
-										<c:if test="${not empty product.talla}">
-											<option value = "${product.talla}">${product.talla}</option>
+										<c:if test="${not empty talla}">
+											<option value = "${talla}">${talla}</option>
 										</c:if>	
-										
+										<option value = "Todos">Todos</option>
 										<option value = "XXS">XXS</option>
 										<option value = "XS">XS</option>
 										<option value = "S">S</option>
@@ -184,22 +204,121 @@
 										<option value = "XXXL">XXXL</option>
 									</select>	
 								</div>							  
-						     <div id="titulo-menu" class="col col-1">AÑO</div>
+						     <div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>AÑO</spam> <spam id="subtitulo">prenda</spam>
+						     </div>
 							     <div class="dropdown dropdown-dark">
-							     	<select id="form" class="form-control dropdown-select" name="anio">
-										<c:if test="${empty product}">
+							     	<select id="anio" class="form-control dropdown-select" name="anio">
+										<c:if test="${empty anio}">
 											<option value = "Todos">Todos</option>
 										</c:if>
-										<c:if test="${not empty product.anio}">
-											<option value = "${product.anio}">${product.anio}</option>
+										<c:if test="${not empty anio}">
+											<option value = "${anio}">${anio}</option>
 										</c:if>	
+											<option value = "Todos">Todos</option>
 										<c:forEach var = "i" begin = "2015" end = "2018">
 						         			<option value = "${i}">${i}</option>
 						     			</c:forEach>
 									</select>	
 								</div>	
+								
+							<div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>TALLA</spam> <spam id="subtitulo">usuario</spam>
+						    </div>
+							     <div class="dropdown dropdown-dark">
+							     	<select id="tallauser" class="form-control dropdown-select" name="tallauser">
+										<c:if test="${empty tallauser}">
+											<option value = "Todos">Todos</option>
+										</c:if>
+										<c:if test="${not empty tallauser}">
+											<option value = "${tallauser}">${tallauser}</option>
+										</c:if>	
+										<option value = "Todos">Todos</option>
+										<option value = "XXS">XXS</option>
+										<option value = "XS">XS</option>
+										<option value = "S">S</option>
+										<option value = "M">M</option>
+										<option value = "L">L</option>
+										<option value = "XL">XL</option>
+										<option value = "XXL">XXL</option>
+										<option value = "XXXL">XXXL</option>
+									</select>	
+								</div>
+							<div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>PESO</spam> <spam id="subtitulo">usuario</spam>
+						    </div>
+							     <div class="dropdown dropdown-dark">
+							     	<select id="peso" class="form-control dropdown-select" name="peso">
+										<option value = "Todos">Todos</option>
+										<c:forEach var = "i" begin = "40" end = "200">
+					         				<option value = "${i}"/>${i}kg</option>
+					     				</c:forEach>			
+									</select>
+								</div>
+							<div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>ALTURA</spam> <spam id="subtitulo">usuario</spam>
+						    </div>
+							     <div class="dropdown dropdown-dark">
+							     	<select id="altura" class="form-control dropdown-select" name="altura">
+										<option value = "Todos">Todos</option>
+										<c:forEach var = "i" begin = "150" end = "250">
+					         				<option value = "${i}"/>${i}cm</option>
+					     				</c:forEach>			
+									</select>
+								</div>	
+							<div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>PECHO</spam> <spam id="subtitulo">usuario</spam>
+						    </div>
+							     <div class="dropdown dropdown-dark">
+							     	<select id="pecho" class="form-control dropdown-select" name="pecho">
+										<option value = "Todos">Todos</option>
+										<c:forEach var = "i" begin = "60" end = "120">
+					         				<option value = "${i}"/>${i}cm</option>
+					     				</c:forEach>			
+									</select>
+								</div>
+							<div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>CINTURA</spam> <spam id="subtitulo">usuario</spam>
+						    </div>
+							     <div class="dropdown dropdown-dark">
+							     	<select id="cintura" class="form-control dropdown-select" name="cintura">
+										<option value = "Todos">Todos</option>
+										<c:forEach var = "i" begin = "40" end = "100">
+					         				<option value = "${i}"/>${i}cm</option>
+					     				</c:forEach>			
+									</select>
+								</div>
+							<div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>CADERA</spam> <spam id="subtitulo">usuario</spam>
+						    </div>
+							     <div class="dropdown dropdown-dark">
+							     	<select id="cadera" class="form-control dropdown-select" name="cadera">
+										<option value = "Todos">Todos</option>
+										<c:forEach var = "i" begin = "50" end = "100">
+								         		<option value = "${i}"/>${i}cm</option>
+								     	</c:forEach>			
+									</select>
+								</div>
+							<div id="titulo-menu" class="col col-12 text-left">
+						     	<spam>GENERO</spam> <spam id="subtitulo">usuario</spam>
+						    </div>
+							     
+							     	
+									<div class="form-check text-left col-9 offset-3">
+								  		<input class="form-check-input"  type="radio" name="sexo" value="Hombre" checked>
+										<label class="form-check-label" for="sexo">
+								  		  Hombre
+								  		</label><br>	
+								  		<input class="form-check-input"  type="radio" name="sexo" value="Mujer" >
+								 	 	<label class="form-check-label" for="sexo">
+								   		 Mujer
+								  		</label>		
+									
+								</div>	
+											
+											
 							
-								<button id="boton" type="reset" class="boton btn btn-sm" onclick="location.href='${pageContext.request.contextPath}/upproducto/${product.id_rev}'">ACEPTAR</button>							  						  								  
+								<button id="boton" type="reset" class="boton btn btn-sm" onclick="paginar('1')">ACEPTAR</button>							  						  								  
 					 		
 					 	</div>
 					</div>	
@@ -207,24 +326,29 @@
 			</div>
 			<div class="col-lg-9 col-md-9 col-sm-6">
 				<div id="" class="row justify-content-center">
-					<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-					<c:forEach items="${allProducts}" var="product" varStatus="status">
-						<div id="producto" class="col-lg-4 col-md-3 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
-							<div class="producto-img d-flex justify-content-center p-1">
-								<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
-							</div>
-							 <hr>
-							<div id="producto-info" class="justify-content-center p-1">
-								<span>${product[0]}</span>&nbsp<span>${product[1]}</span>&nbsp<span>${product[6]}</span>
-								<br>
-								<br>
-								<div class="d-flex justify-content-between">
-									<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
-									<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img class="rounded-circle" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
+					<c:if test="${empty allProducts}">
+						<h2>NO HAY NINGÚN RESULTADO</h2>
+					</c:if>
+					<c:if test="${not empty allProducts}">
+						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
+						<c:forEach items="${allProducts}" var="product" varStatus="status">
+							<div id="producto" class="col-lg-4 col-md-3 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
+								<div class="producto-img d-flex justify-content-center p-1">
+									<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
 								</div>
-							</div>
-						</div>	
-					</c:forEach>
+								 <hr>
+								<div id="producto-info" class="justify-content-center p-1">
+									<span>${product[0]}</span>&nbsp<span>${product[1]}</span>&nbsp<span>${product[6]}</span>
+									<br>
+									<br>
+									<div class="d-flex justify-content-between">
+										<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
+										<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img class="rounded-circle" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
+									</div>
+								</div>
+							</div>	
+						</c:forEach>
+					</c:if>	
 				</div>	
 			</div>			
 		</div>	

@@ -41,10 +41,10 @@ public class Index_Controller {
 		ModelAndView modelAndView = new ModelAndView("index");
 
         //HAGO UNA BUSQUEDA PARA SABER EL NUMERO TOTAL DE PRODUCTOS
-        List<String> allproducts = RegisteryDAO.productsDAO.getAllProductsNames();
+        List<String> allproducts = RegisteryDAO.productsDAO.getAllProductsNames("Todos", "Todos", "Todos", "Todos");
         
         //HAGO OTRA BUSQUEDA CON LA PRIMERA TANDA POR PAGINA (4 POR PAGINA)
-        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(0);
+        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(0, "Todos", "Todos", "Todos", "Todos");
         
         //ENVIO LA TANDA A MOSTRAR
         modelAndView.addObject("allProducts", products);
@@ -67,27 +67,38 @@ public class Index_Controller {
 	//ESTA EL PAGINA QUE DEVUELVO TRAS CONSULTAR EL NUMERO DE PAGINA QUE QUIERO VER
 	@RequestMapping(value="/pagina")
     public ModelAndView paginaProducts(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("index");
-
-        //List<String> products = RegisteryDAO.productsDAO.getAllProductsNames();
+        
+		ModelAndView modelAndView = new ModelAndView("index");
         
         String page = request.getParameter("page");
+        //RECOJO TODOS LOS VALORES DEL MENU DE BUSQUEDA PARA HACER LA QUERY Y PARA REENVIARLOS A LA PAGINA
+        String marca = request.getParameter("marca");
+        String modelo = request.getParameter("modelo");
+        String talla = request.getParameter("talla");
+        String anio = request.getParameter("anio");
+        
+        System.out.println(page+marca+modelo+talla+anio);
         
         //LA PRIMERA VEZ EN CARGAR PAGE ESTA A NULL POR ESO LE ASIGNO UN VALOR PARA QUE NO DE ERROR
         if(page == null) {
         	page = "1";
         }
         
-
+        
         //HAGO UNA CONSULTA PARA SABER EL NUMERO DE PAGINA QUE VA A TENER MI MENU DE PAGINAS
-        List<String> totalproducts = RegisteryDAO.productsDAO.getAllProductsNames();
+        List<String> totalproducts = RegisteryDAO.productsDAO.getAllProductsNames(marca, modelo, talla, anio);
         
         //VOY HACIENDO CONSULTAS DEPENDIENDO DEL NUMERO DE PAGINA QUE HAYA SELECCIONADO
         //LE RESTO 1 A PAGE PARA QUE AL SELECCIONAR LA PAGINA 1 EL RESULTADO NO SE SALTE LOS 4 PRIMEROS RESULTADOS 
         //4*1=4 E IRIA A LA SGUIENTE PAGINA SALTANDOSE LOS PRIMEROS RESULTADOS
-        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(Integer.parseInt(page)-1);
+        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(Integer.parseInt(page)-1, marca, modelo, talla, anio);
         
+        //ENVIO EL PRODUCTO RESULTADO DE LA BUSQUEDA Y MANTENGO LOS CAMPOS SELECCIONADOS
         modelAndView.addObject("allProducts", products);
+        modelAndView.addObject("marca", marca);
+        modelAndView.addObject("modelo", modelo);
+        modelAndView.addObject("talla", talla);
+        modelAndView.addObject("anio", anio);
         
         PagedListHolder<String> pagedListHolder = new PagedListHolder<>(totalproducts);
        

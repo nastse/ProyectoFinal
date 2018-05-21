@@ -34,13 +34,34 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	}
 	
 	//DEVUELVO UN MAP CON LOS PRODUCTOS Y EL NOMBRE DE USUARIO DE CADA UNO
-	public List<String> getAllProductsNames(){
+	public List<String> getAllProductsNames(String marca, String modelo, String talla, String anio){
 		
 		//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
 		Session session = HibernateConnection.doHibernateConnection().openSession();
 		
-		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where u.id_usuario=p.id_user" ).list();
-
+		String marca2=marca;
+		String modelo2=modelo;
+		String talla2=talla;
+		String anio2=anio;
+		
+		if(marca.equals("Todos")) {
+			marca2="%";
+		}
+		if(modelo.equals("Todos")) {
+			modelo2="%";
+		}
+		if(talla.equals("Todos")) {
+			talla2="%";
+		}
+		if(anio.equals("Todos")) {
+			anio2="%";
+		}
+		
+		
+		//List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where u.id_usuario=p.id_user" ).list();
+		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where " 
+		+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"'" ).list();
+		
 		session.close();
 		
 		//DEVUELVE UN POJO
@@ -50,15 +71,34 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	
 	
 	//DEVUELVO UN MAP CON LOS PRODUCTOS Y EL NOMBRE DE USUARIO DE CADA UNO PARA PAGINAR
-	public List<String> getAllProductsNamesPage(int pagina){
+	public List<String> getAllProductsNamesPage(int pagina, String marca, String modelo, String talla, String anio){
 		
 			int limiteporpagina = 4;
+			
+			String marca2=marca;
+			String modelo2=modelo;
+			String talla2=talla;
+			String anio2=anio;
+			
+			if(marca.equals("Todos")) {
+				marca2="%";
+			}
+			if(modelo.equals("Todos")) {
+				modelo2="%";
+			}
+			if(talla.equals("Todos")) {
+				talla2="%";
+			}
+			if(anio.equals("Todos")) {
+				anio2="%";
+			}
 		
 			//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
 			Session session = HibernateConnection.doHibernateConnection().openSession();
 			
 			
-			Query q  = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where u.id_usuario=p.id_user" );
+			Query q  = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where " 
+					+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"'");
 		
 				q.setFirstResult(pagina*limiteporpagina);
 				q.setMaxResults(limiteporpagina);
