@@ -24,9 +24,8 @@
 				margin-top:10px;
 				margin-bottom:50px;
 				padding:20px 10px 50px 10px;
-				
 				background-color:#1F2833;
-				border-radius:5%;
+				border-radius:25px;
 			}
 			
 			
@@ -109,12 +108,21 @@
 		var modelo= $('#modelo option:selected').attr('value');
 		var talla= $('#talla option:selected').attr('value');
 		var anio= $('#anio option:selected').attr('value');
+		var tallauser= $('#tallauser option:selected').attr('value');
+		var peso= $('#peso option:selected').attr('value');
+		var altura= $('#altura option:selected').attr('value');
+		var cintura= $('#cintura option:selected').attr('value');
+		var pecho= $('#pecho option:selected').attr('value');
+		var cadera= $('#cadera option:selected').attr('value');
+		var genero= $('#genero option:selected').attr('value');
 		
 		
 			$.ajax({
 				async: false,
 				url: "${pageContext.request.contextPath}/index/pagina",
-				data: "page="+id+"&marca="+marca+"&modelo="+modelo+"&talla="+talla+"&anio="+anio,
+				data: "page="+id+"&marca="+marca+"&modelo="+modelo+"&talla="+talla+"&anio="+anio+
+				"&tallauser="+tallauser+"&peso="+peso+"&altura="+altura+"&cintura="+cintura+"&pecho="+pecho+
+				"&cadera="+cadera+"&genero="+genero,
 				
 				
 				success : function(response){
@@ -249,9 +257,20 @@
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="peso" class="form-control dropdown-select" name="peso">
+							     		<c:if test="${empty peso}">
+											<option value = "Todos">Todos</option>
+										</c:if>
+										<c:if test="${not empty peso}">
+												<c:if test="${peso != 'Todos'}">
+													<option value = "${peso}">${peso}kg</option>
+												</c:if>
+												<c:if test="${peso == 'Todos'}">
+													<option value = "${peso}">${peso}</option>
+												</c:if>
+										</c:if>	
 										<option value = "Todos">Todos</option>
-										<c:forEach var = "i" begin = "40" end = "200">
-					         				<option value = "${i}"/>${i}kg</option>
+										<c:forEach var = "j" begin = "40" end = "200">
+					         				<option value = "${j}">${j}kg</option>
 					     				</c:forEach>			
 									</select>
 								</div>
@@ -260,9 +279,20 @@
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="altura" class="form-control dropdown-select" name="altura">
+							     		<c:if test="${empty altura}">
+											<option value = "Todos">Todos</option>
+										</c:if>
+										<c:if test="${not empty altura}">
+												<c:if test="${altura != 'Todos'}">
+													<option value = "${altura}">${altura}cm</option>
+												</c:if>
+												<c:if test="${altura == 'Todos'}">
+													<option value = "${altura}">${altura}</option>
+												</c:if>
+										</c:if>	
 										<option value = "Todos">Todos</option>
-										<c:forEach var = "i" begin = "150" end = "250">
-					         				<option value = "${i}"/>${i}cm</option>
+										<c:forEach var = "k" begin = "150" end = "250">
+					         				<option value = "${k}">${k}cm</option>
 					     				</c:forEach>			
 									</select>
 								</div>	
@@ -271,9 +301,20 @@
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="pecho" class="form-control dropdown-select" name="pecho">
+								     	<c:if test="${empty pecho}">
+												<option value = "Todos">Todos</option>
+										</c:if>
+										<c:if test="${not empty pecho}">
+												<c:if test="${pecho != 'Todos'}">
+													<option value = "${pecho}">${pecho}cm</option>
+												</c:if>
+												<c:if test="${pecho == 'Todos'}">
+													<option value = "${pecho}">${pecho}</option>
+												</c:if>
+										</c:if>	
 										<option value = "Todos">Todos</option>
-										<c:forEach var = "i" begin = "60" end = "120">
-					         				<option value = "${i}"/>${i}cm</option>
+										<c:forEach var = "l" begin = "60" end = "120">
+					         				<option value = "${l}">${l}cm</option>
 					     				</c:forEach>			
 									</select>
 								</div>
@@ -281,10 +322,21 @@
 						     	<spam>CINTURA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
-							     	<select id="cintura" class="form-control dropdown-select" name="cintura">
+								    <select id="cintura" class="form-control dropdown-select" name="cintura">
+									     <c:if test="${empty cintura}">
+											<option value = "Todos">Todos</option>
+										</c:if>
+										<c:if test="${not empty cintura}">
+												<c:if test="${cintura != 'Todos'}">
+													<option value = "${cintura}">${cintura}cm</option>
+												</c:if>
+												<c:if test="${cintura == 'Todos'}">
+													<option value = "${cintura}">${cintura}</option>
+												</c:if>
+										</c:if>	
 										<option value = "Todos">Todos</option>
-										<c:forEach var = "i" begin = "40" end = "100">
-					         				<option value = "${i}"/>${i}cm</option>
+										<c:forEach var = "m" begin = "40" end = "100">
+					         				<option value = "${m}">${m}cm</option>
 					     				</c:forEach>			
 									</select>
 								</div>
@@ -292,34 +344,43 @@
 						     	<spam>CADERA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
-							     	<select id="cadera" class="form-control dropdown-select" name="cadera">
+							     <select id="cadera" class="form-control dropdown-select" name="cadera">
+							     		<c:if test="${empty cadera}">
+											<option value = "Todos">Todos</option>
+										</c:if>
+										<c:if test="${not empty cadera}">
+												<c:if test="${cadera != 'Todos'}">
+													<option value = "${cadera}">${cadera}cm</option>
+												</c:if>
+												<c:if test="${cadera == 'Todos'}">
+													<option value = "${cadera}">${cadera}</option>
+												</c:if>
+										</c:if>	
 										<option value = "Todos">Todos</option>
-										<c:forEach var = "i" begin = "50" end = "100">
-								         		<option value = "${i}"/>${i}cm</option>
+										<c:forEach var = "n" begin = "50" end = "100">
+								         		<option value = "${n}">${n}cm</option>
 								     	</c:forEach>			
 									</select>
 								</div>
 							<div id="titulo-menu" class="col col-12 text-left">
-						     	<spam>GENERO</spam> <spam id="subtitulo">usuario</spam>
+						     	<spam>GENERO</spam> <spam id="subtitulo"></spam>
 						    </div>
-							     
-							     	
-									<div class="form-check text-left col-9 offset-3">
-								  		<input class="form-check-input"  type="radio" name="sexo" value="Hombre" checked>
-										<label class="form-check-label" for="sexo">
-								  		  Hombre
-								  		</label><br>	
-								  		<input class="form-check-input"  type="radio" name="sexo" value="Mujer" >
-								 	 	<label class="form-check-label" for="sexo">
-								   		 Mujer
-								  		</label>		
-									
-								</div>	
-											
-											
-							
+						    	<div class="dropdown dropdown-dark">	
+									<select id="genero" class="form-control dropdown-select" name="genero">
+										<c:if test="${empty genero}">
+											<option value = "Todos">Todos</option>
+										</c:if>
+										<c:if test="${not empty genero}">
+											<option value = "${genero}">${genero}</option>
+										</c:if>	
+								  		<option value = "Todos">Todos</option>
+										<option value = "Hombre">Hombre</option>
+								  		<option value = "Mujer">Mujer</option>		
+									</select>
+								</div>
+								
 								<button id="boton" type="reset" class="boton btn btn-sm" onclick="paginar('1')">ACEPTAR</button>							  						  								  
-					 		
+
 					 	</div>
 					</div>	
 				</div>	

@@ -9,8 +9,8 @@ public interface ProductsDAO {
 
 	
 	public List<Products> getAllProducts();
-	public List<String> getAllProductsNames(String marca, String modelo, String talla, String anio);
-	public List<String> getAllProductsNamesPage(int pagina, String marca, String modelo, String talla, String anio);
+	public List<String> getAllProductsNames(String marca, String modelo, String talla, String anio, String tallauser, String peso, String altura, String cintura, String pecho, String cadera, String genero);
+	public List<String> getAllProductsNamesPage(int pagina, String marca, String modelo, String talla, String anio, String tallauser, String peso, String altura, String cintura, String pecho, String cadera, String genero);
 	public boolean deleteProductById(String id);
 	public Products getProductByProductId(String id);
 	public List<Products> getProductByUserId(int id);

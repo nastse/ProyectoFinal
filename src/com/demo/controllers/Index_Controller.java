@@ -41,10 +41,10 @@ public class Index_Controller {
 		ModelAndView modelAndView = new ModelAndView("index");
 
         //HAGO UNA BUSQUEDA PARA SABER EL NUMERO TOTAL DE PRODUCTOS
-        List<String> allproducts = RegisteryDAO.productsDAO.getAllProductsNames("Todos", "Todos", "Todos", "Todos");
+        List<String> allproducts = RegisteryDAO.productsDAO.getAllProductsNames("Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos");
         
         //HAGO OTRA BUSQUEDA CON LA PRIMERA TANDA POR PAGINA (4 POR PAGINA)
-        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(0, "Todos", "Todos", "Todos", "Todos");
+        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(0, "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos");
         
         //ENVIO LA TANDA A MOSTRAR
         modelAndView.addObject("allProducts", products);
@@ -76,8 +76,16 @@ public class Index_Controller {
         String modelo = request.getParameter("modelo");
         String talla = request.getParameter("talla");
         String anio = request.getParameter("anio");
+        String tallauser = request.getParameter("tallauser");
+        String peso = request.getParameter("peso");
+        String altura = request.getParameter("altura");
+        String cintura = request.getParameter("cintura");
+        String pecho = request.getParameter("pecho");
+        String cadera = request.getParameter("cadera");
+        String genero = request.getParameter("genero");
         
-        System.out.println(page+marca+modelo+talla+anio);
+        
+        System.out.println(page+marca+modelo+talla+anio+tallauser+peso+altura+cintura+pecho+cadera+genero);
         
         //LA PRIMERA VEZ EN CARGAR PAGE ESTA A NULL POR ESO LE ASIGNO UN VALOR PARA QUE NO DE ERROR
         if(page == null) {
@@ -86,12 +94,12 @@ public class Index_Controller {
         
         
         //HAGO UNA CONSULTA PARA SABER EL NUMERO DE PAGINA QUE VA A TENER MI MENU DE PAGINAS
-        List<String> totalproducts = RegisteryDAO.productsDAO.getAllProductsNames(marca, modelo, talla, anio);
+        List<String> totalproducts = RegisteryDAO.productsDAO.getAllProductsNames(marca, modelo, talla, anio, tallauser, peso, altura, cintura, pecho, cadera, genero);
         
         //VOY HACIENDO CONSULTAS DEPENDIENDO DEL NUMERO DE PAGINA QUE HAYA SELECCIONADO
         //LE RESTO 1 A PAGE PARA QUE AL SELECCIONAR LA PAGINA 1 EL RESULTADO NO SE SALTE LOS 4 PRIMEROS RESULTADOS 
         //4*1=4 E IRIA A LA SGUIENTE PAGINA SALTANDOSE LOS PRIMEROS RESULTADOS
-        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(Integer.parseInt(page)-1, marca, modelo, talla, anio);
+        List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(Integer.parseInt(page)-1, marca, modelo, talla, anio, tallauser, peso, altura, cintura, pecho, cadera, genero);
         
         //ENVIO EL PRODUCTO RESULTADO DE LA BUSQUEDA Y MANTENGO LOS CAMPOS SELECCIONADOS
         modelAndView.addObject("allProducts", products);
@@ -99,6 +107,13 @@ public class Index_Controller {
         modelAndView.addObject("modelo", modelo);
         modelAndView.addObject("talla", talla);
         modelAndView.addObject("anio", anio);
+        modelAndView.addObject("tallauser", tallauser);
+        modelAndView.addObject("peso", peso);
+        modelAndView.addObject("altura", altura);
+        modelAndView.addObject("cintura", cintura);
+        modelAndView.addObject("pecho", pecho);
+        modelAndView.addObject("cadera", cadera);
+        modelAndView.addObject("genero", genero);
         
         PagedListHolder<String> pagedListHolder = new PagedListHolder<>(totalproducts);
        

@@ -34,15 +34,24 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	}
 	
 	//DEVUELVO UN MAP CON LOS PRODUCTOS Y EL NOMBRE DE USUARIO DE CADA UNO
-	public List<String> getAllProductsNames(String marca, String modelo, String talla, String anio){
+	//TODO SUSTITUIR POR ARRAYLIST?¿
+	public List<String> getAllProductsNames(String marca, String modelo, String talla, String anio, String tallauser, String peso, String altura, String cintura, String pecho, String cadera, String genero ){
 		
 		//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
 		Session session = HibernateConnection.doHibernateConnection().openSession();
 		
+		//CREO VARIABLES PARA RECOGER LOS VALORES Y COMPARAR EL VALOR QUE TRAEN PARA HACER LA BUSQUEDA
 		String marca2=marca;
 		String modelo2=modelo;
 		String talla2=talla;
 		String anio2=anio;
+		String tallauser2=tallauser;
+		String peso2=peso;
+		String altura2=altura;
+		String cintura2=cintura;
+		String pecho2=pecho;
+		String cadera2=cadera;
+		String genero2=genero;
 		
 		if(marca.equals("Todos")) {
 			marca2="%";
@@ -56,11 +65,34 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		if(anio.equals("Todos")) {
 			anio2="%";
 		}
+		if(tallauser.equals("Todos")) {
+			tallauser2="%";
+		}
+		if(peso.equals("Todos")) {
+			peso2="%";
+		}
+		if(altura.equals("Todos")) {
+			altura2="%";
+		}
+		if(pecho.equals("Todos")) {
+			pecho2="%";
+		}
+		if(cadera.equals("Todos")) {
+			cadera2="%";
+		}
+		if(cintura.equals("Todos")) {
+			cintura2="%";
+		}
+		if(genero.equals("Todos")) {
+			genero2="%";
+		}
 		
 		
 		//List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where u.id_usuario=p.id_user" ).list();
 		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where " 
-		+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"'" ).list();
+		+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"' "
+		+ " and p.tallauser like '"+tallauser2+"' and p.peso like '"+peso2+"' and p.altura like '"+altura2+"' and p.pecho like '"+pecho2+"' "
+		+ " and p.cadera like '"+cadera2+"' and p.cintura like '"+cintura2+"' and u.genero like '"+genero2+"'").list();
 		
 		session.close();
 		
@@ -71,14 +103,22 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	
 	
 	//DEVUELVO UN MAP CON LOS PRODUCTOS Y EL NOMBRE DE USUARIO DE CADA UNO PARA PAGINAR
-	public List<String> getAllProductsNamesPage(int pagina, String marca, String modelo, String talla, String anio){
+	public List<String> getAllProductsNamesPage(int pagina, String marca, String modelo, String talla, String anio, String tallauser, String peso, String altura, String cintura, String pecho, String cadera, String genero){
 		
 			int limiteporpagina = 4;
 			
+			//CREO VARIABLES PARA RECOGER LOS VALORES Y COMPARAR EL VALOR QUE TRAEN PARA HACER LA BUSQUEDA			
 			String marca2=marca;
 			String modelo2=modelo;
 			String talla2=talla;
 			String anio2=anio;
+			String tallauser2=tallauser;
+			String peso2=peso;
+			String altura2=altura;
+			String cintura2=cintura;
+			String pecho2=pecho;
+			String cadera2=cadera;
+			String genero2=genero;
 			
 			if(marca.equals("Todos")) {
 				marca2="%";
@@ -92,13 +132,36 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			if(anio.equals("Todos")) {
 				anio2="%";
 			}
+			if(tallauser.equals("Todos")) {
+				tallauser2="%";
+			}
+			if(peso.equals("Todos")) {
+				peso2="%";
+			}
+			if(altura.equals("Todos")) {
+				altura2="%";
+			}
+			if(pecho.equals("Todos")) {
+				pecho2="%";
+			}
+			if(cadera.equals("Todos")) {
+				cadera2="%";
+			}
+			if(cintura.equals("Todos")) {
+				cintura2="%";
+			}
+			if(genero.equals("Todos")) {
+				genero2="%";
+			}
 		
 			//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
 			Session session = HibernateConnection.doHibernateConnection().openSession();
 			
 			
 			Query q  = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where " 
-					+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"'");
+					+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"' " 
+					+ " and p.tallauser like '"+tallauser2+"' and p.peso like '"+peso2+"' and p.altura like '"+altura2+"' and p.pecho like '"+pecho2+"' " 
+					+ " and p.cadera like '"+cadera2+"' and p.cintura like '"+cintura2+"' and u.genero like '"+genero2+"'");
 		
 				q.setFirstResult(pagina*limiteporpagina);
 				q.setMaxResults(limiteporpagina);
