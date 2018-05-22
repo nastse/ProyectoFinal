@@ -177,8 +177,6 @@
 	<div class="container">	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 justify-content-center">
 			<div id="contenedor-menu" class="col-lg-3 col-md-6 col-sm-5 col-xs-6">	
-				<div id="" class="row justify-content-center">
-					
 					 	<div id="menu">
 					 		<h2 id="titulo">Buscar:</h2>
 				 			<div id="titulo-menu" class="col col-12 text-left">
@@ -461,11 +459,8 @@
 								<button id="boton" type="reset" class="boton btn btn-sm" onclick="paginar('1')">ACEPTAR</button>							  						  								  
 
 					 	</div>
-						
-				</div>	
-			</div>
-			<div class="col-lg-9 col-md-6 col-sm-7 col-xs-12">
-				<div id="" class="row justify-content-center">
+				</div>			
+
 					<c:if test="${empty allProducts}">
 						<h2>NO HAY NINGÚN RESULTADO</h2>
 					</c:if>
@@ -522,9 +517,11 @@
 							</div>	
 						</c:forEach>
 					</c:if>	
-				</div>	
-			</div>			
-		</div>	
+				
+					
+		</div>
+		
+<!-- 		PAGINACION	 -->
 		<div id="mostrar" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 			<div class="col-lg-12">
 					
