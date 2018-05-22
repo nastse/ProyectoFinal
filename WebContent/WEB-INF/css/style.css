@@ -66,5 +66,63 @@
         		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
     		}
     		
+    		.fa-user-circle{
+    			color:white;
+    			font-size:40px;
+    		}
     		
-		
+    		.fa-plus-circle{
+    			color:white;
+    			font-size:40px;
+    		}
+    		#inicio{
+    			background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
+    			border-radius:25px;
+    			max-width: 150px;
+    			min-height: 47.78px;
+    			
+    		}
+    		#texto-inicio{
+				color:white;
+				font-size:14px;
+				padding-bottom:20px;
+				
+    			
+			}
+			
+    		#usuario-login{
+    			background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
+    			border-radius:25px;
+    			max-width: 150px;
+    			margin-right:30px;
+    		}
+    		
+    		#texto-usuario-login:hover{
+    			color:#F27490;
+    		}
+    		#usuario-subir{
+    			background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
+/*     			background-color:#1F2833; */
+    			border-radius:25px;
+    			max-width: 150px;
+    			margin-right:20px;
+    		}
+    		#texto-usuario-subir:hover{
+    			color:#F27490;
+    		}
+			#texto-usuario-login{
+				color:white;
+				font-size:14px;
+				padding-bottom:20px;
+				position: relative;
+    			top: -8px;
+   				right: -5px;
+			}
+			#texto-usuario-subir{
+				color:white;
+				font-size:14px;
+				padding-bottom:20px;
+				position: relative;
+    			top: -8px;
+   				left: -5px;
+			}

@@ -48,8 +48,8 @@
     			color:white;
     			font-size:18px;
     			margin-top:50px;
-/*     			background-color:#F27490; */
-				background-color:#1F2833;
+ 				background-color:#1F2833; 
+/* 				background: linear-gradient(to bottom, #45484d 0%,#000000 100%); */
     		}
     		#alta:hover{
     			background-color:#F27490;
@@ -60,7 +60,8 @@
     			color:white;
     			font-size:18px;
     			margin-top:50px;
-				background-color:#1F2833;
+ 				background-color:#1F2833; 
+/* 				background: linear-gradient(to bottom, #45484d 0%,#000000 100%); */
     		}
     		#login:hover{
     			background-color:#F27490;

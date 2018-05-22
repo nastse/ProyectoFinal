@@ -24,7 +24,8 @@
 				margin-top:10px;
 				margin-bottom:50px;
 				padding:20px 10px 50px 10px;
-				background-color:#1F2833;
+/* 				background-color:#1F2833; */
+				background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
 				border-radius:25px;
 			}
 			
@@ -92,7 +93,7 @@
     			visibility: hidden;
     			position:absolute;
     		}
-    		.fa{
+    		.fa-chevron-down{
     			cursor: pointer;
     			color: #F27490;
     		}		
