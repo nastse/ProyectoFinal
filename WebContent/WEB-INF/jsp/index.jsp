@@ -473,7 +473,35 @@
 								<div class="producto-img d-flex justify-content-center p-1">
 									<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
 								</div>
-								 <hr>
+								
+										<i class="fa fa-star" style="color:#F27490;"></i>	
+										<c:if test="${product[8] > 1}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										<c:if test="${product[8] > 2}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										<c:if test="${product[8] > 3}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										<c:if test="${product[8] > 4}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										
+										<c:if test="${product[8] < 2}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product[8] < 3}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product[8] < 4}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product[8] < 5}">
+											<i class="fa fa-star"></i>
+										</c:if>
+								
+								
 								<div id="producto-info" class="justify-content-center p-1">
 									<span>${product[0]}</span>&nbsp<span>${product[1]}</span>&nbsp<span>${product[6]}</span>
 									<br>
@@ -517,6 +545,12 @@
 					</div>
 			</div> 
 		</div>
-	</div>	
+	</div>		
 </body>
+
+<footer>
+	<!-- 	AQUÍ INSERTO EL FOOTER -->
+	<jsp:include page="footer.jsp" />	
+</footer>
+
 </html>

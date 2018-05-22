@@ -12,7 +12,7 @@
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
     		*{margin:0;padding:0;box-sizing:border-box;}
-			body{background:teal;color:#0B0C10;padding-bottom:10%;}
+			body{background:teal;color:#0B0C10;}
     		
     		 .invalid-feedback {
     			display: block;
@@ -433,4 +433,9 @@
 		</div>				
 	</c:if>
 </body>
+
+<footer>
+	<!-- 	AQUÍ INSERTO EL FOOTER -->
+	<jsp:include page="footer.jsp" />	
+</footer>
 </html>

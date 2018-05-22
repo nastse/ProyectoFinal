@@ -130,4 +130,9 @@
 	</div>
 
 </body>
+
+<footer>
+	<!-- 	AQUÍ INSERTO EL FOOTER -->
+	<jsp:include page="footer.jsp" />	
+</footer>
 </html>

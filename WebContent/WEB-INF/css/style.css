@@ -133,3 +133,17 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:12px;	
     		}
+    		
+    		.fa-star{
+    			color:#ECEFF1;
+    		}
+    		
+    		#footer{
+    			margin-top:75px;
+    			background-color:#1F2833;
+    			padding-top:50px;
+    			padding-bottom:50px;
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:20px;
+    			color:white;
+    		}

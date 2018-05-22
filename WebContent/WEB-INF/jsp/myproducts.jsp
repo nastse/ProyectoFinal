@@ -22,6 +22,8 @@
     			background-color:#F27490;
     		} 
     		
+    		
+    		
 	</style>
 		
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
@@ -94,8 +96,45 @@
 								<img class="rounded justify-content-center shadow mb-1" width="100px" height="100px" src="${pageContext.request.contextPath}/img/${product.imagen}">
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1 align-self-center text-center">	
-								<spam>${product.categoria}</spam>
-								<spam>${product.marca}</spam>
+								<div id="" class="row justify-content-start">
+									<div class="col-12">
+										<spam>${product.categoria}</spam>	
+									</div>
+									<div class="col-12">
+										<spam>${product.marca}</spam>
+										<spam>${product.modelo}</spam>
+										<spam>${product.talla}</spam>
+										<spam>${product.creado}</spam>
+									</div>
+									<div class="col-12">
+											<i class="fa fa-star" style="color:#F27490;"></i>	
+										<c:if test="${product.recomendable > 1}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										<c:if test="${product.recomendable > 2}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										<c:if test="${product.recomendable > 3}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										<c:if test="${product.recomendable > 4}">
+											<i class="fa fa-star" style="color:#F27490;"></i>
+										</c:if>
+										
+										<c:if test="${product.recomendable < 2}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product.recomendable < 3}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product.recomendable < 4}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product.recomendable < 5}">
+											<i class="fa fa-star"></i>
+										</c:if>
+									</div>
+								</div>	
 							</div>
 							<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 p-1 align-self-center text-center">	
 								<button  id="${product.id_rev}" type="button" class="boton btn btn-sm" value="Eliminar" onclick="borrarProducto(this.id)">ELIMINAR</button>
@@ -110,4 +149,9 @@
 		</div>	
 	</c:if>	
 </body>
+
+<footer>
+	<!-- 	AQUÍ INSERTO EL FOOTER -->
+	<jsp:include page="footer.jsp" />	
+</footer>
 </html>
