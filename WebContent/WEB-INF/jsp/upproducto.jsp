@@ -113,16 +113,32 @@
 				@keyframes input50{ 30%, 70% { transform:scale(0.5); } }
 	</style>
 		
+		
+	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
+	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		
 	<script>
  		 	var loadFile = function(event) {
     		var output = document.getElementById('imagen');
    		 	output.src = URL.createObjectURL(event.target.files[0]);
   			};
+  			
+  			$(document).ready(function() {
+  			    var text_max = 399;
+  			    $('#textarea_feedback').html('te quedan '+text_max + ' caracteres');
+
+  			    $('#textarea').keyup(function() {
+  			        var text_length = $('#textarea').val().length;
+  			        var text_remaining = text_max - text_length;
+
+  			        $('#textarea_feedback').html('te quedan '+ text_remaining + ' caracteres');
+  			    });
+  			});
+  			
 	</script>	
 		
-	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
-	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	
 </head>
 
 	<!-- 	AQUÍ INSERTO EL HEADER -->
@@ -339,14 +355,29 @@
 										<label id="titulo">Ajuste/Comodidad</label><br>
 										<div id="radios">
 										  <label id="r" for="input1"></label>
-										  <input  id="input1" name="ajuste" type="radio" value="1"/>
-										  <label id="r" for="input2"></label>
-										  <input  id="input2" name="ajuste" type="radio" value="2"/>
-										  <label id="r" for="input3"></label>
-										  <input  id="input3" name="ajuste" type="radio" value="3" checked/>
-										  <label id="r" for="input4"></label>
-										  <input  id="input4" name="ajuste" type="radio" value="4" />
-										  <label id="r" for="input5"></label>
+										  <c:if test="${product.ajuste == 1}">
+										  	<input  id="input1" name="ajuste" type="radio" value="1" checked />
+										  </c:if>
+										  	<input  id="input1" name="ajuste" type="radio" value="1"/>
+										  	<label id="r" for="input2"></label>
+										  <c:if test="${product.ajuste == 2}">
+										  	<input  id="input2" name="ajuste" type="radio" value="2" checked />
+										  </c:if>
+										  	<input  id="input2" name="ajuste" type="radio" value="2"/>
+										  	<label id="r" for="input3"></label>
+										  <c:if test="${product.ajuste == 3}">
+										  	<input  id="input3" name="ajuste" type="radio" value="3" checked />
+										  </c:if>
+										 	<input  id="input3" name="ajuste" type="radio" value="3"/>
+										  	<label id="r" for="input4"></label>
+										  <c:if test="${product.ajuste == 4}">
+										  	<input  id="input4" name="ajuste" type="radio" value="4" checked />
+										  </c:if>
+											  <input  id="input4" name="ajuste" type="radio" value="4" />
+											  <label id="r" for="input5"></label>
+										  <c:if test="${product.ajuste == 5}">
+										  	<input  id="input5" name="ajuste" type="radio" value="5" checked />
+										  </c:if>	  
 										  <input  id="input5" name="ajuste" type="radio" value="5"/>
 										  <span id="slider"></span>
 										</div>
@@ -354,22 +385,38 @@
 									<div class="col-lg-10">
 										<label id="titulo">Recomendable</label><br>
 										<div id="radios">
-										  <label id="r" for="input10"></label>
-										  <input  id="input10" name="comodidad" type="radio" value="1"/>
-										  <label id="r" for="input20"></label>
-										  <input  id="input20" name="comodidad" type="radio" value="2"/>
-										  <label id="r" for="input30"></label>
-										  <input  id="input30" name="comodidad" type="radio" value="3" checked/>
-										  <label id="r" for="input40"></label>
-										  <input  id="input40" name="comodidad" type="radio" value="4"/>
-										  <label id="r" for="input50"></label>
+										 <label id="r" for="input10"></label>
+										  <c:if test="${product.recomendable == 1}">
+										  	<input  id="input10" name="comodidad" type="radio" value="1" checked />
+										  </c:if>
+										  	<input  id="input10" name="comodidad" type="radio" value="1"/>
+										  	<label id="r" for="input20"></label>
+										  <c:if test="${product.recomendable == 2}">
+										  	<input  id="input20" name="comodidad" type="radio" value="2" checked />
+										  </c:if>
+										  	<input  id="input20" name="comodidad" type="radio" value="2"/>
+										  	<label id="r" for="input30"></label>
+										  <c:if test="${product.recomendable == 3}">
+										  	<input  id="input30" name="comodidad" type="radio" value="3" checked />
+										  </c:if>
+										 	<input  id="input30" name="comodidad" type="radio" value="3"/>
+										  	<label id="r" for="input40"></label>
+										  <c:if test="${product.recomendable == 4}">
+										  	<input  id="input40" name="comodidad" type="radio" value="4" checked />
+										  </c:if>
+											  <input  id="input40" name="comodidad" type="radio" value="4" />
+											  <label id="r" for="input50"></label>
+										  <c:if test="${product.recomendable == 5}">
+										  	<input  id="input50" name="comodidad" type="radio" value="5" checked />
+										  </c:if>	  
 										  <input  id="input50" name="comodidad" type="radio" value="5"/>
-										  <span id="slider"></span>
+										  <span id="slider"></span>  
 										</div>
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Comentario (opcional)</label><br>	
-										<textarea id="form" style="resize:none" class="form-control" rows="5" name="comentario">${product.comentario}</textarea>
+										<textarea id="textarea" style="resize:none" class="form-control" rows="5" name="comentario" maxlength="399"></textarea>
+										<div id="textarea_feedback"></div>	
 									</div>
 								</div>
 							</div>	

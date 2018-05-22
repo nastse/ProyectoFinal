@@ -126,3 +126,7 @@
     			top: -8px;
    				left: -5px;
 			}
+			#textarea_feedback{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:12px;	
+    		}

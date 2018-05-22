@@ -36,6 +36,7 @@ public class AltaProducto_Controller {
 	public String insertar_altaproducto(HttpServletRequest request, HttpSession session, Model md) {
 		
 		String mensaje="";
+		boolean error = false;
 		
 		if(ServletFileUpload.isMultipartContent(request))
 		{
@@ -77,51 +78,92 @@ public class AltaProducto_Controller {
 				String comentario = data.get(17).getString();
 	
 				
-				//System.out.println("imagen:"+imagen+"categoria:"+categoria+ "marca:"+marca+"talla:"+talla+"peso:"+peso+"altura:"+altura);
+				//COMPRUEBO QUE TODOS LOS DATOS VIENEN EN FORMATO INTEGER(NUMERO)
+				if((Integer)Integer.parseInt(anio) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(precio) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(peso) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(altura) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(pecho) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(cintura) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(cadera) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(temp_min) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(temp_min) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(ajuste) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(recomendable) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(id_usuario) instanceof Integer == false) {
+					error = true;
+				}
 				
-			//RECOJO TODOS LOS DATOS PARA MANTENERLOS EN EL CASO DE QUE HAYA QUE VALIDAR EL FORMULARIO
-				md.addAttribute("categoria", categoria);
+				if(!error) {
+					
+					
+					//System.out.println("imagen:"+imagen+"categoria:"+categoria+ "marca:"+marca+"talla:"+talla+"peso:"+peso+"altura:"+altura);
+					
+					//RECOJO TODOS LOS DATOS PARA MANTENERLOS EN EL CASO DE QUE HAYA QUE VALIDAR EL FORMULARIO
+						//md.addAttribute("categoria", categoria);
 
-				//RECOJO EL NOMBRE DE LA IMAGEN PARA GUARDARLO EN LA BASE DE DATOS
-				//TODO CREAR UN NOMBRE(ID) PARA QUE SEA UNICO Y NO SE SOBREESCRIBAN LAS IMAGENES
-				//String imagen = new File(data.get(0).getName()).getName();
-				String imagen = UUID.randomUUID().toString()+".jpg";
-				String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-				data.get(0).write(new File(path + File.separator + imagen));
-				
-//				java.util.Date dt = new java.util.Date();
-				
-				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-				Date date = new Date();
-				
-				
-				product.setImagen(imagen);
-				product.setCategoria(categoria);
-				product.setMarca(marca);
-				product.setModelo(modelo);
-				product.setTalla(talla);
-				product.setAnio(Integer.parseInt(anio));
-				product.setPrecio(Integer.parseInt(precio));
-				product.setTallauser(tallauser);
-				product.setPeso(Integer.parseInt(peso));
-				product.setAltura(Integer.parseInt(altura));
-				product.setPecho(Integer.parseInt(pecho));
-				product.setCintura(Integer.parseInt(cintura));
-				product.setCadera(Integer.parseInt(cadera));
-				product.setTemp_min(Integer.parseInt(temp_min));
-				product.setTemp_max(Integer.parseInt(temp_max));
-				product.setAjuste(Integer.parseInt(ajuste));
-				product.setRecomendable(Integer.parseInt(recomendable));
-				product.setComentario(comentario);
-				product.setCreado(date);
-				product.setId_user(Integer.parseInt(id_usuario));
-				
-				
-				
-				//INSERTO EL PRODUCTO EN LA BASE DE DATOS
-				mensaje = RegisteryDAO.productsDAO.insertProduct(product);
-				
-				
+						//RECOJO EL NOMBRE DE LA IMAGEN PARA GUARDARLO EN LA BASE DE DATOS
+						//TODO CREAR UN NOMBRE(ID) PARA QUE SEA UNICO Y NO SE SOBREESCRIBAN LAS IMAGENES
+						//String imagen = new File(data.get(0).getName()).getName();
+						String imagen = "subir.png";
+					
+						//SI EL USUARIO NO SUBE NINGUNA IMAGEN LE DEJO EL NOMBRE POR DEFECTO
+						if(!data.get(0).getName().equals("")) {
+
+							imagen = UUID.randomUUID().toString()+".jpg";
+						}
+						
+						String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
+						data.get(0).write(new File(path + File.separator + imagen));
+						
+//						java.util.Date dt = new java.util.Date();
+						
+						DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+						Date date = new Date();
+						
+						
+						product.setImagen(imagen);
+						product.setCategoria(categoria);
+						product.setMarca(marca);
+						product.setModelo(modelo);
+						product.setTalla(talla);
+						product.setAnio(Integer.parseInt(anio));
+						product.setPrecio(Integer.parseInt(precio));
+						product.setTallauser(tallauser);
+						product.setPeso(Integer.parseInt(peso));
+						product.setAltura(Integer.parseInt(altura));
+						product.setPecho(Integer.parseInt(pecho));
+						product.setCintura(Integer.parseInt(cintura));
+						product.setCadera(Integer.parseInt(cadera));
+						product.setTemp_min(Integer.parseInt(temp_min));
+						product.setTemp_max(Integer.parseInt(temp_max));
+						product.setAjuste(Integer.parseInt(ajuste));
+						product.setRecomendable(Integer.parseInt(recomendable));
+						product.setComentario(comentario);
+						product.setCreado(date);
+						product.setId_user(Integer.parseInt(id_usuario));
+						
+						
+						
+						//INSERTO EL PRODUCTO EN LA BASE DE DATOS
+						mensaje = RegisteryDAO.productsDAO.insertProduct(product);
+						
+				}else {
+					
+					System.out.println("HA HABIDO UN ERROR DE DATOS");
+				}
+					
 			}catch(Exception e){
 				System.out.println(e);
 				//message = "Please try again....";
@@ -129,13 +171,14 @@ public class AltaProducto_Controller {
 			
 		}
 		
+
 		//SI SE HA INSERTADO CORRECTAMENTE VOY A LA PAGINA DE TODOS LOS PRODUCTOS CARGANDOLA DE NUEVO
 		if(mensaje.equals("Producto insertado")) {
 			
 			return "redirect:/myproducts";
 			
 		}
-		//SI NO VUELVO MANTENIENDO LOS CAMPOS CON LA INFORMACION Y DEVOLVIENDO LOS ERRORES
+		//SI NO, VUELVO MANTENIENDO LOS CAMPOS CON LA INFORMACION Y DEVOLVIENDO LOS ERRORES
 		else {
 			
 			return "altaproducto";

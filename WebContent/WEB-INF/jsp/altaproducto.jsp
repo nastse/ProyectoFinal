@@ -35,6 +35,8 @@
     			text-transform: uppercase;
     		}
     		
+    		
+    		
     		#form:focus{
     			border-color: #F27490;
         		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
@@ -123,6 +125,20 @@
     		var output = document.getElementById('imagen');
    		 	output.src = URL.createObjectURL(event.target.files[0]);
   			};
+  			
+  			
+  			$(document).ready(function() {
+  			    var text_max = 399;
+  			    $('#textarea_feedback').html('te quedan '+text_max + ' caracteres');
+
+  			    $('#textarea').keyup(function() {
+  			        var text_length = $('#textarea').val().length;
+  			        var text_remaining = text_max - text_length;
+
+  			        $('#textarea_feedback').html('te quedan '+ text_remaining + ' caracteres');
+  			    });
+  			});
+  			
 	</script>
 	
 </head>
@@ -377,7 +393,8 @@
 								</div>
 								<div class="col-lg-10">
 									<label id="titulo">Comentario (opcional)</label><br>	
-									<textarea id="form" style="resize:none" class="form-control" rows="5" name="comentario"></textarea>
+									<textarea id="textarea" style="resize:none" class="form-control" rows="5" name="comentario" maxlength="399"></textarea>
+									<div id="textarea_feedback"></div>	
 								</div>
 							</div>
 						</div>	

@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -141,6 +142,7 @@ public class UpdateProducto_Controller {
 		int id_rev=(int) session.getAttribute("id_rev");
 		
 		Products product1 = new Products();
+		boolean error=false;
 		
 		if(ServletFileUpload.isMultipartContent(request))
 		{
@@ -173,13 +175,44 @@ public class UpdateProducto_Controller {
 				String recomendable = data.get(16).getString();
 				String comentario = data.get(17).getString();
 				
+				
+				
+				//COMPRUEBO QUE TODOS LOS DATOS VIENEN EN FORMATO INTEGER(NUMERO)
+				if((Integer)Integer.parseInt(anio) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(precio) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(peso) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(altura) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(pecho) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(cintura) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(cadera) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(temp_min) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(temp_min) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(ajuste) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(recomendable) instanceof Integer == false) {
+					error = true;
+				}
+				
+				if(!error) {
+				
+
 				//RECOJO EL NOMBRE DE LA IMAGEN PARA GUARDARLO EN LA BASE DE DATOS
 				//TODO CREAR UN NOMBRE(ID) PARA QUE SEA UNICO Y NO SE SOBREESCRIBAN LAS IMAGENES
-				String imagen = new File(data.get(0).getName()).getName();
-	
-			//TODO
+				//String imagen = new File(data.get(0).getName()).getName();
+				String imagen = UUID.randomUUID().toString()+".jpg";
+			
+				//TODO
 			//RECOJO TODOS LOS DATOS PARA MANTENERLOS EN EL CASO DE QUE HAYA QUE VALIDAR EL FORMULARIO
-				md.addAttribute("categoria", categoria);
+				//md.addAttribute("categoria", categoria);
 
 				//SI SE HA SUBIDO UNA IMAGEN NUEVA LA AGREGO A LA BASE DE DATOS Y AL DIRECTORIO
 				if(!data.get(0).getName().equals("")) {
@@ -218,7 +251,7 @@ public class UpdateProducto_Controller {
 				
 				System.out.println("product dev:" + id_rev + categoria + marca+ modelo);
 				
-				
+				}	
 				
 			}catch(Exception e){
 				System.out.println(e);
@@ -227,7 +260,7 @@ public class UpdateProducto_Controller {
 			
 		}
 		
-		if(br.getAllErrors().size() > 0) {
+		if(br.getAllErrors().size() > 0 || error) {
 			
 			System.out.println("Se ha validado la actualizacion"+ br.toString());
 			
