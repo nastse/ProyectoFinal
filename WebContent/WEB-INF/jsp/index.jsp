@@ -3,6 +3,8 @@
     
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,6 +29,7 @@
 /* 				background-color:#1F2833; */
 				background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
 				border-radius:25px;
+				max-width:240px;
 			}
 			
 			
@@ -173,9 +176,9 @@
 
 	<div class="container">	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 justify-content-center">
-			<div id="contenedor-menu" class="col-lg-3 col-md-3 col-sm-6">	
-				<div id="" class="row">
-					<div class="col-lg-12 text-center">
+			<div id="contenedor-menu" class="col-lg-3 col-md-6 col-sm-5 col-xs-6">	
+				<div id="" class="row justify-content-center">
+					
 					 	<div id="menu">
 					 		<h2 id="titulo">Buscar:</h2>
 				 			<div id="titulo-menu" class="col col-12 text-left">
@@ -458,10 +461,10 @@
 								<button id="boton" type="reset" class="boton btn btn-sm" onclick="paginar('1')">ACEPTAR</button>							  						  								  
 
 					 	</div>
-					</div>	
+						
 				</div>	
 			</div>
-			<div class="col-lg-9 col-md-9 col-sm-6">
+			<div class="col-lg-9 col-md-6 col-sm-7 col-xs-12">
 				<div id="" class="row justify-content-center">
 					<c:if test="${empty allProducts}">
 						<h2>NO HAY NINGÚN RESULTADO</h2>
@@ -469,46 +472,51 @@
 					<c:if test="${not empty allProducts}">
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
-							<div id="producto" class="col-lg-4 col-md-3 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
-								<div class="producto-img d-flex justify-content-center p-1">
-									<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
-								</div>
-								
-										<i class="fa fa-star" style="color:#F27490;"></i>	
-										<c:if test="${product[8] > 1}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										<c:if test="${product[8] > 2}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										<c:if test="${product[8] > 3}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										<c:if test="${product[8] > 4}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										
-										<c:if test="${product[8] < 2}">
-											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product[8] < 3}">
-											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product[8] < 4}">
-											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product[8] < 5}">
-											<i class="fa fa-star"></i>
-										</c:if>
-								
-								
-								<div id="producto-info" class="justify-content-center p-1">
-									<span>${product[0]}</span>&nbsp<span>${product[1]}</span>&nbsp<span>${product[6]}</span>
-									<br>
-									<br>
-									<div class="d-flex justify-content-between">
-										<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
-										<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img class="rounded-circle" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
+							<div id="producto" class="col-lg-4 col-md-6 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
+								<div id="" class="row justify-content-center text-center">
+									<div class="col-12">
+										<div class="producto-img d-flex justify-content-center p-1">
+											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
+										</div>
+									</div>	
+									<div class="col-12">	
+											<fmt:parseNumber var = "i" type = "number" value= "${product[8]}" />
+											
+											<i class="fa fa-star" style="color:#F27490;"></i>	
+											<c:if test="${i > 1}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${i > 2}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${i > 3}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${i > 4}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											
+											<c:if test="${i < 2}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${i < 3}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${i < 4}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${i < 5}">
+												<i class="fa fa-star"></i>
+											</c:if>
+									</div>
+									<div class="col-12">	
+										<div id="producto-info" class="justify-content-center p-1">
+											<span>${product[0]}</span>&nbsp<span>${product[1]}</span>&nbsp<span>${product[6]}</span>
+										</div>
+									</div>
+									<div class="col-12 text-right">
+											<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
+											<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img class="rounded-circle" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
 									</div>
 								</div>
 							</div>	

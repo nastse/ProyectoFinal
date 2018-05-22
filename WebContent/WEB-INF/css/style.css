@@ -68,27 +68,31 @@
     		
     		.fa-user-circle{
     			color:white;
-    			font-size:40px;
+    			font-size:35px;
     		}
     		
     		.fa-plus-circle{
     			color:white;
-    			font-size:40px;
+    			font-size:35px;
     		}
     		.fa-home{
     			color:white;
-    			font-size:40px;
+    			font-size:35px;
+    		}
+    		.fa-arrow-circle-up{
+    			color:white;
+    			font-size:35px;
     		}
     		
     		.fa-power-off{
     			color:white;
-    			font-size:40px;
+    			font-size:35px;
     		}
     		#inicio{
     			background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
     			border-radius:25px;
     			max-width: 150px;
-    			min-height: 47.78px;
+    			
     			
     		}
     		#texto-inicio{

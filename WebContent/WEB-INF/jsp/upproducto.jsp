@@ -415,7 +415,7 @@
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Comentario (opcional)</label><br>	
-										<textarea id="textarea" style="resize:none" class="form-control" rows="5" name="comentario" maxlength="399"></textarea>
+										<textarea id="textarea" style="resize:none" class="form-control" rows="5" name="comentario"  maxlength="399">${product.comentario}</textarea>
 										<div id="textarea_feedback"></div>	
 									</div>
 								</div>

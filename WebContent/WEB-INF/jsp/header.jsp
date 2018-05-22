@@ -9,10 +9,10 @@
 	    
 	<div id="barra-inicio" class="container-fluid">	
 		<c:if test="${empty sessionScope.email}">
-			<div id="banner" class="row p-2 d-flex justify-content-end align-items-center">
-			        <div id="inicio" class="col-2 mr-auto">						
+			<div id="banner" class="row p-1 d-flex justify-content-end align-items-center">
+			        <div id="inicio" class="col-2 p-1 mr-auto">						
 <%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button> --%>
-							<a href="<c:url value='/index'/>"><i class="fa fa-home"></i></a>
+							<a href="<c:url value='/index'/>"><i class="fa fa-arrow-circle-up"></i></a>
 							<span id="texto-usuario-login">Inicio</span>
 					</div>
 			        <div id="usuario-login" class="col-4 p-1">	
@@ -30,9 +30,9 @@
 		</c:if>
 		<c:if test="${not empty sessionScope.email}">
 			<div id="banner" class="row p-1 d-flex justify-content-end align-items-center">			
-					<div id="inicio" class="col-2 mr-auto">						
+					<div id="inicio" class="col-2 p-1 mr-auto">						
 <%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button> --%>
-							<a href="<c:url value='/index'/>"><i class="fa fa-home"></i></a>
+							<a href="<c:url value='/index'/>"><i class="fa fa-arrow-circle-up"></i></a>
 							<span id="texto-usuario-login">Inicio</span>
 					</div>
 					
@@ -50,10 +50,10 @@
 					
 					<div class="col-1 text-center">
 						<c:if test="${not empty sessionScope.datos[0].imagen}">
-							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
+							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
 						</c:if>
 						<c:if test="${empty sessionScope.datos[0].imagen}">
-							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/imagen.png"></a>
+							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="${pageContext.request.contextPath}/img/imagen.png"></a>
 						</c:if>
 					</div>	
 			</div>		
