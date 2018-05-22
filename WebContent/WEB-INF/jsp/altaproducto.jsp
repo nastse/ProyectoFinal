@@ -122,8 +122,9 @@
 	
 	<script>
  		 	var loadFile = function(event) {
-    		var output = document.getElementById('imagen');
-   		 	output.src = URL.createObjectURL(event.target.files[0]);
+ 		 		
+    			var output = document.getElementById('imagen');
+   		 		output.src = URL.createObjectURL(event.target.files[0]);
   			};
   			
   			
@@ -171,7 +172,7 @@
 									<img  id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/subir.png">	
 							</div> 
 							<div class="col-lg-6">
-									<input id="subir-imagen" class="form-control" type="file" name="image" accept="image/*" class="btn" onchange="loadFile(event)">
+									<input id="subir-imagen" class="form-control" type="file" name="image" required="required" accept="image/jpg" class="btn" onchange="loadFile(event)">
 							</div> 
 				</div>		
 				<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		

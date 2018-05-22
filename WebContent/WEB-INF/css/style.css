@@ -75,6 +75,15 @@
     			color:white;
     			font-size:40px;
     		}
+    		.fa-home{
+    			color:white;
+    			font-size:40px;
+    		}
+    		
+    		.fa-power-off{
+    			color:white;
+    			font-size:40px;
+    		}
     		#inicio{
     			background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
     			border-radius:25px;
@@ -85,9 +94,7 @@
     		#texto-inicio{
 				color:white;
 				font-size:14px;
-				padding-bottom:20px;
-				
-    			
+				padding-bottom:20px;	
 			}
 			
     		#usuario-login{
@@ -97,9 +104,7 @@
     			margin-right:30px;
     		}
     		
-    		#texto-usuario-login:hover{
-    			color:#F27490;
-    		}
+
     		#usuario-subir{
     			background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
 /*     			background-color:#1F2833; */
@@ -107,9 +112,7 @@
     			max-width: 150px;
     			margin-right:20px;
     		}
-    		#texto-usuario-subir:hover{
-    			color:#F27490;
-    		}
+    		
 			#texto-usuario-login{
 				color:white;
 				font-size:14px;

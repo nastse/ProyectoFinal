@@ -12,7 +12,8 @@
 			<div id="banner" class="row p-1 d-flex justify-content-end align-items-center">
 			        <div id="inicio" class="col-2 mr-auto">						
 <%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button> --%>
-						<a href="<c:url value='/index'/>"><span id="texto-inicio">INICIO</span></a>
+							<a href="<c:url value='/index'/>"><i class="fa fa-home"></i></a>
+							<span id="texto-usuario-login">Inicio</span>
 					</div>
 			        <div id="usuario-login" class="col-4 p-1">	
 <%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button> --%>
@@ -29,11 +30,13 @@
 		</c:if>
 		<c:if test="${not empty sessionScope.email}">
 			<div id="banner" class="row p-1 d-flex justify-content-end align-items-center">			
-					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-2 p-1 text-center mr-auto">
-						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button>
+					<div id="inicio" class="col-2 mr-auto">						
+<%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button> --%>
+							<a href="<c:url value='/index'/>"><i class="fa fa-home"></i></a>
+							<span id="texto-usuario-login">Inicio</span>
 					</div>
 					
-					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-2 p-1 text-center">
+					<div class="col-1 text-center">
 						<c:if test="${not empty sessionScope.datos[0].imagen}">
 							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
 						</c:if>
@@ -42,12 +45,16 @@
 						</c:if>
 					</div>
 					
-					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-2 p-1 justify-content-center">	
-						<button id="boton" type="reset" class="btn btn-success btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/myproducts';">MIS REVIEWS</button>	
+					<div id="usuario-subir" class="col-4 p-1">	
+<%-- 						<button id="boton" type="reset" class="btn btn-success btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/myproducts';">MIS REVIEWS</button>	 --%>
+						<a href="<c:url value='/myproducts'/>"><i class="fa fa-plus-circle"></i></a>	
+						<span id="texto-usuario-login">Mis reviews</span>
 					</div>
 					
-					<div class="col-lg-2 col-md-3 col-sm-3 col-xs-2 p-1 justify-content-center">	
-						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">SALIR</button>
+					<div id="usuario-subir" class="col-4 p-1 text-right">
+						<span id="texto-usuario-subir">Salir</span>
+						<a href="<c:url value='/logout'/>"><i class="fa fa-power-off"></i></a>		
+<%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/logout';">SALIR</button> --%>
 					</div>	
 					
 					
