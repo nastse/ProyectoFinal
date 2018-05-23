@@ -7,6 +7,7 @@
 			#contenedor-inicio{
 /* 				background-color:#F7F7F7; */
  				background-color:#F5F5F5; 
+ 			
 			}
 			
 			#lateral{
@@ -16,14 +17,13 @@
 			}
 			#producto{
 				max-width: 220px;
-/* 				background-color:#1F2833; */
 				background-color:white;
-				box
+				height:394px;
 			}
 			#producto-info{
 				width: 200px;
 				background-color:white;
-				margin-left:5px;
+				
 			}
 			hr{
 				border: 1px solid #F27490;

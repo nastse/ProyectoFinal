@@ -155,12 +155,10 @@
 												</div>
 												<div class="form-group">
 													<label id="titulo">TÉRMINOS Y CONDICIONES</label>
-													<div class="checkbox col-12">	
-												      <label><input type="checkbox" value="" requiered>Option 1</label>
-												    </div>
-												    <div class="checkbox  col-12">
-												      <label><input type="checkbox" value="" requiered>Option 2</label>
-												    </div>
+													<div class="form-check">
+														 <input class="form-check-input"  type="checkbox" required name="terminos">
+								 						 <label  class="form-check-label" for="terminos">Acepto los términos y condiciones</label>
+													</div>
 												</div>
 												
 													<button id="login" type="submit" class="btn btn-lg btn-block mb-1">ALTA NUEVA</button>

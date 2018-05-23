@@ -25,8 +25,13 @@
 
         		border-color: #0B0C10;
         		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
-
     		}
+    		
+    		#form:focus{
+    			border-color: #F27490;
+        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
+    		}
+    		
     		#titulo{
     			margin-top:20px;
     			font-family: Trade Gothic, Charcoal, sans-serif; 
@@ -34,14 +39,7 @@
     			font-size:14px;
     			text-transform: uppercase;
     		}
-    		
-    		
-    		
-    		#form:focus{
-    			border-color: #F27490;
-        		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
-    		}
-    		
+
     		#columna{
     		
     			margin-top:30px;

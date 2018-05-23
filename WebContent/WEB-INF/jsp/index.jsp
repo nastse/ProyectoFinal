@@ -29,11 +29,11 @@
 /* 				background-color:#1F2833; */
 				background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
 				border-radius:25px;
-				max-width:240px;
+				max-width:220px;
+				min-width:220px;
 			}
 			
-			
-			
+
 			
 			.dropdown-dark:before {
 			  border-bottom-color: #aaa;
@@ -175,9 +175,9 @@
 	<jsp:include page="header.jsp" />
 
 	<div class="container">	
-		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 justify-content-center">
-			<div id="contenedor-menu" class="col-lg-3 col-md-6 col-sm-5 col-xs-6">	
-					 	<div id="menu">
+		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 p-1 m-1 justify-content-center">
+			<div id="contenedor-menu" class="lg-col-3 text-center">	
+					 	<div id="menu" class="m-1">
 					 		<h2 id="titulo">Buscar:</h2>
 				 			<div id="titulo-menu" class="col col-12 text-left">
 				 				<i onclick="colapsarMenu('marca')" class="fa fa-chevron-down"></i>&nbsp<spam>MARCA</spam> <spam id="subtitulo">prenda</spam> 
@@ -467,8 +467,8 @@
 					<c:if test="${not empty allProducts}">
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
-							<div id="producto" class="col-lg-4 col-md-6 col-sm-3 col-xs-3 p-1 m-2 rounded justify-content-center shadow mb-2 bg-white rounded" id="${product[4]}">
-								<div id="" class="row justify-content-center text-center">
+							<div class="lg-col-3" id="${product[4]}">
+								<div id="producto" class="row justify-content-center text-center shadow mb-2 bg-white rounded p-1 m-1">
 									<div class="col-12">
 										<div class="producto-img d-flex justify-content-center p-1">
 											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
@@ -505,9 +505,7 @@
 											</c:if>
 									</div>
 									<div class="col-12">	
-										<div id="producto-info" class="justify-content-center p-1">
 											<span>${product[0]}</span>&nbsp<span>${product[1]}</span>&nbsp<span>${product[6]}</span>
-										</div>
 									</div>
 									<div class="col-12 text-right">
 											<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
