@@ -171,6 +171,11 @@
 								</div>
 										<input type="file" name="image" accept="image/*" class="btn" onchange="loadFile(event)">
 								
+							<c:if test="${not empty mensaje_alta}">	
+  								<div id="error-alta" class="col-lg-12 ">
+									<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
+								</div>
+							</c:if>	
 					</div>		
 					<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		
 	<!-- 						COLUMNA CENTRAL -->

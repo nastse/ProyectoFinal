@@ -202,13 +202,11 @@ public class UpdateProducto_Controller {
 					error = true;
 				}
 				
-				if(!error) {
 				
-
 				//RECOJO EL NOMBRE DE LA IMAGEN PARA GUARDARLO EN LA BASE DE DATOS
 				//TODO CREAR UN NOMBRE(ID) PARA QUE SEA UNICO Y NO SE SOBREESCRIBAN LAS IMAGENES
 				//String imagen = new File(data.get(0).getName()).getName();
-				String imagen = UUID.randomUUID().toString()+".jpg";
+				String imagen = "";
 			
 				//TODO
 			//RECOJO TODOS LOS DATOS PARA MANTENERLOS EN EL CASO DE QUE HAYA QUE VALIDAR EL FORMULARIO
@@ -217,39 +215,54 @@ public class UpdateProducto_Controller {
 				//SI SE HA SUBIDO UNA IMAGEN NUEVA LA AGREGO A LA BASE DE DATOS Y AL DIRECTORIO
 				if(!data.get(0).getName().equals("")) {
 					
-					String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-					data.get(0).write(new File(path + File.separator + imagen));
+					String tipoarchivo = data.get(0).getName().toUpperCase();
+					boolean extension = tipoarchivo.endsWith(".JPG") || tipoarchivo.endsWith(".JPEG") || tipoarchivo.endsWith(".PNG");
 					
-					product1.setImagen(imagen);
+					
+					if (!extension) {
+					      error=true;
+					      md.addAttribute("mensaje_alta", "ERROR LA IMAGEN DEBE SER TIPO JPG/JPEG/PNG");
+					   }else {
+						   
+						   imagen = UUID.randomUUID().toString()+".jpg";
+						   
+						   String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
+						   data.get(0).write(new File(path + File.separator + imagen));   
+					   }
 					
 				}else {
 					
 					//RECOJO Y MANTENGO EL NOMBRE DE LA IMAGEN ORIGINAL YA QUE NO SE HA CARGADO IMAGEN NUEVA
-					product1.setImagen((String)session.getAttribute("imagen"));
+					imagen=((String)session.getAttribute("imagen"));
 				}
-
 				
-				product1.setCategoria(categoria);
-				product1.setMarca(marca);
-				product1.setModelo(modelo);
-				product1.setTalla(talla);
-				product1.setAnio(Integer.parseInt(anio));
-				product1.setPrecio(Integer.parseInt(precio));
-				product1.setTallauser(tallauser);
-				product1.setPeso(Integer.parseInt(peso));
-				product1.setAltura(Integer.parseInt(altura));
-				product1.setPecho(Integer.parseInt(pecho));
-				product1.setCintura(Integer.parseInt(cintura));
-				product1.setCadera(Integer.parseInt(cadera));
-				product1.setTemp_min(Integer.parseInt(temp_min));
-				product1.setTemp_max(Integer.parseInt(temp_max));
-				product1.setAjuste(Integer.parseInt(ajuste));
-				product1.setRecomendable(Integer.parseInt(recomendable));
-				product1.setComentario(comentario);
 				
-				product1.setId_rev(id_rev);
+				if(!error) {
+					
+					
+					product1.setImagen(imagen);
 				
-				System.out.println("product dev:" + id_rev + categoria + marca+ modelo);
+					product1.setCategoria(categoria);
+					product1.setMarca(marca);
+					product1.setModelo(modelo);
+					product1.setTalla(talla);
+					product1.setAnio(Integer.parseInt(anio));
+					product1.setPrecio(Integer.parseInt(precio));
+					product1.setTallauser(tallauser);
+					product1.setPeso(Integer.parseInt(peso));
+					product1.setAltura(Integer.parseInt(altura));
+					product1.setPecho(Integer.parseInt(pecho));
+					product1.setCintura(Integer.parseInt(cintura));
+					product1.setCadera(Integer.parseInt(cadera));
+					product1.setTemp_min(Integer.parseInt(temp_min));
+					product1.setTemp_max(Integer.parseInt(temp_max));
+					product1.setAjuste(Integer.parseInt(ajuste));
+					product1.setRecomendable(Integer.parseInt(recomendable));
+					product1.setComentario(comentario);
+					
+					product1.setId_rev(id_rev);
+					
+					System.out.println("product dev:" + id_rev + categoria + marca+ modelo);
 				
 				}	
 				

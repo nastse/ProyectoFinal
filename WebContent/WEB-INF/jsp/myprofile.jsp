@@ -100,9 +100,18 @@
 
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 text-center">	
   								<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}"><br>
-  								<span id="texto">Sube una imagen de perfil tipo .jpg de tamaño máximo 2MB</span>
+  								<span id="texto">Sube una imagen de perfil tipo jpg/jpeg/png de tamaño máximo 5MB</span>
+  							
+  							<div class="col-lg-12 ">	
   								<input id="carga" type="file" accept="image/*" name="image" class="btn " onchange="loadFile(event)">
   								<input id="form" type="hidden" name="imagen" value="${usuario.imagen}">
+  							</div>
+  							
+  							<c:if test="${not empty mensaje_alta}">	
+  								<div id="error-alta" class="col-lg-12 ">
+									<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
+								</div>
+							</c:if>	
 						</div>
 					</div>
 			

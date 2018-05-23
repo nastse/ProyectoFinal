@@ -172,8 +172,19 @@
 							<div class="col-lg-6">
 									<input id="subir-imagen" class="form-control" type="file" name="image" required="required" accept="image/*" class="btn" onchange="loadFile(event)">
 							</div> 
+							
+						<c:if test="${not empty mensaje_alta}">	
+ 								<div id="error-alta" class="col-lg-12 ">
+								<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
+							</div>
+						</c:if>		
+								
+							
 				</div>		
 				<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		
+					<div class="col-lg-12">
+							
+					</div>
 <!-- 						COLUMNA CENTRAL -->
 						<div id="column-center" class="col-lg-4">							
 							<div id="" class="row justify-content-md-center justify-content-sm-center">	

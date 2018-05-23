@@ -164,3 +164,14 @@
     		}#link-negro:hover{
     			color:#F27490;
     		}
+    		
+    		#error-alta{
+    			
+    			margin-top:15px;
+    			margin-bottom:15px;
+    		}
+
+    		#error-alta-texto{
+    			font-size:10px;
+    			
+    		}
