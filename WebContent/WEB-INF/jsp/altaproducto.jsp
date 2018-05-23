@@ -170,7 +170,7 @@
 									<img  id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/subir.png">	
 							</div> 
 							<div class="col-lg-6">
-									<input id="subir-imagen" class="form-control" type="file" name="image" required="required" accept="image/jpg" class="btn" onchange="loadFile(event)">
+									<input id="subir-imagen" class="form-control" type="file" name="image" required="required" accept="image/*" class="btn" onchange="loadFile(event)">
 							</div> 
 				</div>		
 				<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		

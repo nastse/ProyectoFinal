@@ -19,7 +19,7 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			color:white;
     			font-size:18px;
-				background-color:#F5F5F5;
+				
     		
 			}
 			#menu{
@@ -468,7 +468,7 @@
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
 							<div class="lg-col-3" id="${product[4]}">
-								<div id="producto" class="row justify-content-center text-center shadow mb-2 bg-white rounded p-1 m-1">
+								<div id="producto" class="row justify-content-center text-center  bg-white rounded p-1 m-1">
 									<div class="col-12">
 										<div class="producto-img d-flex justify-content-center p-1">
 											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	

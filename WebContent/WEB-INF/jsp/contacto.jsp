@@ -79,71 +79,79 @@
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
 	
+	
+	<script>
+		$(document).ready(function() {
+			    var text_max = 999;
+			    $('#textarea_feedback').html('te quedan '+text_max + ' caracteres');
+	
+			    $('#textarea').keyup(function() {
+			        var text_length = $('#textarea').val().length;
+			        var text_remaining = text_max - text_length;
+	
+			        $('#textarea_feedback').html('te quedan '+ text_remaining + ' caracteres');
+			    });
+		});
+	</script>
+	
 </head>
 
 <!-- 	AQU� INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 
-<body>
-
-<c:if test="${empty sessionScope.email}">	
+<body>	
 	<div class="container">
-		<div class="row justify-content-md-center justify-content-sm-center text-center">	
-			<h2>INICIAR SESIÓN CON UNA CUENTA</h2>
-		</div>	
+		
 			
 		<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		
-	<!-- 						COLUMNA IZQUIERDA -->
-							<div id="column-center" class="col-lg-6">							
-								<div id="" class="row justify-content-md-center justify-content-sm-center">	
-									<div class="col-lg-10 text-center">
-										<h5 id="columna">YA ESTOY REGISTRADO</h5>
-										<hr>
-									</div>
-									<div class="col-lg-10">
-										<!-- 	AUTHENTICATION PROCES FOR LOGIN SECCION 6 -->
-										<label style="color: red;">${error_msg}</label>
-										
-										<form:form action="${pageContext.request.contextPath}/login" modelAttribute="user" method="post" onsubmit="closeWindow()">
-											<form:errors class="alert alert-danger" path="*"  element="div"/>
-											
-												<div class="form-group">
-													<label id="titulo">EMAIL</label>
-														<form:input  id="form" class="form-control" type="text" path="email" name="username"></form:input>
-									<%-- 					<br><form:errors path="email" style="color:red"></form:errors> --%>
-												</div>	
-												<div class="form-group">
-													<label id="titulo">CONTRASEÑA</label>
-														<form:input id="form" class="form-control" type="password" path="password" name="password"></form:input>
-									<%-- 					<br><form:errors path="password" style="color:red"></form:errors> --%>
-												</div>	
-												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">INICIAR SESIÓN</button>
-												
-						
-										</form:form>	
+	<!-- 						COLUMNA CENTRAL -->
+			<div id="column-center" class="col-lg-6">							
+				<div id="" class="row justify-content-md-center justify-content-sm-center">	
+					<div class="col-lg-10 text-center">
+						<h5 id="columna">FORMULARIO DE CONTACTO</h5>
+						<hr>
+					</div>
+					<div class="col-lg-10">
+
+						<form action="${pageContext.request.contextPath}/contacto"  method="post">
+								<div class="form-group">
+									<label id="titulo">EMAIL DE CONTACTO</label>
+										<input  id="form" class="form-control" type="text" name="username" required></input>
+								</div>	
+								<div class="form-group">
+									<label id="titulo">CATEGORIA</label>
+										<select id="form" class="form-control" name="motivo" required>
+											<option value = ""></option>
+											<option value = "info">INFORMACIÓN</option>
+											<option value = "inci">INCIDENCIA</option>
+											<option value = "prop">PROPUESTA</option>
+											<option value = "otro">OTROS MOTIVOS</option>
+										</select>
+								</div>	
+								<div class="form-group">
+									<label id="titulo">COMENTARIO</label><br>	
+									<textarea id="textarea" style="resize:none" class="form-control" rows="10" name="comentario" maxlength="999"></textarea>
+									<div id="textarea_feedback"></div>	
+								</div>
+								<div class="form-group">
+									<label id="titulo">TÉRMINOS Y CONDICIONES</label>
+									<div class="form-check">
+										 <input class="form-check-input"  type="checkbox" required name="terminos">
+				 						 <label class="form-check-label" for="terminos">Acepto los <a id="link-negro" href="<c:url value='/contacto'/>">términos, condiciones y políticas de privacidad</a></label>
 									</div>
 								</div>	
-							</div>		
-	<!-- 						COLUMNA DERECHA -->	
-							<div id="column-center" class="col-lg-6">							
-								<div id="" class="row justify-content-md-center justify-content-sm-center">	
-									<div class="col-lg-10 text-center">
-										<h5 id="columna">SOY NUEVO</h5>
-										<hr>
-									</div>
-									
-									<div class="col-lg-10">
-										<div class="form-group">
-											<button id="alta" type="reset" class="btn btn-lg btn-block mb-1" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA NUEVA</button>
-										</div>	
-									</div>	
-								</div>	
-							</div>			
-				
+								
+								
+								<button id="login" type="submit" class="btn btn-lg btn-block mb-1">ENVIAR</button>
+
+						</form>	
+					</div>
+				</div>	
+			</div>		
+	
 		</div>
-	</div>
-</c:if>	
+	</div>	
 </body>
 
 <footer>

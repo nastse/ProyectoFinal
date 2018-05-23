@@ -169,7 +169,7 @@
 								<div class="col-lg-12">
 										<img id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">	
 								</div>
-										<input type="file" name="image" accept="image/jpeg" class="btn" onchange="loadFile(event)">
+										<input type="file" name="image" accept="image/*" class="btn" onchange="loadFile(event)">
 								
 					</div>		
 					<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		

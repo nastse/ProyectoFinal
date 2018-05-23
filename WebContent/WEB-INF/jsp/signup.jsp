@@ -157,7 +157,7 @@
 													<label id="titulo">TÉRMINOS Y CONDICIONES</label>
 													<div class="form-check">
 														 <input class="form-check-input"  type="checkbox" required name="terminos">
-								 						 <label  class="form-check-label" for="terminos">Acepto los términos y condiciones</label>
+								 						 <label  class="form-check-label" for="terminos">Acepto los <a id="link-negro" href="<c:url value='/contacto'/>">términos, condiciones y políticas de privacidad</a></label>
 													</div>
 												</div>
 												

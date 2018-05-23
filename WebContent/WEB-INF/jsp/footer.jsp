@@ -4,6 +4,8 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
 <style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
+    		
+    		
 
 </style>
 	    
@@ -16,10 +18,10 @@
 			<div class="col-3">
 				<div id="" class="row justify-content-center">
 					<div class="col-12">
-						<h5>Quiénes somos</h5>
+						<a id="link" href="<c:url value='/contacto'/>"><h5>Quiénes somos</h5></a>
 					</div>
 					<div class="col-12">
-						<h5>Como surgió la idea</h5>
+						<a id="link" href="<c:url value='/contacto'/>"><h5>Como surgió la idea</h5></a>
 					</div>	
 				</div>		
 			</div>
@@ -27,10 +29,10 @@
 			<div class="col-3">
 				<div id="" class="row justify-content-center">
 					<div class="col-12">
-						<h5>Términos de uso</h5>
+						<a id="link" href="<c:url value='/contacto'/>"><h5>Términos de uso</h5></a>
 					</div>
 					<div class="col-12">
-						<h5>Política de privacidad</h5>
+						<a id="link" href="<c:url value='/contacto'/>"><h5>Política de privacidad</h5></a>
 					</div>
 				</div>		
 			</div>
@@ -38,7 +40,7 @@
 			<div class="col-3">
 				<div id="" class="row justify-content-center">
 					<div class="col-12">
-						<h5>Contacta</h5>
+						<a id="link" href="<c:url value='/contacto'/>"><h5>Contacta</h5></a>
 					</div>
 					
 				</div>		
