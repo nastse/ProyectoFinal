@@ -89,7 +89,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		
 		
 		//List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen from User u, Products p where u.id_usuario=p.id_user" ).list();
-		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen, p.recomendable from User u, Products p where " 
+		List<String> allProductsNames = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen, p.recomendable, p.tallauser, p.talla, u.peso, u.altura, u.genero from User u, Products p where " 
 		+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"' "
 		+ " and p.tallauser like '"+tallauser2+"' and p.peso like '"+peso2+"' and p.altura like '"+altura2+"' and p.pecho like '"+pecho2+"' "
 		+ " and p.cadera like '"+cadera2+"' and p.cintura like '"+cintura2+"' and u.genero like '"+genero2+"'").list();
@@ -158,7 +158,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			Session session = HibernateConnection.doHibernateConnection().openSession();
 			
 			
-			Query q  = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen, p.recomendable from User u, Products p where " 
+			Query q  = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.email, p.modelo, u.imagen, p.recomendable, p.tallauser, p.talla, u.peso, u.altura, u.genero from User u, Products p where " 
 					+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"' " 
 					+ " and p.tallauser like '"+tallauser2+"' and p.peso like '"+peso2+"' and p.altura like '"+altura2+"' and p.pecho like '"+pecho2+"' " 
 					+ " and p.cadera like '"+cadera2+"' and p.cintura like '"+cintura2+"' and u.genero like '"+genero2+"'");

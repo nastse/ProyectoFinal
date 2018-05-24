@@ -12,12 +12,7 @@
 	
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
-    		span{
-				background-color: #F27490;
-				display: inline-block;
-				height: 5px;
-				width: 30px;
-    		}
+    		
     		
 	</style>
 		

@@ -13,6 +13,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,11 +58,12 @@ public class Myprofile_Controller {
 	}
 	
 	@RequestMapping(value="/myprofile" , method=RequestMethod.POST)
-	public String actualizar_myprofile(HttpServletRequest request, HttpSession session)
+	public String actualizar_myprofile(HttpServletRequest request, HttpSession session, Model md)
 	{
 		ModelAndView mav = new ModelAndView("myprofile");
 		
-		String message = "";
+		boolean error = false;
+		String mensaje = "";
 		
 		if(ServletFileUpload.isMultipartContent(request))
 		{
@@ -83,41 +85,75 @@ public class Myprofile_Controller {
 				String edad = data.get(6).getString();
 				String id_usuario = data.get(7).getString();
 				
-				//COMPRUEBO SI EL USUARIO HA SELECCIONADO UNA IMAGEN PARA GUARDAR LA NUEVA O MANTENER LA ANTIGUA
-				String image="";
-				//PARA COMPROBAR SI HAY IMAGEN NUEVA SELECCIONADA
-				if(data.get(0).getName().equals("")) {
 					
-					//SI NO SE SELECCIONA UNA NUEVA MANTENGO LA ANTIGUA
-					image = data.get(1).getString();
-				
-				//SI SE SELECCIONA UNA NUEVA RECOJO SU VALOR PARA GUARDARLO, GENERANDO UN UUID ALEATORIO
-				}else {
-					
-					//image = new File(data.get(0).getName()).getName();
-					image = UUID.randomUUID().toString()+".jpg";
-					String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-					data.get(0).write(new File(path + File.separator + image));
+				if((Integer)Integer.parseInt(peso) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(altura) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(edad) instanceof Integer == false) {
+					error = true;
+				}if((Integer)Integer.parseInt(id_usuario) instanceof Integer == false) {
+					error = true;
 				}
 				
-				String mesagge = RegisteryDAO.userDAO.doHibernateUpdateUser(username, Integer.parseInt(peso), Integer.parseInt(altura), Integer.parseInt(edad), genero, image, Integer.parseInt(id_usuario));
-				
-				//REFRESCO LOS DATOS TRAS ACTUALIZAR EL USUARIO PARA CARGAR LAS IMAGENES
-				List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(username);
-				session.setAttribute("datos", datos);
+					//COMPRUEBO SI EL USUARIO HA SELECCIONADO UNA IMAGEN PARA GUARDAR LA NUEVA O MANTENER LA ANTIGUA
+					String image="";
+					//PARA COMPROBAR SI HAY IMAGEN NUEVA SELECCIONADA
+					if(data.get(0).getName().equals("")) {
+						
+						//SI NO SE SELECCIONA UNA NUEVA MANTENGO LA ANTIGUA
+						image = data.get(1).getString();
+						
+						session.removeAttribute("mensaje_alta");
+					
+					//SI SE SELECCIONA UNA NUEVA RECOJO SU VALOR PARA GUARDARLO, GENERANDO UN UUID ALEATORIO
+					}else {
+						
+						String tipoarchivo = data.get(0).getName().toUpperCase();
+						boolean extension = tipoarchivo.endsWith(".JPG") || tipoarchivo.endsWith(".JPEG") || tipoarchivo.endsWith(".PNG");
+						
+						if (!extension) {
+						      error=true;
+						      session.setAttribute("mensaje_alta", "ERROR LA IMAGEN DEBE SER TIPO JPG/JPEG/PNG");
+						   }else {
+							   
+								 //image = new File(data.get(0).getName()).getName();
+								image = UUID.randomUUID().toString()+".jpg";
+								String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
+								data.get(0).write(new File(path + File.separator + image));
+								
+								session.removeAttribute("mensaje_alta");
+						   }
+					}
+					
+					
+					if(!error) {
+						mensaje = RegisteryDAO.userDAO.doHibernateUpdateUser(username, Integer.parseInt(peso), Integer.parseInt(altura), Integer.parseInt(edad), genero, image, Integer.parseInt(id_usuario));
+						
+						//REFRESCO LOS DATOS TRAS ACTUALIZAR EL USUARIO PARA CARGAR LAS IMAGENES
+						List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(username);
+						session.setAttribute("datos", datos);
+					}
+			
 			}
 			catch(Exception e)
 			{
 				System.out.println(e);
-				message = "Please try again....";
+				String message = "Please try again....";
 			}
 		}
 			
-		mav.addObject("message", message);
-			
-		//return mav;
 		
-		return "redirect:/myprofile";
+		if(mensaje.equals("Actualizacion correcta...")) {
+			
+			return "redirect:/myprofile";
+			
+		}
+		//SI NO, VUELVO MANTENIENDO LOS CAMPOS CON LA INFORMACION Y DEVOLVIENDO LOS ERRORES
+		else {
+						
+			return "redirect:/myprofile";
+			
+		}			
 	}
-
 }

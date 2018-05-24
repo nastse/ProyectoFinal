@@ -468,7 +468,19 @@
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
 							<div class="lg-col-3" id="${product[4]}">
-								<div id="producto" class="row justify-content-center text-center  bg-white rounded p-1 m-1">
+								<div id="producto" class="row justify-content-center text-center bg-white rounded p-1 m-1">
+									<div class="col-12">
+										<div class="row justify-content-center">
+											<div id="contenedor-talla" class="col-2 text-center">
+												<span>${product[10]}</span>
+											</div>
+											<div class="col-6 mr-auto text-center p-0 align-self-center">
+												<span id="marca">${product[1]}</span>
+											</div>
+										</div>
+										
+									</div>
+										
 									<div class="col-12">
 										<div class="producto-img d-flex justify-content-center p-1">
 											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
@@ -505,11 +517,22 @@
 											</c:if>
 									</div>
 									<div class="col-12">	
-											<span>${product[0]}</span>&nbsp<span>${product[1]}</span>&nbsp<span>${product[6]}</span>
+											<span id="modelo">${product[6]}</span>
 									</div>
-									<div class="col-12 text-right">
-											<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
-											<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img class="rounded-circle" width="50px" height="50px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
+<!-- 									<div class="col-12">	 -->
+<%-- 											<span id="categoria">${product[0]}</span> --%>
+<!-- 									</div> -->
+									<div class="col-12">
+										<div class="row">	
+											<div class="col-8 text-center p-0 align-self-end">
+												<span id="datos">${product[13]}</span>&nbsp<span id="datos">${product[12]}cm</span>&nbsp<span id="datos">${product[11]}kg</span>
+	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
+											</div>
+											<div class="col-2 text-center">
+												<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img id="imagen" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
+											</div>
+											
+										</div>
 									</div>
 								</div>
 							</div>	
