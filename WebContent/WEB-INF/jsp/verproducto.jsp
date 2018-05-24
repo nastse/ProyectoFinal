@@ -2,8 +2,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,21 +21,34 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
 </head>
 
-<!-- 	AQUÍ INSERTO EL HEADER -->
+<!-- 	AQUÃ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 
 <body>
 	<div class="container shadow p-2 bg-white rounded justify-content-center">	
 	
-		<div id="" class="row justify-content-md-center justify-content-sm-center text-center">
-			<h4>Cabecera con info del Usuario que lo ha subido</h4>
-		</div>
-		
 		<div class="row justify-content-md-center justify-content-sm-center text-center">
-			<div class="col-lg-6">
-					<img class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">
+			<div class="col-12 align-self-center">
+				<div class="row">	
+					<div id="contenedor-talla-ver" class="col-1">
+						<span>${product.talla}</span>
+					</div>
+					<div class="col-10">
+						<span id="marca-ver">${product.marca}</span>&nbsp	
+						<span id="modelo-ver">${product.modelo}</span>&nbsp
+						<span id="anio-ver">${product.anio}</span>&nbsp
+						<span id="modelo-ver">${product.precio}â‚¬</span>
+					</div>
+				</div> 	
 			</div>
+			
+			<div class="col-12">
+					<img id="contenedor-imagen-ver" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">
+			</div>
+			
+			
+			
 		</div>	
 		<div class="row justify-content-md-center justify-content-sm-center text-center">
 			<div class="col-lg-6">
@@ -69,13 +82,13 @@
 				<td>${product.altura}</td>
 			</div>
 			<div class="col-lg-6">
-				<label>Temperatura Mínima</label><br>						
+				<label>Temperatura MÃ­nima</label><br>						
 			</div>
 			<div class="col-lg-6">
 				<td>${product.temp_min}</td>	
 			</div>
 			<div class="col-lg-6">
-				<label>Temperatura Máxima</label><br>						
+				<label>Temperatura MÃ¡xima</label><br>						
 			</div>
 			<div class="col-lg-6">	
 				<td>${product.temp_max}</td>
@@ -127,7 +140,7 @@
 </body>
 
 <footer>
-	<!-- 	AQUÍ INSERTO EL FOOTER -->
+	<!-- 	AQUÃ INSERTO EL FOOTER -->
 	<jsp:include page="footer.jsp" />	
 </footer>
 </html>

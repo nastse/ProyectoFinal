@@ -189,11 +189,53 @@
 			    background-color:black;
 			    border: 2px solid #F27490;
     		}
+    		#contenedor-talla-ver{
+    			padding:0;
+    			margin-left:20px;
+    			padding-top:14px;
+    			border-radius: 50%;
+    			min-width: 60px;
+			    min-height: 60px;
+			    max-width: 60px;
+			    max-height: 60px;
+			    font-family: Trade Gothic, Charcoal, sans-serif; 
+			    font-size:18px;
+			    color:white;
+			    background-color:black;
+			    border: 2px solid #F27490;
+    		}#marca-ver{
+    			
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:40px;
+    			font-weight: bold;
+    			text-transform: uppercase;
+    		}
+    		
+    		#modelo-ver{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:40px;	
+    		}
+    		
+    		#anio-ver{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:40px;	
+    			font-weight: bold;
+    		}
+    		#categoria-ver{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:28px;
+    		}
+    		#datos-ver{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:22px;
+    			
+    		}
     		#marca{
     			
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:20px;
     			font-weight: bold;
+    			
     		}
     		
     		#modelo{
@@ -211,5 +253,9 @@
     		}#imagen{
     			
     			border: 1px solid black;
+    		}
+    		#contenedor-imagen-ver{
+    		
+    			max-height: 640px;
     		}
     		
