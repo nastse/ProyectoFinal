@@ -23,13 +23,7 @@
     			margin-top:20px;
     			max-width:200px;
     		}
-    		#titulo{
-    			margin-top:20px;
-    			font-family: Trade Gothic, Charcoal, sans-serif; 
-    			font-weight: bold;
-    			font-size:14px;
-    			text-transform: uppercase;
-    		}
+    		
     		.form-control{
     			border-width: 2px; 
     			border-color: #0B0C10;

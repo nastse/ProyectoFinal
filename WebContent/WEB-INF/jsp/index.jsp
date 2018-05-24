@@ -525,7 +525,7 @@
 									<div class="col-12">
 										<div class="row">	
 											<div class="col-8 text-center p-0 align-self-end">
-												<span id="datos">${product[13]}</span>&nbsp<span id="datos">${product[12]}cm</span>&nbsp<span id="datos">${product[11]}kg</span>
+												<span id="datos"><span id="datos">Talla: ${product[9]}</span>&nbsp<span id="datos">${product[12]}cm</span>&nbsp<span id="datos">${product[11]}kg</span>&nbsp
 	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
 											</div>
 											<div class="col-2 text-center">

@@ -37,10 +37,10 @@ public class Myprofile_Controller {
 			
 			
 			//PARA RECIBIR EL NOMBRE DE LA SESION LE PASO EL NOMBRE DE LA CLAVE QUE LE ASIGNADO
-			String email = session.getAttribute("email").toString();
+			String id_usuario = session.getAttribute("id_usuario").toString();
 			
 			//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
-			List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(email);
+			List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
 			
 			
 			if(session.getAttribute("id")  == null) {
@@ -49,7 +49,7 @@ public class Myprofile_Controller {
 			}
 			
 			//mv.addObject("user", username);
-			map.addAttribute("email", email);
+			map.addAttribute("email", session.getAttribute("email"));
 			map.addAttribute("datosUsuario", datosUsuario);
 			
 		}
@@ -131,7 +131,7 @@ public class Myprofile_Controller {
 						mensaje = RegisteryDAO.userDAO.doHibernateUpdateUser(username, Integer.parseInt(peso), Integer.parseInt(altura), Integer.parseInt(edad), genero, image, Integer.parseInt(id_usuario));
 						
 						//REFRESCO LOS DATOS TRAS ACTUALIZAR EL USUARIO PARA CARGAR LAS IMAGENES
-						List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(username);
+						List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
 						session.setAttribute("datos", datos);
 					}
 			

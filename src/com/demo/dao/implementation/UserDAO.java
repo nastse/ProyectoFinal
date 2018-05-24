@@ -162,13 +162,13 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			return usuario;
 		}
 		
-		public List<String> getUserDatos(String email) {
+		public List<String> getUserDatos(String id_usuario) {
 			
 			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			
-			List<String> datos = session.createQuery("From User where email='"+email+"'").list();
+			List<String> datos = session.createQuery("From User where id_usuario='"+id_usuario+"'").list();
 			
 			session.close();
 			

@@ -37,9 +37,11 @@ public class VistaProducto_Controller {
 
 		ModelAndView mav = new ModelAndView("verproducto");
 		System.out.println(id);
+		String usuario="";
 
 		Products producto = new Products();
 		producto = RegisteryDAO.getProductsDAO().getProductByProductId(id);
+		
 		
 		
 		if(producto == null) {
@@ -47,11 +49,19 @@ public class VistaProducto_Controller {
 			mav = new ModelAndView("error"); 
 			return mav;
 	
+		}else {
+			
+			//BUSCO EL NOMBRE DEL USUARIO PARA PODER MOSTRARLO EN EL LA PAGINA
+			usuario = RegisteryDAO.getUserDAO().getUserName(producto.getId_user());
+			
+			
+			mav.addObject("product", producto);
+			mav.addObject("usuario", usuario);
+			return mav;
+			
 		}
 		
-		mav.addObject("product", producto);
 		
-		return mav;
 	}
 	
 }	

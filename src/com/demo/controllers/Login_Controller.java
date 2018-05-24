@@ -70,7 +70,7 @@ public class Login_Controller {
 			//Si hay algun error de validacion no hago nada
 			if(br.getAllErrors().size() > 0) {
 			
-				System.out.println("Se ha validad por el lado servidor");
+				System.out.println("Se ha validado por el lado servidor");
 				
 			//Si no hay ningun error me compruebo mi User y password para loguearme 	
 			}else {
@@ -82,6 +82,8 @@ public class Login_Controller {
 				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, password);
 				String mensaje = "";
 				
+				
+				
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
 				//TODO EN VEZ DE RECOGER AQUI LOS PRODUCTOS Y PASARLOS LOS RECOJO EN EL GET DE MYPRODUCTS
 				//List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(usuario);
@@ -90,7 +92,7 @@ public class Login_Controller {
  				
 				if(usuario != 0) {
 
-					List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(username);
+					List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(String.valueOf(usuario));
 					
 					//A�ADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
 
