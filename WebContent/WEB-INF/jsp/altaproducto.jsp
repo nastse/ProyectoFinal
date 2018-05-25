@@ -167,14 +167,15 @@
 				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 							
 							<div class="col-lg-12">
-									<img  id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/subir.png">	
+								<img  id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/subir.png">	
 							</div> 
 							<div class="col-lg-6">
-									<input id="subir-imagen" class="form-control" type="file" name="image" required="required" accept="image/*" class="btn" onchange="loadFile(event)">
+								<input id="subir-imagen" class="form-control" type="file" name="image" required="required" accept="image/*" class="btn" onchange="loadFile(event)">
+								<span id="texto">Sube una imagen tipo jpg/jpeg/png de tamaño máximo 5MB</span>
 							</div> 
 							
 						<c:if test="${not empty mensaje_alta}">	
- 								<div id="error-alta" class="col-lg-12 ">
+ 							<div id="error-alta" class="col-lg-12 ">
 								<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
 							</div>
 						</c:if>		
@@ -370,7 +371,13 @@
 							     	</select>
 								</div>
 								<div class="col-lg-10">
-									<label id="titulo">Ajuste/Comodidad</label><br>
+									<div class="col-12">
+										<label id="titulo">Ajuste/Comodidad</label><br>
+									</div>	
+									<div id="puntos">
+										<i class="fa fa-minus"></i>
+										<i class="fa fa-plus ml-auto"></i>	
+									</div>
 									<div id="radios">
 									  <label id="r" for="input1"></label>
 									  <input  id="input1" name="ajuste" type="radio" value="1"/>
@@ -385,21 +392,28 @@
 									  <span id="slider"></span>
 									</div>
 								</div>
-								<div class="col-lg-10">
-									<label id="titulo">Recomendable</label><br>
-									<div id="radios">
-									  <label id="r" for="input10"></label>
-									  <input  id="input10" name="comodidad" type="radio" value="1"/>
-									  <label id="r" for="input20"></label>
-									  <input  id="input20" name="comodidad" type="radio" value="2"/>
-									  <label id="r" for="input30"></label>
-									  <input  id="input30" name="comodidad" type="radio" value="3" checked/>
-									  <label id="r" for="input40"></label>
-									  <input  id="input40" name="comodidad" type="radio" value="4"/>
-									  <label id="r" for="input50"></label>
-									  <input  id="input50" name="comodidad" type="radio" value="5"/>
-									  <span id="slider"></span>
-									</div>
+								<div class="col-lg-10">				
+										<div class="col-12">
+											<label id="titulo">Recomendable</label><br>
+										</div>
+										<div id="puntos">
+											<i class="fa fa-minus"></i>
+											<i class="fa fa-plus ml-auto"></i>	
+										</div>
+										<div id="radios">										  
+											  <label id="r" for="input10"></label>
+											  <input  id="input10" name="comodidad" type="radio" value="1"/>
+											  <label id="r" for="input20"></label>
+											  <input  id="input20" name="comodidad" type="radio" value="2"/>
+											  <label id="r" for="input30"></label>
+											  <input  id="input30" name="comodidad" type="radio" value="3" checked/>
+											  <label id="r" for="input40"></label>
+											  <input  id="input40" name="comodidad" type="radio" value="4"/>
+											  <label id="r" for="input50"></label>
+											  <input  id="input50" name="comodidad" type="radio" value="5"/>
+											  <span id="slider"></span>	  
+										</div>
+										
 								</div>
 								<div class="col-lg-10">
 									<label id="titulo">Comentario (opcional)</label><br>	

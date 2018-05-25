@@ -124,12 +124,24 @@ public class AltaProducto_Controller {
 						
 						boolean extension = tipoarchivo.endsWith(".JPG") || tipoarchivo.endsWith(".JPEG") || tipoarchivo.endsWith(".PNG");
 						
+						//COMPRUEBO LA EXTENSION DEL ARCHIVO 
 						   if (!extension) {
 						      error=true;
 						      md.addAttribute("mensaje_alta", "ERROR LA IMAGEN DEBE SER TIPO JPG/JPEG/PNG");
 						   }else {
 							   
-							   imagen = UUID.randomUUID().toString()+".jpg";
+							   //COMPRUEBO EL TAMAÑAO MAXIMO DEL ARCHIVO 5MB
+							   if(data.get(0).getString().length() > 5242880) {
+								   
+								   error=true;
+								   session.setAttribute("mensaje_alta", "ERROR EL TAMAÑO MÁXIMO ES DE 5MB");
+								   
+							   }else {
+								   
+								   imagen = UUID.randomUUID().toString()+".jpg";
+								   session.removeAttribute("mensaje_alta");
+								   
+							   } 
 						   }
 					}
 				

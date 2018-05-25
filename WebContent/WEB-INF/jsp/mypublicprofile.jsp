@@ -28,6 +28,17 @@
 
 	<div class="container">	
 		<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
+			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
+				<div class="col-lg-12 ">	
+					<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
+				
+  				</div>
+			
+			</c:forEach>
+		</div>
+		
+		
+		<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
 			<table border="1" id="productTable">
 						<tr>
 							<th>Nombre</th>

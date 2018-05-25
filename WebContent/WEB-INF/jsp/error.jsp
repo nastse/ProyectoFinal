@@ -1,3 +1,6 @@
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page language="java" contentType="text/html; UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,8 +19,12 @@
 	<jsp:include page="header.jsp" />
 	
 <body>
-
-		<h1>LO QUE ESTAS BUSCANDO NO EXISTE</h1>
+	<div class="container">	
+		
+				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+					<h1>LO QUE ESTAS BUSCANDO NO EXISTE</h1>
+				</div>
+	</div>	
 
 </body>
 

@@ -175,22 +175,28 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		}
 
 //BORRAR UN PRODUCTO
-	public boolean deleteProductById(String id){
+	public boolean deleteProductById(String id, String usuario_id){
 		try{
 			Session session = HibernateConnection.doHibernateConnection().openSession();
 			
 			List<Products> product = session.createQuery("From Products where id_rev='"+id+"'").list();
 			
-			
-			
-			if(product != null && product.get(0) != null){
-				session.beginTransaction();
-				session.delete(product.get(0));
-				session.getTransaction().commit();
-				session.close();
-			}
-			
-			return true;
+			if(product.get(0).getId_user() == Integer.parseInt(usuario_id )) {
+				
+				
+				if(product != null && product.get(0) != null){
+					session.beginTransaction();
+					session.delete(product.get(0));
+					session.getTransaction().commit();
+					session.close();
+				}
+				
+				return true;
+			}else {
+				
+
+				return false;
+			}	
 		}
 		catch(Exception e){
 			e.printStackTrace();

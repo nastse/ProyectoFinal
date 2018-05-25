@@ -168,9 +168,14 @@
 								
 								<div class="col-lg-12">
 										<img id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">	
+										
 								</div>
-										<input type="file" name="image" accept="image/*" class="btn" onchange="loadFile(event)">
-								
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 text-center">
+									<span id="texto">Sube una imagen tipo jpg/jpeg/png de tamaño máximo 5MB</span>
+								</div>
+								<div class="col-lg-12">		
+									<input type="file" name="image" accept="image/*" class="btn" onchange="loadFile(event)">
+								</div>
 							<c:if test="${not empty mensaje_alta}">	
   								<div id="error-alta" class="col-lg-12 ">
 									<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
@@ -358,6 +363,11 @@
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Ajuste/Comodidad</label><br>
+										<div id="puntos">
+											<i class="fa fa-minus"></i>
+											<i class="fa fa-plus ml-auto"></i>	
+										</div>
+										
 										<div id="radios">
 										  <label id="r" for="input1"></label>
 										  <c:if test="${product.ajuste == 1}">
@@ -389,6 +399,11 @@
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Recomendable</label><br>
+										<div id="puntos">
+											<i class="fa fa-minus"></i>
+											<i class="fa fa-plus ml-auto"></i>	
+										</div>
+										
 										<div id="radios">
 										 <label id="r" for="input10"></label>
 										  <c:if test="${product.recomendable == 1}">

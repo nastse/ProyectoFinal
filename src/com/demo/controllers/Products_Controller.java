@@ -17,16 +17,16 @@ import com.demo.pojo.Products;
 
 
 
-@Controller
-@RequestMapping(value= { "/products"})
-public class Products_Controller {
+//@Controller
+//@RequestMapping(value= { "/products"})
+//public class Products_Controller {
 	
 
-	@RequestMapping(name="/products", method=RequestMethod.GET)
-	public ModelAndView loadProducts() {
-		
-	//PARA CONSULTA HQL
-		ModelAndView mav = new ModelAndView("products");
+//	@RequestMapping(name="/products", method=RequestMethod.GET)
+//	public ModelAndView loadProducts() {
+//		
+//	//PARA CONSULTA HQL
+//		ModelAndView mav = new ModelAndView("products");
 	
 	//PARA CONSULTA SQL	
 		//ModelAndView mav = new ModelAndView("products_1");
@@ -37,16 +37,18 @@ public class Products_Controller {
 		//mav.addObject("allProducts", pm.getAllProducts());
 	//SQL	
 		//mav.addObject("allProducts", pm.getAllProductsSQL());
-	//USANDO DAO
-		mav.addObject("allProducts", RegisteryDAO.getProductsDAO().getAllProducts());
-		
-		
-		return mav;
-		
-	}
 	
-
-}
+		
+		//USANDO DAO
+//		mav.addObject("allProducts", RegisteryDAO.getProductsDAO().getAllProducts());
+//		
+//		
+//		return mav;
+		
+//	}
+//	
+//
+//}
 
 
 

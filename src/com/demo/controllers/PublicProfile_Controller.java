@@ -15,17 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.demo.dao.registery.RegisteryDAO;
 
 @Controller
-@RequestMapping(value= {"/mypublicprofile/{email}"})
-public class VerProfile_Controller {
+@RequestMapping(value= {"/mypublicprofile/{id_usuario}"})
+public class PublicProfile_Controller {
 	
-	@RequestMapping(name="/mypublicprofile/{email}", method=RequestMethod.GET)
-	public ModelAndView load_profileId(@PathVariable(value="email") String email) {	
+	@RequestMapping(name="/mypublicprofile/{id_usuario}", method=RequestMethod.GET)
+	public ModelAndView load_profileId(@PathVariable(value="id_usuario") String id_usuario) {	
 		
 			ModelAndView map = new ModelAndView("mypublicprofile");
 				
 			//HAGO UNA BUSQUEDA DEL USUARIO DEL QUE QUIERO VER EL PERFIL
-			List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(email);
-			System.out.println(datosUsuario);
+			List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
 			map.addObject("datosUsuario", datosUsuario);
 			
 			return map;

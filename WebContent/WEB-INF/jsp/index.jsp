@@ -529,7 +529,7 @@
 	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
 											</div>
 											<div class="col-2 text-center">
-												<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img id="imagen" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
+												<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img id="imagen-inicio" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
 											</div>
 											
 										</div>

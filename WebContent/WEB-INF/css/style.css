@@ -250,7 +250,7 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:12px;
     			font-weight: bold;
-    		}#imagen{
+    		}#imagen-inicio{
     			
     			border: 1px solid black;
     		}
@@ -258,6 +258,7 @@
     		
     			max-height: 640px;
     			min-height: 640px;
+    			max-width: 640px;
     		}
     		#titulo{
     			margin-top:20px;
@@ -268,4 +269,8 @@
     		}
     		#imagen-guia{
     			max-height: 350px;
+    		}
+    		#puntos{
+    			display: flex;
+    			flex-wrap: wrap;
     		}

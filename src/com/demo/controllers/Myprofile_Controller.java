@@ -72,7 +72,7 @@ public class Myprofile_Controller {
 				
 				//RECOJO TODA LA LISTA DEL FORMULARIO
 				List<FileItem> data = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-				
+			
 				//TODO Seccion 6 - 25.
 				//TODO ACTUALIZAR EL USUARIO 
 				//TODO VALIDAR CAMPOS
@@ -112,17 +112,26 @@ public class Myprofile_Controller {
 						String tipoarchivo = data.get(0).getName().toUpperCase();
 						boolean extension = tipoarchivo.endsWith(".JPG") || tipoarchivo.endsWith(".JPEG") || tipoarchivo.endsWith(".PNG");
 						
+						//COMPRUEBO LA EXTENSION DEL ARCHIVO
 						if (!extension) {
 						      error=true;
 						      session.setAttribute("mensaje_alta", "ERROR LA IMAGEN DEBE SER TIPO JPG/JPEG/PNG");
 						   }else {
 							   
+							   //COMPRUEBO EL TAMAÑAO MAXIMO DEL ARCHIVO 5MB
+							   if(data.get(0).getString().length() > 5242880) {
+								   
+								   error=true;
+								   session.setAttribute("mensaje_alta", "ERROR EL TAMAÑO MÁXIMO ES DE 5MB");
+							   }else {
+
 								 //image = new File(data.get(0).getName()).getName();
-								image = UUID.randomUUID().toString()+".jpg";
-								String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-								data.get(0).write(new File(path + File.separator + image));
-								
-								session.removeAttribute("mensaje_alta");
+									image = UUID.randomUUID().toString()+".jpg";
+									String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
+									data.get(0).write(new File(path + File.separator + image));
+									
+									session.removeAttribute("mensaje_alta"); 
+							   } 
 						   }
 					}
 					
