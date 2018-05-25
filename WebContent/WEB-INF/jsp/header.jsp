@@ -10,18 +10,18 @@
 	<div id="barra-inicio" class="container-fluid">	
 		<c:if test="${empty sessionScope.email}">
 			<div id="banner" class="row p-1 d-flex justify-content-end align-items-center">
-			        <div id="inicio" class="col-2 p-1 mr-auto">						
+			        <div id="inicio" class="col-lg-2 p-1 mr-auto">						
 <%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/index';">INICIO</button> --%>
 							<a href="<c:url value='/index'/>"><i class="fa fa-arrow-circle-up"></i></a>
-							<span id="texto-usuario-login">Inicio</span>
+							<span  id="texto-usuario-login">Inicio</span>
 					</div>
-			        <div id="usuario-login" class="col-4 p-1">	
+			        <div id="usuario-login" class="col-lg-4 p-1">	
 <%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/login';">LOGIN</button> --%>
 							<a href="<c:url value='/login'/>"><i class="fa fa-user-circle"></i></a>
-							<span id="texto-usuario-login">Login/Alta</span>
+							<span  id="texto-usuario-login">Login/Alta</span>
 					</div>
 					
-					<div id="usuario-subir" class="col-4 p-1 text-right">	
+					<div id="usuario-subir" class="col-lg-4 p-1 text-right">	
 <%-- 						<button id="boton" type="reset" class="btn btn-light btn-sm btn-block" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA NUEVA</button> --%>
 							<span id="texto-usuario-subir">Subir review</span>
 							<a href="<c:url value='/login'/>"><i class="fa fa-plus-circle"></i></a>	

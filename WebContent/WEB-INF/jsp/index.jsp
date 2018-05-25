@@ -467,7 +467,7 @@
 					<c:if test="${not empty allProducts}">
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
-							<div class="lg-col-3" id="${product[4]}">
+							<div class="" id="${product[4]}">
 								<div id="producto" class="row justify-content-center text-center bg-white rounded p-1 m-1">
 									<div class="col-12">
 										<div class="row justify-content-center">

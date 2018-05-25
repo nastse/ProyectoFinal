@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Producto seleccionado</title>
+	<title>Actualizar review</title>
 	
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>

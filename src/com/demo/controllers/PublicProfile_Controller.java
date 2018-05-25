@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.registery.RegisteryDAO;
+import com.demo.pojo.Products;
 
 @Controller
 @RequestMapping(value= {"/mypublicprofile/{id_usuario}"})
@@ -25,7 +26,12 @@ public class PublicProfile_Controller {
 				
 			//HAGO UNA BUSQUEDA DEL USUARIO DEL QUE QUIERO VER EL PERFIL
 			List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
+			List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(Integer.parseInt(id_usuario));
+			
+			
 			map.addObject("datosUsuario", datosUsuario);
+			map.addObject("listaReviews", reviews);
+			
 			
 			return map;
 		}

@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Ver Perfil </title>
+	<title>Ver Perfil</title>
 	
 	<style type="text/css">
     		<%@include file="/WEB-INF/css/style.css" %>
@@ -29,51 +29,105 @@
 	<div class="container">	
 		<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
 			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
-				<div class="col-lg-12 ">	
-					<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
-				
+				<div class="col-lg-12 text-center">	
+					<div id="" class="row justify-content-center">
+						<div class="col-2">
+							<img id="imagen" class="rounded-circle rounded justify-content-center shadow mb-2" width="100px" height="100px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
+  						</div>
+  						<div class="col-2">
+							
+						</div>
+  						<div class="col-2">
+							<label>Altura:</label><br>
+							<label>${usuario.altura}cm</label>
+						</div>
+						<div class="col-2">
+							<label >Peso: </label><br>
+							<label>${usuario.peso}kg</label>
+						</div>
+  					</div>
   				</div>
-			
 			</c:forEach>
+	
+		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 p-1 m-1 justify-content-center">
+		
+			<c:forEach items="${listaReviews}" var="product" varStatus="status">
+							<div class="" id="${product.id_rev}">
+								<div id="producto" class="row justify-content-center text-center bg-white rounded p-1 m-1">
+									<div class="col-12">
+										<div class="row justify-content-center">
+											<div id="contenedor-talla" class="col-2 text-center">
+												<span>${product.tallauser}</span>
+											</div>
+											<div class="col-6 mr-auto text-center p-0 align-self-center">
+												<span id="marca">${product.marca}</span>
+											</div>
+										</div>
+										
+									</div>
+										
+									<div class="col-12">
+										<div class="producto-img d-flex justify-content-center p-1">
+											<a href="<c:url value='/verproducto/${product.id_rev}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product.imagen}"></a>	
+										</div>
+									</div>	
+									<div class="col-12">	
+											<fmt:parseNumber var = "i" type = "number" value= "${product.recomendable}" />
+											
+											<i class="fa fa-star" style="color:#F27490;"></i>	
+											<c:if test="${i > 1}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${i > 2}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${i > 3}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${i > 4}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											
+											<c:if test="${i < 2}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${i < 3}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${i < 4}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${i < 5}">
+												<i class="fa fa-star"></i>
+											</c:if>
+									</div>
+									<div class="col-12">	
+											<span id="modelo">${product.modelo}</span>
+									</div>
+<!-- 									<div class="col-12">	 -->
+<%-- 											<span id="categoria">${product[0]}</span> --%>
+<!-- 									</div> -->
+									<div class="col-12">
+										<div class="row">	
+											<div class="col-8 text-center p-0 align-self-end">
+												<span id="datos"><span id="datos">Talla: ${product.tallauser}</span>&nbsp<span id="datos">${product.altura}cm</span>&nbsp<span id="datos">${product.peso}kg</span>&nbsp
+	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
+											</div>
+											<div class="col-2 text-center">
+												<a href="<c:url value='/mypublicprofile/${product.id_user}/'/>"><img id="imagen-inicio" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${product.imagen}"></a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>	
+						</c:forEach>
+		
 		</div>
+	</div>
+</div>	
 		
 		
-		<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
-			<table border="1" id="productTable">
-						<tr>
-							<th>Nombre</th>
-							<th>Peso</th>
-							<th>Altura</th>
-							<th>Edad</th>
-							<th>Genero</th>
-							<th>Imagen</th>
-							<th>Actualizar</th>
-						</tr>
-						
-			
-					<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
-					<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-					<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
-					<%-- PARA SABER QUE PRODUCTO/FILA ELIMINO  --%>
-						<tr  id="tr_${usuario.id_usuario}" align="center">
-							<%-- LLAMO AL OBJETO EL VALOR QUE QUIERO MOSTRAR  --%>
-							<td>${usuario.nombre}</td>
-							<td>${usuario.peso}</td>
-							<td>${usuario.altura}</td>
-							<td>${usuario.edad}</td>
-							<td>${usuario.genero}</td>
-							<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}"></td>	
-			<%-- 				<td><input type="button" value="Delete" id="btn_${product.id_rev}" onclick="deleteProduct(this.id_rev)"></td> --%>
-			<%-- 				<td><a href="<c:url value='/verproducto/${product.id_usuario}'/>">Actualizar</a></td>	 --%>
-						</tr>
-						
-			<!-- 			<tr> -->
-			<%-- 				<td colspan="7">${allUsers[status.index]}</td> --%>
-			<!-- 			</tr> -->
-					</c:forEach>
-				</table>
-		</div>
-	</div>	
 </body>
 
 <footer>
