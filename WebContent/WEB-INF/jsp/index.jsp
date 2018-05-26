@@ -175,11 +175,12 @@
 	<jsp:include page="header.jsp" />
 
 	
-		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 p-1 m-1 justify-content-center">
-			<div id="contenedor-menu" class="col-3 text-center">	
+		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 p-1 m-1 justify-content-around">
+			<div id="contenedor-menu" class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">	
+					<div class="row justify-content-center"> 
 					 	<div id="menu" class="m-1">
 					 		<h2 id="titulo">Buscar:</h2>
-				 			<div id="titulo-menu" class="col col-12 text-left">
+				 			<div id="titulo-menu" class="col-12 text-left">
 				 				<i onclick="colapsarMenu('marca')" class="fa fa-chevron-down"></i>&nbsp<spam>MARCA</spam> <spam id="subtitulo">prenda</spam> 
 				 			</div>
 						     	<div class="dropdown dropdown-dark">
@@ -460,18 +461,18 @@
 								</div>
 								
 								<button id="boton" type="reset" class="boton btn btn-sm" onclick="paginar('1')">ACEPTAR</button>							  						  								  
-
+							</div>
 					 	</div>
 				</div>			
-				<div id="contenedor-menu" class="col-9 text-center">
+				<div  class="col-lg-9 col-md-9 col-sm-6 col-xs-6 text-center">
 					<c:if test="${empty allProducts}">
 						<h2>NO HAY NINGÚN RESULTADO</h2>
 					</c:if>
 					<c:if test="${not empty allProducts}">
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-						<div  class="row justify-content-center text-center bg-white rounded p-1 m-1">
+						<div  class="row justify-content-around text-center bg-white rounded p-1 m-1">
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
-							<div id="producto" class="lg-col-3" id="${product[4]}">
+							<div id="producto" class="col-lg-4 col-md-4 col-sm-4" id="${product[4]}">
 								
 									<div  class="col-12">
 										<div class="row justify-content-center">
