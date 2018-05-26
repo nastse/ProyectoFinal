@@ -185,28 +185,31 @@
 						     	<div class="dropdown dropdown-dark">
 							     	<select id="marca" class="form-control dropdown-select" name="marca">
 <!-- 										SI EL ATRIBUTO MARCA ESTA VACIO DENTRO DEL SELECT PONGO PRIMERO TODOS -->
-										<c:if test="${empty marca}">
-											<option value = "Todos">Todos</option>
-										</c:if>
 <!-- 										SI EL ATRIBUTO MARCA TIENE ALGUN VALOR -->
 										<c:if test="${not empty marca}">
 											<option value = "${marca}">${marca}</option>
 <!-- 										SI NO ES TODOS LO DESPLIEGO PARA QUE SE VEA LA SELECCION HECHA ANTES DE HACER EL SUBMIT -->
-											<c:if test="${marca != 'Todos'}">
+											<c:if test="${marca != 'TODOS'}">
 													<script type="text/javascript">
 														colapsarMenu('marca');
  													</script>
+ 													<option value = "Todos">TODOS</option>
 											</c:if>
+											
+										</c:if>
+										<c:if test="${empty marca}">
+											<option value = "Todos">TODOS</option>
 										</c:if>	
-										<option value = "Todos">Todos</option>
-										<option value = "Castelli">Castelli</option>
-										<option value = "Sportful">Sportful</option>
-										<option value = "Rapha">Rapha</option>
-										<option value = "Endura">Endura</option>
-										<option value = "DBH">DBH</option>
-										<option value = "ALE">ALE</option>
-										<option value = "Santini">Santini</option>
-										<option value = "Exteondo">Etxeondo</option>
+											
+											<option value = "Castelli">Castelli</option>
+											<option value = "Sportful">Sportful</option>
+											<option value = "Rapha">Rapha</option>
+											<option value = "Endura">Endura</option>
+											<option value = "DBH">DBH</option>
+											<option value = "ALE">ALE</option>
+											<option value = "Santini">Santini</option>
+											<option value = "Exteondo">Etxeondo</option>
+											
 									</select>
 								</div>	
 						     <div id="titulo-menu" class="col col-12 text-left">
@@ -475,7 +478,7 @@
 												<span>${product[10]}</span>
 											</div>
 											<div class="col-6 mr-auto text-center p-0 align-self-center">
-												<span id="marca">${product[1]}</span>
+												<span id="marca-producto">${product[1]}</span>
 											</div>
 										</div>
 										
@@ -517,7 +520,7 @@
 											</c:if>
 									</div>
 									<div class="col-12">	
-											<span id="modelo">${product[6]}</span>
+											<span id="modelo-producto">${product[6]}</span>
 									</div>
 <!-- 									<div class="col-12">	 -->
 <%-- 											<span id="categoria">${product[0]}</span> --%>

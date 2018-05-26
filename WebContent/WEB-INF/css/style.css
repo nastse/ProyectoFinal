@@ -93,10 +93,9 @@
     		#inicio{
     			background: linear-gradient(to bottom, #45484d 0%,#000000 100%);
     			border-radius:25px;
-    			max-width: 150px;
-    			
-    			
+    			max-width: 150px;	
     		}
+    		
     		#texto-inicio{
 				color:white;
 				font-size:14px;
@@ -140,10 +139,70 @@
     			font-size:12px;	
     		}
     		
-    		@media only screen and (max-width : 480px) {
-
-				
-
+    		@media only screen and (min-width : 526px) {
+				#contenedor-icono{
+    				display: none;
+    			} 	
+				#icono{
+    				display: none;
+    			} 			
+    		}
+    	
+    		
+    		@media only screen and (max-width : 525px) {
+				#usuario-login{
+    				display: none;
+    			}
+    			#usuario-subir{
+    				display: none;
+    			}
+    			#inicio{
+    				display: none;
+    			}
+    			#imagen-perfil{
+    				display: none;
+    			}
+    			
+				.fa-arrow-circle-up{
+	    			color:#1F2833;
+	    			font-size:45px;
+    			}
+    			
+    			.fa-user-circle{
+    				color:#1F2833;
+    				font-size:45px;
+    			}
+    		
+    			.fa-plus-circle{
+    				color:#1F2833;
+    				font-size:45px;
+    			}
+    			.fa-home{
+    				color:#1F2833;
+    				font-size:45px;
+    			}
+	    		.fa-power-off{
+	    			color:#1F2833;
+	    			font-size:45px;
+	    		}
+    			
+    			.fa-arrow-circle-up:active{
+	    			color:white;
+	    			
+    			}
+    			.fa-user-circle:active{
+    				color:white;
+    			}
+    		
+    			.fa-plus-circle:active{
+    				color:white;
+    			}
+    			.fa-home:active{
+    				color:white;
+    			}
+    			.fa-power-off:active{
+	    			color:white;
+	    		}
     		}
     		
     		.fa-star{
@@ -236,15 +295,13 @@
     			font-size:22px;
     			
     		}
-    		#marca{
-    			
+    		#marca-producto{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:20px;
     			font-weight: bold;
-    			
     		}
     		
-    		#modelo{
+    		#modelo-producto{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:20px;
     		}
