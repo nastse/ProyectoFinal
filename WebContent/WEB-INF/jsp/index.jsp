@@ -174,9 +174,9 @@
 <!-- 	AQUÍ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
-	<div class="container">	
+	
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 p-1 m-1 justify-content-center">
-			<div id="contenedor-menu" class="lg-col-3 text-center">	
+			<div id="contenedor-menu" class="col-3 text-center">	
 					 	<div id="menu" class="m-1">
 					 		<h2 id="titulo">Buscar:</h2>
 				 			<div id="titulo-menu" class="col col-12 text-left">
@@ -463,16 +463,17 @@
 
 					 	</div>
 				</div>			
-
+				<div id="contenedor-menu" class="col-9 text-center">
 					<c:if test="${empty allProducts}">
 						<h2>NO HAY NINGÚN RESULTADO</h2>
 					</c:if>
 					<c:if test="${not empty allProducts}">
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
+						<div  class="row justify-content-center text-center bg-white rounded p-1 m-1">
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
-							<div class="" id="${product[4]}">
-								<div id="producto" class="row justify-content-center text-center bg-white rounded p-1 m-1">
-									<div class="col-12">
+							<div id="producto" class="lg-col-3" id="${product[4]}">
+								
+									<div  class="col-12">
 										<div class="row justify-content-center">
 											<div id="contenedor-talla" class="col-2 text-center">
 												<span>${product[10]}</span>
@@ -538,11 +539,12 @@
 										</div>
 									</div>
 								</div>
-							</div>	
+								
 						</c:forEach>
+						</div>
 					</c:if>	
 				
-					
+				</div>		
 		</div>
 		
 <!-- 		PAGINACION	 -->
@@ -574,7 +576,7 @@
 					</div>
 			</div> 
 		</div>
-	</div>		
+		
 </body>
 
 <footer>
