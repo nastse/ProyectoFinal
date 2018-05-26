@@ -19,8 +19,6 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			color:white;
     			font-size:18px;
-				
-    		
 			}
 			#menu{
 				margin-top:10px;
@@ -174,11 +172,11 @@
 <!-- 	AQUÍ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
-	
-		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 p-1 m-1 justify-content-around">
-			<div id="contenedor-menu" class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">	
+	<div class="container">
+		<div id="contenedor-inicio" class="row justify-content-around">
+			<div id="contenedor-menu" class="col-lg-3 col-md-3 col-sm-5 col-xs-4 justify-content-end text-center">	
 					<div class="row justify-content-center"> 
-					 	<div id="menu" class="m-1">
+					 	<div id="menu" class="col-lg-12 m-1">
 					 		<h2 id="titulo">Buscar:</h2>
 				 			<div id="titulo-menu" class="col-12 text-left">
 				 				<i onclick="colapsarMenu('marca')" class="fa fa-chevron-down"></i>&nbsp<spam>MARCA</spam> <spam id="subtitulo">prenda</spam> 
@@ -190,7 +188,7 @@
 										<c:if test="${not empty marca}">
 											<option value = "${marca}">${marca}</option>
 <!-- 										SI NO ES TODOS LO DESPLIEGO PARA QUE SE VEA LA SELECCION HECHA ANTES DE HACER EL SUBMIT -->
-											<c:if test="${marca != 'TODOS'}">
+											<c:if test="${marca != 'Todos'}">
 													<script type="text/javascript">
 														colapsarMenu('marca');
  													</script>
@@ -464,17 +462,20 @@
 							</div>
 					 	</div>
 				</div>			
-				<div  class="col-lg-9 col-md-9 col-sm-6 col-xs-6 text-center">
+				<div  class="col-lg-9 col-md-9 col-sm-7 col-xs-8 justify-content-start">
 					<c:if test="${empty allProducts}">
-						<h2>NO HAY NINGÚN RESULTADO</h2>
+						<div class="row justify-content-center text-center bg-white rounded p-1 m-1" id="${product[4]}">
+							<h2 id="mensaje-index">NO SE HAN ENCONTRADO RESULTADOS PARA TU BÚSQUEDA</h2>
+						</div>	
 					</c:if>
 					<c:if test="${not empty allProducts}">
 						<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-						<div  class="row justify-content-around text-center bg-white rounded p-1 m-1">
+						<div class="row justify-content-center text-center bg-white rounded p-1 m-1" id="${product[4]}">
 						<c:forEach items="${allProducts}" var="product" varStatus="status">
-							<div id="producto" class="col-lg-4 col-md-4 col-sm-4" id="${product[4]}">
-								
-									<div  class="col-12">
+							
+								<div id="producto" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+								<div class="row justify-content-center m-1 text-center">
+									<div class="col-12 ">
 										<div class="row justify-content-center">
 											<div id="contenedor-talla" class="col-2 text-center">
 												<span>${product[10]}</span>
@@ -521,6 +522,7 @@
 												<i class="fa fa-star"></i>
 											</c:if>
 									</div>
+									
 									<div class="col-12">	
 											<span id="modelo-producto">${product[6]}</span>
 									</div>
@@ -528,7 +530,7 @@
 <%-- 											<span id="categoria">${product[0]}</span> --%>
 <!-- 									</div> -->
 									<div class="col-12">
-										<div class="row">	
+										<div id="producto-datos-usuario" class="row">	
 											<div class="col-8 text-center p-0 align-self-end">
 												<span id="datos"><span id="datos">Talla: ${product[9]}</span>&nbsp<span id="datos">${product[12]}cm</span>&nbsp<span id="datos">${product[11]}kg</span>&nbsp
 	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
@@ -539,15 +541,15 @@
 											
 										</div>
 									</div>
+									</div>
+									
 								</div>
-								
-						</c:forEach>
-						</div>
+								</c:forEach>
+							</div>	
+						
 					</c:if>	
-				
-				</div>		
-		</div>
-		
+				</div>
+	</div>	
 <!-- 		PAGINACION	 -->
 		<div id="mostrar" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 			<div class="col-lg-12">
@@ -577,7 +579,7 @@
 					</div>
 			</div> 
 		</div>
-		
+</div>		
 </body>
 
 <footer>

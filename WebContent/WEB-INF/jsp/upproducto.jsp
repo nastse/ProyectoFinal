@@ -290,7 +290,7 @@
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Modelo</label><br>
-										<input id="form" class="form-control" type="text" name="modelo" value="${product.modelo}" maxlength="25" required>
+										<input id="form" class="form-control" type="text" name="modelo" value="${product.modelo}" maxlength="20" required>
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Talla</label><br>

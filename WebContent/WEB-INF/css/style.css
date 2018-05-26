@@ -17,6 +17,8 @@
 				background-color: black;
 			}
 			#producto{
+				padding:0px;
+				margin:5px 5px 5px 5px;
 				max-width: 220px;
 				background-color:white;
 				height:394px;
@@ -26,6 +28,15 @@
 				width: 200px;
 				background-color:white;
 				
+			}
+			
+			#producto-datos-usuario{
+				margin-top:25px;
+			}
+			#mensaje-index{
+				margin-top:100px;
+				font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:32px;	
 			}
 			hr{
 				border: 1px solid #F27490;
@@ -137,6 +148,20 @@
 			#textarea_feedback{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:12px;	
+    		}
+    		
+    		@media only screen and (max-width : 992px) {
+				#menu{
+    				min-width: 180px;
+    			} 	
+			 			
+    		}
+    		
+    		@media only screen and (max-width : 576px) {
+				#menu{
+    				max-width: auto;
+    			} 	
+			 			
     		}
     		
     		@media only screen and (min-width : 526px) {
@@ -304,6 +329,7 @@
     		#modelo-producto{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:20px;
+    			
     		}
     		#categoria{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
