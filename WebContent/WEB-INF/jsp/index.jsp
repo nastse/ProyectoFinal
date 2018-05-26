@@ -60,7 +60,7 @@
 			   color: #1F2833;
 			}
 			
-			#titulo{
+			#titulo-buscar{
     			font-family: Trade Gothic, Charcoal, sans-serif;
     			font-weight: bold;
     			font-size:30px;
@@ -178,7 +178,7 @@
 		<div id="contenedor-inicio" class="row m-lg-5 m-md-2 p-1 m-1 justify-content-center">
 			<div id="contenedor-menu" class="lg-col-3 text-center">	
 					 	<div id="menu" class="m-1">
-					 		<h2 id="titulo">Buscar:</h2>
+					 		<h2 id="titulo-buscar">Buscar:</h2>
 				 			<div id="titulo-menu" class="col col-12 text-left">
 				 				<i onclick="colapsarMenu('marca')" class="fa fa-chevron-down"></i>&nbsp<spam>MARCA</spam> <spam id="subtitulo">prenda</spam> 
 				 			</div>
@@ -186,21 +186,20 @@
 							     	<select id="marca" class="form-control dropdown-select" name="marca">
 <!-- 										SI EL ATRIBUTO MARCA ESTA VACIO DENTRO DEL SELECT PONGO PRIMERO TODOS -->
 <!-- 										SI EL ATRIBUTO MARCA TIENE ALGUN VALOR -->
-										<c:if test="${not empty marca}">
-											<option value = "${marca}">${marca}</option>
-<!-- 										SI NO ES TODOS LO DESPLIEGO PARA QUE SE VEA LA SELECCION HECHA ANTES DE HACER EL SUBMIT -->
-											<c:if test="${marca != 'TODOS'}">
-													<script type="text/javascript">
-														colapsarMenu('marca');
- 													</script>
- 													<option value = "Todos">TODOS</option>
-											</c:if>
-											
-										</c:if>
 										<c:if test="${empty marca}">
 											<option value = "Todos">TODOS</option>
 										</c:if>	
+										<c:if test="${not empty marca}">
+											<option value = "${marca}">${marca}</option>
+<!-- 										SI NO ES TODOS LO DESPLIEGO PARA QUE SE VEA LA SELECCION HECHA ANTES DE HACER EL SUBMIT -->
+											<c:if test="${marca != 'Todos'}">
+													<script type="text/javascript">
+														colapsarMenu('marca');
+ 													</script>	
+											</c:if>
 											
+										</c:if>
+											<option value = "Todos">TODOS</option>
 											<option value = "Castelli">Castelli</option>
 											<option value = "Sportful">Sportful</option>
 											<option value = "Rapha">Rapha</option>
