@@ -2,7 +2,6 @@ package com.demo.dao.implementation;
 
 import java.util.Properties;
 
-import org.apache.tomcat.util.digester.SetPropertiesRule;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

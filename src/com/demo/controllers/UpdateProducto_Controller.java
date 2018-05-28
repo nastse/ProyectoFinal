@@ -48,7 +48,7 @@ public class UpdateProducto_Controller {
 			
 		}else {
 			
-			int usuario = (int) session.getAttribute("id_usuario");
+			int usuario = Integer.parseInt(session.getAttribute("id_usuario").toString());
 			System.out.println("Id Usuario que accede: " +usuario);
 			
 			//SI EL PRODUCTO NO EXISTE REDIRIGO A PAGINA DE ERROR
@@ -139,7 +139,7 @@ public class UpdateProducto_Controller {
 //		//TODO Usar la ID recibida para hacer busqueda de producto y cargar vista.jsp con el
 		
 		//NECESITO ID_REV PARA SABER QUE REVIEW TENGO QUE ALCTUALIZAR
-		int id_rev=(int) session.getAttribute("id_rev");
+		int id_rev=Integer.parseInt(session.getAttribute("id_rev").toString());
 		
 		Products product1 = new Products();
 		boolean error=false;

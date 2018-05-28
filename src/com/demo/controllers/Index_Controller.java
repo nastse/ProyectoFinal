@@ -49,7 +49,7 @@ public class Index_Controller {
         //ENVIO LA TANDA A MOSTRAR
         modelAndView.addObject("allProducts", products);
         
-        PagedListHolder<String> pagedListHolder = new PagedListHolder<>(allproducts);
+        PagedListHolder<String> pagedListHolder = new PagedListHolder<String>(allproducts);
         
         //ENVIO LA PAGINA ACTUAL QUE ES 1 PARA QUE EN EL MENU NO ME SALGA SELECCIONABLE
         String page = "1";
@@ -115,7 +115,7 @@ public class Index_Controller {
         modelAndView.addObject("cadera", cadera);
         modelAndView.addObject("genero", genero);
         
-        PagedListHolder<String> pagedListHolder = new PagedListHolder<>(totalproducts);
+        PagedListHolder<String> pagedListHolder = new PagedListHolder<String>(totalproducts);
        
         pagedListHolder.setPageSize(4);
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
