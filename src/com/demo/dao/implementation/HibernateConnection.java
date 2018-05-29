@@ -15,11 +15,14 @@ public class HibernateConnection {
 	
 	public static SessionFactory doHibernateConnection() {
 		
+		String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+		String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+		
 		Properties database = new Properties();
 		database.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		database.setProperty("hibernate.connection.username", "root");
-		database.setProperty("hibernate.connection.password", "");
-		database.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/proyecto_sergiu");
+		database.setProperty("hibernate.connection.username", "useruS5");
+		database.setProperty("hibernate.connection.password", "kQ0cfsXn");
+		database.setProperty("hibernate.connection.url", "jdbc:mysql://"+host+":"+port+"/root");
 		database.setProperty("hibernate.connection.dialect", "org.hibernate.dialect.MySQL5Dialect");
 		
 		//AÑADO LAS CLASES PARA LA CONEXION CON LA BASE DE DATOS
