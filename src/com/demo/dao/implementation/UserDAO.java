@@ -30,6 +30,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				
 				//Cerramos la sesion
 				session.close();
+				sessionFactory.close();
 				
 				if(user.size()==1) return user.get(0).getId_usuario();
 				
@@ -79,13 +80,13 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 						//session.save(user1);
 						
 					//PARA ACTUALIZAR UNA FILA SI ESTA EXISTE O INSERTARLA SI NO EXISTE
-					//COMPRUEBA SOLO LA PRIMARY KEY Y SI EXISTE LA ACTUALIZA EN VEZ DE AÑADIR UNA NUEVA	
+					//COMPRUEBA SOLO LA PRIMARY KEY Y SI EXISTE LA ACTUALIZA EN VEZ DE Aï¿½ADIR UNA NUEVA	
 						//session.saveOrUpdate(user);
 						
 					//PARA HACER UN DELETE
 						//session.delete(user);
 						
-					//IMPORTANTE AÑADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
+					//IMPORTANTE Aï¿½ADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
 						session.getTransaction().commit();
 						session.close();
 						
@@ -127,7 +128,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 										.executeUpdate();
 								
 								
-							//IMPORTANTE AÑADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
+							//IMPORTANTE Aï¿½ADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
 								session.getTransaction().commit();
 								session.close();
 								
@@ -158,6 +159,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 			//Cerramos la sesion
 			session.close();
+			sessionFactory.close();
 
 			return usuario;
 		}
@@ -171,6 +173,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			List<String> datos = session.createQuery("From User where id_usuario='"+id_usuario+"'").list();
 			
 			session.close();
+			sessionFactory.close();
 			
 			return datos;
 		}

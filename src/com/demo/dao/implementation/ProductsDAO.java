@@ -194,14 +194,16 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 				return true;
 			}else {
 				
-
+				session.close();
 				return false;
 			}	
 		}
 		catch(Exception e){
 			e.printStackTrace();
+			
 			return false;
 		}
+		
 	}
 
 //DEVUELVO UN PRODUCTO POR SU ID
