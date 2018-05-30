@@ -29,7 +29,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				List<User> user = session.createQuery("From User where email='"+username+"'and password='"+password+"'").list();
 				
 				//Cerramos la sesion
-				//session.close();
+				session.close();
 				
 
 				if(user.size()==1) return user.get(0).getId_usuario();
@@ -91,7 +91,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 					//IMPORTANTE A�ADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
 						session.getTransaction().commit();
 						
-						//session.close();
+						session.close();
 						
 						
 						return "Alta correcta...";
@@ -136,8 +136,8 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 								
 							//IMPORTANTE A�ADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
 								session.getTransaction().commit();
-								//session.close();
-								HibernateConnection.closeSession();
+								session.close();
+								//HibernateConnection.closeSession();
 								
 								return "Actualizacion correcta...";
 								
@@ -166,7 +166,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			}
 			
 			//Cerramos la sesion
-			//session.close();
+			session.close();
 			
 			return usuario;
 		}
@@ -178,10 +178,10 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 			//Session session = sessionFactory.openSession();
 			session.beginTransaction();
-			
+			System.out.println("ID USUARIO RECIBIDO EN getUserDatos: " +id_usuario);
 			List<String> datos = session.createQuery("From User where id_usuario='"+id_usuario+"'").list();
 			
-			//session.close();
+			session.close();
 			
 			return datos;
 		}

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
@@ -30,10 +31,10 @@ public class Myprofile_Controller {
 	@RequestMapping(value="/myprofile", method=RequestMethod.GET)
 	//public ModelAndView load_myprofile(HttpSession session, ModelMap map) {
 	
-	public String load_myprofile(HttpSession session, Model md, ModelMap map) {	
+	public String load_myprofile(HttpSession session,RedirectAttributes rm, @ModelAttribute("id_usuario") String iduser, Model md, ModelMap map) {	
 		//ModelAndView mv = new ModelAndView("myprofile");
 		 
-		System.out.println("MUESTRO LO RECOGIDO EN MYPROFILE"+session.getAttribute("id_usuario")+session.getAttribute("email")+session.getAttribute("id"));
+		System.out.println("MUESTRO LO RECOGIDO EN MYPROFILE"+session.getAttribute("id_usuario")+session.getAttribute("email")+session.getAttribute("id")+"iduser: "+iduser);
 			
 		//COMPRUEBO QUE EL USUARIO ESTA LOGUEADO
 //		if(session.getAttribute("email") != null) {
@@ -44,20 +45,19 @@ public class Myprofile_Controller {
 				String id_usuario = session.getAttribute("id_usuario").toString();
 				
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
-				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos("4");
+				//RECOJO EL VALOR PASADO COMO ADDFLASHATRIBUTE DENTRO DE LOGIN
+				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
 				
 				map.addAttribute("datosUsuario", datosUsuario);
+				session.setAttribute("datos", datosUsuario);
+				map.addAttribute("email", session.getAttribute("email"));
+				System.out.println("DATOS USUARIO: " + datosUsuario);
 			
 			
-			if(session.getAttribute("id")  == null) {
+			if(session.getAttribute("id_usuario")  == null) {
 				
 				System.out.println("VALOR NULL SESION ID");
-			}
-			
-			//mv.addObject("user", username);
-			map.addAttribute("email", session.getAttribute("email"));
-			
-			
+			}	
 		}
 		
 		return "myprofile";
@@ -124,11 +124,11 @@ public class Myprofile_Controller {
 						      session.setAttribute("mensaje_alta", "ERROR LA IMAGEN DEBE SER TIPO JPG/JPEG/PNG");
 						   }else {
 							   
-							   //COMPRUEBO EL TAMAÑAO MAXIMO DEL ARCHIVO 5MB
+							   //COMPRUEBO EL TAMAï¿½AO MAXIMO DEL ARCHIVO 5MB
 							   if(data.get(0).getString().length() > 5242880) {
 								   
 								   error=true;
-								   session.setAttribute("mensaje_alta", "ERROR EL TAMAÑO MÁXIMO ES DE 5MB");
+								   session.setAttribute("mensaje_alta", "ERROR EL TAMAï¿½O Mï¿½XIMO ES DE 5MB");
 							   }else {
 
 								 //image = new File(data.get(0).getName()).getName();
@@ -146,9 +146,9 @@ public class Myprofile_Controller {
 						mensaje = RegisteryDAO.userDAO.doHibernateUpdateUser(username, Integer.parseInt(peso), Integer.parseInt(altura), Integer.parseInt(edad), genero, image, Integer.parseInt(id_usuario));
 						
 						//REFRESCO LOS DATOS TRAS ACTUALIZAR EL USUARIO PARA CARGAR LAS IMAGENES
-						List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
+						List <String> datos = RegisteryDAO.getUserDAO().getUserDatos("id_usuario");
 						session.setAttribute("datos", datos);
-						session.setAttribute("email", session.getAttribute("email"));
+						
 					}
 			
 			}

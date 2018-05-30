@@ -56,7 +56,7 @@ public class Login_Controller {
 	
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String do_login(HttpServletRequest req, Model md, RedirectAttributes rm, HttpSession session, @Valid User user, BindingResult br) {
+	public String do_login(HttpServletRequest req, Model md, HttpSession session, @Valid User user, BindingResult br) {
 		
 		try {
 			
@@ -96,13 +96,13 @@ public class Login_Controller {
 					List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(String.valueOf(usuario));
 					
 					//A�ADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
-
+					System.out.println("ID USUARIO RECOLIGO EN LOGIN_CONTROLLER: "+ usuario);	
+					
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
 						session.setAttribute("email", username);
 						session.setAttribute("datos", datos);
 						session.setAttribute("id_usuario", usuario);
-
-					
+						
 					//A�ADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					//session.setAttribute("id", reviews);
 			

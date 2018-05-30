@@ -31,7 +31,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		
 		
 		List<Products> allProducts = session.createQuery("From Products").list();
-		//session.close();
+		session.close();
 		
 		
 		//DEVUELVE UN POJO
@@ -102,7 +102,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		+ " and p.tallauser like '"+tallauser2+"' and p.peso like '"+peso2+"' and p.altura like '"+altura2+"' and p.pecho like '"+pecho2+"' "
 		+ " and p.cadera like '"+cadera2+"' and p.cintura like '"+cintura2+"' and u.genero like '"+genero2+"'").list();
 		
-		//session.close();
+		session.close();
 		
 		
 		//DEVUELVE UN POJO
@@ -178,7 +178,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			
 				List <String> resultado = q.list();
 				
-				//session.close();
+				session.close();
 				
 			
 			//DEVUELVE UN POJO
@@ -200,15 +200,14 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 					session.beginTransaction();
 					session.delete(product.get(0));
 					session.getTransaction().commit();
-					//session.close();
+					session.close();
 					
 				}
 				
 				return true;
 			}else {
 				
-				//session.close();
-				
+				session.close();
 				return false;
 			}	
 		}
@@ -229,7 +228,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			
 			List <Products> product = session.createQuery("From Products where id_rev='"+id+"'").list();
 			
-			//session.close();
+			session.close();
 			
 			
 			//SOLO DEVUELVE UNO PORQUE ID ES PK
@@ -251,7 +250,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 				
 				List <Products> productosId = session.createQuery("From Products where id_user='"+id+"')").list();
 				
-				//session.close();
+				session.close();
 				
 				
 				return productosId;
@@ -274,7 +273,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			session.update(product);
 			session.getTransaction().commit();
 			
-			//session.close();
+			session.close();
 			
 			
 			return "Producto actualizado correctamente";
@@ -335,7 +334,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 
 				session.getTransaction().commit();
 				
-				//session.close();
+				session.close();
 				
 				return "Producto actualizado correctamente";
 				
@@ -352,7 +351,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			session.save(product);
 			session.getTransaction().commit();
 			
-			//session.close();
+			session.close();
 			
 			return "Producto insertado";
 			

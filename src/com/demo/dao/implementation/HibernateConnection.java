@@ -31,8 +31,9 @@ public class HibernateConnection {
 		//database.setProperty("hibernate.connection.password", "kQ0cfsXn");
 		database.setProperty("hibernate.connection.url", "jdbc:mysql://"+host+":"+port+"/innodb?user=" + userName + "&password=" + password);
 		database.setProperty("hibernate.connection.dialect", "org.hibernate.dialect.MySQL5Dialect");
+		database.setProperty("org.hibernate.context.spi.CurrentSessionContext", "WebSessionContext");
 		
-		//AÑADO LAS CLASES PARA LA CONEXION CON LA BASE DE DATOS
+		//Aï¿½ADO LAS CLASES PARA LA CONEXION CON LA BASE DE DATOS
 		Configuration cfg = new Configuration()
 							.setProperties(database)
 							.addPackage("com.demo.pojo")
@@ -46,8 +47,12 @@ public class HibernateConnection {
 		
 	}
 		public static Session getSession() {
+		
 			
-			return sessionFactory.openSession();	
+				
+				return sessionFactory.openSession();	
+			
+			
 		}
 		
 	
