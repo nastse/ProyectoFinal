@@ -41,7 +41,7 @@ public class HibernateConnection {
 		StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
 		
 		sessionFactory = cfg.buildSessionFactory(ssrb.build());
-		
+
 		return sessionFactory;
 	}
 

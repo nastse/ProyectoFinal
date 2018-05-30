@@ -96,6 +96,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		
 		session.close();
 		
+		
 		//DEVUELVE UN POJO
 	
 		return allProductsNames;
