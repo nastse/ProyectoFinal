@@ -21,7 +21,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			try {
 				
 				//Session session = HibernateConnection.doHibernateConnection().openSession();
-				Session session = HibernateConnection.getSession();
+				Session session = HibernateConnection.getSession();	
 				
 				session.beginTransaction();
 				
@@ -29,10 +29,9 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				List<User> user = session.createQuery("From User where email='"+username+"'and password='"+password+"'").list();
 				
 				//Cerramos la sesion
-				session.close();
+				//session.close();
 				
-				
-				
+
 				if(user.size()==1) return user.get(0).getId_usuario();
 				
 				else return 0;
@@ -58,7 +57,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 					try {
 						
 						//Session session = HibernateConnection.doHibernateConnection().openSession();
-						Session session = HibernateConnection.getSession();
+						Session session = HibernateConnection.getSession();	
 						
 						session.beginTransaction();
 						//LE ASIGNO VALORES POR DEFECTO AL CREAR EL USUARIO
@@ -92,7 +91,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 					//IMPORTANTE A�ADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
 						session.getTransaction().commit();
 						
-						session.close();
+						//session.close();
 						
 						
 						return "Alta correcta...";
@@ -112,7 +111,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 							try {
 								
 								//Session session = HibernateConnection.doHibernateConnection().openSession();
-								Session session = HibernateConnection.getSession();
+								Session session = HibernateConnection.getSession();	
 								
 								session.beginTransaction();
 								
@@ -137,7 +136,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 								
 							//IMPORTANTE A�ADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
 								session.getTransaction().commit();
-								session.close();
+								//session.close();
 								HibernateConnection.closeSession();
 								
 								return "Actualizacion correcta...";
@@ -155,7 +154,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			String usuario = "";
 			
 			//Session session = HibernateConnection.doHibernateConnection().openSession();
-			Session session = HibernateConnection.getSession();
+			Session session = HibernateConnection.getSession();	
 			
 			session.beginTransaction();
 			
@@ -167,23 +166,22 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			}
 			
 			//Cerramos la sesion
-			session.close();
-			HibernateConnection.closeSession();
-
+			//session.close();
+			
 			return usuario;
 		}
 		
 		public List<String> getUserDatos(String id_usuario) {
 			
 			//Session session = HibernateConnection.doHibernateConnection().openSession();
-			Session session = HibernateConnection.getSession();
+			Session session = HibernateConnection.getSession();	
+			
 			//Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			
 			List<String> datos = session.createQuery("From User where id_usuario='"+id_usuario+"'").list();
 			
-			session.close();
-			//sessionFactory.close();
+			//session.close();
 			
 			return datos;
 		}

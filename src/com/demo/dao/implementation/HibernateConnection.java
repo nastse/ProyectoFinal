@@ -47,8 +47,7 @@ public class HibernateConnection {
 	}
 		public static Session getSession() {
 			
-			return sessionFactory.openSession();
-			
+			return sessionFactory.openSession();	
 		}
 		
 	

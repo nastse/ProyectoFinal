@@ -15,6 +15,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,18 +30,23 @@ public class Myprofile_Controller {
 	@RequestMapping(value="/myprofile", method=RequestMethod.GET)
 	//public ModelAndView load_myprofile(HttpSession session, ModelMap map) {
 	
-	public String load_myprofile(HttpSession session, ModelMap map) {	
+	public String load_myprofile(HttpSession session, Model md, ModelMap map) {	
 		//ModelAndView mv = new ModelAndView("myprofile");
-		
+		 
+		System.out.println("MUESTRO LO RECOGIDO EN MYPROFILE"+session.getAttribute("id_usuario")+session.getAttribute("email")+session.getAttribute("id"));
+			
 		//COMPRUEBO QUE EL USUARIO ESTA LOGUEADO
-		if(session.getAttribute("email") != null) {
+//		if(session.getAttribute("email") != null) {
+		if(session.getAttribute("email") != null) {	
 			
 			
-			//PARA RECIBIR EL NOMBRE DE LA SESION LE PASO EL NOMBRE DE LA CLAVE QUE LE ASIGNADO
-			String id_usuario = session.getAttribute("id_usuario").toString();
-			
-			//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
-			List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
+				//PARA RECIBIR EL NOMBRE DE LA SESION LE PASO EL NOMBRE DE LA CLAVE QUE LE ASIGNADO
+				String id_usuario = session.getAttribute("id_usuario").toString();
+				
+				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
+				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos("4");
+				
+				map.addAttribute("datosUsuario", datosUsuario);
 			
 			
 			if(session.getAttribute("id")  == null) {
@@ -50,7 +56,7 @@ public class Myprofile_Controller {
 			
 			//mv.addObject("user", username);
 			map.addAttribute("email", session.getAttribute("email"));
-			map.addAttribute("datosUsuario", datosUsuario);
+			
 			
 		}
 		
@@ -142,6 +148,7 @@ public class Myprofile_Controller {
 						//REFRESCO LOS DATOS TRAS ACTUALIZAR EL USUARIO PARA CARGAR LAS IMAGENES
 						List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
 						session.setAttribute("datos", datos);
+						session.setAttribute("email", session.getAttribute("email"));
 					}
 			
 			}

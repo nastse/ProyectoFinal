@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
@@ -55,7 +56,7 @@ public class Login_Controller {
 	
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String do_login(HttpServletRequest req, Model md, HttpSession session, @Valid User user, BindingResult br) {
+	public String do_login(HttpServletRequest req, Model md, RedirectAttributes rm, HttpSession session, @Valid User user, BindingResult br) {
 		
 		try {
 			
@@ -97,10 +98,11 @@ public class Login_Controller {
 					//A�ADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
 
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
-					session.setAttribute("email", username);
-					session.setAttribute("datos", datos);
-					session.setAttribute("id_usuario", usuario);
+						session.setAttribute("email", username);
+						session.setAttribute("datos", datos);
+						session.setAttribute("id_usuario", usuario);
 
+					
 					//A�ADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					//session.setAttribute("id", reviews);
 			
