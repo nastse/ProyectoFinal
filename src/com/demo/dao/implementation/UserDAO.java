@@ -20,8 +20,8 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 			try {
 				
-				SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-				Session session = sessionFactory.openSession();
+				Session session = HibernateConnection.doHibernateConnection().openSession();
+				//Session session = sessionFactory.openSession();
 				
 				session.beginTransaction();
 				
@@ -30,7 +30,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				
 				//Cerramos la sesion
 				session.close();
-				sessionFactory.close();
+				//sessionFactory.close();
 				
 				if(user.size()==1) return user.get(0).getId_usuario();
 				
@@ -146,8 +146,8 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 			String usuario = "";
 			
-			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-			Session session = sessionFactory.openSession();
+			Session session = HibernateConnection.doHibernateConnection().openSession();
+			//Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			
 			//Consulta HLO
@@ -159,21 +159,21 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 			//Cerramos la sesion
 			session.close();
-			sessionFactory.close();
+			//sessionFactory.close();
 
 			return usuario;
 		}
 		
 		public List<String> getUserDatos(String id_usuario) {
 			
-			SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
-			Session session = sessionFactory.openSession();
+			Session session = HibernateConnection.doHibernateConnection().openSession();
+			//Session session = sessionFactory.openSession();
 			session.beginTransaction();
 			
 			List<String> datos = session.createQuery("From User where id_usuario='"+id_usuario+"'").list();
 			
 			session.close();
-			sessionFactory.close();
+			//sessionFactory.close();
 			
 			return datos;
 		}
