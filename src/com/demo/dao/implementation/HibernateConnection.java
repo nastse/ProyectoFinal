@@ -2,6 +2,7 @@ package com.demo.dao.implementation;
 
 import java.util.Properties;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -13,7 +14,7 @@ public class HibernateConnection {
 
 	public static SessionFactory sessionFactory;
 	
-	public static SessionFactory doHibernateConnection() {
+	static {
 		
 //		String host = System.getenv("RDS_INSTANCE_HOST");
 //		String port = System.getenv("RDS_INSTANCE_PORT");
@@ -42,7 +43,18 @@ public class HibernateConnection {
 		
 		sessionFactory = cfg.buildSessionFactory(ssrb.build());
 		
-		return sessionFactory;
+		
 	}
+		public static Session getSession() {
+			
+			return sessionFactory.openSession();
+			
+		}
+		
+	
+	
+		public static void closeSession() {
+	       sessionFactory.close();
+		}
 
 }

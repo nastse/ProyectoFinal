@@ -24,10 +24,13 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	public List<Products> getAllProducts(){
 		
 		//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
-		Session session = HibernateConnection.doHibernateConnection().openSession();
+		//Session session = HibernateConnection.doHibernateConnection().openSession();
+		
+		Session session = HibernateConnection.getSession();
 		
 		List<Products> allProducts = session.createQuery("From Products").list();
 		session.close();
+		//HibernateConnection.closeSession();
 		
 		//DEVUELVE UN POJO
 		return allProducts;
@@ -38,7 +41,9 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	public List<String> getAllProductsNames(String marca, String modelo, String talla, String anio, String tallauser, String peso, String altura, String cintura, String pecho, String cadera, String genero ){
 		
 		//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
-		Session session = HibernateConnection.doHibernateConnection().openSession();
+		//Session session = HibernateConnection.doHibernateConnection().openSession();
+		
+		Session session = HibernateConnection.getSession();
 		
 		//CREO VARIABLES PARA RECOGER LOS VALORES Y COMPARAR EL VALOR QUE TRAEN PARA HACER LA BUSQUEDA
 		String marca2=marca;
@@ -95,6 +100,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		+ " and p.cadera like '"+cadera2+"' and p.cintura like '"+cintura2+"' and u.genero like '"+genero2+"'").list();
 		
 		session.close();
+		//HibernateConnection.closeSession();
 		
 		//DEVUELVE UN POJO
 	
@@ -155,8 +161,8 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			}
 		
 			//CREO LA SESION DE HIBERNATE - NECESITO CREAR UN CONTROLADOR
-			Session session = HibernateConnection.doHibernateConnection().openSession();
-			
+			//Session session = HibernateConnection.doHibernateConnection().openSession();
+			Session session = HibernateConnection.getSession();
 			
 			Query q  = session.createQuery("Select p.categoria, p.marca, p.imagen, u.nombre, p.id_rev, u.id_usuario, p.modelo, u.imagen, p.recomendable, p.tallauser, p.talla, p.peso, p.altura, u.genero from User u, Products p where " 
 					+ "u.id_usuario=p.id_user and p.marca like '"+marca2+"' and p.categoria like '"+modelo2+"' and p.talla like '"+talla2+"' and p.anio like '"+anio2+"' " 
@@ -168,7 +174,8 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 			
 				List <String> resultado = q.list();
 				
-			session.close();
+				session.close();
+				//HibernateConnection.closeSession();
 			
 			//DEVUELVE UN POJO
 			return resultado;
@@ -177,7 +184,8 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 //BORRAR UN PRODUCTO
 	public boolean deleteProductById(String id, String usuario_id){
 		try{
-			Session session = HibernateConnection.doHibernateConnection().openSession();
+			//Session session = HibernateConnection.doHibernateConnection().openSession();
+			Session session = HibernateConnection.getSession();
 			
 			List<Products> product = session.createQuery("From Products where id_rev='"+id+"'").list();
 			
@@ -189,12 +197,14 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 					session.delete(product.get(0));
 					session.getTransaction().commit();
 					session.close();
+					HibernateConnection.closeSession();
 				}
 				
 				return true;
 			}else {
 				
 				session.close();
+				//HibernateConnection.closeSession();
 				return false;
 			}	
 		}
@@ -210,10 +220,13 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	public Products getProductByProductId(String id) {
 		try {
 			
-			Session session = HibernateConnection.doHibernateConnection().openSession();
+			//Session session = HibernateConnection.doHibernateConnection().openSession();
+			Session session = HibernateConnection.getSession();
 			
 			List <Products> product = session.createQuery("From Products where id_rev='"+id+"'").list();
+			
 			session.close();
+			//HibernateConnection.closeSession();
 			
 			//SOLO DEVUELVE UNO PORQUE ID ES PK
 			return product.get(0);
@@ -229,10 +242,13 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		public List<Products> getProductByUserId(int id) {
 			try {
 				
-				Session session = HibernateConnection.doHibernateConnection().openSession();
+				//Session session = HibernateConnection.doHibernateConnection().openSession();
+				Session session = HibernateConnection.getSession();
 				
 				List <Products> productosId = session.createQuery("From Products where id_user='"+id+"')").list();
+				
 				session.close();
+				//HibernateConnection.closeSession();
 				
 				return productosId;
 				
@@ -247,11 +263,15 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	//ACTUALIZAR UN PRODUCTO
 		public String updateProduct(Products product) {
 			
-			Session session = HibernateConnection.doHibernateConnection().openSession();
+			//Session session = HibernateConnection.doHibernateConnection().openSession();
+			Session session = HibernateConnection.getSession();
+			
 			session.beginTransaction();
 			session.update(product);
 			session.getTransaction().commit();
+			
 			session.close();
+			//HibernateConnection.closeSession();
 			
 			return "Producto actualizado correctamente";
 			
@@ -260,7 +280,9 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	//ACTUALIZAR CAMPOS DE UN PRODUCTO
 			public String updateProductColumns(Products product) {
 				
-				Session session = HibernateConnection.doHibernateConnection().openSession();
+				//Session session = HibernateConnection.doHibernateConnection().openSession();
+				Session session = HibernateConnection.getSession();
+				
 				session.beginTransaction();
 				
 				
@@ -308,7 +330,9 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 						.executeUpdate();
 
 				session.getTransaction().commit();
+				
 				session.close();
+				//HibernateConnection.closeSession();
 				
 				return "Producto actualizado correctamente";
 				
@@ -318,11 +342,15 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 		//INSERTAR UN PRODUCTO
 		public String insertProduct(Products product) {
 			
-			Session session = HibernateConnection.doHibernateConnection().openSession();
+			//Session session = HibernateConnection.doHibernateConnection().openSession();
+			Session session = HibernateConnection.getSession();
+			
 			session.beginTransaction();
 			session.save(product);
 			session.getTransaction().commit();
+			
 			session.close();
+			HibernateConnection.closeSession();
 			
 			return "Producto insertado";
 			
