@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -43,6 +44,42 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 		}
 		
+		//ELIMINO UN USUARIO PASANDOLE SU ID Y ASIGNO SUS REVIEWS 
+			//PRIMERO HAGO UN UPDATE Y LUEGO UN DELETE
+		public int doHibernateDeleteUser(int usuario_id) {
+			
+			try {
+				
+				Session session = HibernateConnection.getSession();	
+				
+				//LE PASO LAS REVIEWS AL USUARIO ADMIN
+				session.beginTransaction();
+				String hqlUpdate ="update Products p set p.id_user =:newIduser "	
+						+ "where p.id_user =:oldIduser";
+			
+				//ELIMINO EL USUARIO DEFINITIVAMENTE 
+				int updatedEntities = session.createQuery(hqlUpdate)
+						.setInteger("newIduser", 1)
+						.setInteger("oldIduser", usuario_id)
+						.executeUpdate();
+				session.getTransaction().commit();
+				
+				
+				session.beginTransaction();
+				session.createQuery("delete User where id_usuario='"+usuario_id+"'").executeUpdate();
+				session.getTransaction().commit();
+				
+				//Cerramos la sesion
+				session.close();
+					
+				return 1;
+				
+			}catch(Exception e) {
+				return 0;
+			}
+			
+		}
+		
 		//INSERTAR EN LA BASE DE DATOS CON HIBERNATE
 		public String doHibernateSignUp(User user) {
 			
@@ -66,7 +103,8 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 						user.setNombre(user.getEmail().toString());
 						user.setTipo_usuario(1);
 						user.setEstado(1);
-							DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+						user.setTokenID(UUID.randomUUID().toString());
+							
 							Date date = new Date();
 						user.setCreado(date);	
 						
@@ -114,7 +152,6 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 								Session session = HibernateConnection.getSession();	
 								
 								session.beginTransaction();
-								
 								//PARA HACER UN UPDATE DE COLUMNAS EN CONCRETO
 								String hqlUpdate ="update User u set u.nombre=:newName, "
 										+ "u.peso = :newPeso, "
@@ -132,9 +169,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 										.setString("newGenero", genero)
 										.setString("newImagen", imagen)
 										.executeUpdate();
-								
-								
-							//IMPORTANTE A�ADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
+							//IMPORTANTE AÑADIR PARA INSERTAR DATOS EN LA BASE DE DATOS
 								session.getTransaction().commit();
 								session.close();
 								//HibernateConnection.closeSession();

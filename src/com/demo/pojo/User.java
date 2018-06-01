@@ -37,6 +37,9 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
+	@Column(name="tokenID")
+	private String tokenID;
+	
 	@Column(name="nombre")
 	private String nombre;
 	
@@ -139,5 +142,12 @@ public class User {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
+	public String getTokenID() {
+		return tokenID;
+	}
+	public void setTokenID(String tokenID) {
+		this.tokenID = tokenID;
+	}
 		
+	
 }

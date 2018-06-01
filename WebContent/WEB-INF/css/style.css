@@ -363,3 +363,6 @@
     			display: flex;
     			flex-wrap: wrap;
     		}
+    		#mensaje-baja{
+    			margin-top:20px;
+    		}

@@ -26,12 +26,17 @@ public class HibernateConnection {
 		
 		
 		Properties database = new Properties();
+//		database.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+//		database.setProperty("hibernate.connection.url", "jdbc:mysql://"+host+":"+port+"/innodb?user=" + userName + "&password=" + password);
+//		database.setProperty("hibernate.connection.dialect", "org.hibernate.dialect.MySQL5Dialect");
+//		database.setProperty("org.hibernate.context.spi.CurrentSessionContext", "WebSessionContext");
+		
+		
 		database.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		//database.setProperty("hibernate.connection.username", "useruS5");
-		//database.setProperty("hibernate.connection.password", "kQ0cfsXn");
-		database.setProperty("hibernate.connection.url", "jdbc:mysql://"+host+":"+port+"/innodb?user=" + userName + "&password=" + password);
+		database.setProperty("hibernate.connection.username", "root");
+		database.setProperty("hibernate.connection.password", "");
+		database.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/proyecto_sergiu");
 		database.setProperty("hibernate.connection.dialect", "org.hibernate.dialect.MySQL5Dialect");
-		database.setProperty("org.hibernate.context.spi.CurrentSessionContext", "WebSessionContext");
 		
 		//A�ADO LAS CLASES PARA LA CONEXION CON LA BASE DE DATOS
 		Configuration cfg = new Configuration()

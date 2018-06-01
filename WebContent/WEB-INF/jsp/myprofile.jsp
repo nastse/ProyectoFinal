@@ -190,6 +190,13 @@
 									<button id="login" type="submit" class="btn btn-lg  mb-1">GUARDAR</button>
 								</div>
 							</div>	
+						</div>
+						<div class="col-12">
+							<div class="row justify-content-center">
+								<div class="col-12 text-center">
+									<label  class="form-check-label" for="terminos"><a id="link-negro" href="<c:url value='/baja'/>">Darse de baja</a></label>
+								</div>
+							</div>	
 						</div>	
 					
 					</div>
