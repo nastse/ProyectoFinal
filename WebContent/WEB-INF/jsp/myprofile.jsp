@@ -43,13 +43,19 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			color:white;
     			font-size:18px;
-    			margin-top:50px;
     			width:133px;
  				background-color:#1F2833; 
 /* 				background: linear-gradient(to bottom, #45484d 0%,#000000 100%); */
     		}
     		#login:hover{
     			background-color:#F27490;
+    		}
+    		
+    		#columna{
+    			font-family: Trade Gothic, Charcoal, sans-serif;
+    			font-weight: bold;
+    			font-size:16px;
+    			
     		}
 
 	</style>
@@ -75,7 +81,7 @@
 <body>
 	<c:if test="${empty sessionScope.email}">
 	   <div class="container">	
-			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+			<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 				<h1>DEBES INICIAR SESIÓN</h1>
 				<meta http-equiv="Refresh" content="2;url=login">
 			</div>  
@@ -183,9 +189,12 @@
 									
 					
 							</div>
-						</div>
+						</div>	
 						<div class="col-12">
 							<div class="row justify-content-center">
+								<div class="col-12 text-center">
+									<label  id="columna" class="btn btn-lg  mb-1" for="terminos"><a id="link-negro" href="<c:url value='/password'/>">CAMBIAR CONTRASEÑA</a></label>
+								</div>
 								<div class="col-12 text-center">
 									<button id="login" type="submit" class="btn btn-lg  mb-1">GUARDAR</button>
 								</div>

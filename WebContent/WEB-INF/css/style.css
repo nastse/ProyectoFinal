@@ -11,6 +11,12 @@
  			
 			}
 			
+			#contenedor-columna{
+    		
+    			padding-bottom:30px;
+    			min-height: 580px;
+    		}
+			
 			#lateral{
 				width:120px;
 				height: 550px;

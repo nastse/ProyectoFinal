@@ -80,6 +80,37 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 		}
 		
+		//HAGO UN CAMBIO DE CONTRASEÑA
+			//PRIMERO HAGO UN UPDATE Y LUEGO UN DELETE
+		public int doHibernateUpdatePassword(int usuario_id, String newpassword) {
+			
+			try {
+				
+				Session session = HibernateConnection.getSession();	
+				
+				//UPDATE DEL CAMPO PASSWORD BUSCADO POR ID_USUARIO
+				session.beginTransaction();
+				String hqlUpdate ="update User u set u.password =:newPassword "	
+						+ "where u.id_usuario =:newIduser";
+			
+				//HAGO UN CAMBIO DE CONTRASEÑA
+				int updatedEntities = session.createQuery(hqlUpdate)
+						.setString("newPassword", newpassword)
+						.setInteger("newIduser", usuario_id)
+						.executeUpdate();
+				session.getTransaction().commit();
+				
+				//Cerramos la sesion
+				session.close();
+					
+				return 1;
+				
+			}catch(Exception e) {
+				return 0;
+			}
+			
+		}
+		
 		//INSERTAR EN LA BASE DE DATOS CON HIBERNATE
 		public String doHibernateSignUp(User user) {
 			

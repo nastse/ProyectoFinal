@@ -151,7 +151,7 @@ public class Signup_Controller{
 		
 						}
 						else{
-							message = "Las contraseñas no coinciden";
+							message = "Las contraseÃ±as no coinciden";
 							md.addAttribute("error_msg", message);
 						}
 					

@@ -21,7 +21,7 @@
 <body>
 	<div class="container">	
 		
-				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+				<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 					<h1>LO QUE ESTAS BUSCANDO NO EXISTE</h1>
 				</div>
 	</div>	

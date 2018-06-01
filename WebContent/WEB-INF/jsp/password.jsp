@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Eliminar cuenta</title>
+	<title>Cambiar contraseña</title>
 	
 
 	<style type="text/css">
@@ -98,11 +98,11 @@
 							<div id="column-center" class="col-lg-6">							
 								<div id="" class="row justify-content-md-center justify-content-sm-center">	
 									<div class="col-lg-10 text-center">
-										<h5 id="columna">PROCESO DE BAJA</h5>
+										<h5 id="columna">CAMBIO DE CONTRASEÑA</h5>
 										<hr>
 									</div>
 									<div class="col-lg-10 text-center">
-										<span id="texto">Una vez confirmado este proceso tu cuenta se eliminará del sistema y no podrás volver a acceder a ella</span>
+										<span id="texto">Introduce una nueva contraseña y confirmala para efectuar el cambio</span>
 									</div>	
 									<div id="mensaje-baja" class="col-lg-10 text-center">
 										<c:if test="${not empty error_msg}">	
@@ -111,19 +111,22 @@
 									</div>	
 									<div class="col-lg-10">
 										<!-- 	AUTHENTICATION PROCES FOR LOGIN SECCION 6 -->
+										
+										
+										<form:form action="${pageContext.request.contextPath}/password" modelAttribute="user" method="post">
 
-										<form action="${pageContext.request.contextPath}/baja" method="post">
-												<div class="form-group">
-													<label id="titulo">EMAIL</label>
-														<input  id="form" class="form-control" type="text" name="email"></input>
-												</div>	
 												<div class="form-group">
 													<label id="titulo">CONTRASEÑA</label>
-														<input id="form" class="form-control" type="password"  name="password"></input>
+														<form:input  id="form" class="form-control" type="password" path="password" name="password"></form:input>
+														<br><form:errors path="password" class="alert alert-danger" element="div"></form:errors> 
+												</div>	
+												<div class="form-group">
+													<label id="titulo">CONFIRMA CONTRASEÑA</label>
+														<input id="form" class="form-control" type="password"  name="repassword"></input>
 
 												</div>	
-												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">ELIMINAR</button>
-										</form>	
+												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">CAMBIAR</button>
+										</form:form>	
 									</div>
 								</div>	
 							</div>		
