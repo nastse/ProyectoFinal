@@ -1,6 +1,7 @@
 package com.demo.controllers;
 
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.demo.dao.implementation.S3FileUploader;
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
@@ -128,14 +130,19 @@ public class Myprofile_Controller {
 							   if(data.get(0).getString().length() > 5242880) {
 								   
 								   error=true;
-								   session.setAttribute("mensaje_alta", "ERROR EL TAMAï¿½O Mï¿½XIMO ES DE 5MB");
+								   session.setAttribute("mensaje_alta", "ERROR EL TAMAÑO MÁXIMO ES DE 5MB");
 							   }else {
 
 								 //image = new File(data.get(0).getName()).getName();
 									image = UUID.randomUUID().toString()+".jpg";
-									String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-									data.get(0).write(new File(path + File.separator + image));
 									
+									//SUBO EL ARCHIVO AL S3 DE AMAZON CONFIGURADO EN LA CLASE S3FILEUPLOADER
+									S3FileUploader s3 = new S3FileUploader();
+							        String result = s3.fileUploader(data, image);
+							            
+//									String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
+//									data.get(0).write(new File(path + File.separator + image));
+									System.out.println(result);
 									session.removeAttribute("mensaje_alta"); 
 							   } 
 						   }
