@@ -40,11 +40,10 @@
 
     		}
     		#alta{
-    			font-family: Trade Gothic, Charcoal, sans-serif; 
-    			
+    			font-family: Trade Gothic, Charcoal, sans-serif; 	
     			color:white;
     			font-size:18px;
-    			margin-top:50px;
+    			margin-top:10px;
  				background-color:#1F2833; 
 /* 				background: linear-gradient(to bottom, #45484d 0%,#000000 100%); */
     		}
@@ -127,6 +126,11 @@
 												</div>	
 												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">CAMBIAR</button>
 										</form:form>	
+									</div>
+									<div class="col-lg-10">
+										<div class="form-group">
+											<button id="alta" type="reset" class="btn btn-lg btn-block mb-1" onclick="location.href='${pageContext.request.contextPath}/myprofile';">ATRÁS</button>
+										</div>	
 									</div>
 								</div>	
 							</div>		
