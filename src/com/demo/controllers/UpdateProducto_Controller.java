@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.dao.implementation.S3FileUploader;
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
@@ -234,8 +235,13 @@ public class UpdateProducto_Controller {
 						   }else {
 							   
 							   imagen = UUID.randomUUID().toString()+".jpg";
-							   String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-							   data.get(0).write(new File(path + File.separator + imagen)); 
+							 
+							   //SUBO EL ARCHIVO AL S3 DE AMAZON CONFIGURADO EN LA CLASE S3FILEUPLOADER
+							   S3FileUploader s3 = new S3FileUploader();
+						       String result = s3.fileUploader(data, imagen);
+							   
+//							   String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
+//							   data.get(0).write(new File(path + File.separator + imagen)); 
 							   
 							   session.removeAttribute("mensaje_alta");
 						   }

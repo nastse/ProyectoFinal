@@ -19,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.demo.dao.implementation.S3FileUploader;
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
 
@@ -148,8 +149,12 @@ public class AltaProducto_Controller {
 				
 				if(!error) {
 
-					String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
-					data.get(0).write(new File(path + File.separator + imagen));
+//					String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
+//					data.get(0).write(new File(path + File.separator + imagen));
+					
+					//SUBO EL ARCHIVO AL S3 DE AMAZON CONFIGURADO EN LA CLASE S3FILEUPLOADER
+					S3FileUploader s3 = new S3FileUploader();
+			        String result = s3.fileUploader(data, imagen);
 					
 //						java.util.Date dt = new java.util.Date();
 					
