@@ -40,16 +40,14 @@
 						<span id="anio-ver">${product.anio}</span>&nbsp
 						<span id="modelo-ver">${product.precio}€</span>
 					</div>
-					<div class="col-12">
-						<hr>
-					</div>
+					
 				</div> 	
 			</div>
 			
 			<div class="col-12">
 					<img id="contenedor-imagen-ver" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">
 			</div>
-			<hr>
+			
 			
 			
 		</div>	
@@ -109,9 +107,7 @@
 		</div>
 		
 		<div id="" class="row justify-content-md-center justify-content-sm-center text-center">		
-							<div class="col-12">
-								<hr>
-							</div>
+							
 							<div class="col-lg-3">	
 									<div id="" class="row">
 									<div class="col-12">

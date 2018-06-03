@@ -93,7 +93,7 @@
 			<h2>INICIAR SESIÓN CON UNA CUENTA</h2>
 		</div>	
 			
-		<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		
+		<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center bg-white rounded text-left">		
 	<!-- 						COLUMNA IZQUIERDA -->
 							<div id="column-center" class="col-lg-6">							
 								<div id="" class="row justify-content-md-center justify-content-sm-center">	

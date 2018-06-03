@@ -144,8 +144,7 @@
 					</div>
 
 				</c:forEach>
-			
-			<a href="${pageContext.request.contextPath}/products">Lista productos</a>
+		
 		</div>	
 	</c:if>	
 </body>

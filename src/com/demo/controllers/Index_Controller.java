@@ -56,7 +56,7 @@ public class Index_Controller {
         modelAndView.addObject("page", Integer.parseInt(page));
         
         
-        pagedListHolder.setPageSize(4);
+        pagedListHolder.setPageSize(6);
         //ENVIO EL NUMERO TOTAL DE PAGINAS QUE VA A TENER MI MENU DE PAGINACION
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
 

@@ -5,6 +5,10 @@
 				top:70px;
 			}
 			
+			p{
+				text-align: justify;
+			}
+			
 			#contenedor-inicio{
 /* 				background-color:#ECEFF1; */
 				background-color:white; 
@@ -290,20 +294,50 @@
     		}
     		
     		#footer{
-    			margin-top:75px;
+    			margin-top:50px;
     			background-color:#1F2833;
-    			padding-top:50px;
+    			padding-top:20px;
     			padding-bottom:50px;
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:20px;
     			color:white;
+    			min-height: 350px;
     		}
+    		#columna-footer{
+    			margin-top:30px;
+			}
+			
     		#link{
-    			color:white;
+    			color:#AEAEAE;
+    			margin-top:5px;
     		}
     		#link:hover{
     			color:#F27490;	
     		}
+    		
+    		#copyright{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:10px;
+    			color:white;
+    		}
+    		#titulo-footer{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:30px;
+    			font-weight:bold;
+    			color:#F27490;
+    		}
+    		#titulo-footer-small{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:20px;
+    			font-weight:bold;
+    			color:white;
+    		}
+    		#link-footer{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:15px;
+    			  				
+    		}
+    		
     		#link-negro{
     			color:black;
     		}#link-negro:hover{

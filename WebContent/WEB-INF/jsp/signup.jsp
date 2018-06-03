@@ -127,7 +127,7 @@
 			<h2>CREAR UNA CUENTA</h2>
 		</div>	
 			
-		<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-left">		
+		<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center m-2 bg-white rounded text-left">		
 	<!-- 						COLUMNA IZQUIERDA -->
 							<div id="column-center" class="col-lg-6">							
 								<div id="" class="row justify-content-md-center justify-content-sm-center">	
@@ -157,7 +157,7 @@
 													<label id="titulo">TÉRMINOS Y CONDICIONES</label>
 													<div class="form-check">
 														 <input class="form-check-input"  type="checkbox" required name="terminos">
-								 						 <label  class="form-check-label" for="terminos">Acepto los <a id="link-negro" href="<c:url value='/contacto'/>">términos, condiciones y políticas de privacidad</a></label>
+								 						 <label class="form-check-label" for="terminos">Acepto los <a id="link-negro" href="<c:url value='/terminos'/>">términos, condiciones</a> y <a id="link-negro" href="<c:url value='/privacidad'/>">políticas de privacidad</a></label>
 													</div>
 												</div>
 												

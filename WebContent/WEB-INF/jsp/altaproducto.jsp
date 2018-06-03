@@ -27,6 +27,17 @@
         		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
     		}
     		
+    		.boton{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			color:white;
+    			font-size:18px;
+				background-color:#1F2833;
+				width:90px;
+    		}
+    		.boton:hover{
+    			background-color:#F27490;
+    		} 
+    		
     		#form:focus{
     			border-color: #F27490;
         		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
@@ -158,8 +169,11 @@
 <c:if test="${not empty sessionScope.email}">	
 	<div class="container">	
 	
-			<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
-				<h1>Cabecera con datos del usuario que lo modifica</h1>
+			<div id="" class="row justify-content-md-center justify-content-sm-center bg-white rounded text-center">
+				<div class="col-lg-10 text-center">
+					<h5 id="columna">CREAR UNA NUEVA REVIEW</h5>
+					<hr>
+				</div>
 			</div>
 			
 			<form action="${pageContext.request.contextPath}/altaproducto" method="post" enctype="multipart/form-data">
@@ -229,27 +243,27 @@
 									</select>
 								</div>
 								<div class="col-lg-10">
-									<label id="titulo">Medida Pecho</label><br>
+									<label id="titulo">Medida Pecho</label><span>(opcional)</span><br>
 									<select id="form" class="form-control" name="pecho">
-												<option value = ""></option>
+												<option value = "0"></option>
 												<c:forEach var = "i" begin = "60" end = "120">
 							         				<option value = "${i}"/>${i}cm</option>
 							     				</c:forEach>			
 									</select>
 								</div>
 								<div class="col-lg-10">
-									<label id="titulo">Medida Cintura</label><br>
+									<label id="titulo">Medida Cintura</label><span>(opcional)</span><br>
 									<select id="form" class="form-control" name="cintura">
-												<option value = ""></option>
+												<option value = "0"></option>
 												<c:forEach var = "i" begin = "40" end = "100">
 							         				<option value = "${i}"/>${i}cm</option>
 							     				</c:forEach>			
 									</select>
 								</div>	
 								<div class="col-lg-10">
-									<label id="titulo">Medida Cadera</label><br>
+									<label id="titulo">Medida Cadera</label><span>(opcional)</span><br>
 									<select id="form" class="form-control" name="cadera">
-												<option value = ""></option>
+												<option value = "0"></option>
 												<c:forEach var = "i" begin = "50" end = "100">
 							         				<option value = "${i}"/>${i}cm</option>
 							     				</c:forEach>			
@@ -422,21 +436,11 @@
 								</div>
 							</div>
 						</div>	
-				</div>		
-				<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">		
-						<div class="col-lg-12">
-	
-							
+						<div class="col-lg-12 text-center">
+							<button id="boton" type="reset" class="boton btn btn-sm" onclick="location.href='${pageContext.request.contextPath}/myproducts'">CANCELAR</button>
+							<button id="boton" class="boton btn btn-sm" type="submit" value="Guardar" >GUARDAR</button>
 						</div>
-						<div class="col-lg-12">	
-								<a href="<c:url value='/myproducts'/>">Cancelar</a> 
-								<input type="submit" value="Guardar" >													
-						</div>
-							
-				</div>
-				
-				
-					
+				</div>			
 			</form>	
 	</div>				
 
