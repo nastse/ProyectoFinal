@@ -121,7 +121,7 @@
 												</div>	
 												<div class="form-group">
 													<label id="titulo">CONFIRMA CONTRASEÑA</label>
-														<input id="form" class="form-control" type="password"  name="repassword"></input>
+														<input id="form" class="form-control" type="password"  name="repassword" required></input>
 
 												</div>	
 												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">CAMBIAR</button>

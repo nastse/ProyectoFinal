@@ -114,11 +114,11 @@
 										<form action="${pageContext.request.contextPath}/baja" method="post">
 												<div class="form-group">
 													<label id="titulo">EMAIL</label>
-														<input  id="form" class="form-control" type="text" name="email"></input>
+														<input  id="form" class="form-control" type="text" name="email" required></input>
 												</div>	
 												<div class="form-group">
 													<label id="titulo">CONTRASEÑA</label>
-														<input id="form" class="form-control" type="password"  name="password"></input>
+														<input id="form" class="form-control" type="password"  name="password" required></input>
 
 												</div>	
 												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">ELIMINAR</button>

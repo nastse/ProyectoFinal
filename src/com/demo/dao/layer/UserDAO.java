@@ -13,4 +13,6 @@ public interface UserDAO {
 	public String doHibernateUpdateUser(String nombre, int peso, int altura, int edad, String genero, String imagen, int id);
 	public String getUserName(int id_user);
 	public List<String> getUserDatos(String email);
+	public String comprobarEmail(String email);
+	public int comprobarTokenID(String tokenID);
 }

@@ -59,11 +59,8 @@ public class VistaProducto_Controller {
 			mav.addObject("usuario", usuario);
 			return mav;
 			
-		}
-		
-		
-	}
-	
+		}	
+	}	
 }	
 	
 	

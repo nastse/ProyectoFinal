@@ -252,5 +252,62 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			return datos;
 		}
 		
+		//HAGO UNA BUSQUEDA PARA SABER SI EL EMAIL QUE SE QUIERE RECUPERAR EXISTE
+		public String comprobarEmail(String email) {
+			
+			try {
+				
+				//Session session = HibernateConnection.doHibernateConnection().openSession();
+				Session session = HibernateConnection.getSession();	
+				
+				session.beginTransaction();
+				
+				//Consulta HLO
+				List<User> user = session.createQuery("From User tokenID where email='"+email+"'").list();
+				
+				//Cerramos la sesion
+				session.close();
+				
+				//SI EXISE EL EMAIL/USUARIO DEVUELVO UN 1
+				if(user.size()== 1) return user.get(0).getTokenID();
+				
+				else return "0";
+				
+				
+			}catch(Exception e) {
+				return "0";
+			}
+			
+		}
+		
+		
+		//HAGO UNA BUSQUEDA PARA SABER SI EL TOKEN ES VERDADERO Y DEVUELVO EL USUARIO
+		public int comprobarTokenID(String tokenID) {
+			
+			try {
+				
+				//Session session = HibernateConnection.doHibernateConnection().openSession();
+				Session session = HibernateConnection.getSession();	
+				
+				session.beginTransaction();
+				
+				//Consulta HLO
+				List<User> user = session.createQuery("From User where tokenID='"+tokenID+"'").list();
+				
+				//Cerramos la sesion
+				session.close();
+				
+				//SI EXISE EL EMAIL/USUARIO DEVUELVO UN 1
+				if(user.size()== 1) return user.get(0).getId_usuario();
+				
+				else return 0;
+				
+				
+			}catch(Exception e) {
+				return 0;
+			}
+			
+		}
+		
 
 }
