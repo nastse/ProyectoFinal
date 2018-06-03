@@ -96,6 +96,7 @@
 					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
 						<div class="col-12 text-center">
 							<span id="encabezado">Actualiza tus datos</span>
+							<hr>
 						</div>
 
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 text-center">	

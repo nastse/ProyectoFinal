@@ -112,21 +112,26 @@
 						<h5 id="columna">FORMULARIO DE CONTACTO</h5>
 						<hr>
 					</div>
+					<div id="mensaje-baja" class="col-lg-10 text-center">
+										<c:if test="${not empty error_msg}">	
+  											<label class="alert alert-danger">${error_msg}</label>
+										</c:if>
+									</div>
 					<div class="col-lg-10">
 
 						<form action="${pageContext.request.contextPath}/contacto"  method="post">
 								<div class="form-group">
 									<label id="titulo">EMAIL DE CONTACTO</label>
-										<input  id="form" class="form-control" type="text" name="username" required></input>
+										<input  id="form" class="form-control" type="text" name="email" required></input>
 								</div>	
 								<div class="form-group">
 									<label id="titulo">CATEGORIA</label>
-										<select id="form" class="form-control" name="motivo" required>
+										<select id="form" class="form-control" name="asunto" required>
 											<option value = ""></option>
-											<option value = "info">INFORMACIÓN</option>
-											<option value = "inci">INCIDENCIA</option>
-											<option value = "prop">PROPUESTA</option>
-											<option value = "otro">OTROS MOTIVOS</option>
+											<option value = "Informacion">INFORMACIÓN</option>
+											<option value = "Incidencia">INCIDENCIA</option>
+											<option value = "Propuesta">PROPUESTA</option>
+											<option value = "Otro">OTROS MOTIVOS</option>
 										</select>
 								</div>	
 								<div class="form-group">

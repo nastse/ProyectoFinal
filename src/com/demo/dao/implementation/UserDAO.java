@@ -111,6 +111,39 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 		}
 		
+		//HAGO UN CAMBIO DE CONTRASEÑA
+		//PRIMERO HAGO UN UPDATE Y LUEGO UN DELETE
+		public int updateToken(String usuario_id) {
+		
+		try {
+			
+			Session session = HibernateConnection.getSession();	
+			
+			//UPDATE DEL CAMPO PASSWORD BUSCADO POR ID_USUARIO
+			session.beginTransaction();
+			String hqlUpdate ="update User u set u.tokenID =:newTokenID "	
+					+ "where u.id_usuario =:oldTokenID";
+		
+			String nuevoTokenID= UUID.randomUUID().toString();
+			
+			//HAGO UN CAMBIO DE CONTRASEÑA
+			int updatedEntities = session.createQuery(hqlUpdate)
+					.setString("newTokenID", nuevoTokenID)
+					.setString("oldTokenID", usuario_id)
+					.executeUpdate();
+			session.getTransaction().commit();
+			
+			//Cerramos la sesion
+			session.close();
+				
+			return 1;
+			
+		}catch(Exception e) {
+			return 0;
+		}
+		
+	}
+		
 		//INSERTAR EN LA BASE DE DATOS CON HIBERNATE
 		public String doHibernateSignUp(User user) {
 			
@@ -252,7 +285,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			return datos;
 		}
 		
-		//HAGO UNA BUSQUEDA PARA SABER SI EL EMAIL QUE SE QUIERE RECUPERAR EXISTE
+		//HAGO UNA BUSQUEDA PARA SABER SI EL EMAIL DEL QUE SE QUIERE RECUPERAR LA CONTRASEÑA EXISTE Y DEVUELVO SU TOKENID
 		public String comprobarEmail(String email) {
 			
 			try {
@@ -282,7 +315,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 		
 		
 		//HAGO UNA BUSQUEDA PARA SABER SI EL TOKEN ES VERDADERO Y DEVUELVO EL USUARIO
-		public int comprobarTokenID(String tokenID) {
+		public List<User> comprobarTokenID(String tokenID) {
 			
 			try {
 				
@@ -298,13 +331,13 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				session.close();
 				
 				//SI EXISE EL EMAIL/USUARIO DEVUELVO UN 1
-				if(user.size()== 1) return user.get(0).getId_usuario();
+				if(user.size()== 1) return user;
 				
-				else return 0;
+				else return null;
 				
 				
 			}catch(Exception e) {
-				return 0;
+				return null;
 			}
 			
 		}

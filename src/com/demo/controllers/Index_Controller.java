@@ -117,7 +117,7 @@ public class Index_Controller {
         
         PagedListHolder<String> pagedListHolder = new PagedListHolder<String>(totalproducts);
        
-        pagedListHolder.setPageSize(4);
+        pagedListHolder.setPageSize(6);
         modelAndView.addObject("maxPages", pagedListHolder.getPageCount());
 
         if(page==null || Integer.parseInt(page) < 1 || Integer.parseInt(page) > pagedListHolder.getPageCount())page="1";

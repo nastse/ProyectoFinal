@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.demo.dao.implementation.EnviarEmail;
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.User;
 
@@ -181,42 +182,9 @@ public class Signup_Controller{
 				session.setAttribute("datosUsuario", datosUsuario);
 				session.setAttribute("id_usuario", usuario);
 			
-				//PRUEBA PARA ENVIAR EMAIL
+				//ENVIO EMAIL DE CONFIRMACION DE ALTA
+					EnviarEmail.mandarEmail(email, "Alta nueva", "Se ha dado de alta correctamente en CiclismoReview");
 				
-				 	final String emailUsername = "sergiu.nastse@gmail.com";//from which you want to send mail
-				    final String emailPassword = "Netw0rks";//password off your mail id 
-
-				    Properties props = new Properties();
-				    props.put("mail.smtp.auth", "true");
-				    props.put("mail.smtp.starttls.enable", "true");
-				    props.put("mail.smtp.host", "smtp.gmail.com");
-				    props.put("mail.smtp.port", "587");
-
-				    Session session2 = Session.getInstance(props,
-				      new javax.mail.Authenticator() {
-				        protected PasswordAuthentication getPasswordAuthentication() {
-				            return new PasswordAuthentication(emailUsername, emailPassword);
-				        }
-				      });
-
-				    try {
-
-				        Message message2 = new MimeMessage(session2);
-				        message2.setFrom(new InternetAddress("sergiu.nastse@gmail.com"));
-				        message2.setRecipients(Message.RecipientType.TO,
-				            InternetAddress.parse("chersuis@gmail.com"));//whom you want to send mail
-				        message2.setSubject("Testing Subject");
-				        message2.setText("Dear Mail Crawler,"
-				            + "\n\n No spam to my email, please!");
-
-				        Transport.send(message2);
-
-				        System.out.println("Done");
-
-				    } catch (MessagingException e) {
-				        throw new RuntimeException(e);
-				    }
-
 				//return mav = new ModelAndView("myprofile");
 				return "redirect:/myprofile";
 			

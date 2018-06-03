@@ -114,7 +114,7 @@ public class ProductsDAO implements com.demo.dao.layer.ProductsDAO {
 	//DEVUELVO UN MAP CON LOS PRODUCTOS Y EL NOMBRE DE USUARIO DE CADA UNO PARA PAGINAR
 	public List<String> getAllProductsNamesPage(int pagina, String marca, String modelo, String talla, String anio, String tallauser, String peso, String altura, String cintura, String pecho, String cadera, String genero){
 		
-			int limiteporpagina = 4;
+			int limiteporpagina = 6;
 			
 			//CREO VARIABLES PARA RECOGER LOS VALORES Y COMPARAR EL VALOR QUE TRAEN PARA HACER LA BUSQUEDA			
 			String marca2=marca;

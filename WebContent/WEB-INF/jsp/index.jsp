@@ -551,14 +551,14 @@
 				</div>
 	</div>	
 <!-- 		PAGINACION	 -->
-		<div id="mostrar" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
+		<div id="mostrar" class="row justify-content-md-center justify-content-sm-center bg-white rounded text-center">
 			<div class="col-lg-12">
-					
-					<h1 id="texto">Prueba</h1>
-					
+				<hr>
+			</div>
+			<div class="col-lg-12">
 					<div id="pagination">
 					    <c:if test="${page > 1}">
-					    	 <input type="button" id="${page - 1}" value="Prev"  onclick="paginar(this.id)">
+					    	 <input type="button" id="${page - 1}" class="boton-pagina" value="Ant"  onclick="paginar(this.id)">
 					        
 					    </c:if>
 					    <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
@@ -567,14 +567,13 @@
 					                <span id="${i.index}">${i.index}</span>
 					            </c:when>
 					            <c:otherwise>
-					               <input type="button" id="${i.index}" value="${i.index}"  onclick="paginar(this.id)">
+					               <input type="button" id="${i.index}" class="boton-pagina" value="${i.index}"  onclick="paginar(this.id)">
 					                
 					            </c:otherwise>
 					        </c:choose>
 					    </c:forEach>
 					    <c:if test="${page + 1 <= maxPages}">
-					   		<input type="button" id="${page + 1}" value="Next"  onclick="paginar(this.id)">
-					        
+					   		<input type="button" id="${page + 1}" class="boton-pagina" value="Sig"  onclick="paginar(this.id)">				        
 					    </c:if>
 					</div>
 			</div> 

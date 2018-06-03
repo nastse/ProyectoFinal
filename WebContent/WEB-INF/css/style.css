@@ -10,7 +10,6 @@
 				background-color:white; 
 				margin-top: 50px;
 				min-height: 850px;
- 			
 			}
 			
 			#contenedor-columna{
@@ -32,11 +31,34 @@
 				height:394px;
 				box-shadow: 0px 0px 10px 0px rgba(199,187,199,1);
 			}
+			#producto:hover{
+				transition: 0.25s;
+				transition-timing-function: ease-in-out;
+				transform : translate(0, -2px);
+				
+			}
+			
 			#producto-info{
 				width: 200px;
 				background-color:white;
-				
 			}
+			
+			.boton-pagina{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			color:white;
+    			font-size:18px;
+				background-color:#1F2833;
+    		}
+    		
+    		.boton-pagina:hover{
+    			background-color:#F27490;
+    			cursor:pointer;
+    		}
+    		
+    		#alta:hover{
+    			background-color:#F27490;    			
+    		}
+			
 			
 			#producto-datos-usuario{
 				margin-top:25px;
@@ -53,6 +75,11 @@
 /* 				background-color:#0B0C10; */
 				background-color:#F27490;
 /* 				height:66px; */
+			}
+			
+			#mostrar{
+				margin-top:50px;
+			
 			}
 			
 			#nombre{
@@ -145,6 +172,22 @@
     			top: -8px;
    				right: -5px;
 			}
+			
+			.fa-arrow-circle-up:active{
+				color:#F27490;
+			}
+			
+			.fa-user-circle:active{
+				color:#F27490;
+			}
+			
+			.fa-plus-circle:active{
+				color:#F27490;
+			}
+			
+			.fa-power-off:active{
+				color:#F27490;
+			}
 			#texto-usuario-subir{
 				color:white;
 				font-size:14px;
@@ -152,6 +195,10 @@
 				position: relative;
     			top: -8px;
    				left: -5px;
+			}
+			
+			#texto-usuario-subir:active{
+				color:#1F2833;
 			}
 			#textarea_feedback{
     			font-family: Trade Gothic, Charcoal, sans-serif; 

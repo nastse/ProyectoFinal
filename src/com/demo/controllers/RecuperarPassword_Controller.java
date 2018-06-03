@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.demo.dao.implementation.EnviarEmail;
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
@@ -61,6 +62,10 @@ public class RecuperarPassword_Controller {
 					
 					//MENSAJE DE EMAIL ENCONTRADO
 					mensaje = "¡En breve recibirá un correo para reestablecer su contraseña!";
+					
+					//ENVIO EL EMAIL CON EL LINK PARA REESTABLECER LA CONTRASEÑA
+					EnviarEmail.mandarEmail(email, "Cambio de contraseña", "Haga click en este enlace para reestablecer su contraseña: " +"http://localhost:8081/Spring_Web_App/reestablecer-password/"+usuario);
+					
 					md.addAttribute("error_msg", mensaje);
 					
 					System.out.println(usuario);

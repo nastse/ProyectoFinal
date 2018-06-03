@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.demo.dao.implementation.EnviarEmail;
 import com.demo.dao.registery.RegisteryDAO;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
@@ -35,12 +36,13 @@ public class ReestablecerPassword_Controller {
 		mav.addObject("user", user);
 		
 		
-		int usuario = RegisteryDAO.getUserDAO().comprobarTokenID(tokenID);
+		List<User> usuario = RegisteryDAO.getUserDAO().comprobarTokenID(tokenID);
 		
 		//SI EL TOKEN ES VALIDO MUESTRO EL FORMULARIO PARA CAMBIAR LA PASSWORD
-		if(usuario != 0) {
+		if(usuario != null) {
 			//ES EL ID DEL USUARIO AL QUE SE LE VA A CAMBIAR LA CONTRASEÑA
-			session.setAttribute("id_usuario", usuario);
+			session.setAttribute("id_usuario", usuario.get(0).getId_usuario());
+			
 			return mav;
 			
 		//SI EL TOKEN NO EXISTE REDIRIJO A ERROR
@@ -60,6 +62,7 @@ public class ReestablecerPassword_Controller {
 		String password= req.getParameter("password");
 		String repassword= req.getParameter("repassword");
 		String usuario = session.getAttribute("id_usuario").toString();
+			
 		String message = "";
 		
 		try {
@@ -77,14 +80,21 @@ public class ReestablecerPassword_Controller {
 				 if(password.equals(repassword)){
 					
 					//HAGO UN UPDATE DE PASSWORD 
-					int cambio = RegisteryDAO.userDAO.doHibernateUpdatePassword(Integer.parseInt(usuario), password);
+					int cambioPassword = RegisteryDAO.getUserDAO().doHibernateUpdatePassword(Integer.parseInt(usuario), password);
 					
-					//HAGO UN UPDATE DE TOKENID CON OTRO TOKENID NUEVO
+					//HAGO UN UPDATE DE TOKENID CON OTRO TOKENID NUEVO PARA QUE EL LINK YA NO FUNCIONE UNA VEZ CAMBIADA LAS PASSWORD
 					//TODO GENERAR UN NUEVO TOKENID Y ACTUALIZARLO
-					message = "Contraseña actualizada correctamente";
-					md.addAttribute("error_msg", message);
+					int cambioToken = RegisteryDAO.getUserDAO().updateToken(usuario);
 					
-					return "redirect:/login";
+					if(cambioToken==1) {
+						
+						message = "Contraseña actualizada correctamente";
+						//md.addAttribute("error_msg", message);
+							
+						return "redirect:/login";
+						
+					}
+
 				 }
 				 else{
 					 

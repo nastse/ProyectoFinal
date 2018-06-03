@@ -7,6 +7,7 @@ import com.demo.pojo.User;
 public interface UserDAO {
 
 	public int doHibernateLogin(String username, String password);
+	public int updateToken(String tokenID);
 	public int doHibernateDeleteUser(int usuario_id);
 	public int doHibernateUpdatePassword(int usuario_id, String newpassword);
 	public String doHibernateSignUp(User user);
@@ -14,5 +15,5 @@ public interface UserDAO {
 	public String getUserName(int id_user);
 	public List<String> getUserDatos(String email);
 	public String comprobarEmail(String email);
-	public int comprobarTokenID(String tokenID);
+	public List<User> comprobarTokenID(String tokenID);
 }

@@ -2,18 +2,21 @@ package com.demo.dao.registery;
 
 import com.demo.dao.implementation.ProductsDAO;
 import com.demo.dao.implementation.UserDAO;
+import com.demo.dao.implementation.MensajeDAO;
 
 public class RegisteryDAO {
 	
 	//DECLARO TODAS LAS INTERFACES
 	public static com.demo.dao.layer.ProductsDAO productsDAO;
 	public static com.demo.dao.layer.UserDAO userDAO;
+	public static com.demo.dao.layer.MensajeDAO mensajeDAO;
 	
 	static {
 		//IMPLEMENTACION CLASS
 		//CREAMOS UN OBJETO 
 		productsDAO = new ProductsDAO();
 		userDAO = new UserDAO();
+		mensajeDAO = new MensajeDAO();
 	}
 
 	public static com.demo.dao.layer.ProductsDAO getProductsDAO() {
@@ -35,4 +38,11 @@ public class RegisteryDAO {
 	}
 	
 	
+	public static com.demo.dao.layer.MensajeDAO getMensajeDAO() {
+		return mensajeDAO;
+	}
+	
+	public static void setMensajeDAO(com.demo.dao.layer.MensajeDAO mensajeDAO) {
+		RegisteryDAO.mensajeDAO = mensajeDAO;
+	}
 }
