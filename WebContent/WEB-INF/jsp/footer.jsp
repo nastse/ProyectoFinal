@@ -19,7 +19,7 @@
 				<div id="columna-footer" class="row justify-content-center">
 					<div class="col-lg-12">
 						<span id="titulo-footer">Ciclismo Review</span><br>
-						<span id="copyright">@ 2018 Sergiu Nastase, all right reserved</span>
+						<span id="copyright">@ 2018 Sergiu Nastase, all right reserved</span><br>
 					</div>
 				</div>
 			</div>				
@@ -58,6 +58,10 @@
 					</div>
 					
 				</div>		
-			</div>					
+			</div>	
+			<div class="col-12 text-center">
+				<i class="fa fa-twitter-square"></i>
+				<i class="fa fa-facebook-square"></i>
+			</div>				
 		</div>	
 	</div>	

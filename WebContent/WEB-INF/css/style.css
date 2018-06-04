@@ -75,6 +75,9 @@
 			hr{
 				border: 1px solid #F27490;
 			}
+			hrr{
+				border: 1px solid white;
+			}
 			#banner{
 /* 				background-color:#0B0C10; */
 				background-color:#F27490;
@@ -117,7 +120,15 @@
     			border-color: #F27490;
         		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 255, 255, 0.5);
     		}
-    		
+
+    		.fa-twitter-square{
+    			color:white;
+    			font-size:50px;
+    		}
+    		.fa-facebook-square{
+    			color:white;
+    			font-size:50px;
+    		}
     		.fa-user-circle{
     			color:white;
     			font-size:35px;
@@ -301,7 +312,7 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:20px;
     			color:white;
-    			min-height: 350px;
+    			min-height: 275px;
     		}
     		#columna-footer{
     			margin-top:30px;

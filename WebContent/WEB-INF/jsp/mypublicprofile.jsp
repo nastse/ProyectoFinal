@@ -1,8 +1,8 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,31 +20,33 @@
 </head>
 
 
-<!-- 	AQU� INSERTO EL HEADER -->
+<!-- 	AQUÍ INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 
 <body>
 
 	<div class="container">	
-		<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
+		<div class="row justify-content-md-center justify-content-sm-center bg-white rounded">
+				
 			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
+				<div class="col-lg-12 text-center">
+					<h5 id="columna">REVIEWS DEL USUARIO: ${usuario.nombre}</h5>
+					<hr>
+				</div>
 				<div class="col-lg-12 text-center">	
 					<div id="" class="row justify-content-center">
-						<div class="col-2">
-							<img id="imagen" class="rounded-circle rounded justify-content-center shadow mb-2" width="100px" height="100px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
+						<div class="col-6">
+							<img id="imagen" class="rounded-circle rounded justify-content-center shadow mb-2" width="125px" height="125px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
   						</div>
-  						<div class="col-2">
-							
+  					
+  						<div class="col-6 text-left">
+							<label>Altura:</label><label>&nbsp;${usuario.altura}cm</label><br>
+							<label>Peso:</label><label>&nbsp;${usuario.peso}kg</label><br>
+							<label>Nº de reviews:</label><label>&nbsp;${totalRealizadas}</label><br>
+							<label>Total:</label><label>&nbsp;${totalPrecio}€</label><br>
 						</div>
-  						<div class="col-2">
-							<label>Altura:</label><br>
-							<label>${usuario.altura}cm</label>
-						</div>
-						<div class="col-2">
-							<label >Peso: </label><br>
-							<label>${usuario.peso}kg</label>
-						</div>
+						
   					</div>
   				</div>
 			</c:forEach>
@@ -104,9 +106,7 @@
 									<div class="col-12">	
 											<span id="modelo-producto">${product.modelo}</span>
 									</div>
-<!-- 									<div class="col-12">	 -->
-<%-- 											<span id="categoria">${product[0]}</span> --%>
-<!-- 									</div> -->
+
 									<div class="col-12">
 										<div class="row">	
 											<div class="col-8 text-center p-0 align-self-end">
@@ -114,7 +114,7 @@
 	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
 											</div>
 											<div class="col-2 text-center">
-												<a href="<c:url value='/mypublicprofile/${product.id_user}/'/>"><img id="imagen-inicio" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${product.imagen}"></a>
+												<a href="<c:url value='/mypublicprofile/${product.id_user}/'/>"><img id="imagen-inicio" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${datosUsuario[0].imagen}"></a>
 											</div>
 											
 										</div>
@@ -131,7 +131,7 @@
 </body>
 
 <footer>
-	<!-- 	AQU� INSERTO EL FOOTER -->
+	<!-- 	AQUÍ INSERTO EL FOOTER -->
 	<jsp:include page="footer.jsp" />	
 </footer>
 </html>

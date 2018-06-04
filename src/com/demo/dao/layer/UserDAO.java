@@ -16,4 +16,5 @@ public interface UserDAO {
 	public List<String> getUserDatos(String email);
 	public String comprobarEmail(String email);
 	public List<User> comprobarTokenID(String tokenID);
+	public List<Object[]> contarReviews(String id_usuario);
 }

@@ -27,8 +27,18 @@ public class PublicProfile_Controller {
 			//HAGO UNA BUSQUEDA DEL USUARIO DEL QUE QUIERO VER EL PERFIL
 			List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
 			List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(Integer.parseInt(id_usuario));
+			List<Object[]> totalReviews = RegisteryDAO.getUserDAO().contarReviews(id_usuario);
 			
+			long totalRealizadas=0;
+			long totalPrecio=0;
 			
+			for(Object[] total : totalReviews) {
+				totalPrecio= (long)total[0];
+				totalRealizadas= (long)total[1];	
+			}
+			
+			map.addObject("totalRealizadas", totalRealizadas);
+			map.addObject("totalPrecio", totalPrecio);
 			map.addObject("datosUsuario", datosUsuario);
 			map.addObject("listaReviews", reviews);
 			

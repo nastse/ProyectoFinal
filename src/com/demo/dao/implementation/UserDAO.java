@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -342,5 +343,30 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			
 		}
 		
+		//CUENTO EL NUMERO DE REVIEWS QUE HA HECHO UN USUARIO
+		public List<Object[]> contarReviews(String id_usuario) {
+			
+			try {
+				
+				Session session = HibernateConnection.getSession();	
+				
+				session.beginTransaction();
+				long total€=0;
+				long totalCount= 0;
+				
+				Query query = session.createQuery("Select SUM(precio), count(precio) from Products where id_user='"+id_usuario+"'");
+				List<Object[]> totales = (List<Object[]>)query.list();
+				
+				
+				session.close();
+				
+				return totales;	
+				
+			}catch(Exception e) {
+				return null;
+			}
+			
+		}
+
 
 }
