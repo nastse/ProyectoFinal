@@ -26,13 +26,13 @@
 			
 			if(parseInt(password.length) < 6){
 				
-				alert("La contrase�a debe tener mas de 5 caracteres");
+				alert("La contraseña debe tener mas de 5 caracteres");
 				return false;
 			}
 			
 			if(password != repassword){
 				
-				alert("La contrase�a no coincide");
+				alert("La contraseña no coincide");
 				return false;
 			}
 
@@ -155,12 +155,12 @@
 													<form:input id="email" class="form-control" type="text" path="email" name="email"></form:input>
 												</div>
 												<div class="form-group">
-													<label id="titulo">CONTRASEÑA</label>
-													<form:input id="password" class="form-control" type="password" path="password" name="password"></form:input>
+													<label id="titulo">CONTRASEÑA</label>(Entre 5 y 10 caracteres)</span>
+													<form:input id="password" class="form-control" type="password" path="password" name="password" maxlength="10"></form:input>
 												</div>
 												<div class="form-group">
-													<label id="titulo">CONFIRMA CONTRASEÑA</label>
-													<input id="repassword" class="form-control" type="password" name="repassword">
+													<label id="titulo">CONFIRMA CONTRASEÑA</label>(Entre 5 y 10 caracteres)</span>
+													<input id="repassword" class="form-control" type="password" name="repassword" maxlength="10">
 												</div>
 												<div class="form-group">
 													<label id="titulo">TÉRMINOS Y CONDICIONES</label>

@@ -60,7 +60,7 @@
 												<span>${product.tallauser}</span>
 											</div>
 											<div class="col-6 mr-auto text-center p-0 align-self-center">
-												<span id="marca">${product.marca}</span>
+												<span id="marca-producto">${product.marca}</span>
 											</div>
 										</div>
 										
@@ -102,7 +102,7 @@
 											</c:if>
 									</div>
 									<div class="col-12">	
-											<span id="modelo">${product.modelo}</span>
+											<span id="modelo-producto">${product.modelo}</span>
 									</div>
 <!-- 									<div class="col-12">	 -->
 <%-- 											<span id="categoria">${product[0]}</span> --%>

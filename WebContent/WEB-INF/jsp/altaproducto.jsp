@@ -393,15 +393,15 @@
 										<i class="fa fa-plus ml-auto"></i>	
 									</div>
 									<div id="radios">
-									  <label id="r" for="input1"></label>
+									  <label id="ra" for="input1"></label>
 									  <input  id="input1" name="ajuste" type="radio" value="1"/>
-									  <label id="r" for="input2"></label>
+									  <label id="ra" for="input2"></label>
 									  <input  id="input2" name="ajuste" type="radio" value="2"/>
-									  <label id="r" for="input3"></label>
+									  <label id="ra" for="input3"></label>
 									  <input  id="input3" name="ajuste" type="radio" value="3" checked/>
-									  <label id="r" for="input4"></label>
+									  <label id="ra" for="input4"></label>
 									  <input  id="input4" name="ajuste" type="radio" value="4" />
-									  <label id="r" for="input5"></label>
+									  <label id="ra" for="input5"></label>
 									  <input  id="input5" name="ajuste" type="radio" value="5"/>
 									  <span id="slider"></span>
 									</div>

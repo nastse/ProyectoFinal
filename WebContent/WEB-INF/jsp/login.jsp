@@ -123,8 +123,8 @@
 									<%-- 					<br><form:errors path="email" style="color:red"></form:errors> --%>
 												</div>	
 												<div class="form-group">
-													<label id="titulo">CONTRASEÑA</label>
-														<form:input id="form" class="form-control" type="password" path="password" name="password"></form:input>
+													<label id="titulo">CONTRASEÑA</label><span>(Entre 5 y 10 caracteres)</span>
+														<form:input id="form" class="form-control" type="password" path="password" name="password" maxlength="10" ></form:input>
 									<%-- 					<br><form:errors path="password" style="color:red"></form:errors> --%>
 												</div>	
 												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">INICIAR SESIÓN</button>

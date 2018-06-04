@@ -455,3 +455,11 @@
     		#mensaje-baja{
     			margin-top:20px;
     		}
+    		#ra{
+			  float:left;
+			  width:15%; padding-bottom:15%;
+			  margin:0 2.5%;
+			  background:#1F2833;
+			  border-radius:50%;
+			  cursor:pointer;
+			}

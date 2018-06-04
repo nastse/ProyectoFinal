@@ -83,6 +83,7 @@
 				  border-radius:50%;
 				  cursor:pointer;
 				}
+				
 
 				
 				#slider{
@@ -383,27 +384,27 @@
 										</div>
 										
 										<div id="radios">
-										  <label id="r" for="input1"></label>
+										  <label id="ra" for="input1"></label>
 										  <c:if test="${product.ajuste == 1}">
 										  	<input  id="input1" name="ajuste" type="radio" value="1" checked />
 										  </c:if>
 										  	<input  id="input1" name="ajuste" type="radio" value="1"/>
-										  	<label id="r" for="input2"></label>
+										  	<label id="ra" for="input2"></label>
 										  <c:if test="${product.ajuste == 2}">
 										  	<input  id="input2" name="ajuste" type="radio" value="2" checked />
 										  </c:if>
 										  	<input  id="input2" name="ajuste" type="radio" value="2"/>
-										  	<label id="r" for="input3"></label>
+										  	<label id="ra" for="input3"></label>
 										  <c:if test="${product.ajuste == 3}">
 										  	<input  id="input3" name="ajuste" type="radio" value="3" checked />
 										  </c:if>
 										 	<input  id="input3" name="ajuste" type="radio" value="3"/>
-										  	<label id="r" for="input4"></label>
+										  	<label id="ra" for="input4"></label>
 										  <c:if test="${product.ajuste == 4}">
 										  	<input  id="input4" name="ajuste" type="radio" value="4" checked />
 										  </c:if>
 											  <input  id="input4" name="ajuste" type="radio" value="4" />
-											  <label id="r" for="input5"></label>
+											  <label id="ra" for="input5"></label>
 										  <c:if test="${product.ajuste == 5}">
 										  	<input  id="input5" name="ajuste" type="radio" value="5" checked />
 										  </c:if>	  
