@@ -67,7 +67,7 @@
 				<td>${product.peso}</td>
 				<td>${product.altura}</td>
 				<td><img width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product.imagen}"></td>	
-				<td><input type="button" value="Delete" id="btn_${product.id_rev}" onclick="deleteProduct(this.id)"></td>
+				
 			</tr>
 		</c:forEach>
 	</table>

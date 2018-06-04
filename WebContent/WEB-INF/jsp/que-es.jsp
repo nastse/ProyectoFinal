@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Inicia Sesión</title>
+	<title>¿Qué es?</title>
 	
 
 	<style type="text/css">
@@ -78,8 +78,22 @@
 	<link href='<c:url value="/css/bootstrap.min.css"></c:url>' rel="stylesheet">
 	<script type="text/javascript" src='<c:url value="/js/bootstrap.min.js"></c:url>'></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
-		
-		<!-- Global site tag (gtag.js) - Google Analytics -->
+	
+	
+	<script>
+		$(document).ready(function() {
+			    var text_max = 999;
+			    $('#textarea_feedback').html('te quedan '+text_max + ' caracteres');
+	
+			    $('#textarea').keyup(function() {
+			        var text_length = $('#textarea').val().length;
+			        var text_remaining = text_max - text_length;
+	
+			        $('#textarea_feedback').html('te quedan '+ text_remaining + ' caracteres');
+			    });
+		});
+	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120234980-1"></script>
 	<script>
 		  window.dataLayer = window.dataLayer || [];
@@ -88,78 +102,48 @@
 		
 		  gtag('config', 'UA-120234980-1');
 	</script>
+	
+	
 </head>
 
 <!-- 	AQU� INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 
-<body>
-
-<c:if test="${empty sessionScope.email}">	
+<body>	
 	<div class="container">
-		<div class="row justify-content-md-center justify-content-sm-center text-center">	
-			<h2>INICIAR SESIÓN CON UNA CUENTA</h2>
-		</div>	
+		
 			
-		<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center bg-white rounded text-left">		
-	<!-- 						COLUMNA IZQUIERDA -->
-							<div id="column-center" class="col-lg-6">							
-								<div id="" class="row justify-content-md-center justify-content-sm-center">	
-									<div class="col-lg-10 text-center">
-										<h5 id="columna">YA ESTOY REGISTRADO</h5>
-										<hr>
-									</div>
-									<div class="col-lg-10">
-										<!-- 	AUTHENTICATION PROCES FOR LOGIN SECCION 6 -->
-										<label style="color: red;">${error_msg}</label>
-										
-										<form:form action="${pageContext.request.contextPath}/login" modelAttribute="user" method="post" onsubmit="closeWindow()">
-											<form:errors class="alert alert-danger" path="*"  element="div"/>
-											
-												<div class="form-group">
-													<label id="titulo">EMAIL</label>
-														<form:input  id="form" class="form-control" type="text" path="email" name="username"></form:input>
-									<%-- 					<br><form:errors path="email" style="color:red"></form:errors> --%>
-												</div>	
-												<div class="form-group">
-													<label id="titulo">CONTRASEÑA</label>
-														<form:input id="form" class="form-control" type="password" path="password" name="password"></form:input>
-									<%-- 					<br><form:errors path="password" style="color:red"></form:errors> --%>
-												</div>	
-												<button id="login" type="submit" class="btn btn-lg btn-block mb-1">INICIAR SESIÓN</button>
-												
+		<div id="contenedor-columna" class="row justify-content-md-center justify-content-sm-center  bg-white rounded text-left">		
+	<!-- 						COLUMNA CENTRAL -->
+			<div id="column-center" class="col-lg-12">							
+				<div id="" class="row justify-content-md-center justify-content-sm-center">	
+					<div class="col-lg-10 text-center">
+						<h5 id="columna">PARA QUE SIRVE CICLISMO REVIEW</h5>
+						<hr>
+					</div>
+					<div class="col-lg-10">
 						
-										</form:form>	
-									</div>
-									<div class="col-10">
-									<div class="row justify-content-center">
-										<div class="col-12 text-center">
-										<label  class="form-check-label" for="terminos"><a id="link-negro" href="<c:url value='/recuperar-password'/>">¿Has olvidado tu contraseña?</a></label>
-									</div>
-							</div>	
-						</div>
-								</div>	
-							</div>		
-	<!-- 						COLUMNA DERECHA -->	
-							<div id="column-center" class="col-lg-6">							
-								<div id="" class="row justify-content-md-center justify-content-sm-center">	
-									<div class="col-lg-10 text-center">
-										<h5 id="columna">SOY NUEVO</h5>
-										<hr>
-									</div>
-									
-									<div class="col-lg-10">
-										<div class="form-group">
-											<button id="alta" type="reset" class="btn btn-lg btn-block mb-1" onclick="location.href='${pageContext.request.contextPath}/signup';">ALTA NUEVA</button>
-										</div>	
-									</div>	
-								</div>	
-							</div>			
-				
+						<p>Ciclismo Review está enfocado como ayuda para ese momento por el que todos hemos pasado a la hora de comprar una nueva prenda para nuestras salidas en bici:</p><br>
+						
+						<p><strong>Necesito un nuevo Maillot...</strong></p>
+						<p>&nbsp;&nbsp;&nbsp;¿Qué marca compro?</p>
+						<p><strong>Voy a por un Castelli...</strong></p>
+						<p>&nbsp;&nbsp;&nbsp;¿Qué talla compro?</p>
+						<p><strong>Yo suelo llevar la M...</strong></p>
+						<p>&nbsp;&nbsp;&nbsp;Pero Castelli talla muy pequeño, tendré que pedir una talla más... o dos?</p>
+						<p><strong>Pediré 2 para probar...pufff en total son casi 300€ y tengo que pagar la devolución...</strong></p>
+						<p>&nbsp;&nbsp;&nbsp;Voy a mirar en ForoMTB a ver que dice la gente.</p><br>
+						
+						<p>La finalidad de Ciclismo Review es agrupar todas esas experiencias de la gente que ya ha probado esas prendas y tomar la mejor decisión de compra posible. </p>
+						
+						
+					</div>
+				</div>	
+			</div>		
+	
 		</div>
-	</div>
-</c:if>	
+	</div>	
 </body>
 
 <footer>

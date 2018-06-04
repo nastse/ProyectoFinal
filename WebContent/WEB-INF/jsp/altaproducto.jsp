@@ -308,7 +308,7 @@
 										</select>
 								</div>
 								<div class="col-lg-10">
-									<label id="titulo">Modelo</label><br>
+									<label id="titulo">Modelo</label><span>(max. 20 caracteres)</span><br>
 									<input id="form" class="form-control" type="text" name="modelo" value="" maxlength="20" required>
 								</div>
 								<div class="col-lg-10">

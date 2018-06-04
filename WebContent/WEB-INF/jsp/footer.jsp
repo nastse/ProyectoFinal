@@ -29,9 +29,9 @@
 						<span id="titulo-footer-small">Ciclismo Review</span><br>
 					</div>
 					<div class="col-lg-12">
-						<a id="link" href="<c:url value='/contacto'/>"><span id="link-footer">¿Qué es?</span></a><br>
-						<a id="link" href="<c:url value='/contacto'/>"><span id="link-footer">¿Quién es?</span></a><br>
-						<a id="link" href="<c:url value='/contacto'/>"><span id="link-footer">¿Cómo funciona?</span></a><br>
+						<a id="link" href="<c:url value='/que-es'/>"><span id="link-footer">¿Qué es?</span></a><br>
+						<a id="link" href="<c:url value='/quien-es'/>"><span id="link-footer">¿Quién es?</span></a><br>
+						<a id="link" href="<c:url value='/como-funciona'/>"><span id="link-footer">¿Cómo funciona?</span></a><br>
 					</div>		
 				</div>		
 			</div>
