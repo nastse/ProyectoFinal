@@ -1,8 +1,8 @@
 package com.demo.dao.registery;
 
+import com.demo.dao.implementation.MensajeDAO;
 import com.demo.dao.implementation.ProductsDAO;
 import com.demo.dao.implementation.UserDAO;
-import com.demo.dao.implementation.MensajeDAO;
 
 public class RegisteryDAO {
 	
