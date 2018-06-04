@@ -351,7 +351,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				Session session = HibernateConnection.getSession();	
 				
 				session.beginTransaction();
-				long total€=0;
+				long totalâ‚¬=0;
 				long totalCount= 0;
 				
 				Query query = session.createQuery("Select SUM(precio), count(precio) from Products where id_user='"+id_usuario+"'");

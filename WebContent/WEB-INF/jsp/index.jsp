@@ -58,35 +58,42 @@
 			   color: #1F2833;
 			}
 			
-			#titulo{
+			#titulo-index{
     			font-family: Trade Gothic, Charcoal, sans-serif;
     			font-weight: bold;
     			font-size:30px;
     		}
 				
 			#titulo-menu{
-
 /* 				margin-top:20px; */
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-weight: bold;
     			font-size:14px;
+    			user-select: none; 
     		}
+    		#titulo-menu:hover{
+
+    			transition: 0.25s;
+				transition-timing-function: ease-in;
+				transform : translate(0, -2px);	
+				cursor:pointer;
+    		}
+    		
     		#subtitulo{
     			
     			font-size:12px;
     			font-style: oblique;
     		}
     		
-    		.boton{
+    		#boton{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			color:#1F2833;
-    			font-weight:bold;
     			font-size:18px;
     			margin-top:30px;
 				background-color:white;
-				width:90px;
+				width:100px;
     		}
-    		.boton:hover{
+    		#boton:hover{
     			background-color:#F27490;
     			color:white;
     		} 
@@ -186,9 +193,9 @@
 			<div id="contenedor-menu" class="col-lg-3 col-md-3 col-sm-5 col-xs-4 justify-content-end text-center">	
 					<div class="row justify-content-center"> 
 					 	<div id="menu" class="col-lg-12 m-1">
-					 		<h2 id="titulo">Buscar:</h2>
-				 			<div id="titulo-menu" class="col-12 text-left">
-				 				<i onclick="colapsarMenu('marca')" class="fa fa-chevron-down"></i>&nbsp<spam>MARCA</spam> <spam id="subtitulo">prenda</spam> 
+					 		<h2 id="titulo-index">Buscar:</h2>
+				 			<div id="titulo-menu" class="col-12 text-left" onclick="colapsarMenu('marca')">
+				 				<i  class="fa fa-chevron-down"></i>&nbsp<spam>MARCA</spam> <spam id="subtitulo">prenda</spam> 
 				 			</div>
 						     	<div class="dropdown dropdown-dark">
 							     	<select id="marca" class="form-control dropdown-select" name="marca">
@@ -220,8 +227,8 @@
 											
 									</select>
 								</div>	
-						     <div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('modelo')" class="fa fa-chevron-down"></i>&nbsp<spam>TIPO</spam> <spam id="subtitulo">prenda</spam>
+						     <div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('modelo')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>TIPO</spam> <spam id="subtitulo">prenda</spam>
 						     </div>	
 						     	<div class="dropdown dropdown-dark">
 							     	<select id="modelo" class="form-control dropdown-select" name="categoria">
@@ -243,8 +250,8 @@
 										<option value = "Cullote largo">Cullote largo</option>
 									</select>	
 								</div>								  							  
-						     <div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('talla')" class="fa fa-chevron-down"></i>&nbsp<spam>TALLA</spam> <spam id="subtitulo">prenda</spam>
+						     <div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('talla')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>TALLA</spam> <spam id="subtitulo">prenda</spam>
 						     </div>	
 							     <div class="dropdown dropdown-dark">
 							     	<select id="talla" class="form-control dropdown-select" name="talla">
@@ -270,8 +277,8 @@
 										<option value = "XXXL">XXXL</option>
 									</select>	
 								</div>							  
-						     <div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('anio')" class="fa fa-chevron-down"></i>&nbsp<spam>AÑO</spam> <spam id="subtitulo">prenda</spam>
+						     <div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('anio')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>AÑO</spam> <spam id="subtitulo">prenda</spam>
 						     </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="anio" class="form-control dropdown-select" name="anio">
@@ -293,8 +300,8 @@
 									</select>	
 								</div>	
 								
-							<div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('tallauser')" class="fa fa-chevron-down"></i>&nbsp<spam>TALLA</spam> <spam id="subtitulo">usuario</spam>
+							<div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('tallauser')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>TALLA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="tallauser" class="form-control dropdown-select" name="tallauser">
@@ -320,8 +327,8 @@
 										<option value = "XXXL">XXXL</option>
 									</select>	
 								</div>
-							<div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('peso')" class="fa fa-chevron-down"></i>&nbsp<spam>PESO</spam> <spam id="subtitulo">usuario</spam>
+							<div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('peso')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>PESO</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="peso" class="form-control dropdown-select" name="peso">
@@ -345,8 +352,8 @@
 					     				</c:forEach>			
 									</select>
 								</div>
-							<div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('altura')" class="fa fa-chevron-down"></i>&nbsp<spam>ALTURA</spam> <spam id="subtitulo">usuario</spam>
+							<div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('altura')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>ALTURA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="altura" class="form-control dropdown-select" name="altura">
@@ -370,8 +377,8 @@
 					     				</c:forEach>			
 									</select>
 								</div>	
-							<div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('pecho')" class="fa fa-chevron-down"></i>&nbsp<spam>PECHO</spam> <spam id="subtitulo">usuario</spam>
+							<div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('pecho')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>PECHO</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     	<select id="pecho" class="form-control dropdown-select" name="pecho">
@@ -395,8 +402,8 @@
 					     				</c:forEach>			
 									</select>
 								</div>
-							<div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('cintura')" class="fa fa-chevron-down"></i>&nbsp<spam>CINTURA</spam> <spam id="subtitulo">usuario</spam>
+							<div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('cintura')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>CINTURA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 								    <select id="cintura" class="form-control dropdown-select" name="cintura">
@@ -420,8 +427,8 @@
 					     				</c:forEach>			
 									</select>
 								</div>
-							<div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('cadera')" class="fa fa-chevron-down"></i>&nbsp<spam>CADERA</spam> <spam id="subtitulo">usuario</spam>
+							<div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('cadera')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>CADERA</spam> <spam id="subtitulo">usuario</spam>
 						    </div>
 							     <div class="dropdown dropdown-dark">
 							     <select id="cadera" class="form-control dropdown-select" name="cadera">
@@ -445,8 +452,8 @@
 								     	</c:forEach>			
 									</select>
 								</div>
-							<div id="titulo-menu" class="col col-12 text-left">
-						     	<i onclick="colapsarMenu('genero')" class="fa fa-chevron-down"></i>&nbsp<spam>GENERO</spam> <spam id="subtitulo"></spam>
+							<div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('genero')">
+						     	<i  class="fa fa-chevron-down"></i>&nbsp<spam>GENERO</spam> <spam id="subtitulo"></spam>
 						    </div>
 						    	<div class="dropdown dropdown-dark">	
 									<select id="genero" class="form-control dropdown-select" name="genero">

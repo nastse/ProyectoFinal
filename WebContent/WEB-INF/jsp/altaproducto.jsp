@@ -408,7 +408,7 @@
 								</div>
 								<div class="col-lg-10">				
 										<div class="col-12">
-											<label id="titulo">Recomendable</label><br>
+											<label id="titulo">Valoración/Recomendable</label><br>
 										</div>
 										<div id="puntos">
 											<i class="fa fa-minus"></i>

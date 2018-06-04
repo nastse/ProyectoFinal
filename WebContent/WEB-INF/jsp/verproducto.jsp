@@ -102,9 +102,6 @@
 					<div class="col-9">
 						<label>Cadera: </label>&nbsp<label>${product.cadera}cm</label>
 					</div>
-					<div class="col-9">
-						<label>Cadera: </label>&nbsp<label>${product.cadera}cm</label>
-					</div>
 				</div>					
 			</div>
 			<div class="col-lg-3 col-sm-5">
@@ -125,18 +122,18 @@
 									</div>
 									<div class="col-12">	
 						
-										<i class="fa fa-star" style="color:#F27490;"></i>	
+										<i class="fa fa-star" style="color:#1F2833;"></i>	
 										<c:if test="${product.ajuste > 1}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
+											<i class="fa fa-star" style="color:#1F2833;"></i>
 										</c:if>
 										<c:if test="${product.ajuste > 2}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
+											<i class="fa fa-star" style="color:#1F2833;"></i>
 										</c:if>
 										<c:if test="${product.ajuste > 3}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
+											<i class="fa fa-star" style="color:#1F2833;"></i>
 										</c:if>
 										<c:if test="${product.ajuste > 4}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
+											<i class="fa fa-star" style="color:#1F2833;"></i>
 										</c:if>
 										
 										<c:if test="${product.ajuste < 2}">

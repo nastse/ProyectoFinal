@@ -34,12 +34,12 @@
 				background-color:white;
 				height:394px;
 				box-shadow: 0px 0px 10px 0px rgba(199,187,199,1);
+				user-select: none; 
 			}
 			#producto:hover{
 				transition: 0.25s;
 				transition-timing-function: ease-in-out;
-				transform : translate(0, -2px);
-				
+				transform : translate(0, -2px);	
 			}
 			
 			#producto-info{
@@ -81,6 +81,7 @@
 			#banner{
 /* 				background-color:#0B0C10; */
 				background-color:#F27490;
+				user-select: none; 
 /* 				height:66px; */
 			}
 			
@@ -325,6 +326,10 @@
     		#link:hover{
     			color:#F27490;	
     		}
+    		#redes-sociales{
+    			margin-top:15px;
+    			cursor:pointer;
+    		}
     		
     		#copyright{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
@@ -451,6 +456,12 @@
     		}
     		#titulo{
     			margin-top:20px;
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-weight: bold;
+    			font-size:14px;
+    			text-transform: uppercase;
+    		}
+    		#titulo-negrita{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-weight: bold;
     			font-size:14px;
