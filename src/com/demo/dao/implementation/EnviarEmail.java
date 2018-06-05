@@ -17,14 +17,14 @@ public class EnviarEmail {
 	public static void mandarEmail(String destinoEmail, String asunto, String mensaje){
 			//PRUEBA PARA ENVIAR EMAIL
 			
-			final String emailUsername = "sergiu.nastse@gmail.com";//from which you want to send mail
-		    final String emailPassword = "Netw0rks";//password off your mail id 
-		
-		    Properties props = new Properties();
-		    props.put("mail.smtp.auth", "true");
-		    props.put("mail.smtp.starttls.enable", "true");
-		    props.put("mail.smtp.host", "smtp.gmail.com");
-		    props.put("mail.smtp.port", "587");
+		final String emailUsername = "sergiu.nastse@gmail.com";//from which you want to send mail
+	    final String emailPassword = "Netw0rks";//password off your mail id 
+	
+	    Properties props = new Properties();
+	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.smtp.starttls.enable", "true");
+	    props.put("mail.smtp.host", "smtp.gmail.com");
+	    props.put("mail.smtp.port", "587");
 		
 		    Session session = Session.getInstance(props,
 		      new javax.mail.Authenticator() {
@@ -36,7 +36,7 @@ public class EnviarEmail {
 		    try {
 		
 		        Message message = new MimeMessage(session);
-		        message.setFrom(new InternetAddress("Ciclismo Review <sergiu.nastse@gmail.com>"));
+		        message.setFrom(new InternetAddress("Ciclismo Review <sadministracion@ciclismoreview.es>"));
 		        message.setRecipients(Message.RecipientType.TO,
 		            InternetAddress.parse(destinoEmail));//whom you want to send mail
 		        message.setSubject(asunto);

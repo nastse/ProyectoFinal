@@ -186,7 +186,12 @@ public class Signup_Controller{
 				session.setAttribute("id_usuario", usuario);
 			
 				//ENVIO EMAIL DE CONFIRMACION DE ALTA
+				try {
 					EnviarEmail.mandarEmail(email, "Alta nueva", "Se ha dado de alta correctamente en CiclismoReview");
+				} catch (Exception e) {
+					System.out.println("ERRO AL ENVIAR EMAIL");
+				}
+					
 				
 				//return mav = new ModelAndView("myprofile");
 				return "redirect:/myprofile";
