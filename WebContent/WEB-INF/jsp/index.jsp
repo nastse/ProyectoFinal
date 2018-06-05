@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+    
+    <%@ page language="java" contentType="text/html; ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta http-equiv="Content-Type" content="text/html;ISO-8859-1">
 		<title>Inicio · Ciclismo Review</title>
 	
 		<style type="text/css">
@@ -29,6 +29,18 @@
 				border-radius:25px;
 				max-width:220px;
 				min-width:220px;
+			}
+			
+			#ranking{
+				margin-top:10px;
+				margin-bottom:50px;
+				padding:20px 10px 50px 10px;
+				border:solid 1px #F27490; 
+				border-radius:25px;
+				max-width:220px;
+				min-width:220px;
+				min-height:394px; 
+				background-color: white;
 			}
 			
 
@@ -476,6 +488,16 @@
 								
 								<button id="boton" type="reset" class="boton btn btn-sm" onclick="paginar('1')">ACEPTAR</button>							  						  								  
 							</div>
+							<div id="ranking" class="col-lg-12 m-1">
+								<div class="row justify-content-center text-center">
+									<div class="col-lg-12 m-1">
+										<span>Ranking Usuarios</span>
+									</div>
+									<div class="col-lg-12 m-1">
+										
+									</div>
+								</div>
+							</div>
 					 	</div>
 				</div>			
 				<div  class="col-lg-9 col-md-9 col-sm-7 col-xs-8 justify-content-start">
@@ -508,7 +530,7 @@
 											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
 										</div>
 									</div>	
-									<div class="col-12">	
+									<div id="valoracion-index" class="col-12">	
 											<fmt:parseNumber var = "i" type = "number" value= "${product[8]}" />
 											
 											<i class="fa fa-star" style="color:#F27490;"></i>	
@@ -546,13 +568,12 @@
 <%-- 											<span id="categoria">${product[0]}</span> --%>
 <!-- 									</div> -->
 									<div class="col-12">
-										<div id="producto-datos-usuario" class="row">	
-											<div class="col-8 text-center p-0 align-self-end">
-												<span id="datos"><span id="datos">Talla: ${product[9]}</span>&nbsp<span id="datos">${product[12]}cm</span>&nbsp<span id="datos">${product[11]}kg</span>&nbsp
-	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
+										<div  class="row">	
+											<div id="producto-datos-usuario" class="col-12 text-center p-0 align-self-end">
+												<span id="datos">Talla: ${product[9]}</span>&nbsp<span id="datos">${product[12]}cm</span>&nbsp<span id="datos">${product[11]}kg</span>&nbsp<span id="datos">${product[12]}&euro;</span>		
 											</div>
-											<div class="col-2 text-center">
-												<a href="<c:url value='/mypublicprofile/${product[5]}/'/>"><img id="imagen-inicio" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${product[7]}"></a>
+											<div class="col-12 text-center">
+												<a href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
 											</div>
 											
 										</div>

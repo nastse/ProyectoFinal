@@ -359,29 +359,28 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 		}
 		
 		//CUENTO EL NUMERO DE REVIEWS QUE HA HECHO UN USUARIO
-		public List<Object[]> contarReviews(String id_usuario) {
+		
 			
+		public List<Object[]> contarReviews (String id_usuario){
 			try {
-				
-				Session session = HibernateConnection.getSession();	
+				Session session = HibernateConnection.getSession();
 				
 				session.beginTransaction();
-				long total€=0;
-				long totalCount= 0;
 				
 				Query query = session.createQuery("Select SUM(precio), count(precio) from Products where id_user='"+id_usuario+"'");
-				List<Object[]> totales = (List<Object[]>)query.list();
-				
+				List<Object[]> totales =(List<Object[]>)query.list();
 				
 				session.close();
 				
-				return totales;	
-				
-			}catch(Exception e) {
-				return null;
+				return totales;
+			} catch (Exception e) {
+				// TODO: handle exception
 			}
-			
+				return null;
+				
 		}
+			
+
 
 
 }

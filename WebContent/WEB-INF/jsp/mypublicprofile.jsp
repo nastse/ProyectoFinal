@@ -1,5 +1,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ page language="java" contentType="text/html; UTF-8"
     pageEncoding="UTF-8"%>
@@ -109,13 +110,13 @@
 
 									<div class="col-12">
 										<div class="row">	
-											<div class="col-8 text-center p-0 align-self-end">
-												<span id="datos"><span id="datos">Talla: ${product.tallauser}</span>&nbsp<span id="datos">${product.altura}cm</span>&nbsp<span id="datos">${product.peso}kg</span>&nbsp
+											<div class="col-12 text-center p-0 align-self-end">
+												<span id="datos"><span id="datos">Talla: ${product.tallauser}</span>&nbsp<span id="datos">${product.altura}cm</span>&nbsp<span id="datos">${product.peso}kg</span>&nbsp<span id="datos">${product.precio}€</span>&nbsp
 	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
 											</div>
-											<div class="col-2 text-center">
-												<a href="<c:url value='/mypublicprofile/${product.id_user}/'/>"><img id="imagen-inicio" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${datosUsuario[0].imagen}"></a>
-											</div>
+<!-- 											<div class="col-12 text-center"> -->
+<%-- 												<a href="<c:url value='/mypublicprofile/${product.id_user}/'/>"><img id="imagen-inicio" class="rounded-circle shadow-sm  rounded" width="45px" height="45px" src="${pageContext.request.contextPath}/img/${datosUsuario[0].imagen}"></a> --%>
+<!-- 											</div> -->
 											
 										</div>
 									</div>

@@ -85,25 +85,25 @@
 						
 					</div>
 					<div class="col-9">
-						<label >Talla: </label>&nbsp<label>${product.tallauser}</label>
+						<label id="titulo-negrita">Talla: </label>&nbsp<label>${product.tallauser}</label>
 					</div>	
 					<div class="col-9">
-						<label >Peso: </label>&nbsp<label>${product.peso}kg</label>
+						<label id="titulo-negrita">Peso: </label>&nbsp<label>${product.peso}kg</label>
 					</div>
 					<div class="col-9">
-						<label>Altura: </label>&nbsp<label>${product.altura}cm</label>
+						<label id="titulo-negrita">Altura: </label>&nbsp<label>${product.altura}cm</label>
 					</div>
 					<div class="col-9">
-						<label>Pecho: </label>&nbsp<label>${product.pecho}cm</label>
+						<label id="titulo-negrita">Pecho: </label>&nbsp<label>${product.pecho}cm</label>
 					</div>	
 					<div class="col-9">
-						<label>Cintura: </label>&nbsp<label>${product.cintura}cm</label>
+						<label id="titulo-negrita">Cintura: </label>&nbsp<label>${product.cintura}cm</label>
 					</div>
 					<div class="col-9">
-						<label>Cadera: </label>&nbsp<label>${product.cadera}cm</label>
+						<label id="titulo-negrita">Cadera: </label>&nbsp<label>${product.cadera}cm</label>
 					</div>
 					<div class="col-9">
-						<label>Cadera: </label>&nbsp<label>${product.cadera}cm</label>
+						
 					</div>
 				</div>					
 			</div>

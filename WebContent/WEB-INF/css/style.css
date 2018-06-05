@@ -76,7 +76,13 @@
 			
 			
 			#producto-datos-usuario{
-				margin-top:25px;
+				margin-top:15px;
+			}
+			#producto-datos-usuario:hover{
+				
+			}
+			#valoracion-index{
+				margin-top:15px;
 			}
 			#mensaje-index{
 				margin-top:100px;
@@ -449,7 +455,7 @@
     		}
     		#datos{
     			font-family: Trade Gothic, Charcoal, sans-serif; 
-    			font-size:12px;
+    			font-size:15px;
     			font-weight: bold;
     		}#imagen-inicio{
     			
