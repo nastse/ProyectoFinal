@@ -20,24 +20,24 @@ public class HibernateConnection {
 //		String host = System.getenv("RDS_INSTANCE_HOST");
 //		String port = System.getenv("RDS_INSTANCE_PORT");
 		
-		String host = "root.c9p7jdg748qx.us-east-2.rds.amazonaws.com";
+		String host = "nastse-db.c9p7jdg748qx.us-east-2.rds.amazonaws.com";
 		String port = "3306";
 		String userName = "useruS5";
 		String password= "kQ0cfsXn";
 		
 		
 		Properties database = new Properties();
-//		database.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-//		database.setProperty("hibernate.connection.url", "jdbc:mysql://"+host+":"+port+"/innodb?user=" + userName + "&password=" + password);
-//		database.setProperty("hibernate.connection.dialect", "org.hibernate.dialect.MySQL5Dialect");
-//		database.setProperty("org.hibernate.context.spi.CurrentSessionContext", "WebSessionContext");
-		
-		
 		database.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		database.setProperty("hibernate.connection.username", "root");
-		database.setProperty("hibernate.connection.password", "");
-		database.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/proyecto_sergiu");
+		database.setProperty("hibernate.connection.url", "jdbc:mysql://"+host+":"+port+"/innodb?user=" + userName + "&password=" + password);
 		database.setProperty("hibernate.connection.dialect", "org.hibernate.dialect.MySQL5Dialect");
+		database.setProperty("org.hibernate.context.spi.CurrentSessionContext", "WebSessionContext");
+		
+		
+		//database.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+		//database.setProperty("hibernate.connection.username", "root");
+		//database.setProperty("hibernate.connection.password", "");
+		//database.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/proyecto_sergiu");
+		//database.setProperty("hibernate.connection.dialect", "org.hibernate.dialect.MySQL5Dialect");
 		
 		//A�ADO LAS CLASES PARA LA CONEXION CON LA BASE DE DATOS
 		Configuration cfg = new Configuration()

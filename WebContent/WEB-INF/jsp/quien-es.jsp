@@ -141,15 +141,40 @@
 						<p><strong>Ciclista</strong></p>
 						<p>Empezando en 2015 de manera regular, practico el ciclismo en todas sus modalidades:</p>
 						<ul>
-							<li>Carretera</li>
-							<li>Montaña</li>
-							<li>Urbano</li>
+							<li id="titulo-negrita">Carretera</li>
+							<li id="titulo-negrita">Montaña</li>
+							<li id="titulo-negrita">Urbano</li>
 						</ul>
 						<ul>
 							<li>2015 - 3.900km</li>
 							<li>2016 - 7.700km</li>
 							<li>2017 - 14.125km</li>
+								<ul>
+									<li>La Matanza</li>
+									<li>Clásica de Valdemorillo</li>
+									<li>Ruta de la Marmota</li>
+									<li>Marcha de la Coliflor (Scott 7 Estrellas)</li>
+									<li>Ruta del Henares (Scott 7 Estrellas)</li>
+									<li>GP Seral Bike (Scott 7 Estrellas)</li>
+									<li>Pedestrong Race (Scott 7 Estrellas)</li>
+									<li>Madrid - Segovia MTB</li>
+									<li>Ruta Cervantina (Scott 7 Estrellas)</li>
+									<li>Las Rozas Weekend</li>
+									<li>Clásica Otero</li>
+									<li>Ruta de las Encinas (Scott 7 Estrellas)</li>
+									<li>Trofeo del Pavo (Scott 7 Estrellas)</li>
+										<ul>
+											<li>2º General Senior</li>
+										</ul>	
+								</ul>	
 							<li>2018 - 	5.000km</li>
+								<ul>
+									<li>Gran Fondo Ibérica</li>
+									<li>Garbancera Bike</li>
+									<li>Rotor Sierra Norte</li>
+									<li>Desafío puertos Guadarrama</li>
+									<li>La Perico</li>
+								</ul>	
 						</ul>
 					</div>	
 					<div class="col-lg-5">		

@@ -41,10 +41,10 @@
   						</div>
   					
   						<div class="col-6 text-left">
-							<label>Altura:</label><label>&nbsp;${usuario.altura}cm</label><br>
-							<label>Peso:</label><label>&nbsp;${usuario.peso}kg</label><br>
-							<label>Nº de reviews:</label><label>&nbsp;${totalRealizadas}</label><br>
-							<label>Total:</label><label>&nbsp;${totalPrecio}€</label><br>
+							<label id="titulo-negrita">Altura:</label><label>&nbsp;${usuario.altura}cm</label><br>
+							<label id="titulo-negrita">Peso:</label><label>&nbsp;${usuario.peso}kg</label><br>
+							<label id="titulo-negrita">Nº de reviews:</label><label>&nbsp;${totalRealizadas}</label><br>
+							<label id="titulo-negrita">Total:</label><label>&nbsp;${totalPrecio}€</label><br>
 						</div>
 						
   					</div>

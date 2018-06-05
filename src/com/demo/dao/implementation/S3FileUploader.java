@@ -13,6 +13,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.auth.ClasspathPropertiesFileCredentialsProvider;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
@@ -23,7 +24,7 @@ import com.amazonaws.services.s3.model.S3Object;
 
 	public class S3FileUploader{
 		
-	private static String bucketName     = "nastse-s";
+	private static String bucketName     = "nastse-s3";
 	//private static String keyName        = "Object-"+UUID.randomUUID();
 	
 	public String fileUploader(List<FileItem> fileData, String imagen) throws IOException {
@@ -31,15 +32,14 @@ import com.amazonaws.services.s3.model.S3Object;
 		String keyName = imagen;
 		
 		AWSCredentials credentials = new BasicAWSCredentials(
-				  "AKIAINEBIEIY2GQWODFQ", 
-				  "33BDNgDQo5noOqzXM6yTvhdxoHqqiFVMF2Zw+mFV"
+				  "AKIAJAKEAATC72Q25OQA", 
+				  "I834vH8zwWOZPYc6U4IDbis5GBKiw6ZdCnI+WtWu"
 		);
 		
 		AmazonS3 s3client = AmazonS3ClientBuilder
 				  .standard()
 				  .withCredentials(new AWSStaticCredentialsProvider(credentials))
 				  .withRegion(Regions.US_EAST_2)
-				  .disableChunkedEncoding()
 				  .build();
 		
 	    String result = "Upload unsuccessfull because ";

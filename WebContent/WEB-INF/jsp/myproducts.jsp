@@ -14,7 +14,7 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			color:white;
     			font-size:18px;
-    			margin-top:50px;
+    			margin-top:10px;
 				background-color:#1F2833;
 				width:90px;
     		}
@@ -107,15 +107,44 @@
 							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1 align-self-center text-center">	
 								<div id="" class="row justify-content-start">
 									<div class="col-12">
-										<spam>${product.categoria}</spam>	
+										<span id="titulo-negrita" style="color:#F27490">${product.talla}</span>
+										<span id="titulo-negrita">${product.marca}</span>
+										<span id="titulo-negrita">${product.modelo}</span><br>	
 									</div>
 									<div class="col-12">
-										<spam>${product.marca}</spam>
-										<spam>${product.modelo}</spam>
-										<spam>${product.talla}</spam>
-										<spam>${product.creado}</spam>
+										<span>${product.categoria}</span><br>	
 									</div>
 									<div class="col-12">
+										<span>Ajuste</span>
+											<i class="fa fa-star" style="color:#1F2833;"></i>	
+										<c:if test="${product.ajuste > 1}">
+											<i class="fa fa-star" style="color:#1F2833;"></i>
+										</c:if>
+										<c:if test="${product.ajuste > 2}">
+											<i class="fa fa-star" style="color:#1F2833;"></i>
+										</c:if>
+									<c:if test="${product.ajuste > 3}">
+											<i class="fa fa-star" style="color:#1F2833;"></i>
+										</c:if>
+										<c:if test="${product.ajuste > 4}">
+											<i class="fa fa-star" style="color:#1F2833;"></i>
+										</c:if>
+										
+										<c:if test="${product.ajuste < 2}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product.ajuste < 3}">
+										<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product.ajuste < 4}">
+											<i class="fa fa-star"></i>
+										</c:if>
+										<c:if test="${product.ajuste < 5}">
+											<i class="fa fa-star"></i>
+										</c:if>
+									</div>
+									<div class="col-12">
+									<span>Valoración</span>
 											<i class="fa fa-star" style="color:#F27490;"></i>	
 										<c:if test="${product.recomendable > 1}">
 											<i class="fa fa-star" style="color:#F27490;"></i>
@@ -146,9 +175,15 @@
 								</div>	
 							</div>
 							<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 p-1 align-self-center text-center">	
-								<button  id="${product.id_rev}" type="button" class="boton btn btn-sm" value="Eliminar" onclick="borrarProducto(this.id)">ELIMINAR</button>
-<%-- 								<a href="<c:url value='/upproducto/${product.id_rev}'/>">Editar</a> --%>
-								<button id="boton" type="reset" class="boton btn btn-sm" onclick="location.href='${pageContext.request.contextPath}/upproducto/${product.id_rev}'">EDITAR</button>
+								<div id="" class="row justify-content-md-center justify-content-sm-center">		
+									<div class="col-lg-12 text-center">	
+										<button  id="${product.id_rev}" type="button" class="boton btn btn-sm" value="Eliminar" onclick="borrarProducto(this.id)">ELIMINAR</button>
+										<button id="boton" type="reset" class="boton btn btn-sm" onclick="location.href='${pageContext.request.contextPath}/upproducto/${product.id_rev}'">EDITAR</button>
+									</div>
+									<div class="col-lg-12 text-center">
+<%-- 										<span>${product.creado}</span> --%>
+									</div>
+								</div>
 							</div>
 					</div>
 
