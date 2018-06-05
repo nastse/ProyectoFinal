@@ -136,7 +136,10 @@ public class Signup_Controller{
 						//Creo un objeto de usuerio
 						User user2 = new User();
 						user2.setEmail(email);
-						user2.setPassword(password);
+						
+						String passwordSegura = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+						System.out.println(passwordSegura);
+						user2.setPassword(passwordSegura);
 						
 						 if(password.equals(repassword)){
 							//Signup_Model sm = new Signup_Model();
@@ -152,7 +155,7 @@ public class Signup_Controller{
 		
 						}
 						else{
-							message = "Las contraseÃ±as no coinciden";
+							message = "Las contraseñas no coinciden";
 							md.addAttribute("error_msg", message);
 						}
 					
@@ -175,7 +178,7 @@ public class Signup_Controller{
 			String mensaje = "";
 			
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
-				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(email);
+				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatosEmail(email);
 				
 				//ASIGNO LA SESION Y TODOS LOS DATOS DEL USUARIO
 				session.setAttribute("email", email);

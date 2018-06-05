@@ -32,8 +32,8 @@ import com.amazonaws.services.s3.model.S3Object;
 		String keyName = imagen;
 		
 		AWSCredentials credentials = new BasicAWSCredentials(
-				  "AKIAJAKEAATC72Q25OQA", 
-				  "I834vH8zwWOZPYc6U4IDbis5GBKiw6ZdCnI+WtWu"
+				  "test", 
+				  "test"
 		);
 		
 		AmazonS3 s3client = AmazonS3ClientBuilder

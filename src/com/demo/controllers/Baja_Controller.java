@@ -53,9 +53,11 @@ public class Baja_Controller {
 			//LO RECOJO DEL PATH QUE ASIGNO EN EL JSP
 			String username= req.getParameter("email");
 			String password= req.getParameter("password");
-					
+				
+				String passwordSegura = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+				
 				//COMPRUEBO QUE EL USUARIO Y LA CONTRASEÃ‘A COINCIDEN Y SIGO CON EL PROCESO DE BAJA DE USUARIO
-				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, password);
+				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
 				String mensaje = "";
 				
 				if(usuario != 0) {
@@ -73,7 +75,7 @@ public class Baja_Controller {
 					
 				}else {
 					
-					mensaje = "Introduce usuario y contraseÃ±a vÃ¡lidos";
+					mensaje = "Introduce usuario y contraseña válidos";
 					md.addAttribute("error_msg", mensaje);
 					return "baja";
 				}

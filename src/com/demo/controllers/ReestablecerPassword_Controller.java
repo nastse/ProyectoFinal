@@ -80,7 +80,9 @@ public class ReestablecerPassword_Controller {
 				 if(password.equals(repassword)){
 					
 					//HAGO UN UPDATE DE PASSWORD 
-					int cambioPassword = RegisteryDAO.getUserDAO().doHibernateUpdatePassword(Integer.parseInt(usuario), password);
+					 
+					String passwordSegura = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+					int cambioPassword = RegisteryDAO.getUserDAO().doHibernateUpdatePassword(Integer.parseInt(usuario), passwordSegura);
 					
 					//HAGO UN UPDATE DE TOKENID CON OTRO TOKENID NUEVO PARA QUE EL LINK YA NO FUNCIONE UNA VEZ CAMBIADA LAS PASSWORD
 					//TODO GENERAR UN NUEVO TOKENID Y ACTUALIZARLO

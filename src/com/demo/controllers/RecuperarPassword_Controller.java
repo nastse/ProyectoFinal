@@ -61,10 +61,10 @@ public class RecuperarPassword_Controller {
 				}else {
 					
 					//MENSAJE DE EMAIL ENCONTRADO
-					mensaje = "Â¡En breve recibirÃ¡ un correo para reestablecer su contraseÃ±a!";
+					mensaje = "¡En breve recibirá¡ un correo para reestablecer su contraseña!";
 					
 					//ENVIO EL EMAIL CON EL LINK PARA REESTABLECER LA CONTRASEÃ‘A
-					EnviarEmail.mandarEmail(email, "Cambio de contraseÃ±a", "Haga click en este enlace para reestablecer su contraseÃ±a: " +"http://localhost:8081/Spring_Web_App/reestablecer-password/"+usuario);
+					EnviarEmail.mandarEmail(email, "Cambio de contraseña", "Haga click en este enlace para reestablecer su contraseña: " +"http://localhost:8081/Spring_Web_App/reestablecer-password/"+usuario);
 					
 					md.addAttribute("error_msg", mensaje);
 					

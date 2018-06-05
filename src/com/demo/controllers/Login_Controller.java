@@ -79,8 +79,11 @@ public class Login_Controller {
 				//Login_Model lm = new Login_Model();
 				//LOGUE USANDO CONSULTA HQL
 				//String message = lm.doHibernateLogin(username, password);
+				String passwordSegura = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+				
+				
 				//MODELO DAO
-				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, password);
+				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
 				String mensaje = "";
 				
 				

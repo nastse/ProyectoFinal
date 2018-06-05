@@ -48,7 +48,7 @@ public class Myprofile_Controller {
 				
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
 				//RECOJO EL VALOR PASADO COMO ADDFLASHATRIBUTE DENTRO DE LOGIN
-				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatos(id_usuario);
+				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatosEmail(session.getAttribute("email").toString());
 				
 				map.addAttribute("datosUsuario", datosUsuario);
 				session.setAttribute("datos", datosUsuario);

@@ -33,7 +33,7 @@ public class User {
 	@Column(name="email")
 	private String email;
 	
-	@Size(min=5, max = 10)
+	@Size(min=5, max = 64)
 	@Column(name="password")
 	private String password;
 	

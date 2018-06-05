@@ -148,9 +148,9 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 		//INSERTAR EN LA BASE DE DATOS CON HIBERNATE
 		public String doHibernateSignUp(User user) {
 			
-			List<String> userComprobar = getUserDatos(user.getEmail());
+			List<String> userComprobar = getUserDatosEmail(user.getEmail());
 			
-			if(userComprobar.size()==1) {
+			if(userComprobar.size()>=1) {
 
 				return "El usuario ya existe";
 				
@@ -280,6 +280,21 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			session.beginTransaction();
 			System.out.println("ID USUARIO RECIBIDO EN getUserDatos: " +id_usuario);
 			List<String> datos = session.createQuery("From User where id_usuario='"+id_usuario+"'").list();
+			
+			session.close();
+			
+			return datos;
+		}
+		
+		public List<String> getUserDatosEmail(String email) {
+			
+			//Session session = HibernateConnection.doHibernateConnection().openSession();
+			Session session = HibernateConnection.getSession();	
+			
+			//Session session = sessionFactory.openSession();
+			session.beginTransaction();
+			
+			List<String> datos = session.createQuery("From User where email='"+email+"'").list();
 			
 			session.close();
 			
