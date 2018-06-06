@@ -174,7 +174,7 @@ public class Signup_Controller{
 		if(message.equals("Alta correcta...")) {
 			
 			//TODO LOGUEAR AL USUARIO DESPUES DE HABER HECHO UNA ALTA CORRECTA PARA PODER REDIRIGIRLO A SU PERFIL
-			int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(email, password);
+			List<User> usuario = RegisteryDAO.getUserDAO().doHibernateLogin(email, password);
 			String mensaje = "";
 			
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
@@ -183,7 +183,7 @@ public class Signup_Controller{
 				//ASIGNO LA SESION Y TODOS LOS DATOS DEL USUARIO
 				session.setAttribute("email", email);
 				session.setAttribute("datosUsuario", datosUsuario);
-				session.setAttribute("id_usuario", usuario);
+				session.setAttribute("id_usuario", usuario.get(0).getId_usuario());
 			
 				//ENVIO EMAIL DE CONFIRMACION DE ALTA
 				try {

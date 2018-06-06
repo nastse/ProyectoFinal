@@ -58,7 +58,7 @@ import com.amazonaws.services.s3.model.S3Object;
 	        s3client.putObject(new PutObjectRequest(bucketName, keyName, bis, omd));
 	        s3Object.close();
 	
-	        result = "Uploaded Successfully.";
+	        result = "Imagen subida correctamente";
 	    } catch (AmazonServiceException ase) {
 	       System.out.println("Caught an AmazonServiceException, which means your request made it to Amazon S3, but was "
 	            + "rejected with an error response for some reason.");

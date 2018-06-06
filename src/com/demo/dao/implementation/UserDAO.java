@@ -18,7 +18,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 	
 	//USANDO HQL
 	//DEVUELVO UN INT PARA RECOGER EL ID DEL USUARIO Y HACER LA CONSULTA
-		public int doHibernateLogin(String username, String password) {
+		public List<User> doHibernateLogin(String username, String password) {
 			
 			try {
 				
@@ -34,13 +34,13 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				session.close();
 				
 
-				if(user.size()==1) return user.get(0).getId_usuario();
+				if(user.size()>=1) return user;
 				
-				else return 0;
+				else return null;
 				
 				
 			}catch(Exception e) {
-				return 0;
+				return null;
 			}
 			
 		}

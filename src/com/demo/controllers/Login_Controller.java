@@ -65,9 +65,7 @@ public class Login_Controller {
 			//LO RECOJO DEL PATH QUE ASIGNO EN EL JSP
 			String username= req.getParameter("email");
 			String password= req.getParameter("password");
-			
-			System.out.println("Usuario: " +username + " Pass: " +password);
-			
+				
 			//Si hay algun error de validacion no hago nada
 			if(br.getAllErrors().size() > 0) {
 			
@@ -83,7 +81,7 @@ public class Login_Controller {
 				
 				
 				//MODELO DAO
-				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
+				List<User> usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
 				String mensaje = "";
 				
 				
@@ -93,18 +91,26 @@ public class Login_Controller {
 				//List <Products> reviews = RegisteryDAO.getProductsDAO().getProductByUserId(usuario);
 				//RECOJO DATOS DEL USUARIO
 				
- 				
-				if(usuario != 0) {
-
+ 				//SI ME DEVUELVE ALGUN USUARIO HAGO 
+				if(usuario !=null) {
+					
+					//TODO ESTO SOBRA? LO USO PARA CARGAR LA IMAGEN DEL PERFIL EN EL HEADER. NO FUNCION PASANDOLE USUARIO.GET.IMAGEN//ERROR AL PARSEAR EN JSTL
 					List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(String.valueOf(usuario));
 					
 					//A�ADO A LA SESION EL NOMBRE/EMAIL DEL USUARIO
 					System.out.println("ID USUARIO RECOLIGO EN LOGIN_CONTROLLER: "+ usuario);	
 					
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
-						session.setAttribute("email", username);
+						session.setAttribute("email", usuario.get(0).getEmail());
 						session.setAttribute("datos", datos);
-						session.setAttribute("id_usuario", usuario);
+						session.setAttribute("id_usuario", usuario.get(0).getId_usuario());
+						session.setAttribute("tipoUsuario", usuario.get(0).getTipo_usuario());
+						
+						if(usuario.get(0).getTipo_usuario()==3) {
+							//TODO USUARIO ES ADMIN IMPLEMENTAR CODIGO BACK OFFICE
+							//TODO HAGO UN COUNT DE USUARIOS Y HAGO UN COUNT DE REVIEWS PARA MOSTRAR AL ADMINISTRADOR
+							//TODO OPCION DE HABILITAR/DESHABILITAR NOTIFICACIONES INTERNAS
+						}
 						
 					//A�ADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					//session.setAttribute("id", reviews);

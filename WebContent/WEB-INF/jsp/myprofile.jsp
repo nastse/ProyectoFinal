@@ -116,16 +116,23 @@
   								<input id="carga" type="file" accept="image/*" name="image" class="btn " onchange="loadFile(event)">
   								<input id="form" type="hidden" name="imagen" value="${usuario.imagen}">
   							</div>
-  							
-  							<c:if test="${not empty mensaje_alta}">	
-  								<div id="error-alta" class="col-lg-12 ">
-									<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
-								</div>
-							</c:if>	
+
 						</div>
 					</div>
-			
+					<c:if test="${not empty mensaje_alta}">
+						<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
+							<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
+						</div>
+					</c:if>
 					
+					<c:set value="${tipoUsuario}" var="tipo"/>
+					<c:if test="${tipo == 3}">
+						<div class="row justify-content-center shadow m-2 p-4 bg-white rounded">
+						<div class="col-12 text-center">
+							<span id="encabezado">ZONA ADMIN</span>
+						</div>
+						</div>	
+					</c:if>	
 					
 					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

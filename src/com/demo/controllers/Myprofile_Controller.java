@@ -139,6 +139,11 @@ public class Myprofile_Controller {
 									//SUBO EL ARCHIVO AL S3 DE AMAZON CONFIGURADO EN LA CLASE S3FILEUPLOADER
 									S3FileUploader s3 = new S3FileUploader();
 							        String result = s3.fileUploader(data, image);
+							        
+							        if(!result.equals("Imagen subida correctamente")) {
+							        	
+							        	error=true;	
+							        }
 							            
 //									String path = request.getSession().getServletContext().getRealPath("/") + "//WEB-INF//images//";
 //									data.get(0).write(new File(path + File.separator + image));

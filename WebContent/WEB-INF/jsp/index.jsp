@@ -41,7 +41,7 @@
 				min-width:220px;
 				min-height:394px; 
 				background-color: white;
-				user-select: none;
+				user-select: none; 
 			}
 			
 
