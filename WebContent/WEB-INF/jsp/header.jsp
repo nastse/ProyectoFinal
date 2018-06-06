@@ -55,10 +55,10 @@
 							</div>
 							<div class="col-2 p-0 text-center">		
 								<c:if test="${not empty sessionScope.datos[0].imagen}">
-									<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
+									<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${datos[0].imagen}"></a>
 								</c:if>
 								<c:if test="${empty sessionScope.datos[0].imagen}">
-									<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="${pageContext.request.contextPath}/img/imagen.png"></a>
+									<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/imagen.png"></a>
 								</c:if>
 							</div>
 						</div>
@@ -84,10 +84,10 @@
 					
 					<div id="imagen-perfil" class="col-1 text-center">
 						<c:if test="${not empty sessionScope.datos[0].imagen}">
-							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="${pageContext.request.contextPath}/img/${datos[0].imagen}"></a>
+							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${datos[0].imagen}"></a>
 						</c:if>
 						<c:if test="${empty sessionScope.datos[0].imagen}">
-							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="${pageContext.request.contextPath}/img/imagen.png"></a>
+							<a href="<c:url value='/myprofile'/>"><img class="rounded-circle rounded justify-content-center shadow m-1" width="35px" height="35px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/imagen.png"></a>
 						</c:if>
 					</div>	
 			</div>		

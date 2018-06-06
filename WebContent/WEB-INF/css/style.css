@@ -8,6 +8,9 @@
 			p{
 				text-align: justify;
 			}
+			a:hover{
+				color:#F27490; 
+			}
 			
 			#contenedor-inicio{
 /* 				background-color:#ECEFF1; */
@@ -52,6 +55,7 @@
     			font-weight: bold;
     			font-size:14px;
     			text-transform: uppercase;
+    			color:black;
     		}
 			#producto-info{
 				width: 200px;
@@ -457,8 +461,14 @@
     			font-family: Trade Gothic, Charcoal, sans-serif; 
     			font-size:15px;
     			font-weight: bold;
-    		}#imagen-inicio{
-    			
+    			color:black;
+    		}
+    		#datos-ranking{
+    			font-family: Trade Gothic, Charcoal, sans-serif; 
+    			font-size:12px;
+    			color:black;
+    		}
+    		#imagen-inicio{
     			border: 1px solid black;
     		}
     		#contenedor-imagen-ver{
@@ -473,6 +483,7 @@
     			font-weight: bold;
     			font-size:14px;
     			text-transform: uppercase;
+    			color:black;
     		}
     		#imagen-guia{
     			max-height: 350px;
@@ -491,4 +502,10 @@
 			  background:#1F2833;
 			  border-radius:50%;
 			  cursor:pointer;
+			}
+			#fila-reviews{
+				min-height: 150px;
+			}
+			#fila-gastado{
+				min-height: 150px;
 			}

@@ -55,7 +55,7 @@
 			</div>
 			
 			<div class="col-12">
-					<img id="contenedor-imagen-ver" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">
+					<img id="contenedor-imagen-ver" class="img-fluid" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}">
 			</div>
 			
 			
@@ -110,7 +110,7 @@
 			<div class="col-lg-3 col-sm-5">
 				<div id="" class="row">
 					<div class="col-12">
-						<img id="imagen-guia"  src="${pageContext.request.contextPath}/img/guia1.jpg">
+						<img id="imagen-guia"  src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/guia1.jpg">
 					</div>	
 				</div>					
 			</div>

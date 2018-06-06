@@ -26,7 +26,7 @@ public class Index_Controller {
 	
 
 	@RequestMapping(value= { "/", "/index"}, method=RequestMethod.GET)
-	public ModelAndView loadProducts() {
+	public ModelAndView loadProducts(HttpSession session) {
 		
 //	//PARA CONSULTA HQL
 //		ModelAndView mav = new ModelAndView("index");
@@ -46,6 +46,27 @@ public class Index_Controller {
         //HAGO OTRA BUSQUEDA CON LA PRIMERA TANDA POR PAGINA (4 POR PAGINA)
         List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(0, "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos");
         
+        try {
+	        //HAGO BUSQUEDA PARA RELLENAR EL RANKING
+	       List<Object[]> reviews = RegisteryDAO.getUserDAO().rankingReviews();
+	       //modelAndView.addObject("reviews", reviews);
+	       session.setAttribute("reviews", reviews);
+	       
+	     //HAGO BUSQUEDA PARA RELLENAR EL RANKING
+	       List<Object[]> gastado = RegisteryDAO.getUserDAO().rankingGastado();
+	       //modelAndView.addObject("gastado", gastado);
+	       session.setAttribute("gastado", gastado);
+	       
+		} catch (Exception e) {
+			System.out.println("Error al cargar ranking");
+		}
+       
+//       for(Object[] total : ranking) {
+//			System.out.println((long)total[0]);
+//			System.out.println((long)total[1]);	
+//			System.out.println(total[2]);	
+//		}
+//        
         //ENVIO LA TANDA A MOSTRAR
         modelAndView.addObject("allProducts", products);
         
@@ -136,49 +157,5 @@ public class Index_Controller {
         return modelAndView;
     }
 
-	
-//	@RequestMapping(value= { "/", "/index"}, method=RequestMethod.POST)
-//	public String do_login(HttpServletRequest req, Model md, HttpSession session, @Valid User user, BindingResult br) {
-//		
-//		try {
-//			
-//			//System.out.println(br.getAllErrors().size());
-//			
-//			String username= req.getParameter("email");
-//			String password= req.getParameter("password");
-//			
-//			System.out.println("Usuario: " +username + " Pass: " +password);
-//			
-//			//Si hay algun error de validacion no hago nada
-//			if(br.getAllErrors().size() > 0) {
-//			
-//				System.out.println("Se ha validad por el lado servidor");
-//				
-//			//Si no hay ningun error me compruebo mi User y password para loguearme 	
-//			}else{
-//				
-//				//MODELO DAO
-//				int message = RegisteryDAO.getUserDAO().doHibernateLogin(username, password);
-//				
-//				if(message != 0) {
-//					
-//					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE
-//					session.setAttribute("email", username);
-//					return "redirect:/myprofile";
-//					
-//				}else {
-//					
-//					md.addAttribute("error_msg", message);
-//					
-//				}
-//			}
-//			
-//			return "index";
-//			
-//		}catch(Exception e){
-//			
-//			return "index";
-//		}
-//	}
 			
 }

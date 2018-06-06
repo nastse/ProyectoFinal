@@ -102,7 +102,7 @@
 
 					<div id="div_${product.id_rev}" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
 							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1 text-center">	
-								<img class="rounded justify-content-center shadow mb-1" width="100px" height="100px" src="${pageContext.request.contextPath}/img/${product.imagen}">
+								<img class="rounded justify-content-center shadow mb-1" width="100px" height="100px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}">
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1 align-self-center text-center">	
 								<div id="" class="row justify-content-start">

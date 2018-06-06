@@ -41,6 +41,7 @@
 				min-width:220px;
 				min-height:394px; 
 				background-color: white;
+				user-select: none;
 			}
 			
 
@@ -490,11 +491,51 @@
 							</div>
 							<div id="ranking" class="col-lg-12 m-1">
 								<div class="row justify-content-center text-center">
-									<div class="col-lg-12 m-1">
-										<span>Ranking Usuarios</span>
+									<div class="col-10">
+										<i class="fa fa-star" style="color:#f6ff00;"></i>
+										<i class="fa fa-star" style="color:#f6ff00;"></i>
+										<i class="fa fa-star" style="color:#f6ff00;"></i>
+										<i class="fa fa-star" style="color:#f6ff00;"></i>
+										<i class="fa fa-star" style="color:#f6ff00;"></i><br>
 									</div>
-									<div class="col-lg-12 m-1">
-										
+								</div>	
+								<div id="fila-reviews" class="row justify-content-center text-center">	
+									<div class="col-10">
+										<span id="titulo-negrita">Ranking reviews</span>
+										<c:forEach var="i" items="${reviews}">
+									        <div class="row justify-content-center text-center">
+									         	<div class="col-9 ">
+											         <a href="<c:url value='/mypublicprofile/${i[3]}/'/>"><span id="datos-ranking">${i[2]}</span></a>
+											  	</div>   
+											  	<div class="col-3 ">
+											         <span id="datos-ranking">${i[1]}</span> 
+											  	</div>    
+									        </div>
+									    </c:forEach>
+									</div>
+								</div>
+								<div class="row justify-content-center text-center">
+									<div class="col-10">
+										<i class="fa fa-star" style="color:#02fc02;"></i>
+										<i class="fa fa-star" style="color:#02fc02;"></i>
+										<i class="fa fa-star" style="color:#02fc02;"></i>
+										<i class="fa fa-star" style="color:#02fc02;"></i>
+										<i class="fa fa-star" style="color:#02fc02;"></i><br>
+									</div>
+								</div>
+								<div id="fila-gastado" class="row justify-content-center text-center">
+									<div class="col-10">
+										<span id="titulo-negrita">Ranking gastado</span>
+										<c:forEach var="i" items="${gastado}">
+									        <div class="row justify-content-center text-center">
+									         	<div class="col-9 ">
+											         <a href="<c:url value='/mypublicprofile/${i[3]}/'/>"><span id="datos-ranking">${i[2]}</span></a>
+											  	</div>    
+											  	<div class="col-3 ">
+											         <span id="datos-ranking">${i[0]}&euro;</span>
+											  	</div>     
+									        </div>
+									    </c:forEach>
 									</div>
 								</div>
 							</div>
@@ -527,7 +568,7 @@
 										
 									<div class="col-12">
 										<div class="producto-img d-flex justify-content-center p-1">
-											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product[2]}"></a>	
+											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product[2]}"></a>	
 										</div>
 									</div>	
 									<div id="valoracion-index" class="col-12">	

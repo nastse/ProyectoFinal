@@ -109,7 +109,7 @@
 						</div>
 
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 text-center">	
-  								<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${usuario.imagen}"><br>
+  								<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${usuario.imagen}"><br>
   								<span id="texto">Sube una imagen de perfil tipo jpg/jpeg/png de tamaño máximo 5MB</span>
   							
   							<div class="col-lg-12 ">	

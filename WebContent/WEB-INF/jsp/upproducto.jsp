@@ -182,7 +182,7 @@
 					<div id="" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded text-center">
 								
 								<div class="col-lg-12">
-										<img id="imagen" class="img-fluid" src="${pageContext.request.contextPath}/img/${product.imagen}">	
+										<img id="imagen" class="img-fluid" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}">	
 										
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 text-center">

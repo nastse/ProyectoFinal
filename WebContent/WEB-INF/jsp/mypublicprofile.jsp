@@ -38,7 +38,7 @@
 				<div class="col-lg-12 text-center">	
 					<div id="" class="row justify-content-center">
 						<div class="col-6">
-							<img id="imagen" class="rounded-circle rounded justify-content-center shadow mb-2" width="125px" height="125px" src="${pageContext.request.contextPath}/img/${usuario.imagen}">
+							<img id="imagen" class="rounded-circle rounded justify-content-center shadow mb-2" width="125px" height="125px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${usuario.imagen}">
   						</div>
   					
   						<div class="col-6 text-left">
@@ -71,7 +71,7 @@
 										
 									<div class="col-12">
 										<div class="producto-img d-flex justify-content-center p-1">
-											<a href="<c:url value='/verproducto/${product.id_rev}'/>"><img class="rounded" width="200px" height="200px" src="${pageContext.request.contextPath}/img/${product.imagen}"></a>	
+											<a href="<c:url value='/verproducto/${product.id_rev}'/>"><img class="rounded" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}"></a>	
 										</div>
 									</div>	
 									<div class="col-12">	

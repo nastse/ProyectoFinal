@@ -18,4 +18,6 @@ public interface UserDAO {
 	public String comprobarEmail(String email);
 	public List<User> comprobarTokenID(String tokenID);
 	public List<Object[]> contarReviews(String id_usuario);
+	public List<Object[]> rankingReviews();
+	public List<Object[]> rankingGastado();
 }

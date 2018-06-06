@@ -359,9 +359,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 		}
 		
 		//CUENTO EL NUMERO DE REVIEWS QUE HA HECHO UN USUARIO
-		
-			
-		public List<Object[]> contarReviews (String id_usuario){
+		public List<Object[]> contarReviews(String id_usuario){
 			try {
 				Session session = HibernateConnection.getSession();
 				
@@ -378,6 +376,49 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 			}
 				return null;
 				
+		}
+		
+		//SACO LA SUMA DE LAS REVIEWS Y TOTAL DE LOS USUARIOS
+		public List<Object[]> rankingReviews(){
+			try {
+				Session session = HibernateConnection.getSession();
+				
+				session.beginTransaction();
+				
+				Query query = session.createQuery("Select SUM(p.precio), count(precio), u.nombre, u.id_usuario from Products p, User u where u.id_usuario = p.id_user group by u.id_usuario, u.nombre order by 1");
+				List<Object[]> totales =(List<Object[]>)query.list();
+				query.setFirstResult(0);
+				query.setMaxResults(5);
+								
+				session.close();
+				
+				return totales;
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+				return null;		
+		}
+		
+		public List<Object[]> rankingGastado(){
+			try {
+				Session session = HibernateConnection.getSession();
+				
+				session.beginTransaction();
+				
+				Query query = session.createQuery("Select SUM(p.precio), count(precio), u.nombre, u.id_usuario from Products p, User u where u.id_usuario = p.id_user group by u.id_usuario, u.nombre order by 2");
+				List<Object[]> totales =(List<Object[]>)query.list();
+				query.setFirstResult(0);
+				query.setMaxResults(5);
+								
+				session.close();
+				
+				return totales;
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+				return null;		
 		}
 			
 
