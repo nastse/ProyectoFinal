@@ -53,6 +53,7 @@ public class Myprofile_Controller {
 				map.addAttribute("datosUsuario", datosUsuario);
 				session.setAttribute("datos", datosUsuario);
 				map.addAttribute("email", session.getAttribute("email"));
+				map.addAttribute("tipoUsuario", session.getAttribute("tipoUsuario"));
 				System.out.println("DATOS USUARIO: " + datosUsuario);
 			
 			

@@ -104,13 +104,16 @@ public class Login_Controller {
 						session.setAttribute("email", username);
 						session.setAttribute("datos", datos);
 						session.setAttribute("id_usuario", usuario);
-						//session.setAttribute("tipoUsuario", usuario.get(0).getTipo_usuario());
 						
-						//if(usuario.get(0).getTipo_usuario()==3) {
-							//TODO USUARIO ES ADMIN IMPLEMENTAR CODIGO BACK OFFICE
-							//TODO HAGO UN COUNT DE USUARIOS Y HAGO UN COUNT DE REVIEWS PARA MOSTRAR AL ADMINISTRADOR
-							//TODO OPCION DE HABILITAR/DESHABILITAR NOTIFICACIONES INTERNAS
-						//}
+						
+						
+//						session.setAttribute("tipoUsuario", Integer.parseInt(datos.get(9).toString()));
+//						
+//						if(Integer.parseInt(datos.get(9).toString())==3) {
+//							//TODO USUARIO ES ADMIN IMPLEMENTAR CODIGO BACK OFFICE
+//							//TODO HAGO UN COUNT DE USUARIOS Y HAGO UN COUNT DE REVIEWS PARA MOSTRAR AL ADMINISTRADOR
+//							//TODO OPCION DE HABILITAR/DESHABILITAR NOTIFICACIONES INTERNAS
+//						}
 						
 					//A�ADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					//session.setAttribute("id", reviews);

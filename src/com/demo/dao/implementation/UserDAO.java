@@ -165,8 +165,15 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 						//LE ASIGNO VALORES POR DEFECTO AL CREAR EL USUARIO
 						user.setImagen("imagen.png");
 						user.setGenero("Hombre");
-						user.setNombre(user.getEmail().toString());
+						
+						//LE PASO EL NOMBRE RECORTADO DEL EMAIL
+						String email = user.getEmail().toString();
+						int index = email.indexOf('@');
+						String nombre = email.substring(0,index);
+						
+						user.setNombre(nombre);
 						user.setTipo_usuario(1);
+						
 						user.setEstado(1);
 						user.setTokenID(UUID.randomUUID().toString());
 							
@@ -421,7 +428,25 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				return null;		
 		}
 			
-
+		public List<User> totalUsuario() {
+			
+			try {
+				
+				Session session = HibernateConnection.getSession();	
+				session.beginTransaction();
+				
+				List<User> user = session.createQuery("From User").list();
+				
+				session.close();
+				
+				return user;
+				
+				
+			}catch(Exception e) {
+				return null;
+			}
+			
+		}
 
 
 }

@@ -50,8 +50,9 @@ public class Index_Controller {
         //ENVIO LA TANDA A MOSTRAR
         modelAndView.addObject("allProducts", products);
         
-        
-       
+        //LISTA CON TODOS LAS REVIEWS
+        List<User> listaUsuario = RegisteryDAO.getUserDAO().totalUsuario();
+        session.setAttribute("listaUsuario", listaUsuario);
         
         try {
         	//HAGO BUSQUEDA PARA RECOGER LAS MARCAS DISPONIBLES EN LA BDDA

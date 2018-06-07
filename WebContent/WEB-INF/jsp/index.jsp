@@ -42,6 +42,7 @@
 				min-height:394px; 
 				background-color: white;
 				user-select: none; 
+				z-index:10;
 			}
 			
 
@@ -106,7 +107,7 @@
 				background-color:white;
 				width:100px;
     		}
-    		.boton:hover{
+    		#boton:hover{
     			background-color:#F27490;
     			color:white;
     		} 

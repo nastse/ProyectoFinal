@@ -84,7 +84,6 @@
 </head>
 
 
-<!-- 	AQU� INSERTO EL HEADER -->
 	<jsp:include page="header.jsp" />
 
 <body>
@@ -125,15 +124,7 @@
 						</div>
 					</c:if>
 					
-					<c:set value="${tipoUsuario}" var="tipo"/>
-					<c:if test="${tipo == 3}">
-						<div class="row justify-content-center  m-2 p-4 bg-white rounded">
-						<div class="col-12 text-center">
-							<span id="encabezado">ZONA ADMIN</span>
-						</div>
-						</div>	
-					</c:if>	
-					
+
 					<div class="row justify-content-md-center justify-content-sm-center  m-2 p-4 bg-white rounded">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="row justify-content-center">
@@ -228,7 +219,33 @@
 					</div>
 				</form>
 			</c:forEach>
-		</div>			
+		</div>	
+		<c:set value="${datos[0].tipo_usuario}" var="tipo"/>
+			<c:if test="${tipo == 3}">
+				<div class="row justify-content-center shadow m-2 p-4 bg-white rounded">
+					<div class="col-12 text-center">
+						<span id="encabezado">ZONA ADMIN</span>
+					</div>
+					<div class="col-12 text-center">
+						 <table style="width:100%; border:solid, 1px;">
+							  <tr>
+							    <th>Nº</th>
+							    <th>Nombre Usuario</th>
+							    <th>Email Usuario</th>
+							    <th>Creado</th>
+							  </tr>
+							<c:forEach items="${listaUsuario}" var="usuario" varStatus="status">	  
+								  <tr id="texto-tabla">
+								    <td>${status.index+1}</td>
+								    <td>${usuario.nombre}</td>
+								    <td>${usuario.email}</td>
+								    <td>${usuario.creado}</td>
+								  </tr>
+							 </c:forEach> 
+							</table> 
+					</div>
+				</div>	
+			</c:if>			
 	</c:if>	
 </body>
 

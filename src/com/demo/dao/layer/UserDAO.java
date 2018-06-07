@@ -20,4 +20,5 @@ public interface UserDAO {
 	public List<Object[]> contarReviews(String id_usuario);
 	public List<Object[]> rankingReviews();
 	public List<Object[]> rankingGastado();
+	public List<User> totalUsuario();
 }
