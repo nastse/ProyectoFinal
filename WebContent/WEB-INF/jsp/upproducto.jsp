@@ -283,24 +283,17 @@
 										<label id="titulo">Categoría</label><br>
 											<select id="form" class="form-control" name="categoria" required>
 												<option value = "${product.categoria}">${product.categoria}</option>
-												<option value = "Maillot corto">Maillot corto</option>
-												<option value = "Maillot largo">Maillot largo</option>
-												<option value = "Cullote corto">Cullote corto</option>
-												<option value = "Cullote largo">Cullote largo</option>
+												<c:forEach items="${allCategoria}"  var="categoria">
+         											<option value="${categoria.nombre}">${categoria.nombre}</option>
+    											</c:forEach>
 											</select>
 									</div>
 									<div class="col-lg-10">
 										<label id="titulo">Marca</label><br>
 											<select id="form" class="form-control" name="marca" required>
-												<option value = "${product.marca}">${product.marca}</option>
-												<option value = "Castelli">Castelli</option>
-												<option value = "Sportful">Sportful</option>
-												<option value = "Rapha">Rapha</option>
-												<option value = "Endura">Endura</option>
-												<option value = "DBH">DBH</option>
-												<option value = "ALE">ALE</option>
-												<option value = "Santini">Santini</option>
-												<option value = "Exteondo">Etxeondo</option>
+												<c:forEach items="${allMarcas}"  var="marca">
+         											<option value="${marca.nombre}">${marca.nombre}</option>
+    											</c:forEach>
 											</select>
 									</div>
 									<div class="col-lg-10">

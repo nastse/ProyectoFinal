@@ -81,7 +81,7 @@ public class Login_Controller {
 				
 				
 				//MODELO DAO
-				List<User> usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
+				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
 				String mensaje = "";
 				
 				
@@ -92,7 +92,7 @@ public class Login_Controller {
 				//RECOJO DATOS DEL USUARIO
 				
  				//SI ME DEVUELVE ALGUN USUARIO HAGO 
-				if(usuario !=null) {
+				if(usuario != 0) {
 					
 					//TODO ESTO SOBRA? LO USO PARA CARGAR LA IMAGEN DEL PERFIL EN EL HEADER. NO FUNCION PASANDOLE USUARIO.GET.IMAGEN//ERROR AL PARSEAR EN JSTL
 					List <String> datos = RegisteryDAO.getUserDAO().getUserDatos(String.valueOf(usuario));
@@ -101,16 +101,16 @@ public class Login_Controller {
 					System.out.println("ID USUARIO RECOLIGO EN LOGIN_CONTROLLER: "+ usuario);	
 					
 					//RECOJO LA SESION Y LE ASIGNO UN NOMBRE LO PASO AL JSP PARA MOSTRAR
-						session.setAttribute("email", usuario.get(0).getEmail());
+						session.setAttribute("email", username);
 						session.setAttribute("datos", datos);
-						session.setAttribute("id_usuario", usuario.get(0).getId_usuario());
-						session.setAttribute("tipoUsuario", usuario.get(0).getTipo_usuario());
+						session.setAttribute("id_usuario", usuario);
+						//session.setAttribute("tipoUsuario", usuario.get(0).getTipo_usuario());
 						
-						if(usuario.get(0).getTipo_usuario()==3) {
+						//if(usuario.get(0).getTipo_usuario()==3) {
 							//TODO USUARIO ES ADMIN IMPLEMENTAR CODIGO BACK OFFICE
 							//TODO HAGO UN COUNT DE USUARIOS Y HAGO UN COUNT DE REVIEWS PARA MOSTRAR AL ADMINISTRADOR
 							//TODO OPCION DE HABILITAR/DESHABILITAR NOTIFICACIONES INTERNAS
-						}
+						//}
 						
 					//A�ADO A LA SESION LA LISTA DE LOS PRODUCTOS DE ESTE USUARIO
 					//session.setAttribute("id", reviews);

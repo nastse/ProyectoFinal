@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.demo.pojo.Categoria;
+import com.demo.pojo.Marca;
 import com.demo.pojo.Mensaje;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
@@ -45,6 +47,8 @@ public class HibernateConnection {
 							.addPackage("com.demo.pojo")
 							.addAnnotatedClass(User.class)
 							.addAnnotatedClass(Products.class)
+							.addAnnotatedClass(Marca.class)
+							.addAnnotatedClass(Categoria.class)
 							.addAnnotatedClass(Mensaje.class);
 		
 		StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());

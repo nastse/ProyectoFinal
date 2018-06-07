@@ -6,7 +6,7 @@ import com.demo.pojo.User;
 
 public interface UserDAO {
 
-	public List<User> doHibernateLogin(String username, String password);
+	public int doHibernateLogin(String username, String password);
 	public int updateToken(String tokenID);
 	public int doHibernateDeleteUser(int usuario_id);
 	public int doHibernateUpdatePassword(int usuario_id, String newpassword);

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.registery.RegisteryDAO;
+import com.demo.pojo.Categoria;
+import com.demo.pojo.Marca;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
 
@@ -45,8 +47,23 @@ public class Index_Controller {
         
         //HAGO OTRA BUSQUEDA CON LA PRIMERA TANDA POR PAGINA (4 POR PAGINA)
         List<String> products = RegisteryDAO.productsDAO.getAllProductsNamesPage(0, "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos", "Todos");
+        //ENVIO LA TANDA A MOSTRAR
+        modelAndView.addObject("allProducts", products);
+        
+        
+       
         
         try {
+        	//HAGO BUSQUEDA PARA RECOGER LAS MARCAS DISPONIBLES EN LA BDDA
+            List<Marca> allMarcas = RegisteryDAO.marcaDAO.getAllMarcas();
+            //modelAndView.addObject("allMarcas", allMarcas);
+            session.setAttribute("allMarcas", allMarcas);
+            
+          //HAGO BUSQUEDA PARA RECOGER LAS CATEGORIAS DISPONIBLES EN LA BDDA
+            List<Categoria> allCategorias = RegisteryDAO.categoriaDAO.getAllCategorias();
+            //modelAndView.addObject("allMarcas", allMarcas);
+            session.setAttribute("allCategorias", allCategorias);
+        	
 	        //HAGO BUSQUEDA PARA RELLENAR EL RANKING
 	       List<Object[]> reviews = RegisteryDAO.getUserDAO().rankingReviews();
 	       //modelAndView.addObject("reviews", reviews);
@@ -67,8 +84,7 @@ public class Index_Controller {
 //			System.out.println(total[2]);	
 //		}
 //        
-        //ENVIO LA TANDA A MOSTRAR
-        modelAndView.addObject("allProducts", products);
+       
         
         PagedListHolder<String> pagedListHolder = new PagedListHolder<String>(allproducts);
         

@@ -85,110 +85,117 @@
 	
 	<c:if test="${not empty sessionScope.email}">	
 		<div class="container">		
-		
-			<div id="subir-producto" class="row justify-content-md-center justify-content-sm-center  p-2 rounded text-center">
+			<div id="contenedor-inicio" class="row justify-content-around">
+			<div class="col-lg-12 text-center">
+					<h5 id="columna">AÑADE O MODIFICA TUS REVIEWS</h5>
+					<hr>
+				</div>
+			<div class="col-12">	
 				
-				<div class="col-lg-12">
-				
-					<a href="<c:url value='/altaproducto'/>"><h4>Añadir nueva Review</h4></a>
+				<div id="subir-producto" class="row justify-content-md-center justify-content-sm-center  p-2 rounded text-center">
+					
+					<div class="col-lg-12">
+					
+						<a href="<c:url value='/altaproducto'/>"><h4>Añadir nueva Review</h4></a>
+					
+					</div>
 				
 				</div>
 			
-			</div>
+					<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
+					<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
+					<c:forEach items="${listaReviews}" var="product">
 		
-				<%-- LE PASO EL OBJETO QUE ME DEVUELVE EL CONTROLADOR  --%>
-				<%-- HAGO UN FOREACH PARA MOSTRAR TODAS LAS FILAS QUE ME DEVUELVE LA CONSULTA  --%>
-				<c:forEach items="${listaReviews}" var="product">
-
-					<div id="div_${product.id_rev}" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
-							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1 text-center">	
-								<img class="rounded justify-content-center shadow mb-1" width="100px" height="100px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}">
-							</div>
-							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1 align-self-center text-center">	
-								<div id="" class="row justify-content-start">
-									<div class="col-12">
-										<span id="titulo-negrita" style="color:#F27490">${product.talla}</span>
-										<span id="titulo-negrita">${product.marca}</span>
-										<span id="titulo-negrita">${product.modelo}</span><br>	
-									</div>
-									<div class="col-12">
-										<span>${product.categoria}</span><br>	
-									</div>
-									<div class="col-12">
-										<span>Ajuste</span>
-											<i class="fa fa-star" style="color:#1F2833;"></i>	
-										<c:if test="${product.ajuste > 1}">
-											<i class="fa fa-star" style="color:#1F2833;"></i>
-										</c:if>
-										<c:if test="${product.ajuste > 2}">
-											<i class="fa fa-star" style="color:#1F2833;"></i>
-										</c:if>
-									<c:if test="${product.ajuste > 3}">
-											<i class="fa fa-star" style="color:#1F2833;"></i>
-										</c:if>
-										<c:if test="${product.ajuste > 4}">
-											<i class="fa fa-star" style="color:#1F2833;"></i>
-										</c:if>
-										
-										<c:if test="${product.ajuste < 2}">
+						<div id="div_${product.id_rev}" class="row justify-content-md-center justify-content-sm-center shadow m-2 p-2 bg-white rounded">
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 p-1 text-center">	
+									<img class="rounded justify-content-center shadow mb-1" width="100px" height="100px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}">
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 p-1 align-self-center text-center">	
+									<div id="" class="row justify-content-start">
+										<div class="col-12">
+											<span id="titulo-negrita" style="color:#F27490">${product.talla}</span>
+											<span id="titulo-negrita">${product.marca}</span>
+											<span id="titulo-negrita">${product.modelo}</span><br>	
+										</div>
+										<div class="col-12">
+											<span>${product.categoria}</span><br>	
+										</div>
+										<div class="col-12">
+											<span>Ajuste</span>
+												<i class="fa fa-star" style="color:#1F2833;"></i>	
+											<c:if test="${product.ajuste > 1}">
+												<i class="fa fa-star" style="color:#1F2833;"></i>
+											</c:if>
+											<c:if test="${product.ajuste > 2}">
+												<i class="fa fa-star" style="color:#1F2833;"></i>
+											</c:if>
+										<c:if test="${product.ajuste > 3}">
+												<i class="fa fa-star" style="color:#1F2833;"></i>
+											</c:if>
+											<c:if test="${product.ajuste > 4}">
+												<i class="fa fa-star" style="color:#1F2833;"></i>
+											</c:if>
+											
+											<c:if test="${product.ajuste < 2}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${product.ajuste < 3}">
 											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product.ajuste < 3}">
-										<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product.ajuste < 4}">
-											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product.ajuste < 5}">
-											<i class="fa fa-star"></i>
-										</c:if>
-									</div>
-									<div class="col-12">
-									<span>Valoración</span>
-											<i class="fa fa-star" style="color:#F27490;"></i>	
-										<c:if test="${product.recomendable > 1}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										<c:if test="${product.recomendable > 2}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										<c:if test="${product.recomendable > 3}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										<c:if test="${product.recomendable > 4}">
-											<i class="fa fa-star" style="color:#F27490;"></i>
-										</c:if>
-										
-										<c:if test="${product.recomendable < 2}">
-											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product.recomendable < 3}">
-											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product.recomendable < 4}">
-											<i class="fa fa-star"></i>
-										</c:if>
-										<c:if test="${product.recomendable < 5}">
-											<i class="fa fa-star"></i>
-										</c:if>
-									</div>
-								</div>	
-							</div>
-							<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 p-1 align-self-center text-center">	
-								<div id="" class="row justify-content-md-center justify-content-sm-center">		
-									<div class="col-lg-12 text-center">	
-										<button  id="${product.id_rev}" type="button" class="boton btn btn-sm" value="Eliminar" onclick="borrarProducto(this.id)">ELIMINAR</button>
-										<button id="boton" type="reset" class="boton btn btn-sm" onclick="location.href='${pageContext.request.contextPath}/upproducto/${product.id_rev}'">EDITAR</button>
-									</div>
-									<div class="col-lg-12 text-center">
-<%-- 										<span>${product.creado}</span> --%>
+											</c:if>
+											<c:if test="${product.ajuste < 4}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${product.ajuste < 5}">
+												<i class="fa fa-star"></i>
+											</c:if>
+										</div>
+										<div class="col-12">
+										<span>Valoración</span>
+												<i class="fa fa-star" style="color:#F27490;"></i>	
+											<c:if test="${product.recomendable > 1}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${product.recomendable > 2}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${product.recomendable > 3}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											<c:if test="${product.recomendable > 4}">
+												<i class="fa fa-star" style="color:#F27490;"></i>
+											</c:if>
+											
+											<c:if test="${product.recomendable < 2}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${product.recomendable < 3}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${product.recomendable < 4}">
+												<i class="fa fa-star"></i>
+											</c:if>
+											<c:if test="${product.recomendable < 5}">
+												<i class="fa fa-star"></i>
+											</c:if>
+										</div>
+									</div>	
+								</div>
+								<div class="col-lg-6 col-md-4 col-sm-4 col-xs-4 p-1 align-self-center text-center">	
+									<div id="" class="row justify-content-md-center justify-content-sm-center">		
+										<div class="col-lg-12 text-center">	
+											<button  id="${product.id_rev}" type="button" class="boton btn btn-sm" value="Eliminar" onclick="borrarProducto(this.id)">ELIMINAR</button>
+											<button id="boton" type="reset" class="boton btn btn-sm" onclick="location.href='${pageContext.request.contextPath}/upproducto/${product.id_rev}'">EDITAR</button>
+										</div>
+										<div class="col-lg-12 text-center">
+		<%-- 										<span>${product.creado}</span> --%>
+										</div>
 									</div>
 								</div>
-							</div>
-					</div>
-
-				</c:forEach>
+						</div>
 		
+					</c:forEach>
+				</div>	
+			</div>
 		</div>	
 	</c:if>	
 </body>

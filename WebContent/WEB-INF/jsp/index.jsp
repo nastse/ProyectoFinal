@@ -222,6 +222,9 @@
 														colapsarMenu('marca');
  													</script>
  													<option value = "Todos">TODOS</option>
+ 													<c:forEach items="${allMarcas}"  var="marca">
+         												<option value="${marca.nombre}">${marca.nombre}</option>
+    												</c:forEach>
 											</c:if>
 											
 										</c:if>
@@ -229,14 +232,9 @@
 											<option value = "Todos">TODOS</option>
 										</c:if>	
 											
-											<option value = "Castelli">Castelli</option>
-											<option value = "Sportful">Sportful</option>
-											<option value = "Rapha">Rapha</option>
-											<option value = "Endura">Endura</option>
-											<option value = "DBH">DBH</option>
-											<option value = "ALE">ALE</option>
-											<option value = "Santini">Santini</option>
-											<option value = "Exteondo">Etxeondo</option>
+											<c:forEach items="${allMarcas}"  var="marca">
+         										<option value="${marca.nombre}">${marca.nombre}</option>
+    										</c:forEach>
 											
 									</select>
 								</div>	
@@ -257,10 +255,9 @@
 												</c:if>
 										</c:if>	
 										<option value = "Todos">Todos</option>
-										<option value = "Maillot corto">Maillot corto</option>
-										<option value = "Maillot largo">Maillot largo</option>
-										<option value = "Cullote corto">Cullote corto</option>
-										<option value = "Cullote largo">Cullote largo</option>
+										<c:forEach items="${allCategorias}"  var="categoria">
+         									<option value="${categoria.nombre}">${categoria.nombre}</option>
+    									</c:forEach>
 									</select>	
 								</div>								  							  
 						     <div id="titulo-menu" class="col col-12 text-left" onclick="colapsarMenu('talla')">

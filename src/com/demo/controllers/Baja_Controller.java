@@ -57,16 +57,16 @@ public class Baja_Controller {
 				String passwordSegura = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
 				
 				//COMPRUEBO QUE EL USUARIO Y LA CONTRASEÑA COINCIDEN Y SIGO CON EL PROCESO DE BAJA DE USUARIO
-				List<User> usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
+				int usuario = RegisteryDAO.getUserDAO().doHibernateLogin(username, passwordSegura);
 				String mensaje = "";
 				
-				if(usuario.size() > 0) {
+				if(usuario !=  0) {
 		
 					System.out.println("USUARIO DADO DE BAJA");
 					
 					//CAMBIO TODOS LOS REVIEWS DEL USUARIO A ELIMINAR Y SE LOS ASIGNO AL USUARIO ADMIN
 					//ELIMINO DEFINITIVAMENTE EL USUARIO DE LA BASE DE DATOS
-					int baja = RegisteryDAO.userDAO.doHibernateDeleteUser(usuario.get(0).getId_usuario());
+					int baja = RegisteryDAO.userDAO.doHibernateDeleteUser(usuario);
 					
 					//CIERRO SESION Y REDIRIJO AL INICIO
 					HttpSession httpSession = req.getSession();

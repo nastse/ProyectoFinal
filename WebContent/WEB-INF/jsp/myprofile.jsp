@@ -102,14 +102,14 @@
 		
 			<c:forEach items="${datosUsuario}" var="usuario" varStatus="status">
 				<form action="${pageContext.request.contextPath}/myprofile" method="post" enctype="multipart/form-data">
-					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
+					<div class="row justify-content-md-center justify-content-sm-center  m-2 p-4 bg-white rounded">
 						<div class="col-12 text-center">
 							<span id="encabezado">Actualiza tus datos</span>
 							<hr>
 						</div>
 
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 p-1 text-center">	
-  								<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center shadow mb-2" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${usuario.imagen}"><br>
+  								<img id="imagen" class="img-fluid rounded-circle rounded justify-content-center  mb-2" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${usuario.imagen}"><br>
   								<span id="texto">Sube una imagen de perfil tipo jpg/jpeg/png de tamaño máximo 5MB</span>
   							
   							<div class="col-lg-12 ">	
@@ -120,21 +120,21 @@
 						</div>
 					</div>
 					<c:if test="${not empty mensaje_alta}">
-						<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
+						<div class="row justify-content-md-center justify-content-sm-center  m-2 p-4 bg-white rounded">
 							<span id="error-alta-texto" class="alert alert-danger" >${mensaje_alta}</span>
 						</div>
 					</c:if>
 					
 					<c:set value="${tipoUsuario}" var="tipo"/>
 					<c:if test="${tipo == 3}">
-						<div class="row justify-content-center shadow m-2 p-4 bg-white rounded">
+						<div class="row justify-content-center  m-2 p-4 bg-white rounded">
 						<div class="col-12 text-center">
 							<span id="encabezado">ZONA ADMIN</span>
 						</div>
 						</div>	
 					</c:if>	
 					
-					<div class="row justify-content-md-center justify-content-sm-center shadow m-2 p-4 bg-white rounded">
+					<div class="row justify-content-md-center justify-content-sm-center  m-2 p-4 bg-white rounded">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="row justify-content-center">
 									<div class="col-12 p-1">		
