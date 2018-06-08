@@ -33,9 +33,9 @@
 						<span id="titulo-footer-small">Ciclismo Review</span><br>
 					</div>
 					<div class="col-lg-12">
-						<a id="link" href="<c:url value='/que-es'/>"><span id="link-footer">¿Qué es?</span></a><br>
-						<a id="link" href="<c:url value='/quien-es'/>"><span id="link-footer">¿Quién es?</span></a><br>
-						<a id="link" href="<c:url value='/como-funciona'/>"><span id="link-footer">¿Cómo funciona?</span></a><br>
+						<a id="link" href="${pageContext.request.contextPath}/que-es"><span id="link-footer">¿Qué es?</span></a><br>
+						<a id="link" href="${pageContext.request.contextPath}/quien-es"><span id="link-footer">¿Quién es?</span></a><br>
+						<a id="link" href="${pageContext.request.contextPath}/como-funciona"><span id="link-footer">¿Cómo funciona?</span></a><br>
 					</div>		
 				</div>		
 			</div>
@@ -46,8 +46,8 @@
 						<span id="titulo-footer-small">Legal</span><br>
 					</div>
 					<div class="col-lg-12">
-						<a id="link" href="<c:url value='/terminos'/>"><span id="link-footer">Términos de uso</span></a><br>
-						<a id="link" href="<c:url value='/privacidad'/>"><span id="link-footer">Política de privacidad</span></a><br>
+						<a id="link" href="${pageContext.request.contextPath}/terminos"><span id="link-footer">Términos de uso</span></a><br>
+						<a id="link" href="${pageContext.request.contextPath}/privacidad"><span id="link-footer">Política de privacidad</span></a><br>
 					</div>
 				</div>		
 			</div>
@@ -58,7 +58,7 @@
 						<span id="titulo-footer-small">Contacto</span><br>
 					</div>
 					<div class="col-lg-12">
-						<a id="link" href="<c:url value='/contacto'/>"><span id="link-footer">Formulario de contacto</h5></span></a><br>
+						<a id="link" href="${pageContext.request.contextPath}/contacto"><span id="link-footer">Formulario de contacto</h5></span></a><br>
 					</div>
 					
 				</div>		

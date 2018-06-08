@@ -174,7 +174,7 @@
 							<p>El texto, las imágenes, los gráficos, los ficheros de sonido, los ficheros de animación, los ficheros de vídeo, el software y la apariencia del sitio web de Ciclismo Review son objeto de protección por derechos de propiedad intelectual e industrial. Esos elementos no podrán ser válida y legítimamente copiados o distribuidos para uso comercial, ni podrán ser modificados o insertados en otros sitios web sin previa autorización expresa de sus titulares.</p>
 							<p>El Usuario manifiesta ser titular en exclusiva de todos los derechos que recaen sobre las obras, prestaciones protegidas y cualesquiera otros elementos protegidos por propiedad intelectual o industrial que incorpore en el Servicio (en adelante, los “Contenidos”).</p>
 							<p>El Usuario cede gratuitamente y en exclusiva a Ciclismo Review los derechos de comunicación pública, reproducción, distribución y transformación que tiene sobre los Contenidos, en todas las modalidades de explotación existentes en la fecha aceptación de estos Términos de Uso, por todo el tiempo de vigencia de los derechos objeto de cesión, para el ámbito territorial universal.</p>
-							<p>Cualesquiera consultas relacionadas con lo anterior pueden plantearse a través del Servicio de Atención al Usuario a través de <a href="http://localhost:8081/Spring_Web_App/contacto">Formulario de Contacto</a></p>
+							<p>Cualesquiera consultas relacionadas con lo anterior pueden plantearse a través del Servicio de Atención al Usuario a través de <a href="${pageContext.request.contextPath}/contacto">Formulario de Contacto</a></p>
 						<p><strong>7. Publicación de reviews</strong></p>
 							
 							<p>A la hora de publicar una review el Usuario deberá tomar en consideración lo siguiente:</p>
@@ -184,7 +184,7 @@
 							<p>- No está permitido publicar imágenes o descripciones que no se correspondan con la review.</p>
 							<p>- No está permitido publicar imágenes de menores de edad.</p>
 							<p>- No está permitido publicar reviews que no correspondan con las categorias disponibles.</p>							
-							<p>En cualquier caso, a la hora de publicar sus reviews el Usuario deberá tomar en consideración las <a href="http://localhost:8081/Spring_Web_App/reglas">reglas de publicacion</a>.</p>	
+							<p>En cualquier caso, a la hora de publicar sus reviews el Usuario deberá tomar en consideración las <a href="${pageContext.request.contextPath}/como-funciona">reglas de publicacion</a>.</p>	
 					</div>
 				</div>	
 			</div>		

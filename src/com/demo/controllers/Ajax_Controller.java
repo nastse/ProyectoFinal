@@ -21,9 +21,16 @@ public class Ajax_Controller {
 		
 		System.out.println(productId);
 		String usuario_id = session.getAttribute("id_usuario").toString();
+		boolean flag = false;
+		try {
+			
+			flag = RegisteryDAO.getProductsDAO().deleteProductById(productId, usuario_id);
+			String notificacion= RegisteryDAO.getMensajeDAO().crearMensaje("Review eliminada", "Sistema", "Review eliminada");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
-		
-		boolean flag = RegisteryDAO.getProductsDAO().deleteProductById(productId, usuario_id);
 		
 		if(flag){
 			return "Producto eliminado correctamente ! ! !";

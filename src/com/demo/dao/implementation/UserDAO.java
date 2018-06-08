@@ -55,12 +55,15 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				
 				//LE PASO LAS REVIEWS AL USUARIO ADMIN
 				session.beginTransaction();
-				String hqlUpdate ="update Products p set p.id_user =:newIduser "	
+				String hqlUpdate ="update Products p set p.id_user =:newIduser, "
+						+ "p.estado = :newEstado "
 						+ "where p.id_user =:oldIduser";
 			
 				//ELIMINO EL USUARIO DEFINITIVAMENTE 
 				int updatedEntities = session.createQuery(hqlUpdate)
 						.setInteger("newIduser", 1)
+						//PONGO LA REVIEW EN 0 PARA QUE NO SE MUESTRE
+						.setInteger("newEstado", 0)
 						.setInteger("oldIduser", usuario_id)
 						.executeUpdate();
 				session.getTransaction().commit();
@@ -435,7 +438,7 @@ public class UserDAO implements com.demo.dao.layer.UserDAO{
 				Session session = HibernateConnection.getSession();	
 				session.beginTransaction();
 				
-				List<User> user = session.createQuery("From User").list();
+				List<User> user = session.createQuery("From User order by creado desc").list();
 				
 				session.close();
 				

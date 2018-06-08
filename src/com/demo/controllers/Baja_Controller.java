@@ -67,6 +67,7 @@ public class Baja_Controller {
 					//CAMBIO TODOS LOS REVIEWS DEL USUARIO A ELIMINAR Y SE LOS ASIGNO AL USUARIO ADMIN
 					//ELIMINO DEFINITIVAMENTE EL USUARIO DE LA BASE DE DATOS
 					int baja = RegisteryDAO.userDAO.doHibernateDeleteUser(usuario);
+					String notificacion= RegisteryDAO.getMensajeDAO().crearMensaje("Usuario: "+ username +" eliminado", "Sistema", "Baja Usuario");
 					
 					//CIERRO SESION Y REDIRIJO AL INICIO
 					HttpSession httpSession = req.getSession();

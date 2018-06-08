@@ -47,24 +47,25 @@
 	<script type="text/javascript">
 		
 		function borrarProducto(id){
-
-			$.ajax({
-				
-				url: "${pageContext.request.contextPath}/deleteProduct",
-				type: "post",
-				data: "productId="+id,
-				
-				success : function(response){
-					<%-- COJO ID TABLA E ID TR PARA SABER QUE FILA TENGO QUE BORRAR  --%>
-					$("#div_"+id).remove();
-					alert(response)
-				},
-				
-				error : function(error){
-					alert(error);
+			if (confirm("Está seguro?")) {
+				$.ajax({
 					
-				}
-			})
+					url: "${pageContext.request.contextPath}/deleteProduct",
+					type: "post",
+					data: "productId="+id,
+					
+					success : function(response){
+						<%-- COJO ID TABLA E ID TR PARA SABER QUE FILA TENGO QUE BORRAR  --%>
+						$("#div_"+id).remove();
+						alert(response)
+					},
+					
+					error : function(error){
+						alert(error);
+						
+					}
+				})
+			}
 		}
 	
 	</script>

@@ -71,7 +71,7 @@
 										
 									<div class="col-12">
 										<div class="producto-img d-flex justify-content-center p-1">
-											<a href="<c:url value='/verproducto/${product.id_rev}'/>"><img class="rounded" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}"></a>	
+											<a href="${pageContext.request.contextPath}/verproducto/${product.id_rev}"><img class="rounded" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product.imagen}"></a>	
 										</div>
 									</div>	
 									<div class="col-12">	
@@ -111,7 +111,7 @@
 									<div class="col-12">
 										<div class="row">	
 											<div class="col-12 text-center p-0 align-self-end">
-												<span id="datos"><span id="datos">Talla: ${product.tallauser}</span>&nbsp<span id="datos">${product.altura}cm</span>&nbsp<span id="datos">${product.peso}kg</span>&nbsp<span id="datos">${product.precio}€</span>&nbsp
+												<span id="datos"><span id="datos">Talla: ${product.tallauser}</span>&nbsp<span id="datos">${product.altura}cm</span>&nbsp<span id="datos">${product.peso}kg</span>&nbsp<span id="datos">${product.precio}€</span>&nbsp</span>
 	<%-- 												<a id="nombre" href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a> --%>					
 											</div>
 <!-- 											<div class="col-12 text-center"> -->

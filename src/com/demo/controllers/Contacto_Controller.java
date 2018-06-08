@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.implementation.EnviarEmail;
+import com.demo.dao.registery.RegisteryDAO;
 
 @Controller
 public class Contacto_Controller {
@@ -39,20 +40,24 @@ public class Contacto_Controller {
 		
 			if(mensaje.length()>1000) {
 			
-				mensajeSistema ="ERROR El comentario ha superado el mÃ¡ximo permitido";
+				mensajeSistema ="ERROR El comentario ha superado el máximo permitido";
 				md.addAttribute("error_msg", mensajeSistema);
 				
 			}else {
 				
+				//GENERO UNA NOTIFICACION
+				String notificacion= RegisteryDAO.getMensajeDAO().crearMensaje(mensaje, remitenteEmail, asunto);
+				
 				//ME ENVIO UN EMAIL CON EL ASUTO+MENSAJE+EMAIL DE QUIEN LO ENVIA
 				EnviarEmail.mandarEmail("sergiu.nastse@gmail.com", asunto, asunto+ "\n \n" +mensaje+"\n \nEnviado por "+remitenteEmail);
-				mensajeSistema ="Â¡Comentario enviado correctamente!";
-			
+				mensajeSistema ="!Comentario enviado correctamente!";
+				
 				md.addAttribute("error_msg", mensajeSistema);
 			}
 
 		} catch (Exception e) {
-
+			
+			md.addAttribute("error_msg", "Su comunicación no ha podido ser enviada, puede enviar un email a: ciclismo.review@gmail.com");
 			return mav;
 		}
 	

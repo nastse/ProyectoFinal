@@ -282,8 +282,8 @@
 									<div class="col-lg-10">	
 										<label id="titulo">Categoría</label><br>
 											<select id="form" class="form-control" name="categoria" required>
-												<option value = "${product.categoria}">${product.categoria}</option>
-												<c:forEach items="${allCategoria}"  var="categoria">
+												<option value = ""/></option>
+												<c:forEach items="${allCategorias}"  var="categoria">
          											<option value="${categoria.nombre}">${categoria.nombre}</option>
     											</c:forEach>
 											</select>

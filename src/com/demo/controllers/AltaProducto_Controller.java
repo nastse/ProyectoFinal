@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.demo.dao.implementation.S3FileUploader;
 import com.demo.dao.registery.RegisteryDAO;
+import com.demo.pojo.Categoria;
 import com.demo.pojo.Products;
 
 @Controller
@@ -28,6 +29,7 @@ public class AltaProducto_Controller {
 	
 	@RequestMapping(value="/altaproducto", method=RequestMethod.GET)
 	public String load_altaproducto(HttpSession session, ModelMap map) {
+		
 		
 		return "altaproducto";
 	}
@@ -182,11 +184,15 @@ public class AltaProducto_Controller {
 					product.setComentario(comentario);
 					product.setCreado(date);
 					product.setId_user(Integer.parseInt(id_usuario));
+					product.setEstado(1);
 					
 					
 					
 					//INSERTO EL PRODUCTO EN LA BASE DE DATOS
 					mensaje = RegisteryDAO.productsDAO.insertProduct(product);
+					
+					//CREO UNA NOTIFICACION EN EL SISTEMA
+					String notificacion= RegisteryDAO.getMensajeDAO().crearMensaje("Nueva review creada", "Sistema", "Nueva Review");
 					
 					
 				}else {

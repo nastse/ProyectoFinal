@@ -23,7 +23,7 @@ public class Mensaje {
 	private String remitente;
 	
 	@Column(name="tipo")
-	private int tipo;
+	private String tipo;
 	
 	@Column(name="recibido")
 	private Date recibido;
@@ -44,11 +44,11 @@ public class Mensaje {
 		this.remitente = remitente;
 	}
 
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(int tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 

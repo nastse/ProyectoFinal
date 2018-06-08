@@ -503,7 +503,7 @@
 										<c:forEach var="i" items="${reviews}">
 									        <div class="row justify-content-center text-center">
 									         	<div class="col-9 ">
-											         <a href="<c:url value='/mypublicprofile/${i[3]}/'/>"><span id="datos-ranking">${i[2]}</span></a>
+											         <a href="${pageContext.request.contextPath}/mypublicprofile/${i[3]}"><span id="datos-ranking">${i[2]}</span></a>
 											  	</div>   
 											  	<div class="col-3 ">
 											         <span id="datos-ranking">${i[1]}</span> 
@@ -527,7 +527,7 @@
 										<c:forEach var="i" items="${gastado}">
 									        <div class="row justify-content-center text-center">
 									         	<div class="col-9 ">
-											         <a href="<c:url value='/mypublicprofile/${i[3]}/'/>"><span id="datos-ranking">${i[2]}</span></a>
+											         <a href="${pageContext.request.contextPath}/mypublicprofile/${i[3]}"><span id="datos-ranking">${i[2]}</span></a>
 											  	</div>    
 											  	<div class="col-3 ">
 											         <span id="datos-ranking">${i[0]}&euro;</span>
@@ -566,7 +566,7 @@
 										
 									<div class="col-12">
 										<div class="producto-img d-flex justify-content-center p-1">
-											<a href="<c:url value='/verproducto/${product[4]}'/>"><img class="rounded" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product[2]}"></a>	
+											<a href="${pageContext.request.contextPath}/verproducto/${product[4]}"><img class="rounded" width="200px" height="200px" src="https://s3.us-east-2.amazonaws.com/nastse-s3/imagenes/${product[2]}"></a>	
 										</div>
 									</div>	
 									<div id="valoracion-index" class="col-12">	
@@ -612,7 +612,7 @@
 												<span id="datos">Talla: ${product[9]}</span>&nbsp<span id="datos">${product[12]}cm</span>&nbsp<span id="datos">${product[11]}kg</span>&nbsp<span id="datos">${product[12]}&euro;</span>		
 											</div>
 											<div class="col-12 text-center">
-												<a href="<c:url value='/mypublicprofile/${product[5]}/'/>">${product[3]}</a>
+												<a href="${pageContext.request.contextPath}/mypublicprofile/${product[5]}">${product[3]}</a>
 											</div>
 											
 										</div>

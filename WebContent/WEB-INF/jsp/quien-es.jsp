@@ -146,9 +146,9 @@
 							<li id="titulo-negrita">Urbano</li>
 						</ul>
 						<ul>
-							<li>2015 - 3.900km</li>
-							<li>2016 - 7.700km</li>
-							<li>2017 - 14.125km</li>
+							<li id="titulo-negrita">2015 - 3.900km</li>
+							<li id="titulo-negrita">2016 - 7.700km</li>
+							<li id="titulo-negrita">2017 - 14.125km</li>
 								<ul>
 									<li>La Matanza</li>
 									<li>Clásica de Valdemorillo</li>
@@ -167,7 +167,7 @@
 											<li>2º General Senior</li>
 										</ul>	
 								</ul>	
-							<li>2018 - 	5.000km</li>
+							<li id="titulo-negrita">2018 - 	5.000km</li>
 								<ul>
 									<li>Gran Fondo Ibérica</li>
 									<li>Garbancera Bike</li>

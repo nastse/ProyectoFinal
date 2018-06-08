@@ -285,7 +285,8 @@
 									<label id="titulo">Categoría</label><br>
 		<%-- 							<input type="text" name="categoria" value="${product.categoria}">  --%>
 										<select id="form" class="form-control" name="categoria" required>
-											<c:forEach items="${allCategoria}"  var="categoria">
+											<option value = ""/></option>
+											<c:forEach items="${allCategorias}"  var="categoria">
          										<option value="${categoria.nombre}">${categoria.nombre}</option>
     										</c:forEach>
 										</select>

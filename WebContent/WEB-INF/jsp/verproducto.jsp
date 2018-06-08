@@ -75,7 +75,7 @@
 						<label id="titulo">REVIEW HECHA POR</label><br>
 					</div>
 					<div class="col-9">
-					<a id="nombre" href="<c:url value='/mypublicprofile/${product.id_user}/'/>">${usuario}</a>
+					<a id="nombre" href="${pageContext.request.contextPath}/mypublicprofile/${product.id_user}">${usuario}</a>
 						
 					</div>
 					<div class="col-12">

@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demo.dao.implementation.S3FileUploader;
 import com.demo.dao.registery.RegisteryDAO;
+import com.demo.pojo.Mensaje;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
 
@@ -46,9 +47,11 @@ public class Myprofile_Controller {
 				//PARA RECIBIR EL NOMBRE DE LA SESION LE PASO EL NOMBRE DE LA CLAVE QUE LE ASIGNADO
 				String id_usuario = session.getAttribute("id_usuario").toString();
 				
+				
 				//HAGO UNA BUSQUEDA DE TODOS LOS PRODUCTOS DE UN USUARIO POR SU ID RECOGIDO ANTES
 				//RECOJO EL VALOR PASADO COMO ADDFLASHATRIBUTE DENTRO DE LOGIN
 				List <String> datosUsuario = RegisteryDAO.getUserDAO().getUserDatosEmail(session.getAttribute("email").toString());
+			
 				
 				map.addAttribute("datosUsuario", datosUsuario);
 				session.setAttribute("datos", datosUsuario);
@@ -56,6 +59,15 @@ public class Myprofile_Controller {
 				map.addAttribute("tipoUsuario", session.getAttribute("tipoUsuario"));
 				System.out.println("DATOS USUARIO: " + datosUsuario);
 			
+				//PREGUNTO SI EL ID_USUARIO ES 1 (ADMIN) PARA HACER LA CONSULTA DE DE LAS NOTIFICACIONES
+				if(Integer.parseInt(session.getAttribute("id_usuario").toString()) == 1) {
+				
+					//CARGO LAS NOTIFICACIONES DEL SISTEMA PARA MOSTRARLAS AL ADMIN
+					List<Mensaje> notificaciones = RegisteryDAO.getMensajeDAO().leerMensajes();
+					
+					session.setAttribute("notificaciones", notificaciones);
+				}
+				
 			
 			if(session.getAttribute("id_usuario")  == null) {
 				

@@ -144,9 +144,10 @@ public class Signup_Controller{
 						 if(password.equals(repassword)){
 							//Signup_Model sm = new Signup_Model();
 							
-							//MODELO TIPO DAO
+							//DOY DE ALTA AL USUARIO
 							message = RegisteryDAO.getUserDAO().doHibernateSignUp(user2);
-							System.out.println(message);
+							//CREO NOTIFICACION DEL SISTEMA
+							String notificacion= RegisteryDAO.getMensajeDAO().crearMensaje("Nuevo usuario: "+email, "Sistema", "Alta Usuario");
 							
 						//SI LA ALTA ES BUENA VOY A MI PAGINA DE PERFIL Y CARGO MIS DATOS CON EL FORMULARIO PARA COMPLETAR
 							/*//RECOJO LA SESION Y LE ASIGNO UN NOMBRE

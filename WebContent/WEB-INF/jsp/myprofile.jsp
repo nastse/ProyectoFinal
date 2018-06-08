@@ -129,8 +129,8 @@
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="row justify-content-center">
 									<div class="col-12 p-1">		
-											<label id="titulo">Nombre de Usuario:</label>
-											<input id="form" class="form-control" id="username" type="text" name="username" value="${usuario.nombre}" required>
+											<label id="titulo">Nombre de Usuario:</label><span>(Max. 20 caracteres)</span>
+											<input id="form" class="form-control" id="username" type="text" name="username" value="${usuario.nombre}" maxlength="20" required>
 									</div>
 									<div class="col-12 p-1">	
 											<label id="titulo">Género:</label>	
@@ -222,18 +222,23 @@
 		</div>	
 		<c:set value="${datos[0].tipo_usuario}" var="tipo"/>
 			<c:if test="${tipo == 3}">
-				<div class="row justify-content-center shadow m-2 p-4 bg-white rounded">
+				<div class="row justify-content-center  m-2 p-4 bg-white rounded">
 					<div class="col-12 text-center">
 						<span id="encabezado">ZONA ADMIN</span>
+						<hr>
 					</div>
 					<div class="col-12 text-center">
-						 <table style="width:100%; border:solid, 1px;">
+						<span id="titulo-negrita">LISTA DE USUARIOS</span>
+						<div class="table-responsive">
+						 <table class="table table-condensed table-hover" style="width:100%; border:solid, 1px;">
+						 	<thead class="thead-dark">
 							  <tr>
 							    <th>Nº</th>
-							    <th>Nombre Usuario</th>
-							    <th>Email Usuario</th>
-							    <th>Creado</th>
+							    <th>NOMBRE USUARIO</th>
+							    <th>EMAIL USUARIO</th>
+							    <th>CREADO</th>
 							  </tr>
+							 </thead> 
 							<c:forEach items="${listaUsuario}" var="usuario" varStatus="status">	  
 								  <tr id="texto-tabla">
 								    <td>${status.index+1}</td>
@@ -242,7 +247,33 @@
 								    <td>${usuario.creado}</td>
 								  </tr>
 							 </c:forEach> 
-							</table> 
+						</table> 
+						</div>
+					</div>
+					<div class="col-12 text-center">
+						<span id="titulo-negrita">LISTA DE NOTIFICACIONES</span>	
+						<div class="table-responsive">
+						 <table class="table table-condensed table-hover" style="width:100%; border:solid, 1px;">
+							 <thead class="thead-dark">
+							  <tr>
+							    <th>Nº</th>
+							    <th>ORIGEN</th>
+							    <th>ASUNTO</th>
+							    <th>CONTENIDO</th>
+							    <th>FECHA</th>
+							  </tr>
+							 </thead>
+							<c:forEach items="${notificaciones}" var="mensaje" varStatus="status">	  
+								  <tr id="texto-tabla">
+								    <td>${status.index+1}</td>
+								    <td>${mensaje.remitente}</td>
+								    <td>${mensaje.tipo}</td>
+								    <td>${mensaje.mensaje}</td>
+								    <td>${mensaje.recibido}</td>
+								  </tr>
+							 </c:forEach> 
+						</table> 
+						</div>
 					</div>
 				</div>	
 			</c:if>			

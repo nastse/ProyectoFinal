@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.dao.implementation.S3FileUploader;
 import com.demo.dao.registery.RegisteryDAO;
+import com.demo.pojo.Categoria;
 import com.demo.pojo.Products;
 import com.demo.pojo.User;
 
@@ -62,6 +63,7 @@ public class UpdateProducto_Controller {
 			
 			//PASO EL PRODUCTO PARA CARGAR VALORES EN JSP
 			mav.addObject("product", producto);
+			
 			
 			//PASO VALORES PARA RECOGERLOS EN EL POST
 			session.setAttribute("id_rev", producto.getId_rev());
